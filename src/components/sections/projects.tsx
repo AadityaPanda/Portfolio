@@ -24,9 +24,9 @@ const ProjectCard = ({ project }: { project: (typeof PROFESSIONAL_PROJECTS_DATA)
               </CardFooter>
             </Card>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-3xl p-0">
+        <DialogContent className="sm:max-w-4xl p-0">
             <ScrollArea className="max-h-[90vh]">
-                <div className="p-6 space-y-6">
+                <div className="p-8 space-y-6">
                     <DialogHeader>
                         <DialogTitle className="text-3xl font-headline">{project.title}</DialogTitle>
                         <DialogDescription className="pt-1">{project.description}</DialogDescription>
@@ -68,8 +68,14 @@ const ProjectCard = ({ project }: { project: (typeof PROFESSIONAL_PROJECTS_DATA)
                              <Separator />
                             <h3 className="text-xl font-headline font-semibold">Gallery</h3>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                {project.gallery.map((image, i) => (
-                                    <Image key={i} src={image.src} alt={image.alt} width={800} height={600} className="rounded-lg object-cover" data-ai-hint={image.hint} />
+                                {project.gallery.map((media, i) => (
+                                    <div key={i} className="rounded-lg overflow-hidden border">
+                                        {media.type === 'image' ? (
+                                            <Image src={media.src} alt={media.alt} width={800} height={600} className="w-full h-full object-cover" data-ai-hint={media.hint} />
+                                        ) : (
+                                            <video src={media.src} controls autoPlay muted loop className="w-full h-full object-cover" data-ai-hint={media.hint}></video>
+                                        )}
+                                    </div>
                                 ))}
                             </div>
                         </div>
@@ -82,8 +88,9 @@ const ProjectCard = ({ project }: { project: (typeof PROFESSIONAL_PROJECTS_DATA)
 
 export function Projects() {
   return (
-    <section id="projects" className="space-y-16 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-500">
-      <div className="space-y-12">
+    <section id="projects" className="space-y-16">
+      <div className="space-y-12 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-500 section-card">
+        <div className="section-glow bg-primary" />
         <div className="flex items-center gap-4">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
             <Rocket className="h-6 w-6 text-primary" />
@@ -97,7 +104,8 @@ export function Projects() {
         </div>
       </div>
       
-      <div className="space-y-12">
+      <div className="space-y-12 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-500 section-card">
+      <div className="section-glow bg-primary" />
         <div className="flex items-center gap-4">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
             <Rocket className="h-6 w-6 text-primary" />

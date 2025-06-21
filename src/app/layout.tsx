@@ -4,8 +4,8 @@ import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
 
 export const metadata: Metadata = {
-  title: 'Curriculum Vitae',
-  description: 'A personal CV website with an AI-powered pitch generator.',
+  title: 'Portfolio | Aaditya Panda',
+  description: 'The personal portfolio of Aaditya Panda, a software developer specializing in full-stack web applications and custom system architecture.',
 };
 
 export default function RootLayout({
@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className="font-body antialiased">
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
           disableTransitionOnChange
         >

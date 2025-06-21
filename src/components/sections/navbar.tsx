@@ -9,18 +9,32 @@ const navLinks = [
   { name: 'About', href: '#about' },
   { name: 'Experience', href: '#experience' },
   { name: 'Projects', href: '#projects' },
+  { name: 'Skills', href: '#skills'},
   { name: 'Contact', href: '#contact' },
 ];
 
 export function Navbar() {
   const [hasScrolled, setHasScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   useEffect(() => {
     const handleScroll = () => {
       setHasScrolled(window.scrollY > 50);
+
+      const sections = navLinks.map(link => document.getElementById(link.href.substring(1))).filter(Boolean);
+      sections.unshift(document.getElementById('home'));
+
+      let currentSection = 'home';
+      for (const section of sections) {
+        if (section && section.getBoundingClientRect().top < window.innerHeight / 2) {
+          currentSection = section.id;
+        }
+      }
+      setActiveSection(currentSection);
     };
 
     window.addEventListener('scroll', handleScroll);
+    handleScroll(); 
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
@@ -36,11 +50,19 @@ export function Navbar() {
             "text-xl font-headline font-bold transition-opacity duration-300",
             hasScrolled ? "opacity-100" : "opacity-0"
         )}>
-          John Doe
+          Aaditya Panda
         </a>
-        <nav className="hidden md:flex items-center gap-2">
+        <nav className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
-            <Button key={link.href} variant="ghost" asChild>
+            <Button 
+              key={link.href} 
+              variant="ghost" 
+              asChild
+              className={cn(
+                "transition-colors",
+                activeSection === link.href.substring(1) ? "text-primary bg-primary/10" : "text-muted-foreground"
+              )}
+            >
               <a href={link.href}>{link.name}</a>
             </Button>
           ))}

@@ -2,15 +2,15 @@ import { Github, Linkedin, Mail, Smartphone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const socialLinks = [
-  { icon: Mail, href: "mailto:john.doe@email.com", 'aria-label': 'Email John Doe', text: 'john.doe@email.com' },
-  { icon: Github, href: "https://github.com/johndoe", 'aria-label': 'John Doe on GitHub', text: 'GitHub' },
-  { icon: Linkedin, href: "https://linkedin.com/in/johndoe", 'aria-label': 'John Doe on LinkedIn', text: 'LinkedIn' },
-  { icon: Smartphone, href: "tel:+1234567890", 'aria-label': 'Call John Doe', text: '+1 (234) 567-890' },
+  { icon: Mail, href: "mailto:aadityapanda23@gmail.com", 'aria-label': 'Email Aaditya Panda', text: 'aadityapanda23@gmail.com' },
+  { icon: Github, href: "https://github.com/AadityaPanda", 'aria-label': 'Aaditya Panda on GitHub', text: 'GitHub' },
+  { icon: Smartphone, href: "tel:+919871722747", 'aria-label': 'Call Aaditya Panda', text: '+91 98717 22747' },
 ];
 
 export function Contact() {
   return (
-    <section id="contact" className="space-y-12 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-800">
+    <section id="contact" className="space-y-12 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-800 section-card">
+       <div className="section-glow bg-accent" />
        <div className="flex items-center gap-4">
         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
           <Mail className="h-6 w-6" />
@@ -24,7 +24,7 @@ export function Contact() {
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
           {socialLinks.map((link, index) => (
-             <Button key={index} variant="outline" asChild className="h-12 justify-start text-base">
+             <Button key={index} variant="outline" asChild className="h-12 justify-start text-base transition-all hover:bg-primary/10 hover:border-primary">
                 <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link['aria-label']}>
                   <link.icon className="h-5 w-5 mr-3 text-primary" />
                   {link.text}

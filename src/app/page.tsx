@@ -8,18 +8,20 @@ import { Navbar } from '@/components/sections/navbar';
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-background">
+    <div className="flex flex-col min-h-screen bg-background animated-gradient-background">
       <Navbar />
-      <Header />
-      <main className="flex-1 container mx-auto px-4 md:px-8 py-24 space-y-32">
-        <About />
-        <Experience />
-        <Projects />
-        <Skills />
-        <Contact />
+      <main className="flex-1">
+        <Header />
+        <div className="container mx-auto px-4 md:px-8 py-24 space-y-32">
+          <About />
+          <Experience />
+          <Projects />
+          <Skills />
+          <Contact />
+        </div>
       </main>
       <footer className="text-center p-8 mt-16 text-muted-foreground text-sm">
-        <p>&copy; {new Date().getFullYear()} John Doe. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Aaditya Panda. All rights reserved.</p>
       </footer>
     </div>
   );

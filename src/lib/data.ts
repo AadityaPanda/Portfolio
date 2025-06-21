@@ -1,11 +1,11 @@
-export const ABOUT_ME_TEXT = "A passionate and driven Software Developer with over six months of hands-on experience at BitChief Technology Services Pvt Ltd. I specialize in building robust, full-stack web applications from the ground up using Node.js, Express, and React with MySQL. I excel at architecting custom solutions, enhancing existing software with innovative features, and managing the full project lifecycle from development to deployment on production servers using Nginx. I'm dedicated to writing clean, efficient code and thrive in collaborative environments where I can learn and contribute to cutting-edge projects.";
+export const ABOUT_ME_TEXT = "A passionate and driven Software Developer with hands-on experience in building robust, full-stack web applications from the ground up. I specialize in Node.js, React, and Express, with a proven ability to architect custom solutions, enhance existing software with innovative features, and manage the full project lifecycle from development to deployment. I am dedicated to writing clean, efficient code and thrive in collaborative environments where I can contribute to cutting-edge projects.";
 
 export const SKILLS_DATA = {
   "Languages": ["JavaScript", "TypeScript", "Python", "HTML5", "CSS3", "SQL", "Embedded C", "Embedded C++"],
-  "Frameworks": ["React", "Next.js", "Node.js", "Express.js", "Tailwind CSS", "Pygame"],
+  "Frameworks & Libraries": ["React", "Next.js", "Node.js", "Express.js", "Tailwind CSS", "Pygame"],
   "Databases": ["MySQL", "PostgreSQL", "MongoDB", "Firebase"],
-  "Embedded Systems": ["ESP32", "Arduino", "Sensors", "Firmware", "RFID"],
-  "Tools": ["Docker", "Git & GitHub", "Nginx", "Figma", "Jenkins", "Arduino IDE", "AppSheet"],
+  "Embedded Systems": ["ESP32", "Arduino", "Sensors & RFID", "Firmware Development"],
+  "Tools & Platforms": ["Docker", "Git & GitHub", "Nginx", "Figma", "Jenkins", "AppSheet"],
 };
 
 export const EXPERIENCE_DATA = [
@@ -46,7 +46,7 @@ export const PROFESSIONAL_PROJECTS_DATA = [
         "Cloned and customized the Apache Guacamole software, developing a new branded UI and front-end from scratch.",
         "Engineered a highly granular, role-based permission system, significantly improving on the original software's capabilities.",
         "Developed and implemented a unique Proof of Concept (POC) for time-based connection access policies, a feature not present in the official version.",
-        "Managed deployment on multiple servers for demo, testing (10.0.0.231), and client presentation (144.24.10.251) purposes.",
+        "Managed deployment on multiple servers for demo, testing, and client presentation purposes.",
         "Currently leading the re-architecture of the entire application from scratch for more granular control and deeper system integration."
     ],
     repoLink: null,
@@ -70,10 +70,11 @@ export const PERSONAL_PROJECTS_DATA = [
       "Customizable Alerts: Provides distinct buzzer alerts for valid and invalid entries."
     ],
     gallery: [
-        { src: "https://placehold.co/600x400.png", alt: "Project Setup", hint: "circuit board project" },
-        { src: "https://placehold.co/600x400.png", alt: "Hardware Setup", hint: "electronic components" },
-        { src: "https://placehold.co/600x400.png", alt: "Circuit Diagram", hint: "circuit diagram" },
-        { src: "https://placehold.co/600x400.png", alt: "Mobile App", hint: "mobile app interface" },
+        { type: 'image', src: "https://placehold.co/800x600.png", alt: "Project Setup", hint: "circuit board project" },
+        { type: 'image', src: "https://placehold.co/800x600.png", alt: "Hardware Setup", hint: "electronic components" },
+        { type: 'image', src: "https://placehold.co/800x600.png", alt: "Circuit Diagram", hint: "circuit diagram" },
+        { type: 'image', src: "https://placehold.co/800x600.png", alt: "Mobile App", hint: "mobile app interface" },
+        { type: 'video', src: "/Demo.Video.mp4", alt: "Project Demo Video", hint: "project demo video" },
     ]
   },
   {
@@ -90,8 +91,8 @@ export const PERSONAL_PROJECTS_DATA = [
         "Supports two-player battles with fully customizable controls."
     ],
     gallery: [
-        { src: "https://placehold.co/800x600.png", alt: "Street Fighter Gameplay", hint: "retro fighting game" },
-        { src: "https://placehold.co/800x600.png", alt: "Street Fighter Characters", hint: "pixel art character" },
+        { type: 'image', src: "https://placehold.co/800x600.png", alt: "Street Fighter Gameplay", hint: "retro fighting game" },
+        { type: 'image', src: "https://placehold.co/800x600.png", alt: "Street Fighter Characters", hint: "pixel art character" },
     ]
   }
 ];
