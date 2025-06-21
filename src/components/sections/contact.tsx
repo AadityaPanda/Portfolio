@@ -1,13 +1,64 @@
-import { Github, Linkedin, Mail, Smartphone } from "lucide-react";
-import { Button } from "@/components/ui/button";
+"use client";
 
-const socialLinks = [
-  { icon: Mail, href: "mailto:aadityapanda23@gmail.com", 'aria-label': 'Email Aaditya Panda', text: 'aadityapanda23@gmail.com' },
-  { icon: Github, href: "https://github.com/AadityaPanda", 'aria-label': 'Aaditya Panda on GitHub', text: 'GitHub' },
-  { icon: Smartphone, href: "tel:+919871722747", 'aria-label': 'Call Aaditya Panda', text: '+91 98717 22747' },
-];
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { Mail, Send } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { useToast } from '@/hooks/use-toast';
+import { sendContactEmail } from '@/app/actions';
+
+const formSchema = z.object({
+  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
+  email: z.string().email({ message: 'Please enter a valid email address.' }),
+  message: z.string().min(10, { message: 'Message must be at least 10 characters long.' }),
+});
 
 export function Contact() {
+  const { toast } = useToast();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      email: "",
+      message: "",
+    },
+  });
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+    try {
+      const result = await sendContactEmail(values);
+      if (result.success) {
+        toast({
+          title: 'Message Sent!',
+          description: result.message,
+        });
+        form.reset();
+      } else {
+        toast({
+          variant: "destructive",
+          title: 'Uh oh! Something went wrong.',
+          description: result.error || 'There was a problem sending your message.',
+        });
+      }
+    } catch (error) {
+      toast({
+        variant: "destructive",
+        title: 'Uh oh! Something went wrong.',
+        description: 'An unexpected error occurred. Please try again later.',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
+
   return (
     <section id="contact" className="space-y-12 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-800 section-card">
        <div className="flex items-center gap-4">
@@ -17,20 +68,58 @@ export function Contact() {
         <h2 className="text-3xl font-headline font-bold tracking-tight">Get in Touch</h2>
       </div>
 
-      <div className="space-y-4 max-w-2xl">
-        <p className="text-lg text-muted-foreground">
-          I'm always open to discussing new projects, creative ideas, or opportunities to be part of an amazing team. Feel free to reach out to me.
+      <div className="max-w-2xl">
+        <p className="text-lg text-muted-foreground mb-8">
+          I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out to me using the form below.
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-          {socialLinks.map((link, index) => (
-             <Button key={index} variant="outline" asChild className="h-12 justify-start text-base transition-all hover:bg-primary/10 hover:border-primary">
-                <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link['aria-label']}>
-                  <link.icon className="h-5 w-5 mr-3 text-primary" />
-                  {link.text}
-                </a>
-              </Button>
-          ))}
-        </div>
+
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Aaditya Panda" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="email"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Email</FormLabel>
+                  <FormControl>
+                    <Input type="email" placeholder="aadityapanda23@gmail.com" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={form.control}
+              name="message"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Message</FormLabel>
+                  <FormControl>
+                    <Textarea placeholder="Your message..." className="min-h-[120px]" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <Button type="submit" size="lg" disabled={isSubmitting}>
+              {isSubmitting ? 'Sending...' : 'Send Message'}
+              <Send className="ml-2 h-4 w-4" />
+            </Button>
+          </form>
+        </Form>
       </div>
     </section>
   );
