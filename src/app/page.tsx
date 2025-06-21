@@ -2,7 +2,6 @@ import { Header } from '@/components/sections/header';
 import { Experience } from '@/components/sections/experience';
 import { Projects } from '@/components/sections/projects';
 import { Skills } from '@/components/sections/skills';
-import { AiPitchGenerator } from '@/components/sections/ai-pitch-generator';
 
 export default function Home() {
   return (
@@ -12,7 +11,6 @@ export default function Home() {
         <Experience />
         <Projects />
         <Skills />
-        <AiPitchGenerator />
       </main>
       <footer className="text-center p-8 mt-16 text-muted-foreground text-sm">
         <p>&copy; {new Date().getFullYear()} John Doe. All rights reserved.</p>
