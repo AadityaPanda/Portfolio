@@ -1,7 +1,7 @@
 import { Github, Linkedin, ArrowDown, Download, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogFooter, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const socialLinks = [
   { icon: Linkedin, href: "https://www.linkedin.com/in/aadityapanda/", 'aria-label': 'Aaditya Panda on LinkedIn' },
@@ -41,15 +41,6 @@ export function Header() {
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="max-w-4xl h-[90vh] flex flex-col p-0">
-                  <DialogHeader className="p-4 border-b flex flex-row justify-between items-center">
-                    <DialogTitle>Curriculum Vitae</DialogTitle>
-                    <Button asChild>
-                      <a href="/AadityaPanda_CV.pdf" download>
-                        <Download className="mr-2 h-4 w-4" />
-                        Download
-                      </a>
-                    </Button>
-                  </DialogHeader>
                   <div className="flex-1 overflow-auto">
                     <iframe
                       src="/AadityaPanda_CV.pdf"
@@ -57,6 +48,15 @@ export function Header() {
                       title="CV Preview"
                     />
                   </div>
+                  <DialogFooter className="p-4 border-t flex-row justify-between items-center">
+                    <DialogTitle>Curriculum Vitae</DialogTitle>
+                    <Button asChild>
+                      <a href="/AadityaPanda_CV.pdf" download>
+                        <Download className="mr-2 h-4 w-4" />
+                        Download
+                      </a>
+                    </Button>
+                  </DialogFooter>
                 </DialogContent>
               </Dialog>
                <Button size="lg" asChild className="h-12 text-base">
