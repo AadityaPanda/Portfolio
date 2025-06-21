@@ -8,6 +8,7 @@ import { Navbar } from '@/components/sections/navbar';
 import { Footer } from '@/components/footer';
 import { Education } from '@/components/sections/education';
 import { ScrollAnimate } from '@/components/scroll-animate';
+import { ScrollToTop } from '@/components/scroll-to-top';
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
         </div>
       </main>
       <Footer />
+      <ScrollToTop />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { Github, Linkedin, ArrowDown } from "lucide-react";
+import { Github, Linkedin, ArrowDown, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
@@ -33,6 +33,12 @@ export function Header() {
                   </a>
                 </Button>
               ))}
+               <Button size="lg" asChild className="h-12 text-base">
+                <a href="/AadityaPanda_CV.pdf" download>
+                  <Download className="mr-2 h-5 w-5" />
+                  Download CV
+                </a>
+              </Button>
                <Button size="lg" asChild className="h-12 text-base">
                 <a href="#contact">Get in Touch</a>
               </Button>
