@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
+import Image from 'next/image';
 
 export function Contact() {
   const { toast } = useToast();
@@ -19,7 +20,6 @@ export function Contact() {
     event.preventDefault();
     setIsSubmitting(true);
 
-    // Basic validation
     if (!name || !email || !message) {
       toast({
         title: 'Error',
@@ -30,7 +30,6 @@ export function Contact() {
       return;
     }
 
-    // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000));
 
     console.log("Simulated contact form submission:", { name, email, message });
@@ -40,7 +39,6 @@ export function Contact() {
       description: "Your message has been sent successfully!",
     });
     
-    // Reset form
     setName('');
     setEmail('');
     setMessage('');
@@ -56,29 +54,41 @@ export function Contact() {
         <h2 className="text-3xl font-headline font-bold tracking-tight">Get in Touch</h2>
       </div>
 
-      <div className="max-w-2xl">
-        <p className="text-lg text-muted-foreground mb-8">
-          I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out to me using the form below.
-        </p>
+      <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="space-y-8">
+            <p className="text-lg text-muted-foreground">
+              I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out to me using the form below.
+            </p>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="space-y-2">
-            <Label htmlFor="name">Name</Label>
-            <Input id="name" placeholder="Your Name" value={name} onChange={(e) => setName(e.target.value)} required />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
-          </div>
-          <div className="space-y-2">
-            <Label htmlFor="message">Message</Label>
-            <Textarea id="message" placeholder="Your message..." className="min-h-[120px]" value={message} onChange={(e) => setMessage(e.target.value)} required />
-          </div>
-          <Button type="submit" size="lg" disabled={isSubmitting}>
-            {isSubmitting ? 'Sending...' : 'Send Message'}
-            <Send className="ml-2 h-4 w-4" />
-          </Button>
-        </form>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="space-y-2">
+                <Label htmlFor="name">Name</Label>
+                <Input id="name" placeholder="Your Name" value={name} onChange={(e) => setName(e.target.value)} required />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="email">Email</Label>
+                <Input id="email" type="email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="message">Message</Label>
+                <Textarea id="message" placeholder="Your message..." className="min-h-[120px]" value={message} onChange={(e) => setMessage(e.target.value)} required />
+              </div>
+              <Button type="submit" size="lg" disabled={isSubmitting}>
+                {isSubmitting ? 'Sending...' : 'Send Message'}
+                <Send className="ml-2 h-4 w-4" />
+              </Button>
+            </form>
+        </div>
+        <div className="relative h-[500px] w-full hidden lg:flex items-center justify-center">
+            <Image
+                src="https://placehold.co/600x600.png"
+                alt="A decorative abstract graphic."
+                fill
+                sizes="50vw"
+                className="object-contain"
+                data-ai-hint="abstract geometric"
+            />
+        </div>
       </div>
     </section>
   );
