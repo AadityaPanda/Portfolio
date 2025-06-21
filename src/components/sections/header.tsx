@@ -23,14 +23,14 @@ export function Header() {
             />
              <div className="absolute inset-0 rounded-full border-4 border-primary/50 shadow-lg animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)_infinite]" />
           </div>
-          <div className="space-y-4 max-w-3xl">
+          <div className="space-y-4 max-w-4xl">
             <p className="text-xl font-headline text-primary animate-in fade-in slide-in-from-top-4 duration-700 delay-200">
               Hi, I'm Aaditya Panda
             </p>
-            <h1 className="text-4xl font-headline font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl animate-in fade-in slide-in-from-top-6 duration-700 delay-300">
+            <h1 className="text-5xl font-headline font-bold tracking-tighter text-foreground sm:text-6xl lg:text-7xl animate-in fade-in slide-in-from-top-6 duration-700 delay-300">
               Software Developer
             </h1>
-            <p className="text-lg text-muted-foreground animate-in fade-in slide-in-from-top-8 duration-700 delay-400">
+            <p className="text-xl text-muted-foreground animate-in fade-in slide-in-from-top-8 duration-700 delay-400 max-w-3xl mx-auto">
               I build robust, full-stack web applications and custom system architecture, specializing in Node.js, React, and secure, scalable solutions.
             </p>
           </div>
