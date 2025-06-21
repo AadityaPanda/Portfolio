@@ -5,6 +5,7 @@ import { Skills } from '@/components/sections/skills';
 import { About } from '@/components/sections/about';
 import { Contact } from '@/components/sections/contact';
 import { Navbar } from '@/components/sections/navbar';
+import { Footer } from '@/components/footer';
 
 export default function Home() {
   return (
@@ -20,9 +21,7 @@ export default function Home() {
           <Contact />
         </div>
       </main>
-      <footer className="text-center p-8 mt-16 text-muted-foreground text-sm">
-        <p>&copy; {new Date().getFullYear()} Aaditya Panda. All rights reserved.</p>
-      </footer>
+      <Footer />
     </div>
   );
 }
