@@ -20,7 +20,7 @@ export default function Home() {
           <ScrollAnimate><About /></ScrollAnimate>
           <ScrollAnimate delay={100}><Experience /></ScrollAnimate>
           <ScrollAnimate delay={200}><Projects /></ScrollAnimate>
-          <ScrollAnimate delay={300}><Testimonials /></ScrollAnimate>
+          {/* <ScrollAnimate delay={300}><Testimonials /></ScrollAnimate> */}
           <ScrollAnimate delay={400}><Skills /></ScrollAnimate>
           <ScrollAnimate delay={500}><Education /></ScrollAnimate>
           <ScrollAnimate delay={600}><Contact /></ScrollAnimate>

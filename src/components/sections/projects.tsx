@@ -12,14 +12,21 @@ const ProjectCard = ({ project }: { project: (typeof PROFESSIONAL_PROJECTS_DATA)
     <Dialog>
         <DialogTrigger asChild>
             <Card className="group flex flex-col bg-card/80 backdrop-blur-sm border-border/10 transform transition-all duration-300 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 cursor-pointer overflow-hidden">
-              <div className="relative h-48 w-full overflow-hidden">
-                <Image
-                  src={project.thumbnail}
-                  alt={`Thumbnail for ${project.title}`}
-                  fill
-                  className="object-cover transition-transform duration-300 group-hover:scale-105"
-                  data-ai-hint="software project"
-                />
+              <div className="border-b border-border/20">
+                <div className="flex h-8 items-center gap-1.5 px-3 bg-muted/30">
+                  <div className="h-2.5 w-2.5 rounded-full bg-slate-500"></div>
+                  <div className="h-2.5 w-2.5 rounded-full bg-slate-500"></div>
+                  <div className="h-2.5 w-2.5 rounded-full bg-slate-500"></div>
+                </div>
+                <div className="relative h-48 w-full overflow-hidden bg-muted/50">
+                    <Image
+                      src={project.thumbnail}
+                      alt={`Thumbnail for ${project.title}`}
+                      fill
+                      className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                      data-ai-hint="software project"
+                    />
+                </div>
               </div>
               <div className="flex flex-col flex-grow p-6">
                 <CardHeader className="p-0">
