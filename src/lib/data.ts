@@ -1,48 +1,34 @@
 export const SKILLS_DATA = {
   "Languages": ["JavaScript", "TypeScript", "Python", "HTML5", "CSS3", "SQL"],
   "Frameworks": ["React", "Next.js", "Node.js", "Express.js", "Tailwind CSS", "Vue.js"],
-  "Databases": ["PostgreSQL", "MongoDB", "Firebase", "Redis"],
-  "Tools": ["Docker", "Git & GitHub", "Webpack", "Figma", "Jenkins", "Kubernetes"],
+  "Databases": ["PostgreSQL", "MongoDB", "Firebase", "Redis", "MySQL"],
+  "Tools": ["Docker", "Git & GitHub", "Webpack", "Figma", "Jenkins", "Kubernetes", "Nginx"],
 };
 
 export const EXPERIENCE_DATA = [
   {
-    company: "Innovate Inc.",
-    role: "Senior Frontend Developer",
-    period: "2020 - Present",
+    company: "BitChief Technology Services Pvt Ltd",
+    role: "Software Developer",
+    period: "November 2023 - Present",
     responsibilities: [
-      "Led the development of a new design system, improving code consistency and development speed by 30%.",
-      "Architected and implemented a server-side rendering solution with Next.js, boosting SEO performance and initial load times.",
-      "Mentored junior developers, conducting code reviews and promoting best practices in an agile environment.",
-      "Collaborated with UX/UI designers to translate complex requirements into accessible and responsive user interfaces.",
-    ],
-  },
-  {
-    company: "Tech Solutions LLC",
-    role: "Software Engineer",
-    period: "2018 - 2020",
-    responsibilities: [
-      "Developed and maintained user-facing features for a large-scale e-commerce platform using React and Redux.",
-      "Collaborated with backend teams to design and integrate RESTful APIs, ensuring seamless data flow.",
-      "Improved application performance by 20% by optimizing component rendering and state management.",
-      "Wrote comprehensive unit and integration tests to maintain high code quality and application stability.",
+      "Developed a comprehensive internal documentation portal from scratch using React, Node.js, and Express, enhancing accessibility of critical information.",
+      "Engineered a Privileged Access Management (PAM) solution, a clone of Apache Guacamole, with a custom UI and significantly improved role-based permissions.",
+      "Innovated beyond the core Guacamole feature set by designing and implementing a time-based access policy system for enhanced security.",
+      "Spearheaded the deployment of applications on production and demo environments using Nginx, taking full ownership of the project lifecycle.",
+      "Currently re-architecting the PAM application from the ground up to enable more granular control and custom features.",
     ],
   },
 ];
 
 export const PROJECTS_DATA = [
   {
-    title: "AI-Powered Task Manager",
-    description: "A smart task management application that uses natural language processing to categorize and prioritize tasks automatically.",
-    techStack: ["Next.js", "TypeScript", "Tailwind CSS", "Firebase", "Genkit"],
-    repoLink: "https://github.com/johndoe/ai-task-manager",
-    liveLink: "https://ai-tasks.johndoe.com",
+    title: "Internal Documentation Portal",
+    description: "A comprehensive portal built from scratch to house all internal IDAM documentation and manage organization-specific license details. Features include a responsive sidebar, auto-scrolling content navigation, and a scroll-to-top utility.",
+    techStack: ["React", "Node.js", "Express.js", "MySQL", "Nginx"],
   },
   {
-    title: "Interactive Data Visualization Dashboard",
-    description: "A web-based dashboard for visualizing complex datasets with interactive charts and filters, built with D3.js and React.",
-    techStack: ["React", "D3.js", "Node.js", "PostgreSQL"],
-    repoLink: "https://github.com/johndoe/data-viz-dashboard",
-    liveLink: "https://dataviz.johndoe.com",
+    title: "Privileged Access Management (PAM)",
+    description: "A custom-built clone of Apache Guacamole with a branded UI. Key features include robust permission handling and an innovative time-based access policy system for connections, a feature not present in the original software. Currently being rebuilt from scratch for greater control.",
+    techStack: ["React", "Node.js", "Express.js", "MySQL", "Nginx"],
   },
 ];

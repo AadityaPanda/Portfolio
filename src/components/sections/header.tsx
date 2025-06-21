@@ -31,10 +31,10 @@ export function Header() {
               Hi, I'm John Doe
             </p>
             <h1 className="text-4xl font-headline font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl animate-in fade-in slide-in-from-top-6 duration-700 delay-300">
-              Software Engineer & AI Enthusiast
+              Software Developer
             </h1>
             <p className="text-lg text-muted-foreground animate-in fade-in slide-in-from-top-8 duration-700 delay-400">
-              I specialize in building exceptional digital experiences. With a passion for clean code and user-centric design, I transform complex problems into elegant, efficient solutions.
+              A passionate Software Developer specializing in building robust, full-stack web applications from scratch. I excel at architecting custom solutions, enhancing existing software with innovative features, and managing the full project lifecycle from development to deployment.
             </p>
           </div>
           <div className="flex items-center gap-2 pt-4 animate-in fade-in slide-in-from-top-10 duration-700 delay-500">
