@@ -9,40 +9,49 @@ const socialLinks = [
 
 export function Header() {
   return (
-    <header id="home" className="relative flex h-screen flex-col items-center justify-center text-center">
+    <header id="home" className="relative flex h-screen items-center">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col items-center gap-8">
-          <div className="relative h-40 w-40 md:h-48 md:w-48 animate-in fade-in zoom-in-50 duration-700">
-            <Image
-              src="https://placehold.co/400x400.png"
-              alt="Portrait of Aaditya Panda"
-              fill
-              className="rounded-full object-cover border-4 border-primary/50 shadow-lg"
-              data-ai-hint="professional portrait"
-              priority
-            />
-             <div className="absolute inset-0 rounded-full border-4 border-primary/50 shadow-lg animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)_infinite]" />
-          </div>
-          <div className="space-y-4 max-w-4xl">
+        <div className="grid grid-cols-1 items-center gap-8 text-center md:grid-cols-2 md:gap-16 md:text-left">
+          
+          <div className="flex flex-col items-center space-y-6 md:items-start">
             <p className="text-xl font-headline text-primary animate-in fade-in slide-in-from-top-4 duration-700 delay-200">
               Hi, I'm Aaditya Panda
             </p>
-            <h1 className="text-5xl font-headline font-bold tracking-tighter text-foreground sm:text-6xl lg:text-7xl animate-in fade-in slide-in-from-top-6 duration-700 delay-300">
-              Software Developer
+            <h1 className="text-5xl font-headline font-bold tracking-tighter text-foreground sm:text-6xl lg:text-7xl xl:text-8xl animate-in fade-in slide-in-from-top-6 duration-700 delay-300">
+              <span className="animate-gradient-shimmer bg-[linear-gradient(90deg,_hsl(var(--primary))_0%,_hsl(var(--accent))_50%,_hsl(var(--primary))_100%)] bg-[length:200%_auto] bg-clip-text text-transparent">
+                Software Developer
+              </span>
             </h1>
-            <p className="text-xl text-muted-foreground animate-in fade-in slide-in-from-top-8 duration-700 delay-400 max-w-3xl mx-auto">
+            <p className="text-xl text-muted-foreground animate-in fade-in slide-in-from-top-8 duration-700 delay-400 max-w-2xl">
               I build robust, full-stack web applications and custom system architecture, specializing in Node.js, React, and secure, scalable solutions.
             </p>
-          </div>
-          <div className="flex items-center gap-2 pt-4 animate-in fade-in slide-in-from-top-10 duration-700 delay-500">
-            {socialLinks.map((link, index) => (
-              <Button key={index} variant="outline" size="icon" asChild className="transition-all hover:bg-primary/10 hover:border-primary">
-                <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link['aria-label']}>
-                  <link.icon className="h-5 w-5" />
-                </a>
+            <div className="flex flex-wrap justify-center items-center gap-4 pt-4 md:justify-start animate-in fade-in slide-in-from-top-10 duration-700 delay-500">
+              {socialLinks.map((link, index) => (
+                <Button key={index} variant="outline" size="icon" asChild className="h-12 w-12 transition-all hover:bg-primary/10 hover:border-primary">
+                  <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link['aria-label']}>
+                    <link.icon className="h-6 w-6" />
+                  </a>
+                </Button>
+              ))}
+               <Button size="lg" asChild className="h-12 text-base">
+                <a href="#contact">Get in Touch</a>
               </Button>
-            ))}
+            </div>
           </div>
+
+          <div className="relative flex justify-center animate-in fade-in zoom-in-50 duration-700 delay-400">
+            <div className="relative h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] lg:h-[450px] lg:w-[450px]">
+                <Image
+                  src="https://placehold.co/600x600.png"
+                  alt="Portrait of Aaditya Panda"
+                  fill
+                  className="rounded-2xl object-cover shadow-2xl shadow-primary/20"
+                  data-ai-hint="professional portrait"
+                  priority
+                />
+            </div>
+          </div>
+
         </div>
       </div>
       
