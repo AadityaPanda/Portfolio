@@ -8,7 +8,6 @@ export function Skills() {
 
   return (
     <section id="skills" className="space-y-12 animate-in fade-in slide-in-from-bottom-10 duration-500 delay-400 section-card">
-      <div className="section-glow bg-accent" />
       <div className="flex items-center gap-4">
         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
           <Wrench className="h-6 w-6 text-primary" />

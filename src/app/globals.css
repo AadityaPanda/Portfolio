@@ -87,9 +87,6 @@
   html:not(.dark) .section-card {
       @apply border-black/5 bg-white/20 shadow-black/10;
   }
-  .section-glow {
-      @apply absolute -z-10 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full opacity-20 blur-3xl;
-  }
 }
 
 @keyframes gradient-animation {
