@@ -1,6 +1,7 @@
-import { Github, Linkedin, ArrowDown, Download } from "lucide-react";
+import { Github, Linkedin, ArrowDown, Download, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 
 const socialLinks = [
   { icon: Linkedin, href: "https://www.linkedin.com/in/aadityapanda/", 'aria-label': 'Aaditya Panda on LinkedIn' },
@@ -33,12 +34,32 @@ export function Header() {
                   </a>
                 </Button>
               ))}
-               <Button size="lg" asChild className="h-12 text-base">
-                <a href="/AadityaPanda_CV.pdf" download>
-                  <Download className="mr-2 h-5 w-5" />
-                  Download CV
-                </a>
-              </Button>
+               <Dialog>
+                <DialogTrigger asChild>
+                  <Button size="lg" className="h-12 text-base">
+                    <Eye className="mr-2 h-5 w-5" />
+                    View CV
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl h-[90vh] flex flex-col p-0">
+                  <DialogHeader className="p-4 border-b flex-row justify-between items-center space-y-0">
+                    <DialogTitle>Curriculum Vitae</DialogTitle>
+                    <Button asChild>
+                      <a href="/AadityaPanda_CV.pdf" download>
+                        <Download className="mr-2 h-4 w-4" />
+                        Download
+                      </a>
+                    </Button>
+                  </DialogHeader>
+                  <div className="flex-1 overflow-auto">
+                    <iframe
+                      src="/AadityaPanda_CV.pdf"
+                      className="w-full h-full"
+                      title="CV Preview"
+                    />
+                  </div>
+                </DialogContent>
+              </Dialog>
                <Button size="lg" asChild className="h-12 text-base">
                 <a href="#contact">Get in Touch</a>
               </Button>
