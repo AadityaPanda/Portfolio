@@ -1,9 +1,9 @@
-import { Github, Mail, ArrowDown } from "lucide-react";
+import { Github, Linkedin, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 
 const socialLinks = [
-  { icon: Mail, href: "mailto:aadityapanda23@gmail.com", 'aria-label': 'Email Aaditya Panda' },
+  { icon: Linkedin, href: "https://www.linkedin.com/in/aadityapanda/", 'aria-label': 'Aaditya Panda on LinkedIn' },
   { icon: Github, href: "https://github.com/AadityaPanda", 'aria-label': 'Aaditya Panda on GitHub' },
 ];
 
