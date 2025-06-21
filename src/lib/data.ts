@@ -12,7 +12,7 @@ export const EXPERIENCE_DATA = [
   {
     company: "Bitchief Technology Services Pvt Ltd",
     role: "Software Developer",
-    period: "Nov 2025 - Present",
+    period: "Nov 2023 - Present",
     responsibilities: [
       "Led the ground-up development of a full-stack internal documentation portal, improving information accessibility and license management.",
       "Engineered a custom Privileged Access Management (PAM) solution, enhancing Apache Guacamole with a branded UI and superior, granular permission controls.",
@@ -85,6 +85,7 @@ export const PROFESSIONAL_PROJECTS_DATA = [
     ],
     repoLink: null,
     liveLink: null,
+    thumbnail: "https://placehold.co/800x600.png",
     gallery: [],
   },
   {
@@ -100,6 +101,7 @@ export const PROFESSIONAL_PROJECTS_DATA = [
     ],
     repoLink: null,
     liveLink: null,
+    thumbnail: "https://placehold.co/800x600.png",
     gallery: [],
   },
 ];
@@ -111,6 +113,7 @@ export const PERSONAL_PROJECTS_DATA = [
     techStack: ["ESP32", "Arduino", "RFID", "C++", "Google Sheets API", "AppSheet"],
     repoLink: "https://github.com/AadityaPanda/ITSS",
     liveLink: "https://ieeexplore.ieee.org/document/10993585",
+    thumbnail: "https://placehold.co/800x600.png",
     details: [
       "Automated Vehicle Detection: Authenticates vehicle RFID tags for seamless entry.",
       "Automated Gate Control: Utilizes a servo motor to control gate opening and closing.",
@@ -132,6 +135,7 @@ export const PERSONAL_PROJECTS_DATA = [
     techStack: ["Python", "Pygame", "OpenCV"],
     repoLink: "https://github.com/AadityaPanda/Street_Fighter",
     liveLink: null,
+    thumbnail: "https://placehold.co/800x600.png",
     details: [
         "Features two distinct fighters, Warrior and Wizard, each with unique attacks and abilities.",
         "Includes classic gameplay mechanics like health bars, a scoring system, and smooth character animations.",
@@ -143,5 +147,22 @@ export const PERSONAL_PROJECTS_DATA = [
         { type: 'image', src: "https://placehold.co/800x600.png", alt: "Street Fighter Gameplay", hint: "retro fighting game" },
         { type: 'image', src: "https://placehold.co/800x600.png", alt: "Street Fighter Characters", hint: "pixel art character" },
     ]
+  }
+];
+
+export const TESTIMONIALS_DATA = [
+  {
+    quote: "Aaditya is a rare talent. His ability to tackle complex architectural challenges and deliver clean, efficient code was instrumental to our project's success. He's a proactive problem-solver and a fantastic team player.",
+    name: "Jane Doe",
+    title: "Senior Project Manager, Bitchief",
+    avatar: "https://placehold.co/100x100.png",
+    hint: "woman portrait"
+  },
+  {
+    quote: "Working with Aaditya was a pleasure. He has a deep understanding of full-stack development and a keen eye for detail. His contributions to our PAM solution were invaluable, especially his work on the time-based access policies.",
+    name: "John Smith",
+    title: "Lead Engineer, Bitchief",
+    avatar: "https://placehold.co/100x100.png",
+    hint: "man portrait"
   }
 ];

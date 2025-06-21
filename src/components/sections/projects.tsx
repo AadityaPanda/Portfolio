@@ -11,17 +11,28 @@ import { Separator } from "@/components/ui/separator";
 const ProjectCard = ({ project }: { project: (typeof PROFESSIONAL_PROJECTS_DATA)[0] | (typeof PERSONAL_PROJECTS_DATA)[0] }) => (
     <Dialog>
         <DialogTrigger asChild>
-            <Card className="flex flex-col bg-card/80 backdrop-blur-sm border-border/10 transform transition-all duration-300 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 cursor-pointer">
-              <CardHeader>
-                <CardTitle>{project.title}</CardTitle>
-                <CardDescription className="pt-1">{project.description}</CardDescription>
-              </CardHeader>
-              <CardContent className="flex-grow" />
-              <CardFooter>
-                <div className="flex flex-wrap gap-2">
-                  {project.techStack.map((tech) => <Badge key={tech} variant="secondary">{tech}</Badge>)}
-                </div>
-              </CardFooter>
+            <Card className="group flex flex-col bg-card/80 backdrop-blur-sm border-border/10 transform transition-all duration-300 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 cursor-pointer overflow-hidden">
+              <div className="relative h-48 w-full overflow-hidden">
+                <Image
+                  src={project.thumbnail}
+                  alt={`Thumbnail for ${project.title}`}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  data-ai-hint="software project"
+                />
+              </div>
+              <div className="flex flex-col flex-grow p-6">
+                <CardHeader className="p-0">
+                  <CardTitle>{project.title}</CardTitle>
+                  <CardDescription className="pt-2">{project.description}</CardDescription>
+                </CardHeader>
+                <CardContent className="p-0 flex-grow pt-4" />
+                <CardFooter className="p-0 pt-4">
+                  <div className="flex flex-wrap gap-2">
+                    {project.techStack.map((tech) => <Badge key={tech} variant="secondary">{tech}</Badge>)}
+                  </div>
+                </CardFooter>
+              </div>
             </Card>
         </DialogTrigger>
         <DialogContent className="sm:max-w-4xl p-0">

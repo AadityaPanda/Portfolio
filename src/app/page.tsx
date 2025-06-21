@@ -8,6 +8,7 @@ import { Navbar } from '@/components/sections/navbar';
 import { Footer } from '@/components/footer';
 import { Education } from '@/components/sections/education';
 import { ScrollAnimate } from '@/components/scroll-animate';
+import { Testimonials } from '@/components/sections/testimonials';
 
 export default function Home() {
   return (
@@ -19,9 +20,10 @@ export default function Home() {
           <ScrollAnimate><About /></ScrollAnimate>
           <ScrollAnimate delay={100}><Experience /></ScrollAnimate>
           <ScrollAnimate delay={200}><Projects /></ScrollAnimate>
-          <ScrollAnimate delay={300}><Skills /></ScrollAnimate>
-          <ScrollAnimate delay={400}><Education /></ScrollAnimate>
-          <ScrollAnimate delay={500}><Contact /></ScrollAnimate>
+          <ScrollAnimate delay={300}><Testimonials /></ScrollAnimate>
+          <ScrollAnimate delay={400}><Skills /></ScrollAnimate>
+          <ScrollAnimate delay={500}><Education /></ScrollAnimate>
+          <ScrollAnimate delay={600}><Contact /></ScrollAnimate>
         </div>
       </main>
       <Footer />

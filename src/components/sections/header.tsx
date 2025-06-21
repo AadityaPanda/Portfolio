@@ -19,11 +19,11 @@ export function Header() {
             </p>
             <h1 className="text-5xl font-headline font-bold tracking-tighter text-foreground sm:text-6xl lg:text-7xl xl:text-8xl animate-in fade-in slide-in-from-top-6 duration-700 delay-300">
               <span className="animate-gradient-shimmer bg-[linear-gradient(90deg,_hsl(var(--primary))_0%,_hsl(var(--accent))_50%,_hsl(var(--primary))_100%)] bg-[length:200%_auto] bg-clip-text text-transparent">
-                Software Developer
+                Full-Stack Problem Solver
               </span>
             </h1>
             <p className="text-xl text-muted-foreground animate-in fade-in slide-in-from-top-8 duration-700 delay-400 max-w-2xl">
-              I build robust, full-stack web applications and custom system architecture, specializing in Node.js, React, and secure, scalable solutions.
+              I transform complex business requirements into elegant, scalable web applications, from system architecture to pixel-perfect UIs.
             </p>
             <div className="flex flex-wrap justify-center items-center gap-4 pt-4 md:justify-start animate-in fade-in slide-in-from-top-10 duration-700 delay-500">
               {socialLinks.map((link, index) => (
