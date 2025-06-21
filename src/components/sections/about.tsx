@@ -3,7 +3,7 @@ import { ABOUT_ME_TEXT } from "@/lib/data";
 
 export function About() {
   return (
-    <section id="about" className="space-y-12 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-200">
+    <section id="about" className="space-y-12 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
       <div className="flex items-center gap-4">
         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
           <UserCircle className="h-6 w-6" />

@@ -4,7 +4,7 @@ import { Briefcase } from "lucide-react";
 
 export function Experience() {
   return (
-    <section id="experience" className="space-y-12 animate-in fade-in slide-in-from-bottom-10 duration-500">
+    <section id="experience" className="space-y-12 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-400">
       <div className="flex items-center gap-4">
         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
           <Briefcase className="h-6 w-6 text-primary" />
