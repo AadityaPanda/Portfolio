@@ -23,10 +23,10 @@ export function Header() {
                 Full-Stack Problem Solver
               </span>
             </h1>
-            <p className="text-xl text-muted-foreground animate-in fade-in slide-in-from-top-8 duration-700 delay-400 max-w-2xl">
+            <p className="text-xl text-muted-foreground animate-in fade-in from-top-8 slide-in-from-top-8 duration-700 delay-400 max-w-2xl">
               I transform complex business requirements into elegant, scalable web applications, from system architecture to pixel-perfect UIs.
             </p>
-            <div className="flex flex-wrap justify-center items-center gap-4 pt-4 md:justify-start animate-in fade-in slide-in-from-top-10 duration-700 delay-500">
+            <div className="flex flex-wrap justify-center items-center gap-4 pt-4 md:justify-start animate-in fade-in from-top-10 slide-in-from-top-10 duration-700 delay-500">
               {socialLinks.map((link, index) => (
                 <Button key={index} variant="outline" size="icon" asChild className="h-12 w-12 transition-all hover:bg-primary/10 hover:border-primary">
                   <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link['aria-label']}>
@@ -41,7 +41,7 @@ export function Header() {
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="max-w-4xl h-[90vh] flex flex-col p-0">
-                  <DialogHeader className="p-4 border-b flex-row justify-between items-center space-y-0">
+                  <DialogHeader className="p-4 border-b flex flex-row justify-between items-center">
                     <DialogTitle>Curriculum Vitae</DialogTitle>
                     <Button asChild>
                       <a href="/AadityaPanda_CV.pdf" download>
