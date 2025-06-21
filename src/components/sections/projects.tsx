@@ -3,7 +3,82 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { PROFESSIONAL_PROJECTS_DATA, PERSONAL_PROJECTS_DATA } from "@/lib/data";
 import { Github, ExternalLink, Rocket, FileText } from "lucide-react";
-import Link from "next/link";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import Image from "next/image";
+import { Separator } from "@/components/ui/separator";
+
+const ProjectCard = ({ project }: { project: (typeof PROFESSIONAL_PROJECTS_DATA)[0] | (typeof PERSONAL_PROJECTS_DATA)[0] }) => (
+    <Dialog>
+        <DialogTrigger asChild>
+            <Card className="flex flex-col bg-card/80 backdrop-blur-sm border-border/10 transform transition-all duration-300 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2 cursor-pointer">
+              <CardHeader>
+                <CardTitle>{project.title}</CardTitle>
+                <CardDescription className="pt-1">{project.description}</CardDescription>
+              </CardHeader>
+              <CardContent className="flex-grow" />
+              <CardFooter>
+                <div className="flex flex-wrap gap-2">
+                  {project.techStack.map((tech) => <Badge key={tech} variant="secondary">{tech}</Badge>)}
+                </div>
+              </CardFooter>
+            </Card>
+        </DialogTrigger>
+        <DialogContent className="sm:max-w-3xl p-0">
+            <ScrollArea className="max-h-[90vh]">
+                <div className="p-6 space-y-6">
+                    <DialogHeader>
+                        <DialogTitle className="text-3xl font-headline">{project.title}</DialogTitle>
+                        <DialogDescription className="pt-1">{project.description}</DialogDescription>
+                    </DialogHeader>
+                    
+                    <div className="flex flex-wrap gap-2">
+                        {project.techStack.map((tech) => <Badge key={tech} variant="secondary">{tech}</Badge>)}
+                    </div>
+
+                    <div className="flex gap-2 pt-2">
+                        {project.repoLink && (
+                            <Button asChild>
+                                <a href={project.repoLink} target="_blank" rel="noopener noreferrer">
+                                    <Github className="mr-2"/> View on GitHub
+                                </a>
+                            </Button>
+                        )}
+                        {project.liveLink && (
+                            <Button variant="outline" asChild>
+                                <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
+                                    {project.liveLink.includes('ieee') ? <FileText className="mr-2"/> : <ExternalLink className="mr-2"/>}
+                                    {project.liveLink.includes('ieee') ? 'Read Paper' : 'View Live'}
+                                </a>
+                            </Button>
+                        )}
+                    </div>
+
+                    <Separator />
+
+                    <div className="space-y-4">
+                        <h3 className="text-xl font-headline font-semibold">Features & Details</h3>
+                        <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
+                            {project.details.map((detail, i) => <li key={i}>{detail}</li>)}
+                        </ul>
+                    </div>
+
+                    {project.gallery && project.gallery.length > 0 && (
+                        <div className="space-y-4">
+                             <Separator />
+                            <h3 className="text-xl font-headline font-semibold">Gallery</h3>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {project.gallery.map((image, i) => (
+                                    <Image key={i} src={image.src} alt={image.alt} width={800} height={600} className="rounded-lg object-cover" data-ai-hint={image.hint} />
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </ScrollArea>
+        </DialogContent>
+    </Dialog>
+);
 
 export function Projects() {
   return (
@@ -17,20 +92,7 @@ export function Projects() {
         </div>
         <div className="grid md:grid-cols-2 gap-6">
           {PROFESSIONAL_PROJECTS_DATA.map((project, index) => (
-            <Card key={index} className="flex flex-col bg-card/80 backdrop-blur-sm border-border/10 transform transition-all duration-300 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2">
-              <CardHeader>
-                <CardTitle>{project.title}</CardTitle>
-                <CardDescription className="pt-1">{project.description}</CardDescription>
-              </CardHeader>
-              <CardContent className="flex-grow">
-                 <p className="text-sm text-muted-foreground">{project.details}</p>
-              </CardContent>
-              <CardFooter>
-                <div className="flex flex-wrap gap-2">
-                  {project.techStack.map((tech) => <Badge key={tech} variant="secondary">{tech}</Badge>)}
-                </div>
-              </CardFooter>
-            </Card>
+            <ProjectCard key={index} project={project} />
           ))}
         </div>
       </div>
@@ -44,38 +106,7 @@ export function Projects() {
         </div>
         <div className="grid md:grid-cols-2 gap-6">
           {PERSONAL_PROJECTS_DATA.map((project, index) => (
-            <Card key={index} className="flex flex-col bg-card/80 backdrop-blur-sm border-border/10 transform transition-all duration-300 hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2">
-              <CardHeader>
-                <div className="flex justify-between items-start gap-2">
-                  <Link href={`/projects/${project.slug}`} className="cursor-pointer">
-                    <CardTitle className="hover:underline hover:text-primary">{project.title}</CardTitle>
-                  </Link>
-                  <div className="flex gap-1 flex-shrink-0">
-                    {project.repoLink && (
-                      <Button variant="ghost" size="icon" asChild>
-                        <a href={project.repoLink} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} GitHub repository`}>
-                          <Github className="h-5 w-5" />
-                        </a>
-                      </Button>
-                    )}
-                    {project.liveLink && (
-                       <Button variant="ghost" size="icon" asChild>
-                        <a href={project.liveLink} target="_blank" rel="noopener noreferrer" aria-label={`${project.title} live link`}>
-                          {project.liveLink.includes('ieee') ? <FileText className="h-5 w-5" /> : <ExternalLink className="h-5 w-5" />}
-                        </a>
-                      </Button>
-                    )}
-                  </div>
-                </div>
-                <CardDescription className="pt-1">{project.description}</CardDescription>
-              </CardHeader>
-              <CardContent className="flex-grow" />
-              <CardFooter>
-                <div className="flex flex-wrap gap-2">
-                  {project.techStack.map((tech) => <Badge key={tech} variant="secondary">{tech}</Badge>)}
-                </div>
-              </CardFooter>
-            </Card>
+            <ProjectCard key={index} project={project} />
           ))}
         </div>
       </div>

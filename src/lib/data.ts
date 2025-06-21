@@ -26,32 +26,72 @@ export const EXPERIENCE_DATA = [
 export const PROFESSIONAL_PROJECTS_DATA = [
   {
     title: "Internal Documentation Portal",
-    description: "Built from scratch, this portal centralizes all IDAM documentation and manages organization-specific licenses.",
-    details: "It features a dynamic UI with an auto-resizing sidebar, content-aware scrolling, and other UX enhancements. I have taken full ownership from development to production deployment.",
+    description: "A comprehensive internal portal for documentation and license management, built from the ground up.",
     techStack: ["React", "Node.js", "Express.js", "MySQL", "Nginx"],
+    details: [
+      "Architected and developed a full-stack documentation portal from scratch, serving as a central hub for all IDAM documentation.",
+      "Integrated a license management module to display organization-specific license details for authenticated users.",
+      "Implemented key UI/UX enhancements such as a responsive, auto-resizing sidebar, content-aware scrolling for sub-headings, and a 'scroll to top' feature.",
+      "Managed the complete project lifecycle, from initial development and learning to taking full ownership of deployment and maintenance on production servers."
+    ],
+    repoLink: null,
+    liveLink: null,
+    gallery: [],
   },
   {
     title: "Privileged Access Management (PAM)",
     description: "A custom-built, branded version of Apache Guacamole with a focus on a robust, fine-grained permission system.",
-    details: "I implemented a unique time-based access policy feature and deployed the application on both demo and client-facing production servers.",
     techStack: ["React", "Node.js", "Express.js", "MySQL", "Nginx"],
+    details: [
+        "Cloned and customized the Apache Guacamole software, developing a new branded UI and front-end from scratch.",
+        "Engineered a highly granular, role-based permission system, significantly improving on the original software's capabilities.",
+        "Developed and implemented a unique Proof of Concept (POC) for time-based connection access policies, a feature not present in the official version.",
+        "Managed deployment on multiple servers for demo, testing (10.0.0.231), and client presentation (144.24.10.251) purposes.",
+        "Currently leading the re-architecture of the entire application from scratch for more granular control and deeper system integration."
+    ],
+    repoLink: null,
+    liveLink: null,
+    gallery: [],
   },
 ];
 
 export const PERSONAL_PROJECTS_DATA = [
   {
     title: "IoT Tollbooth System Supervisor",
-    slug: "iot-toll-supervisor",
-    description: "A system harnessing IoT and RFID technology to revolutionize tollbooth operations, optimizing traffic flow and enhancing user experience.",
-    techStack: ["ESP32", "Arduino", "RFID", "C++", "Google Sheets API"],
+    description: "An IoT and RFID-based system to revolutionize tollbooth operations, optimizing traffic flow and enhancing user experience.",
+    techStack: ["ESP32", "Arduino", "RFID", "C++", "Google Sheets API", "AppSheet"],
     repoLink: "https://github.com/AadityaPanda/ITSS",
     liveLink: "https://ieeexplore.ieee.org/document/10993585",
+    details: [
+      "Automated Vehicle Detection: Authenticates vehicle RFID tags for seamless entry.",
+      "Automated Gate Control: Utilizes a servo motor to control gate opening and closing.",
+      "Real-time Data Logging: Logs all transaction data directly to Google Sheets via an ESP32.",
+      "Enhanced Security: Ensures that only authorized RFID tags are granted access.",
+      "Customizable Alerts: Provides distinct buzzer alerts for valid and invalid entries."
+    ],
+    gallery: [
+        { src: "https://placehold.co/600x400.png", alt: "Project Setup", hint: "circuit board project" },
+        { src: "https://placehold.co/600x400.png", alt: "Hardware Setup", hint: "electronic components" },
+        { src: "https://placehold.co/600x400.png", alt: "Circuit Diagram", hint: "circuit diagram" },
+        { src: "https://placehold.co/600x400.png", alt: "Mobile App", hint: "mobile app interface" },
+    ]
   },
   {
     title: "Street Fighter Clone",
-    slug: "street-fighter",
-    description: "An engaging two-player fighting game built with Python and Pygame, featuring unique characters, dynamic animations, and retro gameplay.",
+    description: "An engaging two-player fighting game built with Python and Pygame, featuring unique characters and dynamic animations.",
     techStack: ["Python", "Pygame", "OpenCV"],
     repoLink: "https://github.com/AadityaPanda/Street_Fighter",
+    liveLink: null,
+    details: [
+        "Features two distinct fighters, Warrior and Wizard, each with unique attacks and abilities.",
+        "Includes classic gameplay mechanics like health bars, a scoring system, and smooth character animations.",
+        "Implements dynamic background effects and immersive sound design for an engaging experience.",
+        "Provides a full user interface including a main menu and victory screens.",
+        "Supports two-player battles with fully customizable controls."
+    ],
+    gallery: [
+        { src: "https://placehold.co/800x600.png", alt: "Street Fighter Gameplay", hint: "retro fighting game" },
+        { src: "https://placehold.co/800x600.png", alt: "Street Fighter Characters", hint: "pixel art character" },
+    ]
   }
 ];
