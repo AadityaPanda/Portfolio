@@ -55,12 +55,14 @@ export function AiPitchGenerator() {
   };
 
   return (
-    <section id="ai-pitch" className="space-y-8">
+    <section id="ai-pitch" className="space-y-12 animate-in fade-in slide-in-from-bottom-10 duration-500 delay-500">
       <div className="flex items-center gap-4">
-        <Lightbulb className="h-8 w-8 text-primary" />
+        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
+            <Lightbulb className="h-6 w-6 text-primary" />
+        </div>
         <h2 className="text-3xl font-headline font-bold tracking-tight">AI Elevator Pitch Generator</h2>
       </div>
-      <Card>
+      <Card className="bg-card/80 backdrop-blur-sm border-primary/10">
         <CardHeader>
           <CardTitle>Craft Your Pitch</CardTitle>
           <CardDescription>Select your key skills and experiences, and let AI generate a tailored elevator pitch for you.</CardDescription>
@@ -76,7 +78,7 @@ export function AiPitchGenerator() {
                     <div className="mb-4">
                       <FormLabel className="text-base font-semibold">1. Select Skills</FormLabel>
                     </div>
-                    <ScrollArea className="h-60 w-full rounded-md border p-4">
+                    <ScrollArea className="h-60 w-full rounded-md border border-primary/20 bg-background/50 p-4">
                       {allSkills.map((skill) => (
                         <FormField
                           key={skill}
@@ -113,7 +115,7 @@ export function AiPitchGenerator() {
                     <div className="mb-4">
                       <FormLabel className="text-base font-semibold">2. Select Experiences</FormLabel>
                     </div>
-                    <ScrollArea className="h-60 w-full rounded-md border p-4">
+                    <ScrollArea className="h-60 w-full rounded-md border border-primary/20 bg-background/50 p-4">
                       {allExperiences.map((experience, index) => (
                         <FormField
                           key={index}
@@ -143,13 +145,13 @@ export function AiPitchGenerator() {
               />
             </CardContent>
             <CardFooter className="flex flex-col gap-4 items-stretch">
-              <Button type="submit" disabled={isLoading} size="lg">
+              <Button type="submit" disabled={isLoading} size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
                 {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Wand2 className="mr-2 h-4 w-4" />}
                 Generate Pitch
               </Button>
               {pitch && (
-                <div className="w-full p-4 bg-accent/10 border-l-4 border-accent text-accent-foreground rounded-md mt-4 animate-in fade-in duration-500">
-                  <h4 className="font-semibold mb-2">Your Elevator Pitch:</h4>
+                <div className="w-full p-4 bg-accent/20 border-l-4 border-accent text-foreground/90 rounded-md mt-4 animate-in fade-in duration-500">
+                  <h4 className="font-semibold mb-2 text-foreground">Your Elevator Pitch:</h4>
                   <blockquote className="text-sm leading-relaxed">{pitch}</blockquote>
                 </div>
               )}
