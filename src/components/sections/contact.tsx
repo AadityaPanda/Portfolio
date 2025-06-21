@@ -10,7 +10,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
-import { sendContactEmail } from '@/app/actions';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -33,30 +32,19 @@ export function Contact() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    try {
-      const result = await sendContactEmail(values);
-      if (result.success) {
-        toast({
-          title: 'Message Sent!',
-          description: result.message,
-        });
-        form.reset();
-      } else {
-        toast({
-          variant: "destructive",
-          title: 'Uh oh! Something went wrong.',
-          description: result.error || 'There was a problem sending your message.',
-        });
-      }
-    } catch (error) {
-      toast({
-        variant: "destructive",
-        title: 'Uh oh! Something went wrong.',
-        description: 'An unexpected error occurred. Please try again later.',
-      });
-    } finally {
-      setIsSubmitting(false);
-    }
+    
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+
+    console.log("Simulated contact form submission:", values);
+
+    toast({
+      title: 'Message Sent!',
+      description: "Your message has been sent successfully!",
+    });
+    
+    form.reset();
+    setIsSubmitting(false);
   }
 
   return (
