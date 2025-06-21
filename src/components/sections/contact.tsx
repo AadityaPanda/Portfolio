@@ -7,7 +7,6 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
-import Image from 'next/image';
 
 export function Contact() {
   const { toast } = useToast();
@@ -79,15 +78,8 @@ export function Contact() {
               </Button>
             </form>
         </div>
-        <div className="relative h-[500px] w-full hidden lg:flex items-center justify-center">
-            <Image
-                src="https://placehold.co/600x600.png"
-                alt="A decorative abstract graphic."
-                fill
-                sizes="50vw"
-                className="object-contain"
-                data-ai-hint="abstract geometric"
-            />
+        <div className="relative h-full min-h-[400px] w-full hidden lg:flex items-center justify-center rounded-2xl bg-primary/5">
+          <Mail className="w-48 h-48 text-primary/20" strokeWidth={1} />
         </div>
       </div>
     </section>

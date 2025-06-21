@@ -1,4 +1,4 @@
-import { Github, Linkedin, ArrowDown, Download, Eye } from "lucide-react";
+import { Github, Linkedin, ArrowDown, Download, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -36,9 +36,8 @@ export function Header() {
               ))}
                <Dialog>
                 <DialogTrigger asChild>
-                  <Button size="lg" className="h-12 text-base">
-                    <Eye className="mr-2 h-5 w-5" />
-                    View CV
+                  <Button variant="outline" size="icon" className="h-12 w-12 transition-all hover:bg-primary/10 hover:border-primary" aria-label="View CV">
+                    <FileText className="h-6 w-6" />
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="max-w-4xl h-[90vh] flex flex-col p-0">
