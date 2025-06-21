@@ -4,7 +4,7 @@ import { GraduationCap } from "lucide-react";
 
 export function Education() {
   return (
-    <section id="education" className="space-y-12 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-700">
+    <section id="education" className="space-y-12">
       <div className="flex items-center gap-4">
         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
           <GraduationCap className="h-6 w-6 text-primary" />

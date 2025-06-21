@@ -7,6 +7,7 @@ import { Contact } from '@/components/sections/contact';
 import { Navbar } from '@/components/sections/navbar';
 import { Footer } from '@/components/footer';
 import { Education } from '@/components/sections/education';
+import { ScrollAnimate } from '@/components/scroll-animate';
 
 export default function Home() {
   return (
@@ -15,12 +16,12 @@ export default function Home() {
       <main className="flex-1">
         <Header />
         <div className="container mx-auto px-4 md:px-8 py-24 space-y-32">
-          <About />
-          <Experience />
-          <Projects />
-          <Skills />
-          <Education />
-          <Contact />
+          <ScrollAnimate><About /></ScrollAnimate>
+          <ScrollAnimate delay={100}><Experience /></ScrollAnimate>
+          <ScrollAnimate delay={200}><Projects /></ScrollAnimate>
+          <ScrollAnimate delay={300}><Skills /></ScrollAnimate>
+          <ScrollAnimate delay={400}><Education /></ScrollAnimate>
+          <ScrollAnimate delay={500}><Contact /></ScrollAnimate>
         </div>
       </main>
       <Footer />

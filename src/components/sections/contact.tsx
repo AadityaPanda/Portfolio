@@ -48,7 +48,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="space-y-12 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-800 section-card">
+    <section id="contact" className="space-y-12 section-card">
        <div className="flex items-center gap-4">
         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
           <Mail className="h-6 w-6" />

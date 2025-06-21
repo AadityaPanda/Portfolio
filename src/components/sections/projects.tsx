@@ -89,7 +89,7 @@ const ProjectCard = ({ project }: { project: (typeof PROFESSIONAL_PROJECTS_DATA)
 export function Projects() {
   return (
     <section id="projects" className="space-y-16">
-      <div className="space-y-12 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-500 section-card">
+      <div className="space-y-12 section-card">
         <div className="flex items-center gap-4">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
             <Rocket className="h-6 w-6 text-primary" />
@@ -103,7 +103,7 @@ export function Projects() {
         </div>
       </div>
       
-      <div className="space-y-12 animate-in fade-in slide-in-from-bottom-10 duration-700 delay-500 section-card">
+      <div className="space-y-12 section-card">
         <div className="flex items-center gap-4">
           <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
             <Rocket className="h-6 w-6 text-primary" />
