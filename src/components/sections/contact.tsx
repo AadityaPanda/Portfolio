@@ -1,49 +1,49 @@
 "use client";
 
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
+import { useState, type FormEvent } from 'react';
 import { Mail, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
-
-const formSchema = z.object({
-  name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
-  email: z.string().email({ message: 'Please enter a valid email address.' }),
-  message: z.string().min(10, { message: 'Message must be at least 10 characters long.' }),
-});
 
 export function Contact() {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
 
-  const form = useForm<z.infer<typeof formSchema>>({
-    resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      message: "",
-    },
-  });
-
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
     setIsSubmitting(true);
-    
+
+    // Basic validation
+    if (!name || !email || !message) {
+      toast({
+        title: 'Error',
+        description: 'Please fill out all fields.',
+        variant: 'destructive',
+      });
+      setIsSubmitting(false);
+      return;
+    }
+
     // Simulate API call
     await new Promise(resolve => setTimeout(resolve, 1000));
 
-    console.log("Simulated contact form submission:", values);
+    console.log("Simulated contact form submission:", { name, email, message });
 
     toast({
       title: 'Message Sent!',
       description: "Your message has been sent successfully!",
     });
     
-    form.reset();
+    // Reset form
+    setName('');
+    setEmail('');
+    setMessage('');
     setIsSubmitting(false);
   }
 
@@ -61,53 +61,24 @@ export function Contact() {
           I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out to me using the form below.
         </p>
 
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Your Name" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="email"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input type="email" placeholder="you@example.com" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="message"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Message</FormLabel>
-                  <FormControl>
-                    <Textarea placeholder="Your message..." className="min-h-[120px]" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <Button type="submit" size="lg" disabled={isSubmitting}>
-              {isSubmitting ? 'Sending...' : 'Send Message'}
-              <Send className="ml-2 h-4 w-4" />
-            </Button>
-          </form>
-        </Form>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="space-y-2">
+            <Label htmlFor="name">Name</Label>
+            <Input id="name" placeholder="Your Name" value={name} onChange={(e) => setName(e.target.value)} required />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="email">Email</Label>
+            <Input id="email" type="email" placeholder="you@example.com" value={email} onChange={(e) => setEmail(e.target.value)} required />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="message">Message</Label>
+            <Textarea id="message" placeholder="Your message..." className="min-h-[120px]" value={message} onChange={(e) => setMessage(e.target.value)} required />
+          </div>
+          <Button type="submit" size="lg" disabled={isSubmitting}>
+            {isSubmitting ? 'Sending...' : 'Send Message'}
+            <Send className="ml-2 h-4 w-4" />
+          </Button>
+        </form>
       </div>
     </section>
   );
