@@ -45,6 +45,7 @@ export function Header() {
                   src="https://placehold.co/600x600.png"
                   alt="Portrait of Aaditya Panda"
                   fill
+                  sizes="(max-width: 640px) 300px, (max-width: 1024px) 400px, 450px"
                   className="rounded-2xl object-cover shadow-2xl shadow-primary/20"
                   data-ai-hint="professional portrait"
                   priority

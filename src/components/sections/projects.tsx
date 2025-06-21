@@ -23,6 +23,7 @@ const ProjectCard = ({ project }: { project: (typeof PROFESSIONAL_PROJECTS_DATA)
                       src={project.thumbnail}
                       alt={`Thumbnail for ${project.title}`}
                       fill
+                      sizes="(max-width: 768px) 100vw, 50vw"
                       className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
                       data-ai-hint="software project"
                     />
