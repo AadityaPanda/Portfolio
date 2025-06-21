@@ -8,7 +8,6 @@ import { Navbar } from '@/components/sections/navbar';
 import { Footer } from '@/components/footer';
 import { Education } from '@/components/sections/education';
 import { ScrollAnimate } from '@/components/scroll-animate';
-import { Testimonials } from '@/components/sections/testimonials';
 
 export default function Home() {
   return (
