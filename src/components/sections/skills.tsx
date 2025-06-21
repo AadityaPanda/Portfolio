@@ -2,6 +2,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { SKILLS_DATA } from "@/lib/data";
 import { Wrench } from "lucide-react";
+import { SkillIcon } from "@/components/skill-icon";
 
 export function Skills() {
   const categories = Object.keys(SKILLS_DATA);
@@ -23,7 +24,8 @@ export function Skills() {
             <CardContent>
               <div className="flex flex-wrap gap-2">
                 {(SKILLS_DATA as any)[category].map((skill: string) => (
-                  <Badge key={skill} variant="secondary" className="text-sm transition-all hover:bg-primary/20 cursor-default">
+                  <Badge key={skill} variant="secondary" className="text-sm transition-all hover:bg-primary/20 cursor-default flex items-center gap-2">
+                    <SkillIcon name={skill} className="h-4 w-4" />
                     {skill}
                   </Badge>
                 ))}

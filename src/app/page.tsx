@@ -6,6 +6,7 @@ import { About } from '@/components/sections/about';
 import { Contact } from '@/components/sections/contact';
 import { Navbar } from '@/components/sections/navbar';
 import { Footer } from '@/components/footer';
+import { Education } from '@/components/sections/education';
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
           <Experience />
           <Projects />
           <Skills />
+          <Education />
           <Contact />
         </div>
       </main>

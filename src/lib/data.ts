@@ -10,9 +10,9 @@ export const SKILLS_DATA = {
 
 export const EXPERIENCE_DATA = [
   {
-    company: "BitChief Technology Services Pvt Ltd",
+    company: "Bitchief Technology Services Pvt Ltd",
     role: "Software Developer",
-    period: "Nov 2023 - Present",
+    period: "Nov 2025 - Present",
     responsibilities: [
       "Led the ground-up development of a full-stack internal documentation portal, improving information accessibility and license management.",
       "Engineered a custom Privileged Access Management (PAM) solution, enhancing Apache Guacamole with a branded UI and superior, granular permission controls.",
@@ -21,6 +21,55 @@ export const EXPERIENCE_DATA = [
       "Currently re-architecting the PAM application from scratch to achieve deeper integration and more granular system control.",
     ],
   },
+  {
+    company: "Qmansys Infosolutions",
+    role: "Internet of Things Intern",
+    period: "Apr 2023 - Jul 2023",
+    responsibilities: [
+      "Worked on ESP32 Microcontrollers and firmware.",
+      "Developed and tested IoT solutions for various applications.",
+      "Gained hands-on experience with embedded systems and real-time data processing."
+    ],
+  },
+  {
+    company: "Qmansys Infosolutions",
+    role: "Internet of Things Trainee",
+    period: "Apr 2022 - Apr 2023",
+    responsibilities: [
+      "Learnt the basics of IoT, including introductions to Arduino and Raspberry Pi.",
+      "Built numerous projects using Arduino, demonstrating practical application of learned concepts.",
+      "Underwent training and demonstrated competency in the internationally recognized Certification Course on \"Internet Of Things (Expert Level)\"."
+    ],
+  },
+];
+
+export const EDUCATION_DATA = [
+    {
+        school: "Raj Kumar Goel Institute of Technology, Ghaziabad",
+        degree: "Bachelor of Technology - BTech, Computer Science and Engineering (Internet of Things)",
+        period: "Mar 2020 - Jul 2024",
+        grade: "7.2 CGPA",
+        details: [
+            "Activities: Line Following Robot Competition, Pushpak - The Drone Competition, GD Competition by Image Boosters.",
+            "Society: IOTuino Club (Member).",
+            "Successfully completed a rigorous curriculum, gaining a comprehensive understanding of computer programming, software development, and network administration.",
+            "Collaborated with a team of students to design and develop projects, showcasing strong problem-solving skills.",
+            "Actively participated in industry-related workshops and seminars to stay updated with the latest trends."
+        ]
+    },
+    {
+        school: "Seth Anandram Jaipuria School Vasundhara, Ghaziabad",
+        degree: "Intermediate, Science",
+        period: "Mar 2019 - Feb 2020",
+        grade: "73.6%",
+        details: [
+            "Society: Cyber Crew.",
+            "Activities: Sports (Football, Badminton, Volleyball).",
+            "Completed a rigorous curriculum that included advanced coursework in mathematics, science, and literature.",
+            "Developed excellent written and oral communication skills through presentations, essays, and research projects.",
+            "Engaged in extracurricular activities, successfully organizing events and leading initiatives."
+        ]
+    }
 ];
 
 export const PROFESSIONAL_PROJECTS_DATA = [
