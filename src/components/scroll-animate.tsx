@@ -11,10 +11,11 @@ type ScrollAnimateProps = {
   triggerOnce?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
-export function ScrollAnimate({ children, className, delay = 0, threshold = 0.1, triggerOnce = true, ...props }: ScrollAnimateProps) {
+export function ScrollAnimate({ children, className, delay = 0, threshold = 0, triggerOnce = true, ...props }: ScrollAnimateProps) {
   const { ref, inView } = useInView({
     threshold,
     triggerOnce,
+    rootMargin: '0px 0px -150px 0px', // Trigger animation 150px before it enters the viewport
   });
 
   return (
