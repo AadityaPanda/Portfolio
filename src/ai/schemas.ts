@@ -12,13 +12,3 @@ export const ContactFormOutputSchema = z.object({
   message: z.string(),
 });
 export type ContactFormOutput = z.infer<typeof ContactFormOutputSchema>;
-
-export const ElevatorPitchInputSchema = z.object({
-  topics: z.array(z.string()).min(1, { message: 'Please select at least one topic.' }),
-});
-export type ElevatorPitchInput = z.infer<typeof ElevatorPitchInputSchema>;
-
-export const ElevatorPitchOutputSchema = z.object({
-  pitch: z.string(),
-});
-export type ElevatorPitchOutput = z.infer<typeof ElevatorPitchOutputSchema>;

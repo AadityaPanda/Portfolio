@@ -19,13 +19,13 @@ const ProjectCard = ({ project }: { project: (typeof PROFESSIONAL_PROJECTS_DATA)
                   <div className="h-2.5 w-2.5 rounded-full bg-yellow-500"></div>
                   <div className="h-2.5 w-2.5 rounded-full bg-green-500"></div>
                 </div>
-                <div className="relative h-48 w-full overflow-hidden bg-muted/50">
+                <div className="relative aspect-video w-full overflow-hidden bg-muted/50">
                     <Image
                       src={project.thumbnail}
                       alt={`Thumbnail for ${project.title}`}
                       fill
                       sizes="(max-width: 768px) 100vw, 50vw"
-                      className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                      className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
                       data-ai-hint="software project"
                     />
                 </div>

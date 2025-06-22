@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { CV_PATH } from "@/lib/data";
-import { ElevatorPitchGenerator } from "./elevator-pitch-generator";
 
 const socialLinks = [
   { icon: Linkedin, href: "https://www.linkedin.com/in/aadityapanda/", 'aria-label': 'Aaditya Panda on LinkedIn' },
@@ -67,7 +66,6 @@ export function Header() {
                 <a href="#contact">Get in Touch</a>
               </Button>
             </div>
-            <ElevatorPitchGenerator />
           </div>
 
           <div className="relative flex justify-center animate-in fade-in zoom-in-50 duration-700 delay-400">
