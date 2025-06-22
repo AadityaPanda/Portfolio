@@ -1,7 +1,7 @@
 import { Github, Linkedin, ArrowDown, Download, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { Dialog, DialogContent, DialogFooter, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { CV_PATH } from "@/lib/data";
 
 const socialLinks = [
@@ -42,6 +42,9 @@ export function Header() {
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="max-w-4xl h-[90vh] flex flex-col p-0">
+                  <DialogHeader className="p-4 border-b">
+                    <DialogTitle>Curriculum Vitae</DialogTitle>
+                  </DialogHeader>
                   <div className="flex-1 overflow-auto">
                     <iframe
                       src={CV_PATH}
@@ -49,8 +52,7 @@ export function Header() {
                       title="CV Preview"
                     />
                   </div>
-                  <DialogFooter className="p-4 border-t flex-row justify-between items-center">
-                    <DialogTitle>Curriculum Vitae</DialogTitle>
+                  <DialogFooter className="p-4 border-t sm:justify-center">
                     <Button asChild>
                       <a href={CV_PATH} download>
                         <Download className="mr-2 h-4 w-4" />
