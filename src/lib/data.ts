@@ -14,7 +14,7 @@ export const EXPERIENCE_DATA = [
   {
     company: "Bitchief Technology Services Pvt Ltd",
     role: "Software Developer",
-    period: "Nov 2023 - Present",
+    period: "Nov 2025 - Present",
     responsibilities: [
       "Led the ground-up development of a full-stack internal documentation portal, improving information accessibility and license management.",
       "Engineered a custom Privileged Access Management (PAM) solution, enhancing Apache Guacamole with a branded UI and superior, granular permission controls.",
@@ -125,14 +125,13 @@ export const PERSONAL_PROJECTS_DATA = [
     ],
     gallery: [
         { type: 'image', src: "/media/iot-tollbooth-setup.png", alt: "Project Setup", hint: "circuit board project" },
-        { type: 'image', src: "/media/iot-tollbooth-hardware.png", alt: "Hardware Setup", hint: "electronic components" },
         { type: 'image', src: "/media/iot-tollbooth-diagram.png", alt: "Circuit Diagram", hint: "circuit diagram" },
         { type: 'image', src: "/media/iot-tollbooth-app.png", alt: "Mobile App", hint: "mobile app interface" },
         { type: 'video', src: "/media/iot-tollbooth-demo.mp4", alt: "Project Demo Video", hint: "project demo video" },
     ]
   },
   {
-    title: "Street Fighter Clone",
+    title: "Street Fighter",
     description: "An engaging two-player fighting game built with Python and Pygame, featuring unique characters and dynamic animations.",
     techStack: ["Python", "Pygame", "OpenCV"],
     repoLink: "https://github.com/AadityaPanda/Street_Fighter",
@@ -146,7 +145,7 @@ export const PERSONAL_PROJECTS_DATA = [
         "Supports two-player battles with fully customizable controls."
     ],
     gallery: [
-        { type: 'image', src: "/media/street-fighter-gameplay.png", alt: "Street Fighter Gameplay", hint: "retro fighting game" },
+        { type: 'video', src: "/media/street-fighter-gameplay.mp4", alt: "Street Fighter Gameplay", hint: "retro fighting game" },
         { type: 'image', src: "/media/street-fighter-characters.png", alt: "Street Fighter Characters", hint: "pixel art character" },
     ]
   }
