@@ -87,7 +87,7 @@ export const PROFESSIONAL_PROJECTS_DATA = [
     ],
     repoLink: null,
     liveLink: null,
-    thumbnail: "https://placehold.co/800x600.png",
+    thumbnail: "/media/project-docs-portal.png",
     gallery: [],
   },
   {
@@ -103,7 +103,7 @@ export const PROFESSIONAL_PROJECTS_DATA = [
     ],
     repoLink: null,
     liveLink: null,
-    thumbnail: "https://placehold.co/800x600.png",
+    thumbnail: "/media/project-pam.png",
     gallery: [],
   },
 ];
@@ -115,7 +115,7 @@ export const PERSONAL_PROJECTS_DATA = [
     techStack: ["ESP32", "Arduino", "RFID", "C++", "Google Sheets API", "AppSheet"],
     repoLink: "https://github.com/AadityaPanda/ITSS",
     liveLink: "https://ieeexplore.ieee.org/document/10993585",
-    thumbnail: "https://placehold.co/800x600.png",
+    thumbnail: "/media/project-iot-tollbooth.png",
     details: [
       "Automated Vehicle Detection: Authenticates vehicle RFID tags for seamless entry.",
       "Automated Gate Control: Utilizes a servo motor to control gate opening and closing.",
@@ -124,10 +124,10 @@ export const PERSONAL_PROJECTS_DATA = [
       "Customizable Alerts: Provides distinct buzzer alerts for valid and invalid entries."
     ],
     gallery: [
-        { type: 'image', src: "https://placehold.co/800x600.png", alt: "Project Setup", hint: "circuit board project" },
-        { type: 'image', src: "https://placehold.co/800x600.png", alt: "Hardware Setup", hint: "electronic components" },
-        { type: 'image', src: "https://placehold.co/800x600.png", alt: "Circuit Diagram", hint: "circuit diagram" },
-        { type: 'image', src: "https://placehold.co/800x600.png", alt: "Mobile App", hint: "mobile app interface" },
+        { type: 'image', src: "/media/iot-tollbooth-setup.png", alt: "Project Setup", hint: "circuit board project" },
+        { type: 'image', src: "/media/iot-tollbooth-hardware.png", alt: "Hardware Setup", hint: "electronic components" },
+        { type: 'image', src: "/media/iot-tollbooth-diagram.png", alt: "Circuit Diagram", hint: "circuit diagram" },
+        { type: 'image', src: "/media/iot-tollbooth-app.png", alt: "Mobile App", hint: "mobile app interface" },
         { type: 'video', src: "/media/iot-tollbooth-demo.mp4", alt: "Project Demo Video", hint: "project demo video" },
     ]
   },
@@ -137,7 +137,7 @@ export const PERSONAL_PROJECTS_DATA = [
     techStack: ["Python", "Pygame", "OpenCV"],
     repoLink: "https://github.com/AadityaPanda/Street_Fighter",
     liveLink: null,
-    thumbnail: "https://placehold.co/800x600.png",
+    thumbnail: "/media/project-street-fighter.png",
     details: [
         "Features two distinct fighters, Warrior and Wizard, each with unique attacks and abilities.",
         "Includes classic gameplay mechanics like health bars, a scoring system, and smooth character animations.",
@@ -146,8 +146,8 @@ export const PERSONAL_PROJECTS_DATA = [
         "Supports two-player battles with fully customizable controls."
     ],
     gallery: [
-        { type: 'image', src: "https://placehold.co/800x600.png", alt: "Street Fighter Gameplay", hint: "retro fighting game" },
-        { type: 'image', src: "https://placehold.co/800x600.png", alt: "Street Fighter Characters", hint: "pixel art character" },
+        { type: 'image', src: "/media/street-fighter-gameplay.png", alt: "Street Fighter Gameplay", hint: "retro fighting game" },
+        { type: 'image', src: "/media/street-fighter-characters.png", alt: "Street Fighter Characters", hint: "pixel art character" },
     ]
   }
 ];
@@ -157,14 +157,14 @@ export const TESTIMONIALS_DATA = [
     quote: "Aaditya is a rare talent. His ability to tackle complex architectural challenges and deliver clean, efficient code was instrumental to our project's success. He's a proactive problem-solver and a fantastic team player.",
     name: "Jane Doe",
     title: "Senior Project Manager, Bitchief",
-    avatar: "https://placehold.co/100x100.png",
+    avatar: "/media/avatar-jane-doe.png",
     hint: "woman portrait"
   },
   {
     quote: "Working with Aaditya was a pleasure. He has a deep understanding of full-stack development and a keen eye for detail. His contributions to our PAM solution were invaluable, especially his work on the time-based access policies.",
     name: "John Smith",
     title: "Lead Engineer, Bitchief",
-    avatar: "https://placehold.co/100x100.png",
+    avatar: "/media/avatar-john-smith.png",
     hint: "man portrait"
   }
 ];

@@ -71,12 +71,11 @@ export function Header() {
           <div className="relative flex justify-center animate-in fade-in zoom-in-50 duration-700 delay-400">
             <div className="relative h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] lg:h-[450px] lg:w-[450px]">
                 <Image
-                  src="https://placehold.co/600x600.png"
+                  src="/media/aaditya-panda-portrait.jpg"
                   alt="Portrait of Aaditya Panda"
                   fill
                   sizes="(max-width: 640px) 300px, (max-width: 1024px) 400px, 450px"
                   className="rounded-2xl object-cover shadow-2xl shadow-primary/20"
-                  data-ai-hint="professional portrait"
                   priority
                 />
             </div>
