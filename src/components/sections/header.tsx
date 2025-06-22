@@ -12,7 +12,7 @@ const socialLinks = [
   { icon: Github, href: "https://github.com/AadityaPanda", 'aria-label': 'Aaditya Panda on GitHub' },
 ];
 
-const fullText = "Full-Stack Problem Solver";
+const fullText = "Software Developer";
 
 export function Header() {
   const [typedText, setTypedText] = useState('');
