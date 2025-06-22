@@ -1,91 +1,24 @@
-import {
-    AppWindow,
-    Binary,
-    Code,
-    Cpu,
-    Database,
-    Figma,
-    FileCode,
-    Flame,
-    Gamepad2,
-    GitBranch,
-    Github,
-    Library,
-    Rss,
-    Server,
-} from "lucide-react";
-import type { LucideProps } from "lucide-react";
+import Image from 'next/image';
 
-// Inline SVGs for specific technologies
-const NextjsIcon = (props: LucideProps) => (
-    <svg {...props} fill="currentColor" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.001 0C5.373 0 0 5.373 0 12.001s5.373 12.001 12.001 12.001 12.001-5.373 12.001-12.001S18.629 0 12.001 0zm7.035 18.347L12.002 8.312V18.35h-1.602V6.353h1.602l7.034 10.034v-8.02h1.602v11.664h-1.603z"/></svg>
-);
+export function SkillIcon({ name, className }: { name: string; className?: string }) {
+  // Creates a file-friendly name from the skill name.
+  // e.g., "Next.js" -> "next-js.svg", "Tailwind CSS" -> "tailwind-css.svg"
+  const iconName = name.toLowerCase().replace(/\s/g, '-').replace(/\./g, '-');
+  const iconPath = `/icons/${iconName}.svg`;
 
-const ReactIcon = (props: LucideProps) => (
-    <svg {...props} viewBox="-11.5 -10.23174 23 20.46348" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="0" cy="0" r="2.05" fill="currentColor" />
-        <g stroke="currentColor" strokeWidth="1" fill="none">
-            <ellipse rx="11" ry="4.2" />
-            <ellipse rx="11" ry="4.2" transform="rotate(60)" />
-            <ellipse rx="11" ry="4.2" transform="rotate(120)" />
-        </g>
-    </svg>
-);
-
-const NodejsIcon = (props: LucideProps) => (
-    <svg {...props} fill="currentColor" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M11.77 1.228.243 7.02c-.347.195-.56.57-.56.98v11.998c0 .41.213.785.56.98l11.527 5.793c.347.195.773.195 1.12 0l11.527-5.793c.347-.195.56-.57.56-.98V7.998c0-.41-.213-.785-.56-.98L12.89.248a1.12 1.12 0 0 0-1.12 0zM12 11.37v8.948l-9.33-4.703v-8.87l9.33 4.625zM3.46 8.32l8.47-4.17v8.6l-8.47 4.3zM12.07 13.5l8.4-4.22-8.4-4.15v8.37zm-.07-2.13v-8.9l9.33 4.67v8.8l-9.33-4.57z"/></svg>
-);
-
-const TailwindCssIcon = (props: LucideProps) => (
-    <svg {...props} fill="currentColor" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.001 12.001c-3.237 0-6.046 1.34-8.082 3.447l-1.07-1.07c-1.144-1.144-1.144-3.016 0-4.16l4.16-4.16c1.144-1.144 3.016-1.144 4.16 0l1.07 1.07c2.036-2.108 4.845-3.448 8.082-3.448 3.237 0 6.046 1.34 8.082 3.447l1.07-1.07c1.144-1.144 1.144-3.016 0-4.16l-4.16-4.16c-1.144-1.144-3.016-1.144-4.16 0l-1.07 1.07C18.046 1.34 15.237 0 12.001 0c-3.237 0-6.046 1.34-8.082 3.447l-1.07-1.07c-1.144-1.144-1.144-3.016 0-4.16L0 0l-4.16 4.16c-1.144 1.144-1.144 3.016 0 4.16l1.07 1.07C-2.108 5.155-3.448 2.346-3.448 0c0-3.237 1.34-6.046 3.447-8.082l1.07-1.07c1.144-1.144 3.016-1.144 4.16 0l4.16 4.16c1.144 1.144 1.144 3.016 0 4.16l-1.07 1.07C5.155 1.954 2.346.613 0 .613z M12.001 12.001c3.237 0 6.046-1.34 8.082-3.447l1.07 1.07c1.144 1.144 1.144 3.016 0 4.16l-4.16 4.16c-1.144 1.144-3.016 1.144-4.16 0l-1.07-1.07c-2.036 2.108-4.845 3.448-8.082 3.448-3.237 0-6.046-1.34-8.082-3.447l-1.07 1.07c-1.144 1.144-1.144 3.016 0 4.16l4.16 4.16c1.144 1.144 3.016 1.144 4.16 0l1.07-1.07c2.036 2.108 4.845 3.448 8.082 3.448 3.237 0 6.046-1.34 8.082-3.447l1.07 1.07c1.144 1.144 1.144 3.016 0 4.16l-4.16 4.16c-1.144 1.144-3.016 1.144-4.16 0l-1.07-1.07c-2.036 2.108-4.845 3.448-8.082 3.448z"/></svg>
-);
-
-const DockerIcon = (props: LucideProps) => (
-    <svg {...props} fill="currentColor" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M23.22 10.306c-.287-1.54-1.855-3.606-3.8-4.867-.933-.593-2.03-1.066-3.2-1.333a10.66 10.66 0 0 0-4.067-.6h-1.2l.066-.933a2.6 2.6 0 0 0-2.6-2.6H5.42a2.6 2.6 0 0 0-2.6 2.6v12.267a2.6 2.6 0 0 0 2.6 2.6h1.2v-.067a2.654 2.654 0 0 0 2.6 2.6h13.2a2.6 2.6 0 0 0 2.6-2.6 18.02 18.02 0 0 0 .667-11.467zM5.333 7.873h2.667v2.667H5.333zm10.667 0h2.667v2.667h-2.667zm-5.334 0h2.667v2.667H8.001z"/></svg>
-);
-
-
-const skillIconMap: { [key: string]: React.FC<LucideProps> } = {
-    // Languages
-    "javascript": (props) => <svg {...props} fill="currentColor" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0V0zm22.05 19.838V4.162H1.95v15.675h20.1zM8.385 17.588h2.925V11.25h-2.925v6.338zm4.35-6.338h2.925v5.525c0 .488.037.888.113 1.2.075.312.2.562.375.75.175.188.413.313.713.375.3.063.687.094 1.162.094.475 0 .9-.031 1.275-.094.375-.062.687-.187.937-.375.25-.188.45-.438.6-.75.15-.312.225-.712.225-1.2v-5.525h2.925v5.525c0 .85-.15 1.587-.45 2.212-.3.625-.725 1.125-1.275 1.5-.55.375-1.213.625-1.988.75-.775.125-1.55.188-2.325.188-.863 0-1.7-.063-2.513-.188-.812-.125-1.512-.375-2.1-.75-.588-.375-1.062-.875-1.425-1.5-.362-.625-.544-1.362-.544-2.212v-5.525z"/></svg>,
-    "typescript": (props) => <svg {...props} fill="currentColor" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M1.95 4.162v15.675h20.1V4.162H1.95zM12.3 17.587h-2.925v-9.3h2.925v9.3zm8.25-3.412c0 .85-.15 1.588-.45 2.213-.3.625-.725 1.125-1.275 1.5-.55.375-1.212.625-1.987.75-.775.125-1.55.188-2.325.188-.863 0-1.7-.063-2.513-.188-.812-.125-1.512-.375-2.1-.75-.587-.375-1.062-.875-1.425-1.5-.362-.625-.544-1.362-.544-2.212v-5.925h2.925v5.525c0 .488.038.888.113 1.2.075.313.2.563.375.75.175.188.413.313.713.375.3.063.687.094 1.162.094.475 0 .9-.031 1.275-.094.375-.062.688-.187.938-.375.25-.188.45-.438.6-.75.15-.312.225-.712.225-1.2v-5.525h2.925v5.925z"/></svg>,
-    "python": (props) => <svg {...props} fill="currentColor" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.339 16.328c-1.09.282-2.258.423-3.504.423-1.353 0-2.61-.17-3.77-.508-1.16-.339-2.148-.82-2.966-1.44-.817-.619-1.44-1.39-1.868-2.312s-.642-1.986-.642-3.195c0-1.21.214-2.28.642-3.212.428-.93.99-1.685 1.688-2.266.698-.58 1.488-1.018 2.37-1.314.881-.296 1.81-.444 2.787-.444 1.325 0 2.519.18 3.582.54s2.012.87 2.848 1.53c.837.66 1.488 1.488 1.954 2.484.466.996.7 2.149.7 3.456 0 1.927-.58 3.57-1.74 4.926-1.16 1.355-2.768 2.35-4.823 2.983zm-1.076-11.45c-.466-.466-1.018-.699-1.656-.699-.58 0-1.094.24-1.542.72s-.672 1.056-.672 1.728c0 .672.224 1.236.672 1.692.448.456.962.684 1.542.684.638 0 1.19-.233 1.656-.7.466-.466.7-.996.7-1.59s-.234-1.134-.7-1.635zm-2.022 13.918c.996 0 1.928-.154 2.796-.462.868-.308 1.62-.734 2.256-1.278.636-.544 1.128-1.206 1.476-1.986s.522-1.656.522-2.628c0-1.38-.41-2.58-1.23-3.6-1.697-2.1-4.24-3.15-7.63-3.15-1.054 0-2.012.155-2.874.465-.862.31-1.609.735-2.24 1.275-.63.54-1.114 1.192-1.452 1.958-.338.766-.507 1.608-.507 2.526 0 1.38.386 2.568 1.158 3.564.772.996 1.836 1.764 3.192 2.304 1.356.54 2.822.81 4.398.81z"/></svg>,
-    "html5": (props) => <svg {...props} fill="currentColor" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M1.603 0 3.033 16.234 12 19.014 20.96 16.234 22.397 0zm16.03 6.45H8.22l.23 2.586h9.13l-.69 7.702-5.9 1.623-5.88-1.623-.4-4.44h2.58l.205 2.29 3.5.954.004.002 3.498-.956.35-3.89H5.32l-.68-7.64H17.63v-.002z"/></svg>,
-    "css3": (props) => <svg {...props} fill="currentColor" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m22.397 0-1.428 16.234-8.972 2.78L3.033 16.234 1.605 0h20.792zM17.63 6.45H8.22l.23 2.586h9.13l-.69 7.702-5.9 1.623v.002l-5.88-1.623-.4-4.44h2.58l.205 2.29 3.5.954 3.498-.956.35-3.89H5.32l-.68-7.64h13z"/></svg>,
-    "sql": Database,
-    "embedded c": Cpu,
-    "embedded c++": Cpu,
-    // Frameworks & Libraries
-    "react": ReactIcon,
-    "next.js": NextjsIcon,
-    "node.js": NodejsIcon,
-    "express.js": Code,
-    "tailwind css": TailwindCssIcon,
-    "pygame": Gamepad2,
-    // Databases
-    "mysql": Database,
-    "postgresql": Database,
-    "mongodb": Database,
-    "firebase": Flame,
-    // Embedded Systems
-    "esp32": Cpu,
-    "arduino": Cpu,
-    "sensors & rfid": Rss,
-    "firmware development": Binary,
-    // Tools & Platforms
-    "docker": DockerIcon,
-    "git & github": Github,
-    "nginx": Server,
-    "figma": Figma,
-    "jenkins": (props) => <svg {...props} fill="currentColor" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14.28.3L1.56 5.86c-.46.22-.46.54 0 .76l5.06 2.54c.46.24.72.72.58 1.2l-1.1 3.54c-.16.48.16.98.66 1.12l4.86 1.4c.48.14.98-.14 1.12-.62l3.48-11.72c.14-.48-.14-.98-.62-1.12L15.34.3c-.36-.1-.72-.04-1.06.2zm-2.14 10.02a2.14 2.14 0 110-4.28 2.14 2.14 0 010 4.28zm8.28 1.94l-5.06-2.54c-.46-.22-.72-.7-.58-1.18l1.1-3.54c.14-.48-.16-.98-.66-1.12l-4.86-1.4c-.48-.14-.98.14-1.12.62L5.8 15.74c-.14.48.14.98.62 1.12l10.04 2.94c.48.14.98-.14 1.12-.62l1.12-3.8c.12-.48-.12-.96-.6-1.18z"/></svg>,
-    "appsheet": AppWindow,
-};
-
-export function SkillIcon({ name, ...props }: { name: string } & LucideProps) {
-    const normalizedName = name.toLowerCase();
-    const IconComponent = skillIconMap[normalizedName];
-    if (IconComponent) {
-        return <IconComponent {...props} />;
-    }
-    return <FileCode {...props} />;
+  return (
+    <div className={className}>
+      <Image
+        src={iconPath}
+        alt={`${name} icon`}
+        width={40}
+        height={40}
+        className="h-full w-full object-contain"
+        // Using unoptimized is good for SVGs to ensure they remain crisp vectors.
+        unoptimized
+        // In a production app, you might add an onError handler here to provide a fallback
+        // in case an icon file is missing, but for this portfolio, we'll assume they exist.
+      />
+    </div>
+  );
 }
