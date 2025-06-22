@@ -31,8 +31,6 @@ export function Contact() {
 
     await new Promise(resolve => setTimeout(resolve, 1000));
 
-    console.log("Simulated contact form submission:", { name, email, message });
-
     toast({
       title: 'Message Sent!',
       description: "Your message has been sent successfully!",
