@@ -48,7 +48,7 @@ export const EDUCATION_DATA = [
         school: "Raj Kumar Goel Institute of Technology, Ghaziabad",
         degree: "Bachelor of Technology - BTech, Computer Science and Engineering (Internet of Things)",
         period: "Mar 2020 - Jul 2024",
-        grade: "7.2 CGPA",
+        // grade: "7.2 CGPA",
         details: [
             "Activities: Line Following Robot Competition, Pushpak - The Drone Competition, GD Competition by Image Boosters.",
             "Society: IOTuino Club (Member).",
@@ -61,7 +61,7 @@ export const EDUCATION_DATA = [
         school: "Seth Anandram Jaipuria School Vasundhara, Ghaziabad",
         degree: "Intermediate, Science",
         period: "Mar 2019 - Feb 2020",
-        grade: "73.6%",
+        // grade: "73.6%",
         details: [
             "Society: Cyber Crew.",
             "Activities: Sports (Football, Badminton, Volleyball).",
