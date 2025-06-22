@@ -30,7 +30,7 @@ export function Header() {
       }, 100); 
 
       return () => clearInterval(typingInterval);
-    }, 700); 
+    }, 200); 
 
     return () => clearTimeout(startTyping);
   }, []);
