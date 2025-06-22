@@ -1,15 +1,40 @@
-import { Github, Linkedin, ArrowDown, Download, FileText } from "lucide-react";
+'use client';
+
+import { Github, Linkedin, ArrowDown, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { CV_PATH } from "@/lib/data";
+import { useState, useEffect } from "react";
 
 const socialLinks = [
   { icon: Linkedin, href: "https://www.linkedin.com/in/aadityapanda/", 'aria-label': 'Aaditya Panda on LinkedIn' },
   { icon: Github, href: "https://github.com/AadityaPanda", 'aria-label': 'Aaditya Panda on GitHub' },
 ];
 
+const fullText = "Full-Stack Problem Solver";
+
 export function Header() {
+  const [typedText, setTypedText] = useState('');
+
+  useEffect(() => {
+    const startTyping = setTimeout(() => {
+      let i = 0;
+      const typingInterval = setInterval(() => {
+        if (i < fullText.length) {
+          setTypedText((prev) => prev + fullText.charAt(i));
+          i++;
+        } else {
+          clearInterval(typingInterval);
+        }
+      }, 100); 
+
+      return () => clearInterval(typingInterval);
+    }, 700); 
+
+    return () => clearTimeout(startTyping);
+  }, []);
+
   return (
     <header id="home" className="relative flex h-screen items-center">
       <div className="container mx-auto px-4">
@@ -19,10 +44,11 @@ export function Header() {
             <p className="text-xl font-headline text-primary animate-in fade-in slide-in-from-top-4 duration-700 delay-200">
               Hi, I'm Aaditya Panda
             </p>
-            <h1 className="text-5xl font-headline font-bold tracking-tighter text-foreground sm:text-6xl lg:text-7xl xl:text-8xl animate-in fade-in slide-in-from-top-6 duration-700 delay-300">
+            <h1 className="text-5xl font-headline font-bold tracking-tighter text-foreground sm:text-6xl lg:text-7xl xl:text-8xl animate-in fade-in slide-in-from-top-6 duration-700 delay-300 min-h-[1.2em] sm:min-h-[1.2em] lg:min-h-[1.2em] xl:min-h-[1.2em]">
               <span className="animate-gradient-shimmer bg-[linear-gradient(90deg,_hsl(var(--primary))_0%,_hsl(var(--accent))_50%,_hsl(var(--primary))_100%)] bg-[length:200%_auto] bg-clip-text text-transparent">
-                Full-Stack Problem Solver
+                {typedText}
               </span>
+              {typedText.length === fullText.length && <span className="typing-cursor"></span>}
             </h1>
             <p className="text-xl text-muted-foreground animate-in fade-in from-top-8 slide-in-from-top-8 duration-700 delay-400 max-w-2xl">
               I transform complex business requirements into elegant, scalable web applications, from system architecture to pixel-perfect UIs.
@@ -52,14 +78,6 @@ export function Header() {
                       title="CV Preview"
                     />
                   </div>
-                  <DialogFooter className="p-4 border-t sm:justify-center">
-                    <Button asChild>
-                      <a href={CV_PATH} download>
-                        <Download className="mr-2 h-4 w-4" />
-                        Download
-                      </a>
-                    </Button>
-                  </DialogFooter>
                 </DialogContent>
               </Dialog>
                <Button size="lg" asChild className="h-12 text-base">
