@@ -18,21 +18,21 @@ export function Header() {
   const [typedText, setTypedText] = useState('');
 
   useEffect(() => {
-    const startTyping = setTimeout(() => {
+    const startTypingTimeout = setTimeout(() => {
       let i = 0;
       const typingInterval = setInterval(() => {
         if (i < fullText.length) {
-          setTypedText((prev) => prev + fullText.charAt(i));
+          setTypedText(fullText.substring(0, i + 1));
           i++;
         } else {
           clearInterval(typingInterval);
         }
-      }, 100); 
+      }, 100);
 
       return () => clearInterval(typingInterval);
-    }, 200); 
+    }, 200);
 
-    return () => clearTimeout(startTyping);
+    return () => clearTimeout(startTypingTimeout);
   }, []);
 
   return (
