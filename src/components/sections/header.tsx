@@ -48,7 +48,6 @@ export function Header() {
               <span className="animate-gradient-shimmer bg-[linear-gradient(90deg,_hsl(var(--primary))_0%,_hsl(var(--accent))_50%,_hsl(var(--primary))_100%)] bg-[length:200%_auto] bg-clip-text text-transparent">
                 {typedText}
               </span>
-              {typedText.length === fullText.length && <span className="typing-cursor"></span>}
             </h1>
             <p className="text-xl text-muted-foreground animate-in fade-in from-top-8 slide-in-from-top-8 duration-700 delay-400 max-w-2xl">
               I transform complex business requirements into elegant, scalable web applications, from system architecture to pixel-perfect UIs.
