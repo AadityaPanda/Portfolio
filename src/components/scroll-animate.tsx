@@ -21,8 +21,9 @@ export function ScrollAnimate({ children, className, delay = 0, threshold = 0, t
   return (
     <div
       ref={ref}
+      data-in-view={inView}
       className={cn(
-        'transition-all duration-700',
+        'group transition-all duration-700',
         inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10',
         className
       )}

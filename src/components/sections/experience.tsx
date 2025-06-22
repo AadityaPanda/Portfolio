@@ -1,16 +1,12 @@
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { EXPERIENCE_DATA } from "@/lib/data";
 import { Briefcase } from "lucide-react";
+import { SectionHeader } from "../section-header";
 
 export function Experience() {
   return (
     <section id="experience" className="space-y-12">
-      <div className="flex items-center gap-4">
-        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-          <Briefcase className="h-6 w-6 text-primary" />
-        </div>
-        <h2 className="text-3xl font-headline font-bold tracking-tight">Work Experience</h2>
-      </div>
+      <SectionHeader icon={Briefcase} title="Work Experience" />
       <div className="space-y-8 relative pl-10 border-l-2 border-primary/20">
         <div className="absolute left-[-2px] top-0 h-full w-[2px] bg-gradient-to-b from-primary/50 via-primary/20 to-transparent" />
         {EXPERIENCE_DATA.map((exp, index) => (

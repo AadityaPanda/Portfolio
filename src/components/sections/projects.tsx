@@ -8,6 +8,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
+import { SectionHeader } from "../section-header";
 
 const ProjectCard = ({ project }: { project: (typeof PROFESSIONAL_PROJECTS_DATA)[0] | (typeof PERSONAL_PROJECTS_DATA)[0] }) => (
     <Dialog>
@@ -116,12 +117,7 @@ export function Projects() {
   return (
     <section id="projects" className="space-y-16">
       <div className="space-y-12 section-card">
-        <div className="flex items-center gap-4">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-            <Rocket className="h-6 w-6 text-primary" />
-          </div>
-          <h2 className="text-3xl font-headline font-bold tracking-tight">Professional Work</h2>
-        </div>
+        <SectionHeader icon={Rocket} title="Professional Work" />
         <div className="grid md:grid-cols-2 gap-6">
           {PROFESSIONAL_PROJECTS_DATA.map((project, index) => (
             <ProjectCard key={index} project={project} />
@@ -130,12 +126,7 @@ export function Projects() {
       </div>
       
       <div className="space-y-12 section-card">
-        <div className="flex items-center gap-4">
-          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10">
-            <Rocket className="h-6 w-6 text-primary" />
-          </div>
-          <h2 className="text-3xl font-headline font-bold tracking-tight">Personal Projects</h2>
-        </div>
+        <SectionHeader icon={Rocket} title="Personal Projects" />
         <div className="grid md:grid-cols-2 gap-6">
           {PERSONAL_PROJECTS_DATA.map((project, index) => (
             <ProjectCard key={index} project={project} />

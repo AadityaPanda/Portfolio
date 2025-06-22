@@ -1,16 +1,12 @@
 
 import { Mail } from "lucide-react";
 import { ContactForm } from "./contact-form";
+import { SectionHeader } from "../section-header";
 
 export function Contact() {
   return (
     <section id="contact" className="space-y-12 section-card">
-       <div className="flex items-center gap-4">
-        <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary/10 text-primary">
-          <Mail className="h-6 w-6" />
-        </div>
-        <h2 className="text-3xl font-headline font-bold tracking-tight">Get in Touch</h2>
-      </div>
+       <SectionHeader icon={Mail} title="Get in Touch" />
 
       <div className="grid lg:grid-cols-2 gap-16 items-start">
         <div className="space-y-8">
