@@ -1,9 +1,9 @@
-// src/ai/flows/send-contact-email.ts
 'use server'; // This ensures the code runs on the server, protecting credentials
 
 import { ai } from '@/ai/genkit';
 import { ContactFormInput, ContactFormInputSchema, ContactFormOutput, ContactFormOutputSchema } from '@/ai/schemas';
-import nodemailer from 'nodemailer'; // Import nodemailer
+import { generateEmailHtml, generateEmailText } from './email-template';
+import nodemailer from 'nodemailer';
 
 // --- Email Sending Configuration ---
 // Get credentials from environment variables
@@ -12,17 +12,15 @@ const smtpPort = process.env.SMTP_PORT ? parseInt(process.env.SMTP_PORT, 10) : u
 const smtpUser = process.env.SMTP_USER;
 const smtpPass = process.env.SMTP_PASS;
 const recipientEmail = process.env.CONTACT_RECIPIENT_EMAIL;
-const fromEmail = process.env.CONTACT_FROM_EMAIL || smtpUser; // Use specific from or default to smtp user
+const fromEmail = process.env.CONTACT_FROM_EMAIL || smtpUser;
 
 // Validate necessary environment variables are set
 if (!smtpHost || !smtpPort || !smtpUser || !smtpPass || !recipientEmail) {
   // Log an error during server startup if essential env vars are missing
-  // This helps catch configuration issues early.
   console.error('FATAL ERROR: Missing one or more required email environment variables!');
   console.error('Please ensure SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, and CONTACT_RECIPIENT_EMAIL are set.');
-  // Depending on your setup, you might want to throw an error here
-  // to prevent the server from starting if email sending is critical.
-  // For now, we'll let it start but subsequent email attempts will fail.
+  // Consider throwing an error here in production if email is critical:
+  // throw new Error('Email service environment variables not fully configured.');
 }
 
 // Create a Nodemailer transporter
@@ -41,10 +39,13 @@ if (smtpHost && smtpPort && smtpUser && smtpPass) {
   });
 
   // Optional: Verify transporter connection (useful for debugging)
+  // This runs asynchronously and doesn't block server start if verification fails,
+  // but sets transporter to null if there's a persistent issue.
   transporter.verify((error, success) => {
     if (error) {
       console.error('SMTP Transporter verification failed:', error);
       transporter = null; // Invalidate transporter if verification fails
+      console.warn('Email sending will be disabled.');
     } else {
       console.log('SMTP Transporter is ready to send messages');
     }
@@ -53,45 +54,51 @@ if (smtpHost && smtpPort && smtpUser && smtpPass) {
   console.warn('SMTP transporter could not be created due to missing environment variables. Email sending will be disabled.');
 }
 
-
-// This function now uses Nodemailer to send the email
+/**
+ * Sends an email using the configured Nodemailer transporter
+ * @param input The contact form data
+ * @returns Promise with success status and message
+ */
 async function sendEmail(input: ContactFormInput): Promise<{ success: boolean, message: string }> {
-    if (!transporter || !recipientEmail || !fromEmail) {
-        console.error('Email sending is disabled due to missing configuration.');
-        return { success: false, message: 'Email service is not configured.' };
-    }
+  // Check transporter readiness before attempting to send
+  if (!transporter) {
+    console.error('Email sending failed: Transporter not initialized or verified failed.');
+    return { success: false, message: 'Email service is not available.' };
+  }
 
-    const mailOptions = {
-        from: fromEmail, // Sender address (from env vars)
-        to: recipientEmail, // List of recipients (your email from env vars)
-        replyTo: input.email, // Set reply-to to the sender's email
-        subject: `New Contact Form Message from ${input.name}`, // Subject line
-        text: `
-Name: ${input.name}
-Email: ${input.email}
+  // Check recipient email is configured
+  if (!recipientEmail) {
+    console.error('Email sending failed: Recipient email not configured.');
+    return { success: false, message: 'Recipient email address is not set.' };
+  }
 
-Message:
-${input.message}
-        `, // Plain text body
-        // You could also send HTML
-        // html: `<b>New message from ${input.name}</b><p>Email: ${input.email}</p><p>${input.message}</p>`,
-    };
+  const mailOptions = {
+    // Format the 'from' field to show sender name + your email as the technical sender
+    // This often helps with deliverability and looks better in the inbox.
+    from: fromEmail, // This should be the configured SMTP_USER or CONTACT_FROM_EMAIL
+    replyTo: `${input.name} <${input.email}>`, // Set reply-to to the sender's name and email
+    to: recipientEmail, // The email address where you receive messages
+    subject: `Portfolio Contact: Message from ${input.name}`, // Clear subject line
+    html: generateEmailHtml(input), // Use the HTML template from email-template.ts
+    text: generateEmailText(input), // Use the plain text template from email-template.ts
+  };
 
-    try {
-        // Send the email
-        const info = await transporter.sendMail(mailOptions);
-        console.log('Message sent: %s', info.messageId);
-        // console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info)); // Only if using ethereal.email test account
+  try {
+    // Send the email
+    const info = await transporter.sendMail(mailOptions);
+    console.log('Message sent: %s', info.messageId);
+    // You could use ethereal.email for testing/previewing if needed during development
+    // console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
 
-        return { success: true, message: 'Your message has been sent successfully!' };
+    return { success: true, message: 'Your message has been sent successfully!' };
 
-    } catch (error) {
-        console.error('Error sending email:', error);
-        // Return a generic error message to the user for security
-        return { success: false, message: 'There was an error sending your message. Please try again later.' };
-    }
+  } catch (error) {
+    console.error('Error sending email:', error);
+    // Return a generic error message to the user for security
+    // Log the specific error details on the server side only.
+    return { success: false, message: 'There was an error sending your message. Please try again later.' };
+  }
 }
-
 
 // The Genkit flow remains the same, calling the updated sendEmail function
 const sendContactEmailFlow = ai.defineFlow(
@@ -106,12 +113,9 @@ const sendContactEmailFlow = ai.defineFlow(
   }
 );
 
-
 // The exported function to be called from the frontend
 export async function sendContactEmail(
   input: ContactFormInput
 ): Promise<ContactFormOutput> {
-    // You might add additional server-side checks here if needed
-    // For now, we just pass it to the Genkit flow
   return await sendContactEmailFlow(input);
 }
