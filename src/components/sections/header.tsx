@@ -2,6 +2,7 @@ import { Github, Linkedin, ArrowDown, Download, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Dialog, DialogContent, DialogFooter, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { CV_PATH } from "@/lib/data";
 
 const socialLinks = [
   { icon: Linkedin, href: "https://www.linkedin.com/in/aadityapanda/", 'aria-label': 'Aaditya Panda on LinkedIn' },
@@ -43,7 +44,7 @@ export function Header() {
                 <DialogContent className="max-w-4xl h-[90vh] flex flex-col p-0">
                   <div className="flex-1 overflow-auto">
                     <iframe
-                      src="/AadityaPanda_CV.pdf"
+                      src={CV_PATH}
                       className="w-full h-full"
                       title="CV Preview"
                     />
@@ -51,7 +52,7 @@ export function Header() {
                   <DialogFooter className="p-4 border-t flex-row justify-between items-center">
                     <DialogTitle>Curriculum Vitae</DialogTitle>
                     <Button asChild>
-                      <a href="/AadityaPanda_CV.pdf" download>
+                      <a href={CV_PATH} download>
                         <Download className="mr-2 h-4 w-4" />
                         Download
                       </a>
