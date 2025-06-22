@@ -3,10 +3,9 @@ export const CV_PATH = "/media/AadityaPanda_CV.pdf";
 export const ABOUT_ME_TEXT = "A passionate and driven Software Developer with hands-on experience in building robust, full-stack web applications from the ground up. I specialize in Node.js, React, and Express, with a proven ability to architect custom solutions, enhance existing software with innovative features, and manage the full project lifecycle from development to deployment. I am dedicated to writing clean, efficient code and thrive in collaborative environments where I can contribute to cutting-edge projects.";
 
 export const SKILLS_DATA = {
-  "Core Technologies": ["JavaScript", "TypeScript", "Python", "Node.js", "HTML5", "CSS3", "SQL"],
+  "Languages": ["JavaScript", "TypeScript", "Python", "HTML5", "CSS3", "SQL"],
   "Frameworks & Libraries": ["React", "Next.js", "Express.js", "Tailwind CSS"],
-  "Platforms & Tools": ["Docker", "Git & GitHub", "Nginx", "Firebase", "Jenkins", "Figma"],
-  "Embedded Systems": ["ESP32", "Arduino", "Firmware Development", "Sensors & RFID"],
+  "Platforms & Tools": ["Docker", "Git", "Firebase", "Nginx"],
 };
 
 export const EXPERIENCE_DATA = [

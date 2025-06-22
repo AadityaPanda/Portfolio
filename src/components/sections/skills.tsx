@@ -10,21 +10,21 @@ export function Skills() {
   return (
     <section id="skills" className="space-y-12 section-card">
       <SectionHeader icon={Wrench} title="Technical Skills" />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {categories.map((category) => (
-          <Card key={category} className="bg-card/50 border-border/20">
+          <Card key={category} className="bg-card/50 border-border/20 flex flex-col">
             <CardHeader>
               <CardTitle className="text-xl text-primary/90">{category}</CardTitle>
             </CardHeader>
-            <CardContent>
-              <div className="flex flex-wrap gap-4">
+            <CardContent className="flex-grow">
+              <ul className="space-y-3">
                 {(SKILLS_DATA as any)[category].map((skill: string) => (
-                  <div key={skill} className="flex items-center gap-3 rounded-lg bg-background/50 py-2 px-3">
-                    <SkillIcon name={skill} className="h-8 w-8" />
+                  <li key={skill} className="flex items-center gap-3">
+                    <SkillIcon name={skill} className="h-6 w-6 text-primary" />
                     <span className="text-base font-medium text-foreground/90">{skill}</span>
-                  </div>
+                  </li>
                 ))}
-              </div>
+              </ul>
             </CardContent>
           </Card>
         ))}
