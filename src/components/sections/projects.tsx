@@ -7,6 +7,7 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
+import { cn } from "@/lib/utils";
 
 const ProjectCard = ({ project }: { project: (typeof PROFESSIONAL_PROJECTS_DATA)[0] | (typeof PERSONAL_PROJECTS_DATA)[0] }) => (
     <Dialog>
@@ -43,56 +44,62 @@ const ProjectCard = ({ project }: { project: (typeof PROFESSIONAL_PROJECTS_DATA)
               </div>
             </Card>
         </DialogTrigger>
-        <DialogContent className="sm:max-w-4xl p-0">
+        <DialogContent className="sm:max-w-5xl p-0">
             <ScrollArea className="max-h-[90vh]">
-                <div className="p-8 space-y-6">
-                    <DialogHeader>
-                        <DialogTitle className="text-3xl font-headline">{project.title}</DialogTitle>
-                        <DialogDescription className="pt-1">{project.description}</DialogDescription>
-                    </DialogHeader>
-                    
-                    <div className="flex flex-wrap gap-2">
-                        {project.techStack.map((tech) => <Badge key={tech} variant="secondary">{tech}</Badge>)}
+                <div className={cn(
+                    "p-8 grid gap-12",
+                    project.gallery && project.gallery.length > 0 ? "lg:grid-cols-2" : "lg:grid-cols-1"
+                )}>
+                    {/* Left Column: Details */}
+                    <div className="space-y-6">
+                        <DialogHeader>
+                            <DialogTitle className="text-3xl font-headline">{project.title}</DialogTitle>
+                            <DialogDescription className="pt-1">{project.description}</DialogDescription>
+                        </DialogHeader>
+                        
+                        <div className="flex flex-wrap gap-2">
+                            {project.techStack.map((tech) => <Badge key={tech} variant="secondary">{tech}</Badge>)}
+                        </div>
+
+                        <div className="flex gap-2 pt-2">
+                            {project.repoLink && (
+                                <Button asChild>
+                                    <a href={project.repoLink} target="_blank" rel="noopener noreferrer">
+                                        <Github className="mr-2"/> View on GitHub
+                                    </a>
+                                </Button>
+                            )}
+                            {project.liveLink && (
+                                <Button variant="outline" asChild>
+                                    <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
+                                        {project.liveLink.includes('ieee') ? <FileText className="mr-2"/> : <ExternalLink className="mr-2"/>}
+                                        {project.liveLink.includes('ieee') ? 'Read Paper' : 'View Live'}
+                                    </a>
+                                </Button>
+                            )}
+                        </div>
+
+                        <Separator />
+
+                        <div className="space-y-4">
+                            <h3 className="text-xl font-headline font-semibold">Features & Details</h3>
+                            <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
+                                {project.details.map((detail, i) => <li key={i}>{detail}</li>)}
+                            </ul>
+                        </div>
                     </div>
 
-                    <div className="flex gap-2 pt-2">
-                        {project.repoLink && (
-                            <Button asChild>
-                                <a href={project.repoLink} target="_blank" rel="noopener noreferrer">
-                                    <Github className="mr-2"/> View on GitHub
-                                </a>
-                            </Button>
-                        )}
-                        {project.liveLink && (
-                            <Button variant="outline" asChild>
-                                <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
-                                    {project.liveLink.includes('ieee') ? <FileText className="mr-2"/> : <ExternalLink className="mr-2"/>}
-                                    {project.liveLink.includes('ieee') ? 'Read Paper' : 'View Live'}
-                                </a>
-                            </Button>
-                        )}
-                    </div>
-
-                    <Separator />
-
-                    <div className="space-y-4">
-                        <h3 className="text-xl font-headline font-semibold">Features & Details</h3>
-                        <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
-                            {project.details.map((detail, i) => <li key={i}>{detail}</li>)}
-                        </ul>
-                    </div>
-
+                    {/* Right Column: Gallery */}
                     {project.gallery && project.gallery.length > 0 && (
                         <div className="space-y-4">
-                             <Separator />
                             <h3 className="text-xl font-headline font-semibold">Gallery</h3>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="space-y-4">
                                 {project.gallery.map((media, i) => (
-                                    <div key={i} className="rounded-lg overflow-hidden border">
+                                    <div key={i} className="rounded-lg overflow-hidden border bg-muted/20 flex items-center justify-center p-2">
                                         {media.type === 'image' ? (
-                                            <Image src={media.src} alt={media.alt} width={800} height={600} className="w-full h-full object-cover" data-ai-hint={media.hint} />
+                                            <Image src={media.src} alt={media.alt} width={800} height={600} className="w-full h-auto object-contain max-h-[450px] rounded-md" data-ai-hint={media.hint} />
                                         ) : (
-                                            <video src={media.src} controls autoPlay muted loop className="w-full h-full object-cover" data-ai-hint={media.hint}></video>
+                                            <video src={media.src} controls autoPlay muted loop className="w-full h-auto object-contain max-h-[450px] rounded-md" data-ai-hint={media.hint}></video>
                                         )}
                                     </div>
                                 ))}
