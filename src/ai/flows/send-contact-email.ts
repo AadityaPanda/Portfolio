@@ -20,9 +20,6 @@ if (!smtpHost || !smtpPort || !smtpUser || !smtpPass || !recipientEmail) {
   // This helps catch configuration issues early.
   console.error('FATAL ERROR: Missing one or more required email environment variables!');
   console.error('Please ensure SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, and CONTACT_RECIPIENT_EMAIL are set.');
-  // Depending on your setup, you might want to throw an error here
-  // to prevent the server from starting if email sending is critical.
-  // For now, we'll let it start but subsequent email attempts will fail.
 }
 
 // Create a Nodemailer transporter
@@ -53,6 +50,62 @@ if (smtpHost && smtpPort && smtpUser && smtpPass) {
   console.warn('SMTP transporter could not be created due to missing environment variables. Email sending will be disabled.');
 }
 
+/**
+ * Generates a professional HTML email template for the contact form submission.
+ * @param input The contact form data.
+ * @returns An HTML string representing the email body.
+ */
+function generateEmailHtml(input: ContactFormInput): string {
+    const { name, email, message } = input;
+
+    // Use .replace to preserve line breaks from the textarea
+    const formattedMessage = message.replace(/\n/g, '<br />');
+
+    return `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 20px;">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+        <tr>
+            <td align="center">
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" style="max-width: 600px;">
+                    <tr>
+                        <td bgcolor="#ffffff" style="background-color: #ffffff; border-radius: 8px; padding: 30px; border: 1px solid #e0e0e0;">
+                            <h1 style="color: #333333; font-size: 24px; border-bottom: 2px solid #eeeeee; padding-bottom: 15px; margin-top: 0; margin-bottom: 20px;">New Contact Form Submission</h1>
+                            
+                            <p style="font-weight: bold; color: #333333; margin-top: 0; margin-bottom: 5px;">From:</p>
+                            <div style="background-color: #f9f9f9; border: 1px solid #e0e0e0; padding: 10px 15px; border-radius: 4px; margin-bottom: 20px; word-break: break-all;">
+                                ${name}
+                            </div>
+                            
+                            <p style="font-weight: bold; color: #333333; margin-top: 0; margin-bottom: 5px;">Email Address:</p>
+                            <div style="background-color: #f9f9f9; border: 1px solid #e0e0e0; padding: 10px 15px; border-radius: 4px; margin-bottom: 20px; word-break: break-all;">
+                                <a href="mailto:${email}" style="color: #2077d2; text-decoration: none;">${email}</a>
+                            </div>
+                            
+                            <p style="font-weight: bold; color: #333333; margin-top: 0; margin-bottom: 5px;">Message:</p>
+                            <div style="background-color: #f9f9f9; border: 1px solid #e0e0e0; padding: 15px; border-radius: 4px; white-space: pre-wrap; word-wrap: break-word; line-height: 1.6;">
+                                ${formattedMessage}
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="center" style="padding-top: 20px; font-size: 12px; color: #999999;">
+                            <p style="margin: 0;">This email was sent from your portfolio contact form.</p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
+    `;
+}
 
 // This function now uses Nodemailer to send the email
 async function sendEmail(input: ContactFormInput): Promise<{ success: boolean, message: string }> {
@@ -62,27 +115,17 @@ async function sendEmail(input: ContactFormInput): Promise<{ success: boolean, m
     }
 
     const mailOptions = {
-        from: fromEmail, // Sender address (from env vars)
-        to: recipientEmail, // List of recipients (your email from env vars)
-        replyTo: input.email, // Set reply-to to the sender's email
-        subject: `New Contact Form Message from ${input.name}`, // Subject line
-        text: `
-Name: ${input.name}
-Email: ${input.email}
-
-Message:
-${input.message}
-        `, // Plain text body
-        // You could also send HTML
-        // html: `<b>New message from ${input.name}</b><p>Email: ${input.email}</p><p>${input.message}</p>`,
+        from: `"${input.name}" <${fromEmail}>`, // Show sender's name in email client
+        to: recipientEmail,
+        replyTo: input.email,
+        subject: `New Contact Form Message from ${input.name}`,
+        html: generateEmailHtml(input), // Use the new HTML template
     };
 
     try {
         // Send the email
         const info = await transporter.sendMail(mailOptions);
         console.log('Message sent: %s', info.messageId);
-        // console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info)); // Only if using ethereal.email test account
-
         return { success: true, message: 'Your message has been sent successfully!' };
 
     } catch (error) {
@@ -91,7 +134,6 @@ ${input.message}
         return { success: false, message: 'There was an error sending your message. Please try again later.' };
     }
 }
-
 
 // The Genkit flow remains the same, calling the updated sendEmail function
 const sendContactEmailFlow = ai.defineFlow(
@@ -106,12 +148,9 @@ const sendContactEmailFlow = ai.defineFlow(
   }
 );
 
-
 // The exported function to be called from the frontend
 export async function sendContactEmail(
   input: ContactFormInput
 ): Promise<ContactFormOutput> {
-    // You might add additional server-side checks here if needed
-    // For now, we just pass it to the Genkit flow
   return await sendContactEmailFlow(input);
 }
