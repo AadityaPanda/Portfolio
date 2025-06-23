@@ -14,15 +14,6 @@ const smtpPass = process.env.SMTP_PASS;
 const recipientEmail = process.env.CONTACT_RECIPIENT_EMAIL;
 const fromEmail = process.env.CONTACT_FROM_EMAIL || smtpUser;
 
-// Validate necessary environment variables are set
-if (!smtpHost || !smtpPort || !smtpUser || !smtpPass || !recipientEmail) {
-  // Log an error during server startup if essential env vars are missing
-  console.error('FATAL ERROR: Missing one or more required email environment variables!');
-  console.error('Please ensure SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, and CONTACT_RECIPIENT_EMAIL are set.');
-  // Consider throwing an error here in production if email is critical:
-  // throw new Error('Email service environment variables not fully configured.');
-}
-
 // Create a Nodemailer transporter
 // Reusing the transporter is more efficient than creating a new one for each email
 let transporter: nodemailer.Transporter | null = null;
