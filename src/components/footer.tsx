@@ -1,8 +1,9 @@
-import { Github, Linkedin, Code } from 'lucide-react';
+import { Github, Linkedin, Code, Instagram } from 'lucide-react';
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/AadityaPanda", 'aria-label': 'GitHub' },
   { icon: Linkedin, href: "https://www.linkedin.com/in/aadityapanda/", 'aria-label': 'LinkedIn' },
+  { icon: Instagram, href: "https://www.instagram.com/_aaditya_panda_/", 'aria-label': 'Instagram' },
 ];
 
 const navLinks = [

@@ -1,6 +1,6 @@
 'use client';
 
-import { Github, Linkedin, ArrowDown, FileText } from "lucide-react";
+import { Github, Linkedin, ArrowDown, FileText, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -10,12 +10,14 @@ import { useState, useEffect } from "react";
 const socialLinks = [
   { icon: Linkedin, href: "https://www.linkedin.com/in/aadityapanda/", 'aria-label': 'Aaditya Panda on LinkedIn' },
   { icon: Github, href: "https://github.com/AadityaPanda", 'aria-label': 'Aaditya Panda on GitHub' },
+  { icon: Instagram, href: "https://www.instagram.com/_aaditya_panda_/", 'aria-label': 'Aaditya Panda on Instagram' },
 ];
 
 const fullText = "Software Developer";
 
 export function Header() {
   const [typedText, setTypedText] = useState('');
+  const [showCursor, setShowCursor] = useState(true);
 
   useEffect(() => {
     const startTypingTimeout = setTimeout(() => {
@@ -26,6 +28,7 @@ export function Header() {
           i++;
         } else {
           clearInterval(typingInterval);
+          setShowCursor(false);
         }
       }, 100);
 
@@ -48,6 +51,7 @@ export function Header() {
               <span className="animate-gradient-shimmer bg-[linear-gradient(90deg,_hsl(var(--primary))_0%,_hsl(var(--accent))_50%,_hsl(var(--primary))_100%)] bg-[length:200%_auto] bg-clip-text text-transparent">
                 {typedText}
               </span>
+              {showCursor && <span className="inline-block w-1 h-[0.9em] bg-current animate-pulse ml-1" />}
             </h1>
             <p className="text-xl text-muted-foreground animate-in fade-in from-top-8 slide-in-from-top-8 duration-700 delay-400 max-w-2xl">
               I transform complex business requirements into elegant, scalable web applications, from system architecture to pixel-perfect UIs.
