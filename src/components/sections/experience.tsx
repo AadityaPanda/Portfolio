@@ -5,7 +5,7 @@ import { SectionHeader } from "../section-header";
 
 export function Experience() {
   return (
-    <section id="experience" className="space-y-12">
+    <section id="experience" className="space-y-12 section-card">
       <SectionHeader icon={Briefcase} title="Work Experience" />
       <div className="space-y-8 relative pl-10 border-l-2 border-primary/20">
         <div className="absolute left-[-2px] top-0 h-full w-[2px] bg-gradient-to-b from-primary/50 via-primary/20 to-transparent" />

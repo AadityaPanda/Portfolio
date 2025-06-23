@@ -5,7 +5,7 @@ import { SectionHeader } from "../section-header";
 
 export function Education() {
   return (
-    <section id="education" className="space-y-12">
+    <section id="education" className="space-y-12 section-card">
       <SectionHeader icon={GraduationCap} title="Education" />
       <div className="space-y-8 relative pl-10 border-l-2 border-primary/20">
         <div className="absolute left-[-2px] top-0 h-full w-[2px] bg-gradient-to-b from-primary/50 via-primary/20 to-transparent" />
