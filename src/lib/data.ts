@@ -12,7 +12,7 @@ export const EXPERIENCE_DATA = [
   {
     company: "Bitchief Technology Services Pvt Ltd",
     role: "Software Developer",
-    period: "Nov 2025 - Present",
+    period: "Nov 2024 - Present",
     responsibilities: [
       "Led the ground-up development of a full-stack internal documentation portal, improving information accessibility and license management.",
       "Engineered a custom Privileged Access Management (PAM) solution, enhancing Apache Guacamole with a branded UI and superior, granular permission controls.",
