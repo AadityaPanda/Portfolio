@@ -1,9 +1,9 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
 import { useLenis } from '@studio-freight/react-lenis';
 import { cn } from '@/lib/utils';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 const sections = [
   { id: 'home', name: 'Home' },
@@ -39,37 +39,36 @@ export function SideNav() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleScrollTo = (target: string) => {
+  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
+    e.preventDefault();
     lenis?.scrollTo(target);
   };
 
   return (
-    <div className="hidden md:flex fixed left-8 top-1/2 -translate-y-1/2 z-40 animate-in fade-in duration-500">
-        <TooltipProvider>
-            <nav>
-                <ul className="flex flex-col items-center gap-4">
-                    {sections.map((section) => (
-                    <li key={section.id}>
-                        <Tooltip>
-                        <TooltipTrigger asChild>
-                            <button
-                                onClick={() => handleScrollTo(`#${section.id}`)}
-                                aria-label={`Scroll to ${section.name}`}
-                                className={cn(
-                                    'h-3 w-3 rounded-full bg-muted-foreground/50 transition-all duration-300 hover:scale-125 hover:bg-primary',
-                                    activeSection === section.id && 'scale-150 bg-primary'
-                                )}
-                            />
-                        </TooltipTrigger>
-                        <TooltipContent side="right">
-                            <p>{section.name}</p>
-                        </TooltipContent>
-                        </Tooltip>
-                    </li>
-                    ))}
-                </ul>
-            </nav>
-        </TooltipProvider>
-    </div>
+    <nav className="hidden lg:flex fixed left-8 top-1/2 -translate-y-1/2 z-40 animate-in fade-in duration-500">
+      <ul className="flex flex-col items-start gap-4">
+        {sections.map((section) => (
+          <li key={section.id}>
+            <a
+              href={`#${section.id}`}
+              onClick={(e) => handleScrollTo(e, `#${section.id}`)}
+              aria-label={`Scroll to ${section.name}`}
+              className={cn(
+                'group flex items-center gap-2 text-sm font-medium transition-all duration-300',
+                activeSection === section.id
+                  ? 'text-primary'
+                  : 'text-muted-foreground hover:text-foreground'
+              )}
+            >
+              <span className={cn(
+                'h-px w-8 bg-muted-foreground transition-all duration-300 group-hover:w-16 group-hover:bg-foreground',
+                activeSection === section.id && 'w-16 bg-primary'
+              )} />
+              <span>{section.name}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }
