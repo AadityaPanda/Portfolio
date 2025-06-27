@@ -19,7 +19,7 @@ export function Skills() {
                 {(SKILLS_DATA as any)[category].map((skill: string) => (
                   <Card key={skill} className="bg-muted/30 border-border/50 p-4 transition-all duration-300 hover:border-primary/30 hover:-translate-y-1">
                     <CardContent className="flex flex-col items-center justify-center gap-4 p-0">
-                      <SkillIcon name={skill} className="h-10 w-10 text-primary" />
+                      <SkillIcon name={skill} className="h-10 w-10" />
                       <span className="text-base font-medium text-center text-foreground/90">{skill}</span>
                     </CardContent>
                   </Card>
