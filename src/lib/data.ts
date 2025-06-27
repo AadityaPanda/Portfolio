@@ -122,6 +122,7 @@ export const PERSONAL_PROJECTS_DATA = [
       "Customizable Alerts: Provides distinct buzzer alerts for valid and invalid entries."
     ],
     gallery: [
+        { type: 'image' as const, src: "/media/project-iot-tollbooth.png", alt: "IoT Tollbooth System Supervisor", hint: "iot project" },
         { type: 'image' as const, src: "/media/iot-tollbooth-setup.png", alt: "Project Setup", hint: "circuit board project" },
         { type: 'image' as const, src: "/media/iot-tollbooth-diagram.png", alt: "Circuit Diagram", hint: "circuit diagram" },
         { type: 'image' as const, src: "/media/iot-tollbooth-app.png", alt: "Mobile App", hint: "mobile app interface" },
@@ -143,6 +144,7 @@ export const PERSONAL_PROJECTS_DATA = [
         "Supports two-player battles with fully customizable controls."
     ],
     gallery: [
+        { type: 'image' as const, src: "/media/project-street-fighter.png", alt: "Street Fighter Game", hint: "python game" },
         { type: 'video' as const, src: "/media/street-fighter-gameplay.mp4", alt: "Street Fighter Gameplay", hint: "retro fighting game" },
         { type: 'image' as const, src: "/media/street-fighter-characters.png", alt: "Street Fighter Characters", hint: "pixel art character" },
     ]
