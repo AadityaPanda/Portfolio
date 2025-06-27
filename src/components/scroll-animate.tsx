@@ -23,8 +23,10 @@ export function ScrollAnimate({ children, className, delay = 0, threshold = 0, t
       ref={ref}
       data-in-view={inView}
       className={cn(
-        'group transition-all duration-700',
-        inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10',
+        'group transition-all duration-500 ease-in-out', // Faster and smoother animation
+        inView
+          ? 'opacity-100 translate-y-0 scale-100'
+          : 'opacity-0 translate-y-8 scale-95', // Add a subtle scale and adjust translate
         className
       )}
       style={{
