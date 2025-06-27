@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Github, Linkedin, FileText, Instagram, Send } from "lucide-react";
@@ -22,6 +21,20 @@ export function Header() {
   const lenis = useLenis();
 
   useEffect(() => {
+    // Console log easter egg
+    const styles = [
+      'color: #3b82f6', // A nice blue color
+      'font-size: 16px',
+      'font-weight: bold',
+      'font-family: "Space Grotesk", sans-serif',
+    ].join(';');
+
+    console.log("%cPsst... Hey there, fellow developer! 👋", styles);
+    console.log(
+      "%cGlad to see you're checking out the code. If you like what you see, let's connect!",
+      "font-size: 12px; font-family: 'Inter', sans-serif;"
+    );
+
     // A delay before the typing animation starts
     const startTypingTimeout = setTimeout(() => {
       let i = 0;
