@@ -20,27 +20,39 @@ export function SideNav() {
   const lenis = useLenis();
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      let currentSectionId = sections[0].id;
+    if (!lenis) return;
 
-      // We iterate from the bottom section up. The first one whose top is
-      // above the middle of the viewport is considered the active section.
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sections[i].id);
-        if (section && section.offsetTop <= scrollPosition + window.innerHeight / 2) {
-          currentSectionId = sections[i].id;
-          break;
+    const handleScroll = (e: { scroll: number }) => {
+      const scrollPosition = e.scroll;
+      let currentSectionId = '';
+
+      for (const section of sections) {
+        const element = document.getElementById(section.id);
+        if (element) {
+          // Check if the top of the section is at or above the middle of the viewport
+          if (element.offsetTop <= scrollPosition + window.innerHeight / 2.5) {
+            currentSectionId = section.id;
+          }
         }
       }
-      setActiveSection(currentSectionId);
+
+      // A special check for the very bottom of the page to ensure "Contact" gets selected
+      if (window.innerHeight + scrollPosition >= document.body.offsetHeight - 2) {
+        currentSectionId = 'contact';
+      }
+
+      setActiveSection(currentSectionId || 'home');
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial check on load
+    lenis.on('scroll', handleScroll);
+    
+    // Initial check on load
+    handleScroll({ scroll: lenis.scroll });
 
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    return () => {
+      lenis.off('scroll', handleScroll);
+    };
+  }, [lenis]);
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
     e.preventDefault();
