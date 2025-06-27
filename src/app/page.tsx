@@ -9,25 +9,24 @@ import { Footer } from '@/components/footer';
 import { Education } from '@/components/sections/education';
 import { ScrollAnimate } from '@/components/scroll-animate';
 import { ScrollToTop } from '@/components/scroll-to-top';
+import { ScrollDownButton } from '@/components/scroll-down-button';
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-background animated-gradient-background">
+    <div className="flex flex-col min-h-screen">
       <Navbar />
       <main className="flex-1">
         <Header />
-        <div className="container mx-auto px-4 md:px-8 py-24 space-y-32">
-          <ScrollAnimate><About /></ScrollAnimate>
-          <ScrollAnimate delay={100}><Experience /></ScrollAnimate>
-          <ScrollAnimate delay={200}><Projects /></ScrollAnimate>
-          {/* <ScrollAnimate delay={300}><Testimonials /></ScrollAnimate> */}
-          <ScrollAnimate delay={400}><Skills /></ScrollAnimate>
-          <ScrollAnimate delay={500}><Education /></ScrollAnimate>
-          <ScrollAnimate delay={600}><Contact /></ScrollAnimate>
-        </div>
+        <ScrollAnimate><About /></ScrollAnimate>
+        <ScrollAnimate><Experience /></ScrollAnimate>
+        <ScrollAnimate><Projects /></ScrollAnimate>
+        <ScrollAnimate><Skills /></ScrollAnimate>
+        <ScrollAnimate><Education /></ScrollAnimate>
+        <ScrollAnimate><Contact /></ScrollAnimate>
       </main>
       <Footer />
       <ScrollToTop />
+      <ScrollDownButton sections={['home', 'about', 'experience', 'projects', 'skills', 'education', 'contact']} />
     </div>
   );
 }

@@ -27,9 +27,9 @@
   }
 
   .dark {
-    --background: 220 40% 8%;
+    --background: 220 14.3% 5.9%;
     --foreground: 210 40% 98%;
-    --card: 220 30% 12%;
+    --card: 220 14.3% 11.8%;
     --card-foreground: 210 40% 98%;
     --popover: 220 40% 6%;
     --popover-foreground: 210 40% 98%;
@@ -37,13 +37,13 @@
     --primary-foreground: 210 20% 98%;
     --secondary: 220 20% 18%;
     --secondary-foreground: 210 40% 98%;
-    --muted: 220 20% 18%;
+    --muted: 220 20% 12%;
     --muted-foreground: 220 15% 65%;
     --accent: 35 100% 60%;
     --accent-foreground: 24 9.8% 10%;
     --destructive: 0 70% 55%;
     --destructive-foreground: 0 0% 100%;
-    --border: 220 20% 20%;
+    --border: 220 13% 25%;
     --input: 220 20% 18%;
     --ring: 210 100% 60%;
   }
@@ -74,21 +74,9 @@
   }
 }
 
-@layer components {
-  .section-card {
-      @apply relative overflow-hidden rounded-2xl border p-8 shadow-2xl backdrop-blur-xl md:p-12;
-  }
-  .dark .section-card {
-      @apply border-white/5 bg-black/20 shadow-black/30;
-  }
-  html:not(.dark) .section-card {
-      @apply border-black/5 bg-white/20 shadow-black/10;
-  }
-}
-
 @layer utilities {
   .animated-gradient-background {
-    background: linear-gradient(-45deg, hsl(var(--primary)/.1), hsl(var(--accent)/.1), hsl(var(--primary)/.2), hsl(var(--accent)/.2));
+    background: linear-gradient(-45deg, hsl(var(--primary)/.05), hsl(var(--accent)/.05), hsl(var(--primary)/.1), hsl(var(--accent)/.1));
     background-size: 400% 400%;
     animation: gradient-animation 15s ease infinite;
   }
