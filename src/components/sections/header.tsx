@@ -1,6 +1,7 @@
+
 'use client';
 
-import { Github, Linkedin, ArrowDown, FileText, Instagram } from "lucide-react";
+import { Github, Linkedin, FileText, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
@@ -22,6 +23,7 @@ export function Header() {
   const lenis = useLenis();
 
   useEffect(() => {
+    // A delay before the typing animation starts, giving other animations time to settle.
     const startTypingTimeout = setTimeout(() => {
       let i = 0;
       const typingInterval = setInterval(() => {
@@ -30,12 +32,17 @@ export function Header() {
           i++;
         } else {
           clearInterval(typingInterval);
-          setShowCursor(false);
+          // Blinking cursor stops after typing is complete
+          const cursorBlink = setInterval(() => setShowCursor(prev => !prev), 500);
+          setTimeout(() => {
+            clearInterval(cursorBlink);
+            setShowCursor(false);
+          }, 2000);
         }
       }, 100);
 
       return () => clearInterval(typingInterval);
-    }, 200);
+    }, 500); // Start typing after 500ms
 
     return () => clearTimeout(startTypingTimeout);
   }, []);
@@ -46,7 +53,7 @@ export function Header() {
   };
 
   return (
-    <header id="home" className="relative flex h-screen items-center bg-background">
+    <header id="home" className="relative flex h-screen items-center bg-background overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 items-center gap-8 text-center md:grid-cols-2 md:gap-16 md:text-left">
           
@@ -55,17 +62,17 @@ export function Header() {
               Hi, I'm Aaditya Panda
             </p>
             <h1 className="text-5xl font-headline font-bold tracking-tighter text-foreground sm:text-6xl lg:text-7xl xl:text-8xl animate-in fade-in slide-in-from-top-6 duration-700 delay-300 min-h-[1.2em] sm:min-h-[1.2em] lg:min-h-[1.2em] xl:min-h-[1.2em]">
-              <span className="animate-gradient-shimmer bg-[linear-gradient(90deg,_hsl(var(--primary))_0%,_hsl(var(--accent))_50%,_hsl(var(--primary))_100%)] bg-[length:200%_auto] bg-clip-text text-transparent">
+              <span className="bg-[linear-gradient(90deg,_hsl(var(--primary))_0%,_hsl(var(--accent))_50%,_hsl(var(--primary))_100%)] bg-clip-text text-transparent">
                 {typedText}
               </span>
-              {showCursor && <span className="inline-block w-1 h-[0.9em] bg-current animate-pulse ml-1" />}
+              {showCursor && <span className="inline-block w-1 h-[0.9em] bg-primary animate-pulse ml-1" />}
             </h1>
             <p className="text-xl text-muted-foreground animate-in fade-in from-top-8 slide-in-from-top-8 duration-700 delay-400 max-w-2xl">
               I transform complex business requirements into elegant, scalable web applications, from system architecture to pixel-perfect UIs.
             </p>
             <div className="flex flex-wrap justify-center items-center gap-4 pt-4 md:justify-start animate-in fade-in from-top-10 slide-in-from-top-10 duration-700 delay-500">
               {socialLinks.map((link, index) => (
-                <Button key={index} variant="outline" size="icon" asChild className="h-12 w-12 transition-all hover:bg-primary/10 hover:border-primary">
+                <Button key={index} variant="outline" size="icon" asChild className="h-12 w-12 transition-all hover:bg-primary/10 hover:border-primary hover:-translate-y-1">
                   <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link['aria-label']}>
                     <link.icon className="h-6 w-6" />
                   </a>
@@ -73,7 +80,7 @@ export function Header() {
               ))}
                <Dialog>
                 <DialogTrigger asChild>
-                  <Button variant="outline" size="icon" className="h-12 w-12 transition-all hover:bg-primary/10 hover:border-primary" aria-label="View CV">
+                  <Button variant="outline" size="icon" className="h-12 w-12 transition-all hover:bg-primary/10 hover:border-primary hover:-translate-y-1" aria-label="View CV">
                     <FileText className="h-6 w-6" />
                   </Button>
                 </DialogTrigger>
@@ -90,20 +97,22 @@ export function Header() {
                   </div>
                 </DialogContent>
               </Dialog>
-               <Button size="lg" asChild className="h-12 text-base">
+               <Button size="lg" asChild className="h-12 text-base transition-all hover:-translate-y-1">
                 <a href="#contact" onClick={(e) => handleScrollTo(e, '#contact')}>Get in Touch</a>
               </Button>
             </div>
           </div>
 
-          <div className="relative flex justify-center animate-in fade-in zoom-in-50 duration-700 delay-400">
+          <div className="relative flex justify-center items-center animate-in fade-in zoom-in-75 duration-700 delay-600">
             <div className="relative h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] lg:h-[450px] lg:w-[450px]">
+                {/* Decorative background blob */}
+                <div className="absolute inset-0 -z-10 bg-gradient-to-br from-primary/30 to-accent/30 rounded-full blur-3xl animate-[spin_20s_linear_infinite]" />
                 <Image
                   src="/media/aaditya-panda-portrait.jpg"
                   alt="Portrait of Aaditya Panda"
                   fill
                   sizes="(max-width: 640px) 300px, (max-width: 1024px) 400px, 450px"
-                  className="rounded-2xl object-cover shadow-2xl shadow-primary/20"
+                  className="rounded-full object-cover shadow-2xl shadow-primary/20 border-4 border-background/50"
                   priority
                 />
             </div>
