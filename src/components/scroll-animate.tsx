@@ -15,7 +15,6 @@ export function ScrollAnimate({ children, className, delay = 0, threshold = 0, t
   const { ref, inView } = useInView({
     threshold,
     triggerOnce,
-    rootMargin: '0px 0px -150px 0px', // Trigger animation 150px before it enters the viewport
   });
 
   return (
@@ -23,10 +22,10 @@ export function ScrollAnimate({ children, className, delay = 0, threshold = 0, t
       ref={ref}
       data-in-view={inView}
       className={cn(
-        'group transition-all duration-500 ease-in-out', // Faster and smoother animation
+        'transition-all duration-500 ease-out', // Use ease-out for a more responsive feel
         inView
           ? 'opacity-100 translate-y-0 scale-100'
-          : 'opacity-0 translate-y-8 scale-95', // Add a subtle scale and adjust translate
+          : 'opacity-0 translate-y-6 scale-98', // Make the animation more subtle
         className
       )}
       style={{
