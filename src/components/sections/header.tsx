@@ -46,7 +46,7 @@ export function Header() {
   };
 
   return (
-    <header id="home" className="relative flex h-screen items-center">
+    <header id="home" className="relative flex h-screen items-center bg-background">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 items-center gap-8 text-center md:grid-cols-2 md:gap-16 md:text-left">
           
@@ -111,17 +111,6 @@ export function Header() {
 
         </div>
       </div>
-      
-      <a 
-        href="#about"
-        onClick={(e) => handleScrollTo(e, '#about')}
-        aria-label="Scroll to content" 
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 group animate-in fade-in duration-1000 delay-1000 fill-mode-both hidden md:block"
-      >
-        <div className="h-12 w-7 border-2 border-muted-foreground/50 rounded-full flex justify-center items-start p-1 group-hover:border-primary transition-colors">
-          <ArrowDown className="h-5 w-5 text-muted-foreground/50 animate-[bounce_2s_ease-out_infinite] group-hover:text-primary transition-colors" />
-        </div>
-      </a>
     </header>
   );
 }
