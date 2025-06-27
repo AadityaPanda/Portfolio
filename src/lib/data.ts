@@ -48,7 +48,7 @@ export const EDUCATION_DATA = [
         school: "Raj Kumar Goel Institute of Technology, Ghaziabad",
         degree: "Bachelor of Technology - BTech, Computer Science and Engineering (Internet of Things)",
         period: "Mar 2020 - Jul 2024",
-        // grade: "7.2 CGPA",
+        grade: "7.2 CGPA",
         details: [
             "Activities: Line Following Robot Competition, Pushpak - The Drone Competition, GD Competition by Image Boosters.",
             "Society: IOTuino Club (Member).",
@@ -61,7 +61,7 @@ export const EDUCATION_DATA = [
         school: "Seth Anandram Jaipuria School Vasundhara, Ghaziabad",
         degree: "Intermediate, Science",
         period: "Mar 2019 - Feb 2020",
-        // grade: "73.6%",
+        grade: "73.6%",
         details: [
             "Society: Cyber Crew.",
             "Activities: Sports (Football, Badminton, Volleyball).",
@@ -122,10 +122,10 @@ export const PERSONAL_PROJECTS_DATA = [
       "Customizable Alerts: Provides distinct buzzer alerts for valid and invalid entries."
     ],
     gallery: [
-        { type: 'image', src: "/media/iot-tollbooth-setup.png", alt: "Project Setup", hint: "circuit board project" },
-        { type: 'image', src: "/media/iot-tollbooth-diagram.png", alt: "Circuit Diagram", hint: "circuit diagram" },
-        { type: 'image', src: "/media/iot-tollbooth-app.png", alt: "Mobile App", hint: "mobile app interface" },
-        { type: 'video', src: "/media/iot-tollbooth-demo.mp4", alt: "Project Demo Video", hint: "project demo video" },
+        { type: 'image' as const, src: "/media/iot-tollbooth-setup.png", alt: "Project Setup", hint: "circuit board project" },
+        { type: 'image' as const, src: "/media/iot-tollbooth-diagram.png", alt: "Circuit Diagram", hint: "circuit diagram" },
+        { type: 'image' as const, src: "/media/iot-tollbooth-app.png", alt: "Mobile App", hint: "mobile app interface" },
+        { type: 'video' as const, src: "/media/iot-tollbooth-demo.mp4", alt: "Project Demo Video", hint: "project demo video" },
     ]
   },
   {
@@ -143,8 +143,8 @@ export const PERSONAL_PROJECTS_DATA = [
         "Supports two-player battles with fully customizable controls."
     ],
     gallery: [
-        { type: 'video', src: "/media/street-fighter-gameplay.mp4", alt: "Street Fighter Gameplay", hint: "retro fighting game" },
-        { type: 'image', src: "/media/street-fighter-characters.png", alt: "Street Fighter Characters", hint: "pixel art character" },
+        { type: 'video' as const, src: "/media/street-fighter-gameplay.mp4", alt: "Street Fighter Gameplay", hint: "retro fighting game" },
+        { type: 'image' as const, src: "/media/street-fighter-characters.png", alt: "Street Fighter Characters", hint: "pixel art character" },
     ]
   }
 ];
