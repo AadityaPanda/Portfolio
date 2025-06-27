@@ -1,7 +1,7 @@
 
 'use client';
 
-import { Github, Linkedin, FileText, Instagram } from "lucide-react";
+import { Github, Linkedin, FileText, Instagram, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { CV_PATH } from "@/lib/data";
@@ -22,7 +22,7 @@ export function Header() {
   const lenis = useLenis();
 
   useEffect(() => {
-    // A delay before the typing animation starts, giving other animations time to settle.
+    // A delay before the typing animation starts
     const startTypingTimeout = setTimeout(() => {
       let i = 0;
       const typingInterval = setInterval(() => {
@@ -31,17 +31,17 @@ export function Header() {
           i++;
         } else {
           clearInterval(typingInterval);
-          // Blinking cursor stops after typing is complete
+          // Cursor blinks for a bit then disappears
           const cursorBlink = setInterval(() => setShowCursor(prev => !prev), 500);
           setTimeout(() => {
             clearInterval(cursorBlink);
             setShowCursor(false);
-          }, 2000);
+          }, 3000); // Let it blink for 3 seconds
         }
       }, 100);
 
       return () => clearInterval(typingInterval);
-    }, 500); // Start typing after 500ms
+    }, 500); 
 
     return () => clearTimeout(startTypingTimeout);
   }, []);
@@ -60,7 +60,7 @@ export function Header() {
             Hi, I'm Aaditya Panda
           </p>
           <h1 className="text-5xl font-headline font-bold tracking-tighter text-foreground sm:text-6xl lg:text-7xl xl:text-8xl animate-in fade-in slide-in-from-top-6 duration-700 delay-300 min-h-[1.2em] sm:min-h-[1.2em] lg:min-h-[1.2em] xl:min-h-[1.2em]">
-            <span className="bg-[linear-gradient(90deg,_hsl(var(--primary))_0%,_hsl(var(--accent))_50%,_hsl(var(--primary))_100%)] bg-clip-text text-transparent">
+            <span className="animate-gradient-shimmer bg-clip-text text-transparent bg-[length:200%_auto] bg-gradient-to-r from-primary via-accent to-primary">
               {typedText}
             </span>
             {showCursor && <span className="inline-block w-1 h-[0.9em] bg-primary animate-pulse ml-1" />}
@@ -68,7 +68,7 @@ export function Header() {
           <p className="text-xl text-muted-foreground animate-in fade-in from-top-8 slide-in-from-top-8 duration-700 delay-400 max-w-2xl">
             I transform complex business requirements into elegant, scalable web applications, from system architecture to pixel-perfect UIs.
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-4 pt-4 md:justify-start animate-in fade-in from-top-10 slide-in-from-top-10 duration-700 delay-500">
+          <div className="flex flex-wrap justify-center items-center gap-4 pt-4 animate-in fade-in from-top-10 slide-in-from-top-10 duration-700 delay-500">
             {socialLinks.map((link, index) => (
               <Button key={index} variant="outline" size="icon" asChild className="h-12 w-12 transition-all hover:bg-primary/10 hover:border-primary hover:-translate-y-1">
                 <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link['aria-label']}>
@@ -78,8 +78,8 @@ export function Header() {
             ))}
              <Dialog>
               <DialogTrigger asChild>
-                <Button variant="outline" size="icon" className="h-12 w-12 transition-all hover:bg-primary/10 hover:border-primary hover:-translate-y-1" aria-label="View CV">
-                  <FileText className="h-6 w-6" />
+                <Button variant="outline" size="lg" className="h-12 text-base transition-all hover:bg-primary/10 hover:border-primary hover:-translate-y-1" aria-label="View CV">
+                  <FileText className="h-4 w-4" /> View CV
                 </Button>
               </DialogTrigger>
               <DialogContent className="max-w-4xl h-[90vh] flex flex-col p-0">
@@ -96,7 +96,10 @@ export function Header() {
               </DialogContent>
             </Dialog>
              <Button size="lg" asChild className="h-12 text-base transition-all hover:-translate-y-1">
-              <a href="#contact" onClick={(e) => handleScrollTo(e, '#contact')}>Get in Touch</a>
+              <a href="#contact" onClick={(e) => handleScrollTo(e, '#contact')}>
+                Get in Touch
+                <Send className="ml-2 h-4 w-4" />
+              </a>
             </Button>
           </div>
         </div>
