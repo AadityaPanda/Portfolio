@@ -7,7 +7,9 @@ export function Education() {
   return (
     <section id="education" className="py-24 bg-background">
       <div className="container mx-auto px-4 md:px-8">
-        <SectionHeader icon={GraduationCap} title="Education" />
+        <SectionHeader title="Education">
+          <GraduationCap className="h-8 w-8" />
+        </SectionHeader>
         <div className="mt-12 space-y-8 relative pl-10 border-l-2 border-border">
           <div className="absolute left-[-2px] top-0 h-full w-[2px] bg-gradient-to-b from-primary/50 via-primary/20 to-transparent" />
           {EDUCATION_DATA.map((edu, index) => (

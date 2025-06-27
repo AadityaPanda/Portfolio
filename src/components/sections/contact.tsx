@@ -6,7 +6,9 @@ export function Contact() {
   return (
     <section id="contact" className="py-24 bg-background">
       <div className="container mx-auto px-4 md:px-8">
-        <SectionHeader icon={Mail} title="Get in Touch" />
+        <SectionHeader title="Get in Touch">
+          <Mail className="h-8 w-8" />
+        </SectionHeader>
         <div className="mt-12 grid lg:grid-cols-2 gap-16 items-start">
           <div className="space-y-8">
               <p className="text-lg text-muted-foreground">

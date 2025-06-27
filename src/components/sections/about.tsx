@@ -7,7 +7,9 @@ export function About() {
   return (
     <section id="about" className="py-24 bg-background">
       <div className="container mx-auto px-4 md:px-8">
-        <SectionHeader icon={UserCircle} title="About Me" />
+        <SectionHeader title="About Me">
+          <UserCircle className="h-8 w-8" />
+        </SectionHeader>
         <div className="mt-12 grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative flex justify-center items-center animate-in fade-in zoom-in-75 duration-700">
                 <div className="relative h-[300px] w-[300px] sm:h-[400px] sm:w-[400px] lg:h-[450px] lg:w-[450px]">

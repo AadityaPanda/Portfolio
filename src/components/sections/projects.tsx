@@ -93,7 +93,9 @@ export function Projects() {
   return (
     <section id="projects" className="py-24 bg-background">
       <div className="container mx-auto px-4 md:px-8">
-        <SectionHeader icon={Rocket} title="My Work" />
+        <SectionHeader title="My Work">
+          <Rocket className="h-8 w-8" />
+        </SectionHeader>
         
         <div className="mt-20 space-y-24">
           

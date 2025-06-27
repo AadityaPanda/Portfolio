@@ -1,21 +1,53 @@
-import type { LucideProps } from 'lucide-react';
-import type { FC } from 'react';
+'use client';
+
+import { useInView } from 'react-intersection-observer';
+import { cn } from '@/lib/utils';
+import type { ReactNode } from 'react';
 
 type SectionHeaderProps = {
-  icon: React.FC<LucideProps>;
+  children: ReactNode;
   title: string;
 };
 
-export const SectionHeader: FC<SectionHeaderProps> = ({ icon: Icon, title }) => {
+export const SectionHeader = ({ children, title }: SectionHeaderProps) => {
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    threshold: 0.2,
+  });
+
   return (
-    <div className="flex flex-col items-center gap-4 text-center">
-      <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
-        <Icon className="h-8 w-8" />
+    <div ref={ref} className="flex flex-col items-center gap-4 text-center">
+      {/* Icon Animation: Scale and Fade in */}
+      <div
+        className={cn(
+          'transition-all duration-500 ease-out',
+          inView ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
+        )}
+      >
+        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
+          {children}
+        </div>
       </div>
-      <h2 className="text-4xl md:text-5xl font-headline font-bold tracking-tight">
-        {title}
-      </h2>
-      <div className="h-1 w-24 bg-primary rounded-full" />
+
+      {/* Title Animation: Slide up from bottom */}
+      <div className="overflow-hidden py-1">
+        <h2
+          className={cn(
+            'text-4xl md:text-5xl font-headline font-bold tracking-tight transition-transform duration-700 delay-150 ease-out',
+            inView ? 'translate-y-0' : 'translate-y-full'
+          )}
+        >
+          {title}
+        </h2>
+      </div>
+
+      {/* Underline Animation: Grow from center */}
+      <div
+        className={cn(
+          'h-1 w-24 rounded-full bg-primary origin-center transition-transform duration-700 delay-300 ease-out',
+          inView ? 'scale-x-100' : 'scale-x-0'
+        )}
+      />
     </div>
   );
 };
