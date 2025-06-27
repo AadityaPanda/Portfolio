@@ -10,6 +10,7 @@ import { ProjectMediaCarousel } from "../project-media-carousel";
 
 const ProjectShowcase = ({ project, reverse = false }: { project: (typeof PROFESSIONAL_PROJECTS_DATA)[0] | (typeof PERSONAL_PROJECTS_DATA)[0], reverse?: boolean }) => {
   const hasGallery = project.gallery && project.gallery.length > 0;
+  const hasLink = project.liveLink || project.repoLink;
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
@@ -21,16 +22,29 @@ const ProjectShowcase = ({ project, reverse = false }: { project: (typeof PROFES
         {hasGallery ? (
           <ProjectMediaCarousel gallery={project.gallery} />
         ) : (
-          <a href={project.liveLink || project.repoLink || '#'} target="_blank" rel="noopener noreferrer" className="block aspect-video relative">
-            <Image
-              src={project.thumbnail}
-              alt={`Thumbnail for ${project.title}`}
-              fill
-              className="object-cover object-center rounded-lg border border-border/50 shadow-lg transition-transform duration-300 group-hover:scale-105"
-              sizes="(max-width: 1023px) 100vw, 50vw"
-              data-ai-hint="software project"
-            />
-          </a>
+          hasLink ? (
+            <a href={project.liveLink || project.repoLink || '#'} target="_blank" rel="noopener noreferrer" className="block aspect-video relative">
+              <Image
+                src={project.thumbnail}
+                alt={`Thumbnail for ${project.title}`}
+                fill
+                className="object-cover object-center rounded-lg border border-border/50 shadow-lg transition-transform duration-300 group-hover:scale-105"
+                sizes="(max-width: 1023px) 100vw, 50vw"
+                data-ai-hint="software project"
+              />
+            </a>
+          ) : (
+            <div className="block aspect-video relative">
+              <Image
+                src={project.thumbnail}
+                alt={`Thumbnail for ${project.title}`}
+                fill
+                className="object-cover object-center rounded-lg border border-border/50 shadow-lg"
+                sizes="(max-width: 1023px) 100vw, 50vw"
+                data-ai-hint="software project"
+              />
+            </div>
+          )
         )}
       </div>
 
