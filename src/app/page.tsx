@@ -10,13 +10,11 @@ import { Education } from '@/components/sections/education';
 import { ScrollAnimate } from '@/components/scroll-animate';
 import { ScrollToTop } from '@/components/scroll-to-top';
 import { ScrollDownButton } from '@/components/scroll-down-button';
-import { SideNav } from '@/components/side-nav';
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <SideNav />
       <main className="flex-1">
         <Header />
         <ScrollAnimate><About /></ScrollAnimate>
