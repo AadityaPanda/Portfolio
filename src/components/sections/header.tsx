@@ -70,7 +70,7 @@ export function Header() {
           </p>
           <div className="flex flex-wrap justify-center items-center gap-4 pt-4 animate-in fade-in from-top-10 slide-in-from-top-10 duration-700 delay-500">
             {socialLinks.map((link, index) => (
-              <Button key={index} variant="outline" size="icon" asChild className="h-12 w-12 transition-all hover:bg-primary/10 hover:border-primary hover:-translate-y-1">
+              <Button key={index} variant="outline" size="icon" asChild className="h-12 w-12 transition-all hover:bg-primary/10 hover:border-primary hover:text-primary hover:-translate-y-1">
                 <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link['aria-label']}>
                   <link.icon className="h-6 w-6" />
                 </a>
@@ -79,7 +79,7 @@ export function Header() {
              <Dialog>
               <DialogTrigger asChild>
                 <Button variant="outline" size="lg" className="h-12 text-base transition-all hover:bg-primary/10 hover:border-primary hover:-translate-y-1" aria-label="View CV">
-                  <FileText className="h-4 w-4" /> View CV
+                  <FileText className="mr-2 h-4 w-4" /> View CV
                 </Button>
               </DialogTrigger>
               <DialogContent className="max-w-4xl h-[90vh] flex flex-col p-0">
@@ -97,8 +97,8 @@ export function Header() {
             </Dialog>
              <Button size="lg" asChild className="h-12 text-base transition-all hover:-translate-y-1">
               <a href="#contact" onClick={(e) => handleScrollTo(e, '#contact')}>
+                <Send className="mr-2 h-4 w-4" />
                 Get in Touch
-                <Send className="ml-2 h-4 w-4" />
               </a>
             </Button>
           </div>
