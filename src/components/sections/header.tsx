@@ -68,42 +68,51 @@ export function Header() {
           <p className="text-xl text-muted-foreground animate-in fade-in from-top-8 slide-in-from-top-8 duration-700 delay-400 max-w-2xl">
             I transform complex business requirements into elegant, scalable web applications, from system architecture to pixel-perfect UIs.
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-4 pt-4 animate-in fade-in from-top-10 slide-in-from-top-10 duration-700 delay-500">
-            {socialLinks.map((link, index) => (
-              <Button key={index} variant="outline" size="icon" asChild className="h-12 w-12 transition-all hover:bg-primary/10 hover:border-primary hover:text-primary hover:-translate-y-1">
-                <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link['aria-label']}>
-                  <link.icon className="h-6 w-6" />
+          <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-4 pt-6 animate-in fade-in from-top-10 slide-in-from-top-10 duration-700 delay-500">
+            {/* Social Icons Group */}
+            <div className="flex items-center gap-4">
+              {socialLinks.map((link, index) => (
+                <Button key={index} variant="outline" size="icon" asChild className="h-12 w-12 transition-all hover:bg-primary/10 hover:border-primary hover:text-primary hover:-translate-y-1">
+                  <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link['aria-label']}>
+                    <link.icon className="h-6 w-6" />
+                  </a>
+                </Button>
+              ))}
+            </div>
+
+            {/* Vertical Divider */}
+            <div className="h-8 w-px bg-border" />
+
+            {/* Action Buttons Group */}
+            <div className="flex items-center flex-wrap justify-center gap-4">
+              <Dialog>
+                <DialogTrigger asChild>
+                  <Button variant="outline" size="lg" className="h-12 text-base transition-all hover:bg-primary/10 hover:border-primary hover:text-primary hover:-translate-y-1" aria-label="View CV">
+                    <FileText className="mr-2 h-4 w-4" /> View CV
+                  </Button>
+                </DialogTrigger>
+                <DialogContent className="max-w-4xl h-[90vh] flex flex-col p-0">
+                  <DialogHeader className="p-4 border-b">
+                    <DialogTitle>Curriculum Vitae</DialogTitle>
+                  </DialogHeader>
+                  <div className="flex-1 overflow-auto">
+                    <iframe
+                      src={CV_PATH}
+                      className="w-full h-full"
+                      title="CV Preview"
+                    />
+                  </div>
+                </DialogContent>
+              </Dialog>
+              <Button size="lg" asChild className="h-12 text-base transition-all hover:-translate-y-1">
+                <a href="#contact" onClick={(e) => handleScrollTo(e, '#contact')}>
+                  <Send className="mr-2 h-4 w-4" />
+                  Get in Touch
                 </a>
               </Button>
-            ))}
-             <Dialog>
-              <DialogTrigger asChild>
-                <Button variant="outline" size="lg" className="h-12 text-base transition-all hover:bg-primary/10 hover:border-primary hover:-translate-y-1" aria-label="View CV">
-                  <FileText className="mr-2 h-4 w-4" /> View CV
-                </Button>
-              </DialogTrigger>
-              <DialogContent className="max-w-4xl h-[90vh] flex flex-col p-0">
-                <DialogHeader className="p-4 border-b">
-                  <DialogTitle>Curriculum Vitae</DialogTitle>
-                </DialogHeader>
-                <div className="flex-1 overflow-auto">
-                  <iframe
-                    src={CV_PATH}
-                    className="w-full h-full"
-                    title="CV Preview"
-                  />
-                </div>
-              </DialogContent>
-            </Dialog>
-             <Button size="lg" asChild className="h-12 text-base transition-all hover:-translate-y-1">
-              <a href="#contact" onClick={(e) => handleScrollTo(e, '#contact')}>
-                <Send className="mr-2 h-4 w-4" />
-                Get in Touch
-              </a>
-            </Button>
+            </div>
           </div>
         </div>
-
       </div>
     </header>
   );
