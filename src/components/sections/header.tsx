@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { CV_PATH } from "@/lib/data";
 import { useState, useEffect } from "react";
+import { useLenis } from "@studio-freight/react-lenis";
 
 const socialLinks = [
   { icon: Linkedin, href: "https://www.linkedin.com/in/aadityapanda/", 'aria-label': 'Aaditya Panda on LinkedIn' },
@@ -18,6 +19,7 @@ const fullText = "Software Developer";
 export function Header() {
   const [typedText, setTypedText] = useState('');
   const [showCursor, setShowCursor] = useState(true);
+  const lenis = useLenis();
 
   useEffect(() => {
     const startTypingTimeout = setTimeout(() => {
@@ -37,6 +39,11 @@ export function Header() {
 
     return () => clearTimeout(startTypingTimeout);
   }, []);
+
+  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
+    e.preventDefault();
+    lenis?.scrollTo(target);
+  };
 
   return (
     <header id="home" className="relative flex h-screen items-center">
@@ -84,7 +91,7 @@ export function Header() {
                 </DialogContent>
               </Dialog>
                <Button size="lg" asChild className="h-12 text-base">
-                <a href="#contact">Get in Touch</a>
+                <a href="#contact" onClick={(e) => handleScrollTo(e, '#contact')}>Get in Touch</a>
               </Button>
             </div>
           </div>
@@ -105,7 +112,12 @@ export function Header() {
         </div>
       </div>
       
-      <a href="#about" aria-label="Scroll to content" className="absolute bottom-10 left-1/2 -translate-x-1/2 group animate-in fade-in duration-1000 delay-1000 fill-mode-both hidden md:block">
+      <a 
+        href="#about"
+        onClick={(e) => handleScrollTo(e, '#about')}
+        aria-label="Scroll to content" 
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 group animate-in fade-in duration-1000 delay-1000 fill-mode-both hidden md:block"
+      >
         <div className="h-12 w-7 border-2 border-muted-foreground/50 rounded-full flex justify-center items-start p-1 group-hover:border-primary transition-colors">
           <ArrowDown className="h-5 w-5 text-muted-foreground/50 animate-[bounce_2s_ease-out_infinite] group-hover:text-primary transition-colors" />
         </div>
