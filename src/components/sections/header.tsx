@@ -31,7 +31,7 @@ export function Header() {
 
     console.log("%cPsst... Hey there, fellow developer! 👋", styles);
     console.log(
-      "%cGlad to see you're checking out the code. If you like what you see, let's connect!",
+      "%cGlad to see you're checking out the portfolio. If you like what you see, let's connect!",
       "font-size: 12px; font-family: 'Inter', sans-serif;"
     );
 
