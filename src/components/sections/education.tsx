@@ -12,7 +12,7 @@ export function Education() {
         </SectionHeader>
         <div className="mt-12 relative border-l-2 border-border pl-10">
           <div className="absolute left-[-2px] top-0 h-full w-[2px] bg-gradient-to-b from-primary/50 via-primary/20 to-transparent" />
-          <Accordion type="single" collapsible defaultValue="edu-0" className="w-full space-y-8">
+          <Accordion type="single" collapsible className="w-full space-y-8">
             {EDUCATION_DATA.map((edu, index) => (
               <div key={index} className="relative">
                  <div className="absolute -left-[45.5px] top-3 h-6 w-6 rounded-full bg-background flex items-center justify-center">
