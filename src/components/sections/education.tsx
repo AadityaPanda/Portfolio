@@ -27,7 +27,6 @@ export function Education() {
                         </div>
                         <div className="text-right text-sm text-muted-foreground ml-4 shrink-0">
                           <p>{edu.period}</p>
-                          <p className="font-medium text-foreground/80">{edu.grade}</p>
                         </div>
                       </AccordionTrigger>
                       <AccordionContent className="px-6 pb-6">
