@@ -32,6 +32,3 @@ I'm always open to discussing new projects, creative ideas, or opportunities.
 -   **LinkedIn**: [in/aadityapanda](https://www.linkedin.com/in/aadityapanda/)
 -   **GitHub**: [@AadityaPanda](https://github.com/AadityaPanda)
 -   **Instagram**: [_aaditya_panda_](https://www.instagram.com/_aaditya_panda_/)
-
----
-*This project was developed in Firebase Studio.*
