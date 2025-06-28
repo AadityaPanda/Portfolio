@@ -5,9 +5,7 @@ import { cn } from '@/lib/utils';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { useLenis } from '@studio-freight/react-lenis';
-import { SidebarTrigger } from '@/components/ui/sidebar';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { PanelLeft } from 'lucide-react';
 
 const navLinks = [
   { name: 'About', href: '#about' },
@@ -59,11 +57,6 @@ export function Navbar() {
     )}>
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-8">
         <div className="flex items-center gap-4">
-          {isMobile && (
-            <SidebarTrigger>
-              <PanelLeft />
-            </SidebarTrigger>
-          )}
           <a 
               href="#home"
               onClick={(e) => handleNavClick(e, '#home')}
