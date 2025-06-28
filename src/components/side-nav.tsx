@@ -16,12 +16,22 @@ const navLinks = [
 
 export function SideNav() {
   const [activeSection, setActiveSection] = useState('home');
+  const [isScrolling, setIsScrolling] = useState(false);
   const lenis = useLenis();
 
   useEffect(() => {
+    let scrollTimeout: NodeJS.Timeout;
+
     const handleScroll = () => {
+      // Show sidebar on scroll
+      setIsScrolling(true);
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        setIsScrolling(false);
+      }, 250); // Hide after 250ms of no scrolling
+
+      // Set active section
       const sections = navLinks.map(link => document.getElementById(link.href.substring(1))).filter(Boolean);
-      
       let currentSection = 'home';
       for (const section of sections) {
         if (section && section.getBoundingClientRect().top < window.innerHeight / 2) {
@@ -33,8 +43,10 @@ export function SideNav() {
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll();
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
+      clearTimeout(scrollTimeout);
     };
   }, []);
 
@@ -44,8 +56,14 @@ export function SideNav() {
   };
 
   return (
-    <nav className="group fixed top-1/2 -translate-y-1/2 left-0 z-50 hidden 3xl:block p-4">
-      <ul className="flex flex-col items-start gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+    <nav className={cn(
+      "group fixed top-1/2 -translate-y-1/2 left-0 z-50 hidden p-4 3xl:block",
+      isScrolling && "is-scrolling"
+    )}>
+      <ul className={cn(
+        "flex flex-col items-start gap-4 transition-opacity duration-300",
+        "opacity-0 group-hover:opacity-100 group-[.is-scrolling]:opacity-100"
+      )}>
         {navLinks.map((link) => (
           <li key={link.href}>
             <a
@@ -54,7 +72,7 @@ export function SideNav() {
               className={cn(
                 "group flex items-center gap-3 text-sm transition-colors",
                 activeSection === link.href.substring(1)
-                  ? 'text-primary font-medium'
+                  ? 'text-primary'
                   : 'text-muted-foreground hover:text-foreground'
               )}
               aria-label={`Scroll to ${link.name}`}
@@ -67,7 +85,9 @@ export function SideNav() {
                     : 'w-6'
                 )}
               />
-              <span>{link.name}</span>
+              <span className={cn(activeSection === link.href.substring(1) ? 'font-medium' : 'font-normal')}>
+                {link.name}
+              </span>
             </a>
           </li>
         ))}
