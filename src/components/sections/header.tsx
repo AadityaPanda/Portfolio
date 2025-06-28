@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { CV_PATH } from "@/lib/data";
 import { useState, useEffect } from "react";
-import { useLenis } from "@studio-freight/react-lenis";
 
 const socialLinks = [
   { icon: Linkedin, href: "https://www.linkedin.com/in/aadityapanda/", 'aria-label': 'Aaditya Panda on LinkedIn' },
@@ -18,7 +17,6 @@ const fullText = "Software Developer";
 export function Header() {
   const [typedText, setTypedText] = useState('');
   const [showCursor, setShowCursor] = useState(true);
-  const lenis = useLenis();
 
   useEffect(() => {
     // Console log easter egg
@@ -61,7 +59,10 @@ export function Header() {
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
     e.preventDefault();
-    lenis?.scrollTo(target);
+    const targetElement = document.querySelector(target);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (

@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
-import SmoothScroll from '@/components/smooth-scroll';
 import { inter, spaceGrotesk } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 
@@ -17,7 +16,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning style={{ scrollBehavior: 'smooth' }}>
       <body className={cn(
         "font-body antialiased scrollbar-none",
         inter.variable,
@@ -29,9 +28,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SmoothScroll>
-            {children}
-          </SmoothScroll>
+          {children}
           <Toaster />
         </ThemeProvider>
       </body>

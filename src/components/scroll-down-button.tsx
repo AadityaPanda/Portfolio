@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 import { ArrowDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { useLenis } from '@studio-freight/react-lenis';
 
 interface ScrollDownButtonProps {
   sections: string[];
@@ -13,7 +12,6 @@ interface ScrollDownButtonProps {
 export function ScrollDownButton({ sections }: ScrollDownButtonProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
-  const lenis = useLenis();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +39,10 @@ export function ScrollDownButton({ sections }: ScrollDownButtonProps) {
     const nextSectionIndex = currentSectionIndex + 1;
     if (nextSectionIndex < sections.length) {
       const nextSectionId = sections[nextSectionIndex];
-      lenis?.scrollTo(`#${nextSectionId}`);
+      const targetElement = document.getElementById(nextSectionId);
+      if (targetElement) {
+        targetElement.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
   

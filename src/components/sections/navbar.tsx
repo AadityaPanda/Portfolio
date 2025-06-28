@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
-import { useLenis } from '@studio-freight/react-lenis';
 
 const navLinks = [
   { name: 'About', href: '#about' },
@@ -18,7 +17,6 @@ const navLinks = [
 export function Navbar() {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
-  const lenis = useLenis();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,7 +43,10 @@ export function Navbar() {
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
     e.preventDefault();
-    lenis?.scrollTo(target);
+    const targetElement = document.querySelector(target);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (

@@ -1,7 +1,6 @@
 'use client';
 
 import { Github, Linkedin, Code, Instagram } from 'lucide-react';
-import { useLenis } from '@studio-freight/react-lenis';
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/AadityaPanda", 'aria-label': 'GitHub' },
@@ -19,11 +18,13 @@ const navLinks = [
 
 export function Footer() {
   const year = new Date().getFullYear();
-  const lenis = useLenis();
 
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
     e.preventDefault();
-    lenis?.scrollTo(target);
+    const targetElement = document.querySelector(target);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
