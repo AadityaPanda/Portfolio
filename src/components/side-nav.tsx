@@ -52,7 +52,7 @@ export function SideNav() {
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
               className={cn(
-                "group flex items-center gap-3 text-sm transition-colors",
+                "group flex items-center gap-3 text-sm font-medium transition-colors",
                 activeSection === link.href.substring(1)
                   ? 'text-primary'
                   : 'text-muted-foreground hover:text-foreground'
@@ -61,13 +61,13 @@ export function SideNav() {
             >
               <span
                 className={cn(
-                  'block h-1 bg-current transition-all duration-300 ease-in-out',
+                  'block h-px bg-current transition-all duration-300 ease-in-out',
                   activeSection === link.href.substring(1)
-                    ? 'w-8'
-                    : 'w-4'
+                    ? 'w-12'
+                    : 'w-6'
                 )}
               />
-              <span className="font-medium">{link.name}</span>
+              <span>{link.name}</span>
             </a>
           </li>
         ))}
