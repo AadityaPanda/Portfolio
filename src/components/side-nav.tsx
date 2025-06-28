@@ -44,17 +44,17 @@ export function SideNav() {
   };
 
   return (
-    <nav className="fixed top-1/2 -translate-y-1/2 left-0 z-50 hidden 3xl:block">
-      <ul className="flex flex-col items-start gap-4">
+    <nav className="group fixed top-1/2 -translate-y-1/2 left-0 z-50 hidden 3xl:block p-4">
+      <ul className="flex flex-col items-start gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         {navLinks.map((link) => (
           <li key={link.href}>
             <a
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
               className={cn(
-                "group flex items-center gap-3 text-sm font-medium transition-colors",
+                "group flex items-center gap-3 text-sm transition-colors",
                 activeSection === link.href.substring(1)
-                  ? 'text-primary'
+                  ? 'text-primary font-medium'
                   : 'text-muted-foreground hover:text-foreground'
               )}
               aria-label={`Scroll to ${link.name}`}
