@@ -5,8 +5,7 @@ import { ScrollAnimate } from '@/components/scroll-animate';
 import { ScrollToTop } from '@/components/scroll-to-top';
 import { ScrollDownButton } from '@/components/scroll-down-button';
 import dynamic from 'next/dynamic';
-import { SidebarProvider, SidebarInset } from '@/components/ui/sidebar';
-import { SidebarNav } from '@/components/sections/sidebar-nav';
+import { SideNav } from '@/components/side-nav';
 
 const About = dynamic(() => import('@/components/sections/about').then(mod => mod.About));
 const Experience = dynamic(() => import('@/components/sections/experience').then(mod => mod.Experience));
@@ -17,25 +16,21 @@ const Contact = dynamic(() => import('@/components/sections/contact').then(mod =
 
 export default function Home() {
   return (
-    <SidebarProvider>
-      <SidebarNav />
-      <SidebarInset>
-        <div className="flex flex-col min-h-screen">
-          <Navbar />
-          <main className="flex-1">
-            <Header />
-            <ScrollAnimate><About /></ScrollAnimate>
-            <ScrollAnimate><Experience /></ScrollAnimate>
-            <ScrollAnimate><Projects /></ScrollAnimate>
-            <ScrollAnimate><Skills /></ScrollAnimate>
-            <ScrollAnimate><Education /></ScrollAnimate>
-            <ScrollAnimate><Contact /></ScrollAnimate>
-          </main>
-          <Footer />
-          <ScrollToTop />
-          <ScrollDownButton sections={['home', 'about', 'experience', 'projects', 'skills', 'education', 'contact']} />
-        </div>
-      </SidebarInset>
-    </SidebarProvider>
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+      <SideNav />
+      <main className="flex-1">
+        <Header />
+        <ScrollAnimate><About /></ScrollAnimate>
+        <ScrollAnimate><Experience /></ScrollAnimate>
+        <ScrollAnimate><Projects /></ScrollAnimate>
+        <ScrollAnimate><Skills /></ScrollAnimate>
+        <ScrollAnimate><Education /></ScrollAnimate>
+        <ScrollAnimate><Contact /></ScrollAnimate>
+      </main>
+      <Footer />
+      <ScrollToTop />
+      <ScrollDownButton sections={['home', 'about', 'experience', 'projects', 'skills', 'education', 'contact']} />
+    </div>
   );
 }
