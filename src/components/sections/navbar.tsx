@@ -5,6 +5,9 @@ import { cn } from '@/lib/utils';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { useLenis } from '@studio-freight/react-lenis';
+import { SidebarTrigger } from '@/components/ui/sidebar';
+import { useIsMobile } from '@/hooks/use-mobile';
+import { PanelLeft } from 'lucide-react';
 
 const navLinks = [
   { name: 'About', href: '#about' },
@@ -19,6 +22,7 @@ export function Navbar() {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const lenis = useLenis();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,16 +58,23 @@ export function Navbar() {
       hasScrolled ? "bg-background/80 backdrop-blur-sm shadow-md" : "bg-transparent"
     )}>
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-8">
-        <a 
-            href="#home"
-            onClick={(e) => handleNavClick(e, '#home')}
-            className={cn(
-                "text-xl font-headline font-bold transition-opacity duration-300",
-                hasScrolled ? "opacity-100" : "opacity-0"
-            )}
-        >
-          Aaditya Panda
-        </a>
+        <div className="flex items-center gap-4">
+          {isMobile && (
+            <SidebarTrigger>
+              <PanelLeft />
+            </SidebarTrigger>
+          )}
+          <a 
+              href="#home"
+              onClick={(e) => handleNavClick(e, '#home')}
+              className={cn(
+                  "text-xl font-headline font-bold transition-opacity duration-300",
+                  hasScrolled || isMobile ? "opacity-100" : "opacity-0"
+              )}
+          >
+            Aaditya Panda
+          </a>
+        </div>
         <nav className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
             <Button 
