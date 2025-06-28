@@ -44,7 +44,7 @@ export function SideNav() {
   };
 
   return (
-    <nav className="fixed top-1/2 -translate-y-1/2 left-4 z-50 hidden lg:block">
+    <nav className="fixed top-1/2 -translate-y-1/2 left-0 p-4 z-50 hidden xl:block">
       <ul className="flex flex-col items-start gap-4">
         {navLinks.map((link) => (
           <li key={link.href}>
