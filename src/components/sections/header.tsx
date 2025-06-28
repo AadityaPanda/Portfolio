@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { CV_PATH } from "@/lib/data";
 import { useState, useEffect } from "react";
+import { useLenis } from "@studio-freight/react-lenis";
 
 const socialLinks = [
   { icon: Linkedin, href: "https://www.linkedin.com/in/aadityapanda/", 'aria-label': 'Aaditya Panda on LinkedIn' },
@@ -17,6 +18,7 @@ const fullText = "Software Developer";
 export function Header() {
   const [typedText, setTypedText] = useState('');
   const [showCursor, setShowCursor] = useState(true);
+  const lenis = useLenis();
 
   useEffect(() => {
     // Console log easter egg
@@ -56,6 +58,11 @@ export function Header() {
 
     return () => clearTimeout(startTypingTimeout);
   }, []);
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    lenis?.scrollTo(href);
+  };
 
   return (
     <header id="home" className="relative flex h-screen items-center bg-background overflow-hidden">
@@ -111,7 +118,7 @@ export function Header() {
                 </DialogContent>
               </Dialog>
               <Button size="lg" asChild className="h-12 text-base transition-all hover:-translate-y-1">
-                <a href="#contact">
+                <a href="#contact" onClick={(e) => handleNavClick(e, '#contact')}>
                   <Send className="mr-2 h-4 w-4" />
                   Get in Touch
                 </a>
