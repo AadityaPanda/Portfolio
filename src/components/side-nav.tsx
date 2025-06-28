@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { useLenis } from '@studio-freight/react-lenis';
 import { cn } from '@/lib/utils';
-import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from '@/components/ui/tooltip';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -45,37 +44,34 @@ export function SideNav() {
   };
 
   return (
-    <TooltipProvider>
-      <nav className="fixed top-1/2 -translate-y-1/2 left-4 z-50 hidden md:block">
-        <ul className="flex flex-col items-center gap-4">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Tooltip>
-                <TooltipTrigger asChild>
-                  <a
-                    href={link.href}
-                    onClick={(e) => handleNavClick(e, link.href)}
-                    className="group flex items-center gap-2"
-                    aria-label={`Scroll to ${link.name}`}
-                  >
-                    <span
-                      className={cn(
-                        'block h-1 bg-muted-foreground/50 transition-all duration-300 ease-in-out group-hover:bg-primary',
-                        activeSection === link.href.substring(1)
-                          ? 'w-8 bg-primary'
-                          : 'w-4'
-                      )}
-                    />
-                  </a>
-                </TooltipTrigger>
-                <TooltipContent side="right">
-                  <p>{link.name}</p>
-                </TooltipContent>
-              </Tooltip>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </TooltipProvider>
+    <nav className="fixed top-1/2 -translate-y-1/2 left-8 z-50 hidden md:block">
+      <ul className="flex flex-col items-start gap-4">
+        {navLinks.map((link) => (
+          <li key={link.href}>
+            <a
+              href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
+              className={cn(
+                "group flex items-center gap-3 text-sm transition-colors",
+                activeSection === link.href.substring(1)
+                  ? 'text-primary'
+                  : 'text-muted-foreground hover:text-foreground'
+              )}
+              aria-label={`Scroll to ${link.name}`}
+            >
+              <span
+                className={cn(
+                  'block h-1 bg-current transition-all duration-300 ease-in-out',
+                  activeSection === link.href.substring(1)
+                    ? 'w-8'
+                    : 'w-4'
+                )}
+              />
+              <span className="font-medium">{link.name}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
   );
 }
