@@ -4,6 +4,7 @@ import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/components/theme-provider';
 import { inter, spaceGrotesk } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
+import SmoothScroll from '@/components/smooth-scroll';
 
 export const metadata: Metadata = {
   title: 'Portfolio | Aaditya Panda',
@@ -16,7 +17,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning style={{ scrollBehavior: 'smooth' }}>
+    <html lang="en" suppressHydrationWarning>
       <body className={cn(
         "font-body antialiased scrollbar-none",
         inter.variable,
@@ -28,7 +29,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <SmoothScroll>
+            {children}
+          </SmoothScroll>
           <Toaster />
         </ThemeProvider>
       </body>

@@ -57,14 +57,6 @@ export function Header() {
     return () => clearTimeout(startTypingTimeout);
   }, []);
 
-  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
-    e.preventDefault();
-    const targetElement = document.querySelector(target);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <header id="home" className="relative flex h-screen items-center bg-background overflow-hidden">
       <div className="container mx-auto px-4">
@@ -119,7 +111,7 @@ export function Header() {
                 </DialogContent>
               </Dialog>
               <Button size="lg" asChild className="h-12 text-base transition-all hover:-translate-y-1">
-                <a href="#contact" onClick={(e) => handleScrollTo(e, '#contact')}>
+                <a href="#contact">
                   <Send className="mr-2 h-4 w-4" />
                   Get in Touch
                 </a>

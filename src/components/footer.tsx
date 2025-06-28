@@ -19,21 +19,13 @@ const navLinks = [
 export function Footer() {
   const year = new Date().getFullYear();
 
-  const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, target: string) => {
-    e.preventDefault();
-    const targetElement = document.querySelector(target);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
   return (
     <footer className="border-t border-border/20 bg-background/50 backdrop-blur-sm">
       <div className="container mx-auto px-4 md:px-8 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center sm:text-left">
           {/* Column 1: Branding */}
           <div className="space-y-4 flex flex-col items-center sm:items-start">
-            <a href="#home" onClick={(e) => handleScrollTo(e, '#home')} className="text-xl font-headline font-bold flex items-center gap-2">
+            <a href="#home" className="text-xl font-headline font-bold flex items-center gap-2">
                 <Code className="h-6 w-6 text-primary" />
                 Aaditya Panda
             </a>
@@ -48,7 +40,7 @@ export function Footer() {
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} onClick={(e) => handleScrollTo(e, link.href)} className="text-muted-foreground hover:text-primary transition-colors">
+                  <a href={link.href} className="text-muted-foreground hover:text-primary transition-colors">
                     {link.name}
                   </a>
                 </li>
