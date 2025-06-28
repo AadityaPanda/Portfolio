@@ -16,6 +16,9 @@ export default {
       },
     },
     extend: {
+      screens: {
+        '3xl': '1600px',
+      },
       fontFamily: {
         body: ['var(--font-inter)', 'sans-serif'],
         headline: ['var(--font-space-grotesk)', 'sans-serif'],

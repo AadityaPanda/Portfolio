@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useLenis } from '@studio-freight/react-lenis';
 import { cn } from '@/lib/utils';
 
@@ -44,7 +44,7 @@ export function SideNav() {
   };
 
   return (
-    <nav className="fixed top-1/2 -translate-y-1/2 left-0 p-0 z-50 hidden xl:block">
+    <nav className="fixed top-1/2 -translate-y-1/2 left-0 z-50 hidden 3xl:block">
       <ul className="flex flex-col items-start gap-4">
         {navLinks.map((link) => (
           <li key={link.href}>
