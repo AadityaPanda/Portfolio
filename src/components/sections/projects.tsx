@@ -8,9 +8,41 @@ import { cn } from "@/lib/utils";
 import { SectionHeader } from "../section-header";
 import { ProjectMediaCarousel } from "../project-media-carousel";
 
-const ProjectShowcase = ({ project, reverse = false }: { project: (typeof PROFESSIONAL_PROJECTS_DATA)[0] | (typeof PERSONAL_PROJECTS_DATA)[0], reverse?: boolean }) => {
+const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: { project: (typeof PROFESSIONAL_PROJECTS_DATA)[0] | (typeof PERSONAL_PROJECTS_DATA)[0], reverse?: boolean, isProfessional?: boolean }) => {
   const hasGallery = project.gallery && project.gallery.length > 0;
   const hasLink = project.liveLink || project.repoLink;
+
+  const mediaElement = hasGallery ? (
+    <ProjectMediaCarousel gallery={project.gallery} unstyled={isProfessional} />
+  ) : hasLink ? (
+    <a href={project.liveLink || project.repoLink || '#'} target="_blank" rel="noopener noreferrer" className="block aspect-video relative">
+      <Image
+        src={project.thumbnail}
+        alt={`Thumbnail for ${project.title}`}
+        fill
+        className={cn(
+          "object-cover object-center transition-transform duration-300 group-hover:scale-105",
+          !isProfessional && "rounded-lg border border-border/50 shadow-lg"
+        )}
+        sizes="(max-width: 1023px) 100vw, 50vw"
+        data-ai-hint="software project"
+      />
+    </a>
+  ) : (
+    <div className="block aspect-video relative">
+      <Image
+        src={project.thumbnail}
+        alt={`Thumbnail for ${project.title}`}
+        fill
+        className={cn(
+          "object-cover object-center",
+          !isProfessional && "rounded-lg border border-border/50 shadow-lg"
+        )}
+        sizes="(max-width: 1023px) 100vw, 50vw"
+        data-ai-hint="software project"
+      />
+    </div>
+  );
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
@@ -19,33 +51,18 @@ const ProjectShowcase = ({ project, reverse = false }: { project: (typeof PROFES
         "group",
         reverse ? "lg:order-last" : ""
       )}>
-        {hasGallery ? (
-          <ProjectMediaCarousel gallery={project.gallery} />
-        ) : (
-          hasLink ? (
-            <a href={project.liveLink || project.repoLink || '#'} target="_blank" rel="noopener noreferrer" className="block aspect-video relative">
-              <Image
-                src={project.thumbnail}
-                alt={`Thumbnail for ${project.title}`}
-                fill
-                className="object-cover object-center rounded-lg border border-border/50 shadow-lg transition-transform duration-300 group-hover:scale-105"
-                sizes="(max-width: 1023px) 100vw, 50vw"
-                data-ai-hint="software project"
-              />
-            </a>
-          ) : (
-            <div className="block aspect-video relative">
-              <Image
-                src={project.thumbnail}
-                alt={`Thumbnail for ${project.title}`}
-                fill
-                className="object-cover object-center rounded-lg border border-border/50 shadow-lg"
-                sizes="(max-width: 1023px) 100vw, 50vw"
-                data-ai-hint="software project"
-              />
-            </div>
-          )
-        )}
+        {isProfessional ? (
+           <div className="rounded-lg border border-border/50 shadow-lg overflow-hidden bg-muted/30 group-hover:shadow-primary/10 group-hover:border-primary/30 transition-all duration-300">
+             <div className="h-8 bg-muted/50 flex items-center px-3 border-b border-border/50">
+               <div className="flex items-center gap-1.5">
+                 <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                 <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                 <div className="w-3 h-3 rounded-full bg-green-500"></div>
+               </div>
+             </div>
+             {mediaElement}
+           </div>
+        ) : mediaElement}
       </div>
 
       {/* Project Details */}
@@ -103,7 +120,7 @@ export function Projects() {
             <h2 className="text-4xl font-headline font-bold text-center mb-12">Professional Work</h2>
             <div className="space-y-24">
               {PROFESSIONAL_PROJECTS_DATA.map((project, index) => (
-                <ProjectShowcase key={index} project={project} reverse={index % 2 !== 0} />
+                <ProjectShowcase key={index} project={project} reverse={index % 2 !== 0} isProfessional={true} />
               ))}
             </div>
           </div>

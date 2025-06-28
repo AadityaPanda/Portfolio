@@ -14,9 +14,10 @@ type GalleryItem = {
 
 interface ProjectMediaCarouselProps {
   gallery: GalleryItem[];
+  unstyled?: boolean;
 }
 
-export function ProjectMediaCarousel({ gallery }: ProjectMediaCarouselProps) {
+export function ProjectMediaCarousel({ gallery, unstyled = false }: ProjectMediaCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -49,7 +50,10 @@ export function ProjectMediaCarousel({ gallery }: ProjectMediaCarouselProps) {
 
   return (
     <div
-      className="relative w-full aspect-video rounded-lg overflow-hidden border border-border/50 shadow-lg group bg-black"
+      className={cn(
+        "relative w-full aspect-video group bg-black",
+        !unstyled && "rounded-lg overflow-hidden border border-border/50 shadow-lg"
+      )}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
