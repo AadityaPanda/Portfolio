@@ -20,6 +20,7 @@ const nextConfig: NextConfig = {
     ],
   },
   experimental: {
+    serverComponentsExternalPackages: ['handlebars'],
   }
 };
 
