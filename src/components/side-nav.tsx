@@ -76,7 +76,7 @@ export function SideNav() {
       isScrolling && "is-scrolling"
     )}>
       <ul className={cn(
-        "flex flex-col items-start gap-4 p-4 transition-opacity duration-300",
+        "flex flex-col items-start gap-3 p-0 transition-opacity duration-300",
         // The nav is only "truly" visible when hovered or scrolling
         "opacity-0 group-hover:opacity-100 group-[.is-scrolling]:opacity-100"
       )}>
