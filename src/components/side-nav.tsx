@@ -17,9 +17,17 @@ const navLinks = [
 export function SideNav() {
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolling, setIsScrolling] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const lenis = useLenis();
 
+  // Prevents the component from rendering on the server and flashing on load
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+
     let scrollTimeout: NodeJS.Timeout;
 
     const handleScroll = () => {
@@ -48,20 +56,28 @@ export function SideNav() {
       window.removeEventListener('scroll', handleScroll);
       clearTimeout(scrollTimeout);
     };
-  }, []);
+  }, [mounted]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     lenis?.scrollTo(href, { lerp: 0.1 });
   };
+  
+  if (!mounted) {
+    return null;
+  }
+
+  const isNavVisible = activeSection !== 'home';
 
   return (
     <nav className={cn(
-      "group fixed top-1/2 -translate-y-1/2 left-0 z-50 hidden p-4 3xl:block",
+      "group fixed top-1/2 -translate-y-1/2 left-0 z-50 hidden p-0 3xl:block transition-all duration-300",
+      isNavVisible ? 'opacity-100' : 'opacity-0 pointer-events-none',
       isScrolling && "is-scrolling"
     )}>
       <ul className={cn(
-        "flex flex-col items-start gap-4 transition-opacity duration-300",
+        "flex flex-col items-start gap-4 p-4 transition-opacity duration-300",
+        // The nav is only "truly" visible when hovered or scrolling
         "opacity-0 group-hover:opacity-100 group-[.is-scrolling]:opacity-100"
       )}>
         {navLinks.map((link) => (
@@ -70,7 +86,7 @@ export function SideNav() {
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
               className={cn(
-                "group flex items-center gap-3 text-sm transition-colors",
+                "group flex items-center gap-3 text-sm font-medium transition-colors",
                 activeSection === link.href.substring(1)
                   ? 'text-primary'
                   : 'text-muted-foreground hover:text-foreground'
