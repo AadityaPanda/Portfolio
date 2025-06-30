@@ -85,7 +85,7 @@ const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: {
 
         <div className="flex flex-wrap gap-2 pt-2">
           {project.repoLink && (
-              <Button asChild>
+              <Button asChild variant="github">
                   <a href={project.repoLink} target="_blank" rel="noopener noreferrer">
                       <Github className="mr-2 h-4 w-4"/> View on GitHub
                   </a>
