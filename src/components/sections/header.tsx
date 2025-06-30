@@ -132,7 +132,7 @@ export function Header() {
             <div className="flex items-center flex-wrap justify-center gap-4">
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button variant="outline" size="lg" className="h-12 text-base transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-lg hover:shadow-primary/20 hover:bg-primary/5">
+                  <Button variant="outline" size="lg" className="h-12 text-base transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-lg hover:shadow-primary/20 hover:bg-primary/10">
                     <FileText className="mr-2 h-4 w-4" /> View CV
                   </Button>
                 </DialogTrigger>
