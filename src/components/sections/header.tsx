@@ -45,10 +45,13 @@ export function Header() {
           i++;
         } else {
           clearInterval(typingInterval);
+          // Start blinking
           const cursorBlink = setInterval(() => setShowCursor(prev => !prev), 500);
+          
+          // After 3 seconds, stop blinking and hide the cursor for good.
           setTimeout(() => {
             clearInterval(cursorBlink);
-            setShowCursor(true);
+            setShowCursor(false);
           }, 3000);
         }
       }, 100);
@@ -66,6 +69,7 @@ export function Header() {
 
   return (
     <header id="home" className="relative flex h-screen items-center overflow-hidden">
+      <div className="absolute inset-0 -z-10 bg-transparent" />
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-start space-y-6 text-left">
           
@@ -120,7 +124,11 @@ export function Header() {
             <div className="flex items-center flex-wrap justify-center gap-4">
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button variant="outline" size="lg" className="h-12 text-base transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-lg hover:shadow-primary/20 hover:border-primary/50 dark:hover:bg-primary/20 dark:hover:text-foreground">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="h-12 border-2 bg-transparent text-base text-foreground/80 transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:bg-primary/10 hover:text-primary hover:shadow-lg hover:shadow-primary/20"
+                  >
                     <FileText className="mr-2 h-4 w-4" /> View CV
                   </Button>
                 </DialogTrigger>
