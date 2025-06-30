@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Github, Linkedin, FileText, Instagram, Send } from "lucide-react";
@@ -22,6 +21,7 @@ export function Header() {
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [typedText, setTypedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isPaused, setIsPaused] = useState(false); // New state to control blinking
   const lenis = useLenis();
 
   useEffect(() => {
@@ -45,28 +45,32 @@ export function Header() {
 
     // Typing logic
     if (!isDeleting && typedText.length < currentPhrase.length) {
+      setIsPaused(false);
       timeout = setTimeout(() => {
         setTypedText(currentPhrase.substring(0, typedText.length + 1));
       }, 120);
     }
-    // Switch to deleting
+    // Pause before deleting
     else if (!isDeleting && typedText.length === currentPhrase.length) {
+      setIsPaused(true);
       timeout = setTimeout(() => {
         setIsDeleting(true);
-      }, 2000); // Pause before deleting
+      }, 2000); 
     }
     // Deleting logic
     else if (isDeleting && typedText.length > 0) {
+      setIsPaused(false);
       timeout = setTimeout(() => {
         setTypedText(typedText.slice(0, -1));
       }, 60);
     }
-    // Switch to next phrase
+    // Pause before typing next phrase
     else if (isDeleting && typedText.length === 0) {
+      setIsPaused(true);
       timeout = setTimeout(() => {
         setIsDeleting(false);
         setPhraseIndex((prevIndex) => (prevIndex + 1) % phrases.length);
-      }, 500); // Pause before typing next phrase
+      }, 500); 
     }
 
     return () => clearTimeout(timeout);
@@ -92,7 +96,8 @@ export function Header() {
               </span>
               <span
                 className={cn(
-                  "inline-block w-px h-[0.9em] bg-primary ml-2 align-bottom animate-cursor-blink"
+                  "inline-block w-px h-[0.9em] bg-primary ml-2 align-bottom",
+                  isPaused && "animate-cursor-blink"
                 )}
               />
             </span>
