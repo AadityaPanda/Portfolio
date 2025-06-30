@@ -24,9 +24,8 @@ export function Header() {
   const lenis = useLenis();
 
   useEffect(() => {
-    // Console log easter egg
     const styles = [
-      'color: #3b82f6', // A nice blue color
+      'color: #3b82f6',
       'font-size: 16px',
       'font-weight: bold',
       'font-family: "Space Grotesk", sans-serif',
@@ -38,7 +37,6 @@ export function Header() {
       "font-size: 12px; font-family: 'Inter', sans-serif;"
     );
 
-    // A delay before the typing animation starts
     const startTypingTimeout = setTimeout(() => {
       let i = 0;
       const typingInterval = setInterval(() => {
@@ -47,7 +45,6 @@ export function Header() {
           i++;
         } else {
           clearInterval(typingInterval);
-          // Cursor blinks for a bit then disappears
           const cursorBlink = setInterval(() => setShowCursor(prev => !prev), 500);
           setTimeout(() => {
             clearInterval(cursorBlink);
@@ -83,19 +80,19 @@ export function Header() {
   return (
     <header id="home" className="relative flex h-screen items-center overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="flex flex-col items-center space-y-6 text-center">
+        <div className="flex flex-col items-start space-y-6 text-left">
           
           <p className="text-xl font-headline text-primary animate-in fade-in slide-in-from-top-4 duration-700 delay-200">
             Hi, I'm Aaditya Panda
           </p>
-          <h1 className="flex items-center justify-center text-5xl font-headline font-bold tracking-tighter text-foreground sm:text-6xl lg:text-7xl xl:text-8xl animate-in fade-in slide-in-from-top-6 duration-700 delay-300">
-            <span className="flex items-center h-[1.2em]">
+          <h1 className="flex items-center justify-start text-6xl font-headline font-bold tracking-tighter text-foreground sm:text-7xl lg:text-8xl xl:text-9xl animate-in fade-in slide-in-from-top-6 duration-700 delay-300">
+            <span className="h-[1.2em] flex items-center">
               <span className="animate-gradient-shimmer bg-clip-text text-transparent bg-[length:200%_auto] bg-gradient-to-r from-primary via-accent to-primary">
                 {typedText}
               </span>
               <span
                 className={cn(
-                  "inline-block w-px h-[0.9em] bg-primary ml-1 align-bottom transition-opacity duration-200",
+                  "inline-block w-px h-[0.9em] bg-primary ml-2 align-bottom transition-opacity duration-200",
                   showCursor ? 'opacity-100' : 'opacity-0'
                 )}
               />
@@ -104,8 +101,7 @@ export function Header() {
           <p className="text-xl text-muted-foreground animate-in fade-in from-top-8 slide-in-from-top-8 duration-700 delay-400 max-w-2xl">
             I transform complex business requirements into elegant, scalable web applications, from system architecture to pixel-perfect UIs.
           </p>
-          <div className="flex flex-wrap justify-center items-center gap-x-6 gap-y-4 pt-6 animate-in fade-in from-top-10 slide-in-from-top-10 duration-700 delay-500">
-            {/* Social Icons Group */}
+          <div className="flex flex-wrap justify-start items-center gap-x-6 gap-y-4 pt-6 animate-in fade-in from-top-10 slide-in-from-top-10 duration-700 delay-500">
             <div className="flex items-center gap-4">
               {socialLinks.map((link, index) => (
                 <a 
@@ -126,10 +122,8 @@ export function Header() {
               ))}
             </div>
 
-            {/* Vertical Divider */}
             <div className="h-8 w-px bg-border" />
 
-            {/* Action Buttons Group */}
             <div className="flex items-center flex-wrap justify-center gap-4">
               <Dialog>
                 <DialogTrigger asChild>
