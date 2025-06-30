@@ -4,47 +4,26 @@ import { useEffect, useState } from 'react';
 import { ArrowDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { useLenis } from '@studio-freight/react-lenis';
 
-interface ScrollDownButtonProps {
-  sections: string[];
-}
-
-export function ScrollDownButton({ sections }: ScrollDownButtonProps) {
-  const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
+export function ScrollDownButton() {
+  const [isVisible, setIsVisible] = useState(false);
+  const lenis = useLenis();
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-
-      let activeIndex = 0;
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = document.getElementById(sections[i]);
-        if (section && section.offsetTop <= scrollPosition + window.innerHeight / 2) {
-          activeIndex = i;
-          break;
-        }
-      }
-      setCurrentSectionIndex(activeIndex);
+    // This state should only be evaluated on the client to prevent hydration errors.
+    const checkScroll = () => {
+      setIsVisible(window.scrollY < 100);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [sections]);
+    checkScroll();
+    window.addEventListener('scroll', checkScroll, { passive: true });
+    return () => window.removeEventListener('scroll', checkScroll);
+  }, []);
 
   const handleScrollDown = () => {
-    const nextSectionIndex = currentSectionIndex + 1;
-    if (nextSectionIndex < sections.length) {
-      const nextSectionId = sections[nextSectionIndex];
-      const targetElement = document.getElementById(nextSectionId);
-      if (targetElement) {
-        targetElement.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
+    lenis?.scrollTo('#about', { lerp: 0.1 });
   };
-  
-  const isVisible = currentSectionIndex === 0;
 
   return (
     <Button

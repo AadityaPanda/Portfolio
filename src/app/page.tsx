@@ -30,7 +30,7 @@ export default function Home() {
       </main>
       <Footer />
       <ScrollToTop />
-      <ScrollDownButton sections={['home', 'about', 'experience', 'projects', 'skills', 'education', 'contact']} />
+      <ScrollDownButton />
     </div>
   );
 }
