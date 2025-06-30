@@ -81,7 +81,7 @@ export function Header() {
   };
 
   return (
-    <header id="home" className="relative flex h-screen items-center bg-background overflow-hidden">
+    <header id="home" className="relative flex h-screen items-center overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-center space-y-6 text-center">
           
@@ -133,7 +133,7 @@ export function Header() {
             <div className="flex items-center flex-wrap justify-center gap-4">
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button variant="outline" size="lg" className="h-12 text-base transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-lg hover:shadow-primary/20 hover:bg-accent hover:text-accent-foreground dark:hover:bg-muted dark:hover:text-muted-foreground">
+                  <Button variant="outline" size="lg" className="h-12 text-base transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-lg hover:shadow-primary/20 hover:border-primary/50 dark:hover:bg-muted dark:hover:text-muted-foreground">
                     <FileText className="mr-2 h-4 w-4" /> View CV
                   </Button>
                 </DialogTrigger>
