@@ -2,6 +2,7 @@
 
 import { Github, Linkedin, Code, Instagram } from 'lucide-react';
 import { useLenis } from '@studio-freight/react-lenis';
+import { cn } from '@/lib/utils';
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/AadityaPanda", 'aria-label': 'GitHub' },
@@ -27,7 +28,9 @@ export function Footer() {
   };
 
   return (
-    <footer className="border-t border-border/20 bg-background/50 backdrop-blur-sm relative">
+    <footer className={cn(
+      "border-t border-border/20 bg-background/50 backdrop-blur-sm relative transition-colors duration-500 ease-in-out"
+    )}>
       <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       <div className="container mx-auto px-4 md:px-8 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center sm:text-left">
