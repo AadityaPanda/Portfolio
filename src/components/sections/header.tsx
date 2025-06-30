@@ -22,7 +22,7 @@ export function Header() {
   const [phraseIndex, setPhraseIndex] = useState(0);
   const [typedText, setTypedText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
-  const [isPaused, setIsPaused] = useState(false); // New state to control blinking
+  const [isPaused, setIsPaused] = useState(false);
   const lenis = useLenis();
 
   useEffect(() => {
@@ -44,28 +44,24 @@ export function Header() {
     const currentPhrase = phrases[phraseIndex];
     let timeout: NodeJS.Timeout;
 
-    // Typing logic
     if (!isDeleting && typedText.length < currentPhrase.length) {
       setIsPaused(false);
       timeout = setTimeout(() => {
         setTypedText(currentPhrase.substring(0, typedText.length + 1));
       }, 120);
     }
-    // Pause before deleting
     else if (!isDeleting && typedText.length === currentPhrase.length) {
       setIsPaused(true);
       timeout = setTimeout(() => {
         setIsDeleting(true);
       }, 2000); 
     }
-    // Deleting logic
     else if (isDeleting && typedText.length > 0) {
       setIsPaused(false);
       timeout = setTimeout(() => {
         setTypedText(typedText.slice(0, -1));
       }, 60);
     }
-    // Pause before typing next phrase
     else if (isDeleting && typedText.length === 0) {
       setIsPaused(true);
       timeout = setTimeout(() => {
@@ -140,7 +136,7 @@ export function Header() {
                 <DialogTrigger asChild>
                   <Button
                     size="lg"
-                    className="h-12 text-base transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl text-foreground bg-gradient-to-br from-neutral-100 to-neutral-300 dark:from-neutral-800 dark:to-neutral-700 bg-[length:200%_auto] hover:bg-right dark:hover:shadow-neutral-600/20 hover:shadow-neutral-400/30"
+                    className="h-12 text-base transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl text-foreground bg-gradient-to-br from-white to-neutral-200 dark:from-neutral-800 dark:to-neutral-700 bg-[length:200%_auto] hover:bg-right dark:hover:shadow-neutral-600/20 hover:shadow-neutral-300/30"
                   >
                     <FileText className="mr-2 h-4 w-4" /> View CV
                   </Button>
