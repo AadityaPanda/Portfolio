@@ -132,30 +132,25 @@
   }
   
   .bg-aurora {
-    background-image: radial-gradient(
-        ellipse 80% 80% at 20% -20%,
-        hsl(var(--primary) / 0.1),
-        transparent
-      ),
-      radial-gradient(
-        ellipse 80% 80% at 80% -20%,
-        hsl(var(--accent) / 0.1),
-        transparent
-      );
-    animation: background-pan 15s linear infinite;
     background-color: hsl(var(--background));
+    background-image: 
+      radial-gradient(ellipse 80% 80% at 20% -20%, hsl(var(--primary) / 0.25), transparent),
+      radial-gradient(ellipse 80% 80% at 80% 120%, hsl(var(--accent) / 0.2), transparent);
+    background-size: 200% 200%;
+    animation: background-pan 10s ease-in-out infinite;
   }
 
   .dark .bg-aurora {
-    background-image: radial-gradient(
-        ellipse 50% 50% at 20% -10%,
-        hsl(var(--primary) / 0.15),
-        transparent
-      ),
-      radial-gradient(
-        ellipse 50% 50% at 80% -10%,
-        hsl(var(--accent) / 0.1),
-        transparent
-      );
+    background-image: 
+      radial-gradient(ellipse 60% 60% at 20% -10%, hsl(var(--primary) / 0.2), transparent),
+      radial-gradient(ellipse 60% 60% at 90% 110%, hsl(var(--accent) / 0.15), transparent);
+  }
+
+  @keyframes background-pan {
+    0% { background-position: 0% 0%; }
+    25% { background-position: 100% 0%; }
+    50% { background-position: 100% 100%; }
+    75% { background-position: 0% 100%; }
+    100% { background-position: 0% 0%; }
   }
 }
