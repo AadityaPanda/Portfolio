@@ -72,11 +72,13 @@ export function Header() {
           <p className="text-xl font-headline text-primary animate-in fade-in slide-in-from-top-4 duration-700 delay-200">
             Hi, I'm Aaditya Panda
           </p>
-          <h1 className="text-5xl font-headline font-bold tracking-tighter text-foreground sm:text-6xl lg:text-7xl xl:text-8xl animate-in fade-in slide-in-from-top-6 duration-700 delay-300 min-h-[1.2em] sm:min-h-[1.2em] lg:min-h-[1.2em] xl:min-h-[1.2em]">
-            <span className="animate-gradient-shimmer bg-clip-text text-transparent bg-[length:200%_auto] bg-gradient-to-r from-primary via-accent to-primary">
-              {typedText}
+          <h1 className="flex items-center justify-center text-5xl font-headline font-bold tracking-tighter text-foreground sm:text-6xl lg:text-7xl xl:text-8xl animate-in fade-in slide-in-from-top-6 duration-700 delay-300 h-[1.2em]">
+            <span>
+              <span className="animate-gradient-shimmer bg-clip-text text-transparent bg-[length:200%_auto] bg-gradient-to-r from-primary via-accent to-primary">
+                {typedText}
+              </span>
+              {showCursor && <span className="inline-block w-1 h-[0.9em] bg-primary animate-pulse ml-1" />}
             </span>
-            {showCursor && <span className="inline-block w-1 h-[0.9em] bg-primary animate-pulse ml-1" />}
           </h1>
           <p className="text-xl text-muted-foreground animate-in fade-in from-top-8 slide-in-from-top-8 duration-700 delay-400 max-w-2xl">
             I transform complex business requirements into elegant, scalable web applications, from system architecture to pixel-perfect UIs.
