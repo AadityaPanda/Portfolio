@@ -12,14 +12,3 @@ export const ContactFormOutputSchema = z.object({
   message: z.string(),
 });
 export type ContactFormOutput = z.infer<typeof ContactFormOutputSchema>;
-
-export const PitchGeneratorInputSchema = z.object({
-  name: z.string(),
-  items: z.array(z.string()).min(1, { message: 'Please select at least one item.' }),
-});
-export type PitchGeneratorInput = z.infer<typeof PitchGeneratorInputSchema>;
-
-export const PitchGeneratorOutputSchema = z.object({
-  pitch: z.string(),
-});
-export type PitchGeneratorOutput = z.infer<typeof PitchGeneratorOutputSchema>;
