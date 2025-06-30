@@ -134,23 +134,28 @@
   .bg-aurora {
     background-color: hsl(var(--background));
     background-image: 
-      radial-gradient(ellipse 80% 80% at 20% -20%, hsl(var(--primary) / 0.25), transparent),
-      radial-gradient(ellipse 80% 80% at 80% 120%, hsl(var(--accent) / 0.2), transparent);
-    background-size: 200% 200%;
-    animation: background-pan 10s ease-in-out infinite;
+      radial-gradient(farthest-corner at 40% 40%, hsl(var(--primary) / 0.15) 0%, transparent 50%),
+      radial-gradient(farthest-corner at -40% -40%, hsl(var(--accent) / 0.15) 0%, transparent 50%),
+      radial-gradient(farthest-corner at 140% 140%, hsl(var(--accent) / 0.2) 0%, transparent 50%),
+      radial-gradient(farthest-corner at 60% -40%, hsl(var(--primary) / 0.2) 0%, transparent 50%);
+    background-size: 400% 400%;
+    animation: move-aurora 20s ease-in-out infinite alternate;
   }
 
   .dark .bg-aurora {
     background-image: 
-      radial-gradient(ellipse 60% 60% at 20% -10%, hsl(var(--primary) / 0.2), transparent),
-      radial-gradient(ellipse 60% 60% at 90% 110%, hsl(var(--accent) / 0.15), transparent);
+      radial-gradient(farthest-corner at 40% 40%, hsl(var(--primary) / 0.2) 0%, transparent 50%),
+      radial-gradient(farthest-corner at -40% -40%, hsl(var(--accent) / 0.2) 0%, transparent 50%),
+      radial-gradient(farthest-corner at 140% 140%, hsl(var(--accent) / 0.25) 0%, transparent 50%),
+      radial-gradient(farthest-corner at 60% -40%, hsl(var(--primary) / 0.25) 0%, transparent 50%);
   }
 
-  @keyframes background-pan {
-    0% { background-position: 0% 0%; }
-    25% { background-position: 100% 0%; }
-    50% { background-position: 100% 100%; }
-    75% { background-position: 0% 100%; }
-    100% { background-position: 0% 0%; }
+  @keyframes move-aurora {
+    0% {
+      background-position: 0% 0%, 100% 0%, 0% 100%, 100% 100%;
+    }
+    100% {
+      background-position: 100% 100%, 0% 100%, 100% 0%, 0% 0%;
+    }
   }
 }
