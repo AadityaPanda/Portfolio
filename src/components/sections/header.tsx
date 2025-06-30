@@ -64,19 +64,6 @@ export function Header() {
     lenis?.scrollTo(href);
   };
 
-  const getSocialHoverClass = (name: string) => {
-    switch (name) {
-      case 'linkedin':
-        return 'hover:bg-[#0077B5] hover:border-[#0077B5] hover:text-white';
-      case 'github':
-        return 'hover:bg-foreground hover:border-foreground hover:text-background';
-      case 'instagram':
-        return 'hover:bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 hover:border-transparent hover:text-white';
-      default:
-        return 'hover:bg-primary/10 hover:border-primary';
-    }
-  };
-
   return (
     <header id="home" className="relative flex h-screen items-center overflow-hidden">
       <div className="container mx-auto px-4">
@@ -103,23 +90,29 @@ export function Header() {
           </p>
           <div className="flex flex-wrap justify-start items-center gap-x-6 gap-y-4 pt-6 animate-in fade-in from-top-10 slide-in-from-top-10 duration-700 delay-500">
             <div className="flex items-center gap-4">
-              {socialLinks.map((link, index) => (
-                <a 
-                  key={index} 
-                  href={link.href} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  aria-label={link['aria-label']}
-                  className={cn(
-                    "h-12 w-12 rounded-full flex items-center justify-center border transition-all duration-300",
-                    "bg-transparent border-foreground/20 text-foreground/80",
-                    "hover:-translate-y-1 hover:shadow-lg",
-                    getSocialHoverClass(link.name)
-                  )}
-                >
-                  <link.icon className="h-6 w-6" />
-                </a>
-              ))}
+              {socialLinks.map((link, index) => {
+                const gradientClasses = {
+                  linkedin: 'bg-gradient-to-br from-sky-500 to-blue-600 hover:shadow-blue-500/30',
+                  github: 'bg-gradient-to-br from-gray-700 to-gray-900 hover:shadow-gray-600/30',
+                  instagram: 'bg-gradient-to-br from-yellow-400 via-pink-500 to-purple-600 hover:shadow-pink-500/30',
+                }[link.name] || '';
+
+                return (
+                    <a 
+                      key={index} 
+                      href={link.href} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      aria-label={link['aria-label']}
+                      className={cn(
+                        "h-12 w-12 rounded-full flex items-center justify-center text-white transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl bg-[length:200%_auto] hover:bg-right",
+                        gradientClasses
+                      )}
+                    >
+                      <link.icon className="h-6 w-6" />
+                    </a>
+                )
+              })}
             </div>
 
             <div className="h-8 w-px bg-border" />
@@ -127,7 +120,7 @@ export function Header() {
             <div className="flex items-center flex-wrap justify-center gap-4">
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button variant="outline" size="lg" className="h-12 text-base transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-lg hover:shadow-primary/20 hover:border-primary/50 dark:hover:bg-muted dark:hover:text-primary">
+                  <Button variant="outline" size="lg" className="h-12 text-base transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-lg hover:shadow-primary/20 hover:border-primary/50 dark:hover:bg-primary/20 dark:hover:text-foreground">
                     <FileText className="mr-2 h-4 w-4" /> View CV
                   </Button>
                 </DialogTrigger>
