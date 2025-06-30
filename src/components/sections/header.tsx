@@ -8,6 +8,7 @@ import { CV_PATH } from "@/lib/data";
 import { useState, useEffect } from "react";
 import { useLenis } from "@studio-freight/react-lenis";
 import { cn } from "@/lib/utils";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 
 const socialLinks = [
@@ -24,6 +25,7 @@ export function Header() {
   const [isDeleting, setIsDeleting] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const lenis = useLenis();
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     const styles = [
@@ -41,6 +43,8 @@ export function Header() {
   }, []);
 
   useEffect(() => {
+    if (isMobile) return;
+
     const currentPhrase = phrases[phraseIndex];
     let timeout: NodeJS.Timeout;
 
@@ -71,7 +75,7 @@ export function Header() {
     }
 
     return () => clearTimeout(timeout);
-  }, [typedText, isDeleting, phraseIndex]);
+  }, [typedText, isDeleting, phraseIndex, isMobile]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -86,18 +90,24 @@ export function Header() {
           <p className="text-xl font-headline text-primary animate-in fade-in slide-in-from-top-4 duration-700 delay-200">
             Hi, I'm Aaditya Panda
           </p>
-          <h1 className="flex items-center justify-start text-4xl font-headline font-bold tracking-tighter text-foreground sm:text-6xl lg:text-7xl xl:text-8xl h-24 sm:h-32 lg:h-40 xl:h-48 animate-in fade-in slide-in-from-top-6 duration-700 delay-300">
-            <span className="inline-flex items-center">
+          <h1 className="flex items-center justify-start text-4xl font-headline font-bold tracking-tighter text-foreground sm:text-6xl lg:text-7xl xl:text-8xl h-32 animate-in fade-in slide-in-from-top-6 duration-700 delay-300">
+            {isMobile ? (
               <span className="animate-gradient-shimmer bg-clip-text text-transparent bg-[length:200%_auto] bg-gradient-to-r from-primary via-accent to-primary">
-                {typedText}
+                Software Developer
               </span>
-              <span
-                className={cn(
-                  "inline-block w-px h-[0.9em] bg-primary ml-2 align-bottom",
-                  isPaused && "animate-cursor-blink"
-                )}
-              />
-            </span>
+            ) : (
+              <span className="inline-flex items-center">
+                <span className="animate-gradient-shimmer bg-clip-text text-transparent bg-[length:200%_auto] bg-gradient-to-r from-primary via-accent to-primary">
+                  {typedText}
+                </span>
+                <span
+                  className={cn(
+                    "inline-block w-px h-[0.9em] bg-primary ml-2 align-bottom",
+                    isPaused && "animate-cursor-blink"
+                  )}
+                />
+              </span>
+            )}
           </h1>
           <p className="text-lg sm:text-xl text-muted-foreground animate-in fade-in from-top-8 slide-in-from-top-8 duration-700 delay-400 max-w-2xl">
             I transform complex business requirements into elegant, scalable web applications, from system architecture to pixel-perfect UIs.
