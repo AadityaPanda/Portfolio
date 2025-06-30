@@ -10,13 +10,11 @@ interface ScrollDownButtonProps {
 }
 
 export function ScrollDownButton({ sections }: ScrollDownButtonProps) {
-  const [isVisible, setIsVisible] = useState(false);
   const [currentSectionIndex, setCurrentSectionIndex] = useState(0);
 
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      setIsVisible(scrollPosition > 100);
 
       let activeIndex = 0;
       for (let i = sections.length - 1; i >= 0; i--) {
@@ -46,7 +44,7 @@ export function ScrollDownButton({ sections }: ScrollDownButtonProps) {
     }
   };
   
-  const isLastSection = currentSectionIndex >= sections.length - 1;
+  const isVisible = currentSectionIndex === 0;
 
   return (
     <Button
@@ -55,7 +53,7 @@ export function ScrollDownButton({ sections }: ScrollDownButtonProps) {
       onClick={handleScrollDown}
       className={cn(
         'fixed bottom-8 left-1/2 -translate-x-1/2 z-50 h-12 w-12 rounded-full transition-all duration-300 animate-pulse',
-        isVisible && !isLastSection ? 'opacity-100 scale-100' : 'opacity-0 scale-0 pointer-events-none'
+        isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-0 pointer-events-none'
       )}
       aria-label="Scroll to next section"
     >
