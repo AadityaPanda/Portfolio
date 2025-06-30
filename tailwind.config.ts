@@ -108,12 +108,17 @@ export default {
           '50%': { backgroundPosition: '100% 50%' },
           '100%': { backgroundPosition: '0% 50%' },
         },
+        'cursor-blink': {
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'scroll-indicator': 'scroll-indicator 2.5s infinite ease-in-out',
         'background-pan': 'background-pan 15s ease-in-out infinite',
+        'cursor-blink': 'cursor-blink 1.4s infinite',
       },
     },
   },

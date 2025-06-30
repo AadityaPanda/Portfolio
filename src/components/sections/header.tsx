@@ -92,7 +92,7 @@ export function Header() {
               </span>
               <span
                 className={cn(
-                  "inline-block w-px h-[0.9em] bg-primary ml-2 align-bottom transition-opacity duration-200 animate-pulse"
+                  "inline-block w-px h-[0.9em] bg-primary ml-2 align-bottom animate-cursor-blink"
                 )}
               />
             </span>
@@ -134,7 +134,7 @@ export function Header() {
                 <DialogTrigger asChild>
                   <Button
                     size="lg"
-                    className="h-12 text-base text-foreground border border-input/80 bg-gradient-to-br from-muted to-background/50 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl hover:shadow-foreground/10 bg-[length:200%_auto] hover:bg-right"
+                    className="h-12 text-base text-foreground border-transparent bg-gradient-to-br from-neutral-300 to-neutral-100 dark:from-neutral-800 dark:to-neutral-900 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl hover:shadow-foreground/10 bg-[length:200%_auto] hover:bg-right"
                   >
                     <FileText className="mr-2 h-4 w-4" /> View CV
                   </Button>
