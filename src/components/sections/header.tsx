@@ -10,9 +10,9 @@ import { cn } from "@/lib/utils";
 
 
 const socialLinks = [
-  { icon: Linkedin, href: "https://www.linkedin.com/in/aadityapanda/", 'aria-label': 'Aaditya Panda on LinkedIn' },
-  { icon: Github, href: "https://github.com/AadityaPanda", 'aria-label': 'Aaditya Panda on GitHub' },
-  { icon: Instagram, href: "https://www.instagram.com/_aaditya_panda_/", 'aria-label': 'Aaditya Panda on Instagram' },
+  { name: 'linkedin', icon: Linkedin, href: "https://www.linkedin.com/in/aadityapanda/", 'aria-label': 'Aaditya Panda on LinkedIn' },
+  { name: 'github', icon: Github, href: "https://github.com/AadityaPanda", 'aria-label': 'Aaditya Panda on GitHub' },
+  { name: 'instagram', icon: Instagram, href: "https://www.instagram.com/_aaditya_panda_/", 'aria-label': 'Aaditya Panda on Instagram' },
 ];
 
 const fullText = "Software Developer";
@@ -66,6 +66,19 @@ export function Header() {
     lenis?.scrollTo(href);
   };
 
+  const getSocialHoverClass = (name: string) => {
+    switch (name) {
+      case 'linkedin':
+        return 'hover:bg-[#0077B5] hover:border-[#0077B5] hover:text-white';
+      case 'github':
+        return 'hover:bg-foreground hover:border-foreground hover:text-background';
+      case 'instagram':
+        return 'hover:bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 hover:border-transparent hover:text-white';
+      default:
+        return 'hover:bg-primary/10 hover:border-primary';
+    }
+  };
+
   return (
     <header id="home" className="relative flex h-screen items-center bg-background overflow-hidden">
       <div className="container mx-auto px-4">
@@ -94,11 +107,21 @@ export function Header() {
             {/* Social Icons Group */}
             <div className="flex items-center gap-4">
               {socialLinks.map((link, index) => (
-                <Button key={index} variant="outline" size="icon" asChild className="h-12 w-12 transition-all hover:bg-primary/10 hover:border-primary hover:text-primary hover:-translate-y-1">
-                  <a href={link.href} target="_blank" rel="noopener noreferrer" aria-label={link['aria-label']}>
-                    <link.icon className="h-6 w-6" />
-                  </a>
-                </Button>
+                <a 
+                  key={index} 
+                  href={link.href} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  aria-label={link['aria-label']}
+                  className={cn(
+                    "h-12 w-12 rounded-full flex items-center justify-center border transition-all duration-300",
+                    "bg-transparent border-foreground/20 text-foreground/80",
+                    "hover:-translate-y-1 hover:shadow-lg",
+                    getSocialHoverClass(link.name)
+                  )}
+                >
+                  <link.icon className="h-6 w-6" />
+                </a>
               ))}
             </div>
 
@@ -109,7 +132,7 @@ export function Header() {
             <div className="flex items-center flex-wrap justify-center gap-4">
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button variant="outline" size="lg" className="h-12 text-base transition-all hover:bg-primary/10 hover:border-primary hover:text-primary hover:-translate-y-1" aria-label="View CV">
+                  <Button variant="outline" size="lg" className="h-12 text-base transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-lg hover:shadow-primary/20 hover:bg-primary/5">
                     <FileText className="mr-2 h-4 w-4" /> View CV
                   </Button>
                 </DialogTrigger>
@@ -126,7 +149,7 @@ export function Header() {
                   </div>
                 </DialogContent>
               </Dialog>
-              <Button size="lg" asChild className="h-12 text-base transition-all hover:-translate-y-1">
+              <Button size="lg" asChild className="h-12 text-base transition-all duration-300 hover:-translate-y-1 text-primary-foreground shadow-lg hover:shadow-xl hover:shadow-primary/30 bg-gradient-to-r from-primary via-accent to-primary/80 bg-[length:200%_auto] hover:bg-right">
                 <a href="#contact" onClick={(e) => handleNavClick(e, '#contact')}>
                   <Send className="mr-2 h-4 w-4" />
                   Get in Touch
