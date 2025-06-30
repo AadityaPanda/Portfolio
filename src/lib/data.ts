@@ -5,7 +5,7 @@ export const ABOUT_ME_TEXT = "A passionate and driven Software Developer with ha
 export const SKILLS_DATA = {
   "Languages": ["JavaScript", "TypeScript", "Python", "HTML5", "CSS3", "SQL"],
   "Frameworks & Libraries": ["React", "Next.js", "Express.js", "Tailwind CSS"],
-  "Platforms & Tools": ["Git", "Firebase", "Nginx"],
+  "Platforms & Tools": ["Node.js", "Git", "Firebase", "Nginx"],
 };
 
 export const EXPERIENCE_DATA = [
