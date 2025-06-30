@@ -43,7 +43,11 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    if (isMobile) return;
+    if (isMobile) {
+        // On mobile, set the static text and do nothing else.
+        setTypedText(phrases[0]);
+        return;
+    }
 
     const currentPhrase = phrases[phraseIndex];
     let timeout: NodeJS.Timeout;
@@ -90,7 +94,7 @@ export function Header() {
           <p className="text-xl font-headline text-primary animate-in fade-in slide-in-from-top-4 duration-700 delay-200">
             Hi, I'm Aaditya Panda
           </p>
-          <h1 className="flex items-center justify-start text-4xl font-headline font-bold tracking-tighter text-foreground sm:text-6xl lg:text-7xl xl:text-8xl h-32 animate-in fade-in slide-in-from-top-6 duration-700 delay-300">
+          <h1 className="flex items-center justify-start text-5xl font-headline font-bold tracking-tighter text-foreground sm:text-6xl lg:text-7xl xl:text-8xl h-32 animate-in fade-in slide-in-from-top-6 duration-700 delay-300">
             {isMobile ? (
               <span className="animate-gradient-shimmer bg-clip-text text-transparent bg-[length:200%_auto] bg-gradient-to-r from-primary via-accent to-primary">
                 Software Developer
