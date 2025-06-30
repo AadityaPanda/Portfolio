@@ -69,7 +69,6 @@ export function Header() {
 
   return (
     <header id="home" className="relative flex h-screen items-center overflow-hidden">
-      <div className="absolute inset-0 -z-10 bg-transparent" />
       <div className="container mx-auto px-4">
         <div className="flex flex-col items-start space-y-6 text-left">
           
@@ -127,7 +126,7 @@ export function Header() {
                   <Button
                     variant="outline"
                     size="lg"
-                    className="h-12 border-2 bg-transparent text-base text-foreground/80 transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:bg-primary/10 hover:text-primary hover:shadow-lg hover:shadow-primary/20"
+                    className="h-12 border-2 border-foreground/50 bg-transparent text-base text-foreground/80 transition-all duration-300 hover:-translate-y-1 hover:border-primary hover:bg-primary/10 hover:text-primary hover:shadow-lg hover:shadow-primary/20"
                   >
                     <FileText className="mr-2 h-4 w-4" /> View CV
                   </Button>
