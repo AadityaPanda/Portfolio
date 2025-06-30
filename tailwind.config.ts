@@ -98,10 +98,16 @@ export default {
             height: '0',
           },
         },
+        'scroll-indicator': {
+          '0%': { transform: 'translateY(-3px)', opacity: '0' },
+          '30%': { opacity: '1' },
+          '70%': { transform: 'translateY(6px)', opacity: '0' },
+        }
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        'scroll-indicator': 'scroll-indicator 2.5s infinite ease-in-out',
       },
     },
   },
