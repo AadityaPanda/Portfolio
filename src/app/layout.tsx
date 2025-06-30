@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn(
-        "font-body antialiased scrollbar-none",
+        "font-body antialiased scrollbar-none bg-aurora",
         inter.variable,
         spaceGrotesk.variable
       )}>
@@ -29,12 +29,9 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <div className="fixed top-0 left-0 w-full h-full bg-aurora -z-10" />
-          <div className="relative z-0">
-            <SmoothScroll>
-              {children}
-            </SmoothScroll>
-          </div>
+          <SmoothScroll>
+            {children}
+          </SmoothScroll>
           <Toaster />
         </ThemeProvider>
       </body>

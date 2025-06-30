@@ -69,10 +69,6 @@
   * {
     @apply border-border;
   }
-  
-  html {
-    @apply bg-background;
-  }
 
   body {
     @apply text-foreground;
@@ -147,6 +143,7 @@
         transparent
       );
     animation: background-pan 15s linear infinite;
+    background-color: hsl(var(--background));
   }
 
   .dark .bg-aurora {
