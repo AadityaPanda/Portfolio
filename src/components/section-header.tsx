@@ -44,7 +44,7 @@ export const SectionHeader = ({ children, title }: SectionHeaderProps) => {
       {/* Underline Animation: Grow from center */}
       <div
         className={cn(
-          'h-1 w-24 rounded-full bg-primary origin-center transition-transform duration-700 delay-300 ease-out',
+          'h-1 w-24 rounded-full bg-gradient-to-r from-accent via-primary to-accent origin-center transition-transform duration-700 delay-300 ease-out',
           inView ? 'scale-x-100' : 'scale-x-0'
         )}
       />

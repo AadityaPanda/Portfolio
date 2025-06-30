@@ -29,9 +29,12 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <SmoothScroll>
-            {children}
-          </SmoothScroll>
+          <div className="fixed top-0 left-0 w-full h-full bg-aurora -z-10" />
+          <div className="relative z-0">
+            <SmoothScroll>
+              {children}
+            </SmoothScroll>
+          </div>
           <Toaster />
         </ThemeProvider>
       </body>

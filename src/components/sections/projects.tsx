@@ -48,12 +48,12 @@ const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
       {/* Image/Carousel Mockup */}
       <div className={cn(
-        "group",
+        "group transition-all duration-300 hover:-translate-y-2",
         reverse ? "lg:order-last" : ""
       )}>
         {isProfessional ? (
-           <div className="rounded-lg border border-border/50 shadow-lg overflow-hidden bg-muted/30 group-hover:shadow-primary/10 group-hover:border-primary/30 transition-all duration-300">
-             <div className="h-8 bg-muted/50 flex items-center px-3 border-b border-border/50">
+           <div className="rounded-lg border border-border bg-card shadow-lg overflow-hidden group-hover:shadow-2xl group-hover:shadow-primary/10 group-hover:border-primary/50 transition-all duration-300">
+             <div className="h-8 bg-muted/50 flex items-center px-3 border-b border-border">
                <div className="flex items-center gap-1.5">
                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
                  <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
@@ -62,7 +62,7 @@ const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: {
              </div>
              {mediaElement}
            </div>
-        ) : mediaElement}
+        ) : <div className="transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-primary/10">{mediaElement}</div>}
       </div>
 
       {/* Project Details */}
@@ -108,7 +108,7 @@ const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: {
 
 export function Projects() {
   return (
-    <section id="projects" className="py-24 bg-background">
+    <section id="projects" className="py-24 bg-secondary/30">
       <div className="container mx-auto px-4 md:px-8">
         <SectionHeader title="My Work">
           <Rocket className="h-8 w-8" />

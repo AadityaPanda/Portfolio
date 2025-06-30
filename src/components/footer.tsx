@@ -27,7 +27,8 @@ export function Footer() {
   };
 
   return (
-    <footer className="border-t border-border/20 bg-background/50 backdrop-blur-sm">
+    <footer className="border-t border-border/20 bg-background/50 backdrop-blur-sm relative">
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       <div className="container mx-auto px-4 md:px-8 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 text-center sm:text-left">
           {/* Column 1: Branding */}

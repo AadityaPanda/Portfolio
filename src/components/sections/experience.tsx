@@ -5,7 +5,7 @@ import { SectionHeader } from "../section-header";
 
 export function Experience() {
   return (
-    <section id="experience" className="py-24 bg-background">
+    <section id="experience" className="py-24">
       <div className="container mx-auto px-4 md:px-8">
         <SectionHeader title="Work Experience">
           <Briefcase className="h-8 w-8" />
@@ -17,7 +17,7 @@ export function Experience() {
               <div className="absolute -left-[45.5px] top-1 h-6 w-6 rounded-full bg-background flex items-center justify-center">
                 <div className="h-3 w-3 rounded-full bg-primary animate-pulse" />
               </div>
-              <Card className="bg-muted/30 border-border/50 transform transition-all duration-300 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10">
+              <Card className="bg-card transform transition-all duration-300 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2">
                 <CardHeader>
                   <CardTitle>{exp.role}</CardTitle>
                   <CardDescription className="flex justify-between flex-wrap pt-1">

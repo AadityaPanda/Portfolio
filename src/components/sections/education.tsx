@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 export function Education() {
   return (
-    <section id="education" className="py-24 bg-background">
+    <section id="education" className="py-24">
       <div className="container mx-auto px-4 md:px-8">
         <SectionHeader title="Education">
           <GraduationCap className="h-8 w-8" />
@@ -40,7 +40,7 @@ export function Education() {
                     )}>
                       <Accordion type="single" collapsible className="w-full">
                         <AccordionItem value={`edu-${index}`} className="border-none">
-                            <div className="border rounded-lg bg-muted/30 border-border/50 transition-all duration-300 data-[state=open]:border-primary/30 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/10 data-[state=open]:shadow-lg data-[state=open]:shadow-primary/10">
+                            <div className="border rounded-lg bg-card transition-all duration-300 hover:-translate-y-2 data-[state=open]:border-primary/50 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 data-[state=open]:shadow-2xl data-[state=open]:shadow-primary/10">
                               <AccordionTrigger className="p-6 text-left hover:no-underline">
                                 <div className="flex-1">
                                   <h4 className="font-semibold text-lg text-foreground/90">{edu.degree}</h4>
