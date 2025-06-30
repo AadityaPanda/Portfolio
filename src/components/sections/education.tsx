@@ -31,7 +31,7 @@ export function Education() {
                   
                   {/* Content Card */}
                   <div className={cn(
-                    "pl-10 md:pl-0 w-full",
+                    "pl-8 md:pl-0 w-full",
                     index % 2 === 0 ? "md:col-start-1 md:text-right" : "md:col-start-2"
                   )}>
                     <div className={cn(

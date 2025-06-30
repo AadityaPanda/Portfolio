@@ -71,7 +71,7 @@ export function SideNav() {
 
   return (
     <nav className={cn(
-      "group fixed top-1/2 -translate-y-1/2 left-0 z-50 hidden p-0 3xl:block transition-all duration-300",
+      "group fixed top-1/2 -translate-y-1/2 left-0 z-50 hidden p-0 xl:block transition-all duration-300",
       isNavVisible ? 'opacity-100' : 'opacity-0 pointer-events-none',
       isScrolling && "is-scrolling"
     )}>

@@ -24,7 +24,7 @@ export const SectionHeader = ({ children, title }: SectionHeaderProps) => {
           inView ? 'opacity-100 scale-100' : 'opacity-0 scale-50'
         )}
       >
-        <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
+        <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
           {children}
         </div>
       </div>
@@ -33,7 +33,7 @@ export const SectionHeader = ({ children, title }: SectionHeaderProps) => {
       <div className="overflow-hidden py-1">
         <h2
           className={cn(
-            'text-4xl md:text-5xl font-headline font-bold tracking-tight transition-transform duration-700 delay-150 ease-out',
+            'text-3xl sm:text-4xl md:text-5xl font-headline font-bold tracking-tight transition-transform duration-700 delay-150 ease-out',
             inView ? 'translate-y-0' : 'translate-y-full'
           )}
         >

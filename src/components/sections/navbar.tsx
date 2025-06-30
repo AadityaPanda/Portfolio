@@ -6,6 +6,8 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { useLenis } from '@studio-freight/react-lenis';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { Menu } from 'lucide-react';
+import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 
 const navLinks = [
   { name: 'About', href: '#about' },
@@ -38,7 +40,7 @@ export function Navbar() {
       setActiveSection(currentSection);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     handleScroll(); 
     return () => {
       window.removeEventListener('scroll', handleScroll);
@@ -85,6 +87,40 @@ export function Navbar() {
         </nav>
         <div className='flex items-center gap-2'>
             <ThemeToggle />
+            <div className="md:hidden">
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon">
+                    <Menu className="h-6 w-6" />
+                    <span className="sr-only">Toggle Menu</span>
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="left" className="w-[280px]">
+                  <div className="flex flex-col gap-6 py-8">
+                    <a href="#home" onClick={(e) => {
+                      handleNavClick(e, '#home');
+                      // Find a way to close the sheet, perhaps by using SheetClose or managing state
+                    }} className="text-xl font-bold font-headline px-4">Aaditya Panda</a>
+                    <nav className="flex flex-col items-start gap-1 px-2">
+                        {navLinks.map((link) => (
+                          <SheetClose asChild key={link.href}>
+                            <Button 
+                                variant="ghost" 
+                                asChild
+                                className={cn(
+                                    "w-full justify-start text-base py-6",
+                                    activeSection === link.href.substring(1) ? "text-primary bg-primary/10" : "text-muted-foreground"
+                                )}
+                            >
+                                <a href={link.href} onClick={(e) => handleNavClick(e, link.href)}>{link.name}</a>
+                            </Button>
+                          </SheetClose>
+                        ))}
+                    </nav>
+                  </div>
+                </SheetContent>
+              </Sheet>
+            </div>
         </div>
       </div>
     </header>
