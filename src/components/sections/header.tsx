@@ -6,6 +6,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from 
 import { CV_PATH } from "@/lib/data";
 import { useState, useEffect } from "react";
 import { useLenis } from "@studio-freight/react-lenis";
+import { cn } from "@/lib/utils";
 
 const socialLinks = [
   { icon: Linkedin, href: "https://www.linkedin.com/in/aadityapanda/", 'aria-label': 'Aaditya Panda on LinkedIn' },
@@ -77,7 +78,12 @@ export function Header() {
               <span className="animate-gradient-shimmer bg-clip-text text-transparent bg-[length:200%_auto] bg-gradient-to-r from-primary via-accent to-primary">
                 {typedText}
               </span>
-              {showCursor && <span className="inline-block w-1 h-[0.9em] bg-primary animate-pulse ml-1" />}
+              <span
+                className={cn(
+                  "inline-block w-1 h-[0.9em] bg-primary ml-1 transition-opacity duration-200",
+                  showCursor ? 'opacity-100' : 'opacity-0'
+                )}
+              />
             </span>
           </h1>
           <p className="text-xl text-muted-foreground animate-in fade-in from-top-8 slide-in-from-top-8 duration-700 delay-400 max-w-2xl">
