@@ -80,7 +80,7 @@ export function Header() {
               </span>
               <span
                 className={cn(
-                  "inline-block w-1 h-[0.9em] bg-primary ml-1 transition-opacity duration-200",
+                  "inline-block w-px h-[0.9em] bg-primary ml-1 align-bottom transition-opacity duration-200",
                   showCursor ? 'opacity-100' : 'opacity-0'
                 )}
               />
