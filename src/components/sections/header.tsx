@@ -16,11 +16,12 @@ const socialLinks = [
   { name: 'instagram', icon: Instagram, href: "https://www.instagram.com/_aaditya_panda_/", 'aria-label': 'Aaditya Panda on Instagram' },
 ];
 
-const fullText = "Software Developer";
+const phrases = ["Software Developer", "Full-Stack Architect", "Creative Problem-Solver"];
 
 export function Header() {
+  const [phraseIndex, setPhraseIndex] = useState(0);
   const [typedText, setTypedText] = useState('');
-  const [showCursor, setShowCursor] = useState(true);
+  const [isDeleting, setIsDeleting] = useState(false);
   const lenis = useLenis();
 
   useEffect(() => {
@@ -36,31 +37,40 @@ export function Header() {
       "%cGlad to see you're checking out the portfolio. If you like what you see, let's connect!",
       "font-size: 12px; font-family: 'Inter', sans-serif;"
     );
-
-    const startTypingTimeout = setTimeout(() => {
-      let i = 0;
-      const typingInterval = setInterval(() => {
-        if (i < fullText.length) {
-          setTypedText(fullText.substring(0, i + 1));
-          i++;
-        } else {
-          clearInterval(typingInterval);
-          // Start blinking
-          const cursorBlink = setInterval(() => setShowCursor(prev => !prev), 500);
-          
-          // After 3 seconds, stop blinking and hide the cursor for good.
-          setTimeout(() => {
-            clearInterval(cursorBlink);
-            setShowCursor(false);
-          }, 3000);
-        }
-      }, 100);
-
-      return () => clearInterval(typingInterval);
-    }, 500); 
-
-    return () => clearTimeout(startTypingTimeout);
   }, []);
+
+  useEffect(() => {
+    const currentPhrase = phrases[phraseIndex];
+    let timeout: NodeJS.Timeout;
+
+    // Typing logic
+    if (!isDeleting && typedText.length < currentPhrase.length) {
+      timeout = setTimeout(() => {
+        setTypedText(currentPhrase.substring(0, typedText.length + 1));
+      }, 120);
+    }
+    // Switch to deleting
+    else if (!isDeleting && typedText.length === currentPhrase.length) {
+      timeout = setTimeout(() => {
+        setIsDeleting(true);
+      }, 2000); // Pause before deleting
+    }
+    // Deleting logic
+    else if (isDeleting && typedText.length > 0) {
+      timeout = setTimeout(() => {
+        setTypedText(typedText.slice(0, -1));
+      }, 60);
+    }
+    // Switch to next phrase
+    else if (isDeleting && typedText.length === 0) {
+      timeout = setTimeout(() => {
+        setIsDeleting(false);
+        setPhraseIndex((prevIndex) => (prevIndex + 1) % phrases.length);
+      }, 500); // Pause before typing next phrase
+    }
+
+    return () => clearTimeout(timeout);
+  }, [typedText, isDeleting, phraseIndex]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -82,8 +92,7 @@ export function Header() {
               </span>
               <span
                 className={cn(
-                  "inline-block w-px h-[0.9em] bg-primary ml-2 align-bottom transition-opacity duration-200",
-                  showCursor ? 'opacity-100' : 'opacity-0'
+                  "inline-block w-px h-[0.9em] bg-primary ml-2 align-bottom transition-opacity duration-200 animate-pulse"
                 )}
               />
             </span>
@@ -125,7 +134,7 @@ export function Header() {
                 <DialogTrigger asChild>
                   <Button
                     size="lg"
-                    className="h-12 text-base text-foreground border border-border/50 bg-gradient-to-br from-muted to-background/50 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl hover:shadow-foreground/10 bg-[length:200%_auto] hover:bg-right"
+                    className="h-12 text-base text-foreground border border-input/80 bg-gradient-to-br from-muted to-background/50 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl hover:shadow-foreground/10 bg-[length:200%_auto] hover:bg-right"
                   >
                     <FileText className="mr-2 h-4 w-4" /> View CV
                   </Button>
