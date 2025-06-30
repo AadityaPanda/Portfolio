@@ -86,8 +86,8 @@ export function Header() {
           <p className="text-xl font-headline text-primary animate-in fade-in slide-in-from-top-4 duration-700 delay-200">
             Hi, I'm Aaditya Panda
           </p>
-          <h1 className="flex items-center justify-start text-6xl font-headline font-bold tracking-tighter text-foreground sm:text-7xl lg:text-8xl xl:text-9xl animate-in fade-in slide-in-from-top-6 duration-700 delay-300">
-            <span className="h-[1.2em] flex items-center">
+          <h1 className="flex items-center justify-start text-5xl font-headline font-bold tracking-tighter text-foreground sm:text-6xl lg:text-7xl xl:text-8xl min-h-[8rem] lg:min-h-0 animate-in fade-in slide-in-from-top-6 duration-700 delay-300">
+            <span className="flex items-center">
               <span className="animate-gradient-shimmer bg-clip-text text-transparent bg-[length:200%_auto] bg-gradient-to-r from-primary via-accent to-primary">
                 {typedText}
               </span>
@@ -99,7 +99,7 @@ export function Header() {
               />
             </span>
           </h1>
-          <p className="text-xl text-muted-foreground animate-in fade-in from-top-8 slide-in-from-top-8 duration-700 delay-400 max-w-2xl">
+          <p className="text-lg sm:text-xl text-muted-foreground animate-in fade-in from-top-8 slide-in-from-top-8 duration-700 delay-400 max-w-2xl">
             I transform complex business requirements into elegant, scalable web applications, from system architecture to pixel-perfect UIs.
           </p>
           <div className="flex flex-wrap justify-start items-center gap-x-6 gap-y-4 pt-6 animate-in fade-in from-top-10 slide-in-from-top-10 duration-700 delay-500">
