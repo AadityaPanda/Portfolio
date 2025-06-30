@@ -139,7 +139,7 @@ export function Header() {
                 <DialogTrigger asChild>
                   <Button
                     size="lg"
-                    className="h-12 text-base text-foreground border-transparent bg-gradient-to-br from-neutral-300 to-neutral-100 dark:from-neutral-800 dark:to-neutral-900 transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl hover:shadow-foreground/10 bg-[length:200%_auto] hover:bg-right"
+                    className="h-12 text-base transition-all duration-300 hover:-translate-y-1 shadow-lg hover:shadow-xl hover:shadow-neutral-500/20 dark:hover:shadow-neutral-400/20 bg-gradient-to-br from-neutral-300 to-neutral-100 dark:from-neutral-800 dark:to-neutral-900 bg-[length:200%_auto] hover:bg-right"
                   >
                     <FileText className="mr-2 h-4 w-4" /> View CV
                   </Button>
@@ -157,7 +157,7 @@ export function Header() {
                   </div>
                 </DialogContent>
               </Dialog>
-              <Button size="lg" asChild className="h-12 text-base transition-all duration-300 hover:-translate-y-1 text-primary-foreground shadow-lg hover:shadow-xl hover:shadow-primary/30 bg-gradient-to-r from-primary via-accent to-primary/80 bg-[length:200%_auto] hover:bg-right">
+              <Button size="lg" asChild>
                 <a href="#contact" onClick={(e) => handleNavClick(e, '#contact')}>
                   <Send className="mr-2 h-4 w-4" />
                   Get in Touch

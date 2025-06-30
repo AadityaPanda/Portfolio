@@ -101,7 +101,6 @@ export function ContactForm() {
           type="submit"
           size="lg"
           disabled={isSubmitting}
-          className="h-12 text-base transition-all duration-300 hover:-translate-y-1 text-primary-foreground shadow-lg hover:shadow-xl hover:shadow-primary/30 bg-gradient-to-r from-primary via-accent to-primary/80 bg-[length:200%_auto] hover:bg-right"
         >
           {isSubmitting ? 'Sending...' : 'Send Message'}
           <Send className="ml-2 h-4 w-4" />
