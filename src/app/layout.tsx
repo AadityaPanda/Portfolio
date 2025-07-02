@@ -5,6 +5,7 @@ import { ThemeProvider } from '@/components/theme-provider';
 import { inter, spaceGrotesk } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 import SmoothScroll from '@/components/smooth-scroll';
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: 'Portfolio | Aaditya Panda',
@@ -33,6 +34,7 @@ export default function RootLayout({
           </SmoothScroll>
           <Toaster />
         </ThemeProvider>
+        <SpeedInsights />
       </body>
     </html>
   );
