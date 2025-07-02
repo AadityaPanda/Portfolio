@@ -105,10 +105,9 @@ const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: {
   );
 };
 
-
-export function Projects() {
+export default function Projects() {
   return (
-    <section id="projects" className="py-24 bg-secondary/30">
+    <section id="projects" className="py-24">
       <div className="container mx-auto px-4 md:px-8">
         <SectionHeader title="My Work">
           <Rocket className="h-8 w-8" />

@@ -9,7 +9,7 @@ type SectionHeaderProps = {
   title: string;
 };
 
-export const SectionHeader = ({ children, title }: SectionHeaderProps) => {
+export function SectionHeader({ children, title }: SectionHeaderProps) {
   const { ref, inView } = useInView({
     triggerOnce: true,
     threshold: 0.2,

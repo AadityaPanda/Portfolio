@@ -148,20 +148,3 @@ export const PERSONAL_PROJECTS_DATA = [
     ]
   }
 ];
-
-export const TESTIMONIALS_DATA = [
-  {
-    quote: "Aaditya is a rare talent. His ability to tackle complex architectural challenges and deliver clean, efficient code was instrumental to our project's success. He's a proactive problem-solver and a fantastic team player.",
-    name: "Jane Doe",
-    title: "Senior Project Manager, Bitchief",
-    avatar: "/media/avatar-jane-doe.png",
-    hint: "woman portrait"
-  },
-  {
-    quote: "Working with Aaditya was a pleasure. He has a deep understanding of full-stack development and a keen eye for detail. His contributions to our PAM solution were invaluable, especially his work on the time-based access policies.",
-    name: "John Smith",
-    title: "Lead Engineer, Bitchief",
-    avatar: "/media/avatar-john-smith.png",
-    hint: "man portrait"
-  }
-];

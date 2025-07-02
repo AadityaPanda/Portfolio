@@ -6,7 +6,7 @@ import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
 import { useLenis } from '@studio-freight/react-lenis';
 import { useIsMobile } from '@/hooks/use-mobile';
-import { Menu } from 'lucide-react';
+import { Menu, Code } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 
 const navLinks = [
@@ -28,9 +28,12 @@ export function Navbar() {
     const handleScroll = () => {
       setHasScrolled(window.scrollY > 50);
 
-      const sections = navLinks.map(link => document.getElementById(link.href.substring(1))).filter(Boolean);
-      sections.unshift(document.getElementById('home'));
-
+      const sections = navLinks.map(link => document.getElementById(link.href.substring(1))).filter(Boolean) as HTMLElement[];
+      const homeSection = document.getElementById('home');
+      if (homeSection) {
+        sections.unshift(homeSection);
+      }
+      
       let currentSection = 'home';
       for (const section of sections) {
         if (section && section.getBoundingClientRect().top < window.innerHeight / 2) {
@@ -49,27 +52,29 @@ export function Navbar() {
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    lenis?.scrollTo(href);
+    lenis?.scrollTo(href, { lerp: 0.1 });
   };
 
   return (
     <header className={cn(
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
-      hasScrolled ? "bg-background/80 backdrop-blur-lg shadow-lg border-b border-white/5" : "bg-transparent"
+      "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+      hasScrolled ? "bg-background/80 backdrop-blur-lg shadow-md border-b border-border/10" : "bg-transparent"
     )}>
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-8">
-        <div className="flex items-center gap-4">
-          <a 
-              href="#home"
-              onClick={(e) => handleNavClick(e, '#home')}
-              className={cn(
-                  "text-xl font-headline font-bold transition-opacity duration-300",
-                  hasScrolled || isMobile ? "opacity-100" : "opacity-0"
-              )}
-          >
+      <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-8">
+        <a 
+            href="#home"
+            onClick={(e) => handleNavClick(e, '#home')}
+            className="flex items-center gap-2"
+        >
+          <Code className="h-7 w-7 text-primary transition-transform duration-300 hover:scale-110" />
+          <span className={cn(
+            "text-xl font-headline font-bold transition-opacity duration-300",
+            hasScrolled || isMobile ? "opacity-100" : "md:opacity-0"
+           )}>
             Aaditya Panda
-          </a>
-        </div>
+          </span>
+        </a>
+        
         <nav className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
             <Button 
@@ -85,6 +90,7 @@ export function Navbar() {
             </Button>
           ))}
         </nav>
+
         <div className='flex items-center gap-2'>
             <ThemeToggle />
             <div className="md:hidden">
@@ -95,12 +101,13 @@ export function Navbar() {
                     <span className="sr-only">Toggle Menu</span>
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="left" className="w-[280px]">
+                <SheetContent side="left" className="w-[280px] bg-background/95 backdrop-blur-lg">
                   <div className="flex flex-col gap-6 py-8">
-                    <a href="#home" onClick={(e) => {
-                      handleNavClick(e, '#home');
-                      // Find a way to close the sheet, perhaps by using SheetClose or managing state
-                    }} className="text-xl font-bold font-headline px-4">Aaditya Panda</a>
+                    <SheetClose asChild>
+                      <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="text-xl font-bold font-headline px-4">
+                        Aaditya Panda
+                      </a>
+                    </SheetClose>
                     <nav className="flex flex-col items-start gap-1 px-2">
                         {navLinks.map((link) => (
                           <SheetClose asChild key={link.href}>

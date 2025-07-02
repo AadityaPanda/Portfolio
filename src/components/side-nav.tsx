@@ -39,7 +39,7 @@ export function SideNav() {
       }, 250); // Hide after 250ms of no scrolling
 
       // Set active section
-      const sections = navLinks.map(link => document.getElementById(link.href.substring(1))).filter(Boolean);
+      const sections = navLinks.map(link => document.getElementById(link.href.substring(1))).filter(Boolean) as HTMLElement[];
       let currentSection = 'home';
       for (const section of sections) {
         if (section && section.getBoundingClientRect().top < window.innerHeight / 2) {
@@ -71,12 +71,12 @@ export function SideNav() {
 
   return (
     <nav className={cn(
-      "group fixed top-1/2 -translate-y-1/2 left-0 z-50 hidden p-0 xl:block transition-all duration-300",
+      "group fixed top-1/2 -translate-y-1/2 left-4 z-50 hidden p-0 xl:block transition-all duration-300",
       isNavVisible ? 'opacity-100' : 'opacity-0 pointer-events-none',
       isScrolling && "is-scrolling"
     )}>
       <ul className={cn(
-        "flex flex-col items-start gap-3 p-0 transition-opacity duration-300",
+        "flex flex-col items-start gap-1 p-0 transition-opacity duration-300",
         // The nav is only "truly" visible when hovered or scrolling
         "opacity-0 group-hover:opacity-100 group-[.is-scrolling]:opacity-100"
       )}>
@@ -86,7 +86,7 @@ export function SideNav() {
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
               className={cn(
-                "group flex items-center gap-3 text-sm font-medium transition-colors",
+                "group flex items-center gap-3 py-1 text-sm font-medium transition-colors",
                 activeSection === link.href.substring(1)
                   ? 'text-primary'
                   : 'text-muted-foreground hover:text-foreground'
@@ -97,11 +97,14 @@ export function SideNav() {
                 className={cn(
                   'block h-px bg-current transition-all duration-300 ease-in-out',
                   activeSection === link.href.substring(1)
-                    ? 'w-12'
-                    : 'w-6'
+                    ? 'w-10'
+                    : 'w-5'
                 )}
               />
-              <span className={cn(activeSection === link.href.substring(1) ? 'font-medium' : 'font-normal')}>
+              <span className={cn(
+                  'transition-all duration-300',
+                  activeSection === link.href.substring(1) ? 'font-semibold' : 'font-normal'
+              )}>
                 {link.name}
               </span>
             </a>

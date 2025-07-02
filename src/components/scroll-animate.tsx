@@ -11,7 +11,7 @@ type ScrollAnimateProps = {
   triggerOnce?: boolean;
 } & HTMLAttributes<HTMLDivElement>;
 
-export function ScrollAnimate({ children, className, delay = 0, threshold = 0, triggerOnce = true, ...props }: ScrollAnimateProps) {
+export function ScrollAnimate({ children, className, delay = 0, threshold = 0.1, triggerOnce = true, ...props }: ScrollAnimateProps) {
   const { ref, inView } = useInView({
     threshold,
     triggerOnce,
@@ -22,10 +22,10 @@ export function ScrollAnimate({ children, className, delay = 0, threshold = 0, t
       ref={ref}
       data-in-view={inView}
       className={cn(
-        'transition-all duration-500 ease-out', // Use ease-out for a more responsive feel
+        'transition-all duration-700 ease-out',
         inView
-          ? 'opacity-100 translate-y-0 scale-100'
-          : 'opacity-0 translate-y-6 scale-98', // Make the animation more subtle
+          ? 'opacity-100 translate-y-0'
+          : 'opacity-0 translate-y-8',
         className
       )}
       style={{

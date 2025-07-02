@@ -1,4 +1,3 @@
-
 import { Mail, Github, Linkedin, Instagram, ArrowRight } from "lucide-react";
 import { ContactForm } from "./contact-form";
 import { SectionHeader } from "../section-header";
@@ -61,10 +60,9 @@ const getSocialHoverClasses = (name: string) => {
   }
 };
 
-
-export function Contact() {
+export default function Contact() {
   return (
-    <section id="contact" className="py-24 bg-background">
+    <section id="contact" className="py-24 bg-card/50">
       <div className="container mx-auto px-4 md:px-8">
         <SectionHeader title="Get in Touch">
           <Mail className="h-8 w-8" />

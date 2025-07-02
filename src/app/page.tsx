@@ -7,12 +7,12 @@ import { ScrollDownButton } from '@/components/scroll-down-button';
 import dynamic from 'next/dynamic';
 import { SideNav } from '@/components/side-nav';
 
-const About = dynamic(() => import('@/components/sections/about').then(mod => mod.About));
-const Experience = dynamic(() => import('@/components/sections/experience').then(mod => mod.Experience));
-const Projects = dynamic(() => import('@/components/sections/projects').then(mod => mod.Projects));
-const Skills = dynamic(() => import('@/components/sections/skills').then(mod => mod.Skills));
-const Education = dynamic(() => import('@/components/sections/education').then(mod => mod.Education));
-const Contact = dynamic(() => import('@/components/sections/contact').then(mod => mod.Contact));
+const About = dynamic(() => import('@/components/sections/about'));
+const Experience = dynamic(() => import('@/components/sections/experience'));
+const Projects = dynamic(() => import('@/components/sections/projects'));
+const Skills = dynamic(() => import('@/components/sections/skills'));
+const Education = dynamic(() => import('@/components/sections/education'));
+const Contact = dynamic(() => import('@/components/sections/contact'));
 
 export default function Home() {
   return (

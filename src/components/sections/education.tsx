@@ -4,7 +4,7 @@ import { GraduationCap } from "lucide-react";
 import { SectionHeader } from "../section-header";
 import { cn } from "@/lib/utils";
 
-export function Education() {
+export default function Education() {
   return (
     <section id="education" className="py-24">
       <div className="container mx-auto px-4 md:px-8">

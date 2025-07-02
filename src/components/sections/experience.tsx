@@ -4,9 +4,9 @@ import { Briefcase } from "lucide-react";
 import { SectionHeader } from "../section-header";
 import { cn } from "@/lib/utils";
 
-export function Experience() {
+export default function Experience() {
   return (
-    <section id="experience" className="py-24">
+    <section id="experience" className="py-24 bg-card/50">
       <div className="container mx-auto px-4 md:px-8">
         <SectionHeader title="Work Experience">
           <Briefcase className="h-8 w-8" />

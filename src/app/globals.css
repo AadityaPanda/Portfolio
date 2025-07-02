@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    --background: 216 28% 97%; /* Lighter version of #F0F2F5 */
+    --background: 0 0% 100%;
     --foreground: 224 71.4% 10.1%;
     --card: 0 0% 100%;
     --card-foreground: 224 71.4% 10.1%;
@@ -24,15 +24,6 @@
     --input: 220 13% 91%;
     --ring: 207 89% 68%;
     --radius: 0.8rem;
-    
-    --sidebar-background: 220 14.3% 98%;
-    --sidebar-foreground: 224 71.4% 4.1%;
-    --sidebar-primary: 207 90% 54%;
-    --sidebar-primary-foreground: 210 40% 98%;
-    --sidebar-accent: 220 14.3% 92%;
-    --sidebar-accent-foreground: 220.9 39.3% 11%;
-    --sidebar-border: 220 13% 88%;
-    --sidebar-ring: 207 90% 54%;
   }
 
   .dark {
@@ -55,15 +46,6 @@
     --border: 220 20% 20%;
     --input: 220 20% 20%;
     --ring: 207 89% 68%;
-
-    --sidebar-background: 220 14.3% 9.5%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 210 100% 60%;
-    --sidebar-primary-foreground: 210 20% 98%;
-    --sidebar-accent: 220 20% 14%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 220 13% 25%;
-    --sidebar-ring: 210 100% 60%;
   }
 
   * {
@@ -74,33 +56,6 @@
     @apply text-foreground transition-colors duration-500 ease-in-out;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-  }
-
-  /* Custom Scrollbar Styles */
-  * {
-    scrollbar-width: thin;
-    scrollbar-color: hsl(var(--primary) / 0.5) transparent;
-  }
-
-  /* Webkit Scrollbar Styles */
-  *::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-
-  *::-webkit-scrollbar-track {
-    background: transparent;
-  }
-
-  *::-webkit-scrollbar-thumb {
-    background: hsl(var(--primary) / 0.3);
-    border-radius: 4px;
-    border: 2px solid transparent;
-    background-clip: content-box;
-  }
-
-  *::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--primary) / 0.5);
   }
 
   section[id] {
@@ -130,7 +85,7 @@
   .scrollbar-none::-webkit-scrollbar {
     display: none;
   }
-  
+
   .bg-aurora {
     background-color: hsl(var(--background));
     background-image: 
@@ -143,6 +98,7 @@
   }
 
   .dark .bg-aurora {
+    background-color: #0b0b0b;
     background-image: 
       radial-gradient(farthest-corner at 40% 40%, hsl(var(--primary) / 0.2) 0%, transparent 50%),
       radial-gradient(farthest-corner at -40% -40%, hsl(var(--accent) / 0.2) 0%, transparent 50%),

@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Github, Linkedin, FileText, Instagram, Send } from "lucide-react";
@@ -44,7 +43,6 @@ export function Header() {
 
   useEffect(() => {
     if (isMobile) {
-        // On mobile, set the static text and do nothing else.
         setTypedText(phrases[0]);
         return;
     }
