@@ -1,3 +1,4 @@
+
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
 import { Star, GitFork, Github as GithubIcon } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -26,7 +27,8 @@ const languageColors: Record<string, string> = {
 
 async function getGithubRepos(): Promise<GithubRepo[] | null> {
   const username = 'AadityaPanda';
-  const url = `https://api.github.com/users/${username}/repos?sort=pushed&direction=desc&per_page=6`;
+  const url = `https://api.github.com/users/${username}/repos?sort=pushed&direction=desc&per_page=20`;
+  const reposToExclude = new Set(['portfolio', 'aadityapanda']);
 
   try {
     const response = await fetch(url, {
@@ -48,7 +50,12 @@ async function getGithubRepos(): Promise<GithubRepo[] | null> {
 
     const data: any[] = await response.json();
     const repos = data
-      .filter(repo => !repo.fork && repo.description)
+      .filter(repo => 
+        !repo.fork && 
+        repo.description &&
+        !reposToExclude.has(repo.name.toLowerCase())
+      )
+      .slice(0, 6)
       .map(repo => ({
         id: repo.id,
         name: repo.name.replace(/[-_]/g, ' '),
