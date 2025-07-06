@@ -27,7 +27,7 @@
   }
 
   .dark {
-    --background: 220 20% 7%;
+    --background: 0 0% 0%;
     --foreground: 210 40% 98%;
     --card: 220 20% 11%;
     --card-foreground: 210 40% 98%;
@@ -84,34 +84,5 @@
 
   .scrollbar-none::-webkit-scrollbar {
     display: none;
-  }
-
-  .bg-aurora {
-    background-color: hsl(var(--background));
-    background-image: 
-      radial-gradient(farthest-corner at 40% 40%, hsl(var(--primary) / 0.15) 0%, transparent 50%),
-      radial-gradient(farthest-corner at -40% -40%, hsl(var(--accent) / 0.15) 0%, transparent 50%),
-      radial-gradient(farthest-corner at 140% 140%, hsl(var(--accent) / 0.2) 0%, transparent 50%),
-      radial-gradient(farthest-corner at 60% -40%, hsl(var(--primary) / 0.2) 0%, transparent 50%);
-    background-size: 400% 400%;
-    animation: move-aurora 20s ease-in-out infinite alternate;
-  }
-
-  .dark .bg-aurora {
-    background-color: #0b0b0b;
-    background-image: 
-      radial-gradient(farthest-corner at 40% 40%, hsl(var(--primary) / 0.2) 0%, transparent 50%),
-      radial-gradient(farthest-corner at -40% -40%, hsl(var(--accent) / 0.2) 0%, transparent 50%),
-      radial-gradient(farthest-corner at 140% 140%, hsl(var(--accent) / 0.25) 0%, transparent 50%),
-      radial-gradient(farthest-corner at 60% -40%, hsl(var(--primary) / 0.25) 0%, transparent 50%);
-  }
-
-  @keyframes move-aurora {
-    0% {
-      background-position: 0% 0%, 100% 0%, 0% 100%, 100% 100%;
-    }
-    100% {
-      background-position: 100% 100%, 0% 100%, 100% 0%, 0% 0%;
-    }
   }
 }
