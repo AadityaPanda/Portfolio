@@ -1,3 +1,4 @@
+
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { PROFESSIONAL_PROJECTS_DATA, PERSONAL_PROJECTS_DATA } from "@/lib/data";
@@ -9,8 +10,9 @@ import { SectionHeader } from "../section-header";
 import { ProjectMediaCarousel } from "../project-media-carousel";
 import { SectionCard } from "../section-card";
 import { GithubProjects } from "./github-projects";
+import { Card } from "@/components/ui/card";
 
-const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: { project: (typeof PROFESSIONAL_PROJECTS_DATA)[0] | (typeof PERSONAL_PROJECTS_DATA)[0], reverse?: boolean, isProfessional?: boolean }) => {
+const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: { project: (typeof PROFESSIONAL_PROJECTS_DATA)[0], reverse?: boolean, isProfessional?: boolean }) => {
   const hasGallery = project.gallery && project.gallery.length > 0;
   const hasLink = project.liveLink || project.repoLink;
 
@@ -107,6 +109,56 @@ const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: {
   );
 };
 
+const PersonalProjectCard = ({ project }: { project: (typeof PERSONAL_PROJECTS_DATA)[0] }) => {
+  const hasGallery = project.gallery && project.gallery.length > 0;
+  
+  const mediaElement = hasGallery ? (
+    <ProjectMediaCarousel gallery={project.gallery} />
+  ) : (
+    <div className="aspect-video relative overflow-hidden rounded-t-lg">
+      <Image
+        src={project.thumbnail}
+        alt={`Thumbnail for ${project.title}`}
+        fill
+        className="object-cover object-center transition-transform duration-300 group-hover:scale-105"
+        sizes="(max-width: 768px) 100vw, 50vw"
+        data-ai-hint="software project"
+      />
+    </div>
+  );
+
+  return (
+    <Card className="group flex flex-col h-full bg-card/70 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/50 overflow-hidden">
+      {mediaElement}
+      <div className="flex flex-col flex-grow p-6">
+        <h3 className="text-2xl font-headline font-bold">{project.title}</h3>
+        <div className="flex flex-wrap gap-2 my-4">
+          {project.techStack.map((tech) => <Badge key={tech} variant="secondary">{tech}</Badge>)}
+        </div>
+        <p className="text-muted-foreground flex-grow">{project.description}</p>
+      </div>
+      <div className="p-6 pt-0 flex flex-wrap gap-2">
+        {project.repoLink && (
+            <Button asChild variant="github">
+                <a href={project.repoLink} target="_blank" rel="noopener noreferrer">
+                    <Github className="mr-2 h-4 w-4"/> View on GitHub
+                </a>
+            </Button>
+        )}
+        {project.liveLink && (
+            <Button variant="outline" asChild>
+                <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
+                    {project.liveLink.includes('ieee') ? <FileText className="mr-2 h-4 w-4"/> : <ExternalLink className="mr-2 h-4 w-4"/>}
+                    {project.liveLink.includes('ieee') ? 'Read Paper' : 'View Live'}
+                </a>
+            </Button>
+        )}
+      </div>
+    </Card>
+  );
+};
+
+
 export default function Projects() {
   return (
     <section id="projects" className="py-12">
@@ -131,9 +183,9 @@ export default function Projects() {
 
             <div>
               <h2 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">Personal Projects</h2>
-              <div className="space-y-24">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {PERSONAL_PROJECTS_DATA.map((project, index) => (
-                  <ProjectShowcase key={index} project={project} reverse={index % 2 === 0} />
+                  <PersonalProjectCard key={index} project={project} />
                 ))}
               </div>
               <GithubProjects />
