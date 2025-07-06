@@ -17,11 +17,10 @@ export default function About() {
             <div className="md:col-span-1 flex justify-center items-center">
               <div className="relative w-64 h-64">
                 <Image
-                  src="https://placehold.co/500x500.png"
-                  alt="Aaditya Panda"
+                  src="/media/aaditya-panda-portrait.jpg"
+                  alt="Aaditya Panda portrait"
                   fill
                   className="rounded-full object-cover border-4 border-card shadow-lg"
-                  data-ai-hint="profile photo"
                   sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
