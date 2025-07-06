@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 import { SectionHeader } from "../section-header";
 import { ProjectMediaCarousel } from "../project-media-carousel";
 import { SectionCard } from "../section-card";
+import { GithubProjects } from "./github-projects";
 
 const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: { project: (typeof PROFESSIONAL_PROJECTS_DATA)[0] | (typeof PERSONAL_PROJECTS_DATA)[0], reverse?: boolean, isProfessional?: boolean }) => {
   const hasGallery = project.gallery && project.gallery.length > 0;
@@ -135,6 +136,7 @@ export default function Projects() {
                   <ProjectShowcase key={index} project={project} reverse={index % 2 === 0} />
                 ))}
               </div>
+              <GithubProjects />
             </div>
 
           </div>
