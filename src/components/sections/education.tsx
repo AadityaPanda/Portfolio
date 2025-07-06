@@ -45,8 +45,9 @@ export default function Education() {
                               <div className="border rounded-lg bg-card/70 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 data-[state=open]:border-primary/50 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 data-[state=open]:shadow-2xl data-[state=open]:shadow-primary/10">
                                 <AccordionTrigger className="p-6 text-left hover:no-underline">
                                   <div className="flex-1">
-                                    <h4 className="font-semibold text-lg text-foreground/90">{edu.degree}</h4>
+                                    <h4 className="font-headline font-semibold text-lg text-foreground/90">{edu.degree}</h4>
                                     <p className="text-sm text-muted-foreground mt-1">{edu.school}</p>
+
                                   </div>
                                   <div className="text-right text-sm text-muted-foreground ml-4 shrink-0">
                                     <p>{edu.period}</p>
