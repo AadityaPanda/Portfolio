@@ -28,7 +28,7 @@ const languageColors: Record<string, string> = {
 async function getGithubRepos(): Promise<GithubRepo[] | null> {
   const username = 'AadityaPanda';
   const url = `https://api.github.com/users/${username}/repos?sort=pushed&direction=desc&per_page=20`;
-  const reposToExclude = new Set(['portfolio', 'aadityapanda']);
+  const reposToExclude = new Set(['portfolio', 'aadityapanda', 'motiocut-internships']);
 
   try {
     const response = await fetch(url, {
