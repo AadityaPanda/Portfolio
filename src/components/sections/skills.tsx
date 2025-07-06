@@ -8,7 +8,7 @@ export default function Skills() {
   const categories = Object.keys(SKILLS_DATA);
 
   return (
-    <section id="skills" className="py-24 bg-card/50">
+    <section id="skills" className="py-24">
       <div className="container mx-auto px-4 md:px-8">
         <SectionHeader title="Technical Skills">
           <Wrench className="h-8 w-8" />
