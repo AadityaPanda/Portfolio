@@ -7,6 +7,7 @@ import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { SectionHeader } from "../section-header";
 import { ProjectMediaCarousel } from "../project-media-carousel";
+import { SectionCard } from "../section-card";
 
 const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: { project: (typeof PROFESSIONAL_PROJECTS_DATA)[0] | (typeof PERSONAL_PROJECTS_DATA)[0], reverse?: boolean, isProfessional?: boolean }) => {
   const hasGallery = project.gallery && project.gallery.length > 0;
@@ -52,7 +53,7 @@ const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: {
         reverse ? "lg:order-last" : ""
       )}>
         {isProfessional ? (
-           <div className="rounded-lg border border-border bg-card shadow-lg overflow-hidden group-hover:shadow-2xl group-hover:shadow-primary/10 group-hover:border-primary/50 transition-all duration-300">
+           <div className="rounded-lg border border-border bg-card/70 backdrop-blur-sm shadow-lg overflow-hidden group-hover:shadow-2xl group-hover:shadow-primary/10 group-hover:border-primary/50 transition-all duration-300">
              <div className="h-8 bg-muted/50 flex items-center px-3 border-b border-border">
                <div className="flex items-center gap-1.5">
                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
@@ -107,35 +108,37 @@ const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: {
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-24">
+    <section id="projects" className="py-12">
       <div className="container mx-auto px-4 md:px-8">
-        <SectionHeader title="My Work">
-          <Rocket className="h-8 w-8" />
-        </SectionHeader>
-        
-        <div className="mt-20 space-y-24">
+        <SectionCard>
+          <SectionHeader title="My Work">
+            <Rocket className="h-8 w-8" />
+          </SectionHeader>
           
-          <div>
-            <h2 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12">Professional Work</h2>
-            <div className="space-y-24">
-              {PROFESSIONAL_PROJECTS_DATA.map((project, index) => (
-                <ProjectShowcase key={index} project={project} reverse={index % 2 !== 0} isProfessional={true} />
-              ))}
+          <div className="mt-20 space-y-24">
+            
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12">Professional Work</h2>
+              <div className="space-y-24">
+                {PROFESSIONAL_PROJECTS_DATA.map((project, index) => (
+                  <ProjectShowcase key={index} project={project} reverse={index % 2 !== 0} isProfessional={true} />
+                ))}
+              </div>
             </div>
-          </div>
-          
-          <Separator className="my-24" />
+            
+            <Separator className="my-24" />
 
-          <div>
-            <h2 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12">Personal Projects</h2>
-            <div className="space-y-24">
-              {PERSONAL_PROJECTS_DATA.map((project, index) => (
-                <ProjectShowcase key={index} project={project} reverse={index % 2 === 0} />
-              ))}
+            <div>
+              <h2 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12">Personal Projects</h2>
+              <div className="space-y-24">
+                {PERSONAL_PROJECTS_DATA.map((project, index) => (
+                  <ProjectShowcase key={index} project={project} reverse={index % 2 === 0} />
+                ))}
+              </div>
             </div>
-          </div>
 
-        </div>
+          </div>
+        </SectionCard>
       </div>
     </section>
   );

@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn(
-        "font-body antialiased scrollbar-none bg-background",
+        "font-body antialiased scrollbar-none bg-background bg-aurora",
         inter.variable,
         spaceGrotesk.variable
       )}>

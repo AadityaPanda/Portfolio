@@ -4,36 +4,36 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 240 25% 98%;
     --foreground: 224 71.4% 10.1%;
-    --card: 0 0% 100%;
+    --card: 240 25% 100%;
     --card-foreground: 224 71.4% 10.1%;
-    --popover: 0 0% 100%;
+    --popover: 240 25% 100%;
     --popover-foreground: 224 71.4% 4.1%;
-    --primary: 207 89% 68%; /* #64B5F6 */
-    --primary-foreground: 224 71.4% 4.1%;
+    --primary: 220 90% 60%;
+    --primary-foreground: 210 40% 98%;
     --secondary: 216 28% 98%;
     --secondary-foreground: 220.9 39.3% 11%;
     --muted: 220 14.3% 95.9%;
     --muted-foreground: 220 8.9% 45%;
-    --accent: 34 100% 65%; /* #FFB74D */
+    --accent: 34 100% 65%;
     --accent-foreground: 24 9.8% 10%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 220 13% 88%;
     --input: 220 13% 91%;
-    --ring: 207 89% 68%;
+    --ring: 220 90% 60%;
     --radius: 0.8rem;
   }
 
   .dark {
-    --background: 0 0% 0%;
+    --background: 220 25% 10%;
     --foreground: 210 40% 98%;
-    --card: 220 20% 11%;
+    --card: 220 25% 15%;
     --card-foreground: 210 40% 98%;
-    --popover: 220 20% 7%;
+    --popover: 220 25% 11%;
     --popover-foreground: 210 40% 98%;
-    --primary: 207 89% 68%;
+    --primary: 220 90% 60%;
     --primary-foreground: 224 71.4% 10.1%;
     --secondary: 220 20% 15%;
     --secondary-foreground: 210 40% 98%;
@@ -43,27 +43,37 @@
     --accent-foreground: 24 9.8% 10%;
     --destructive: 0 70% 55%;
     --destructive-foreground: 0 0% 100%;
-    --border: 220 20% 20%;
+    --border: 220 20% 25%;
     --input: 220 20% 20%;
-    --ring: 207 89% 68%;
+    --ring: 220 90% 60%;
   }
+}
 
+@layer base {
   * {
     @apply border-border;
   }
-
   body {
-    @apply text-foreground transition-colors duration-500 ease-in-out;
+    @apply bg-background text-foreground transition-colors duration-500;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
-
   section[id] {
     @apply scroll-m-20;
   }
 }
 
 @layer utilities {
+  .bg-aurora {
+    --aurora-color-1: hsl(var(--primary) / 0.3);
+    --aurora-color-2: hsl(var(--accent) / 0.3);
+    --aurora-color-3: hsl(200 90% 60% / 0.2);
+    background-image: radial-gradient(at 20% 25%, var(--aurora-color-1) 0px, transparent 50%),
+                      radial-gradient(at 75% 30%, var(--aurora-color-2) 0px, transparent 50%),
+                      radial-gradient(at 50% 80%, var(--aurora-color-3) 0px, transparent 50%);
+    background-size: 200% 200%;
+    animation: background-pan 30s linear infinite;
+  }
   .animate-gradient-shimmer {
     animation: gradient-shimmer 3s linear infinite;
   }
@@ -72,6 +82,11 @@
     to {
       background-position: 200% center;
     }
+  }
+  @keyframes background-pan {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
   }
 
   .scrollbar-thin {
