@@ -47,7 +47,7 @@ export function Footer() {
           
           {/* Column 2: Quick Links */}
           <div className="space-y-4">
-            <h4 className="font-semibold tracking-wider uppercase text-foreground/90">Quick Links</h4>
+            <h3 className="font-semibold tracking-wider uppercase text-foreground/90">Quick Links</h3>
             <ul className="space-y-2">
               {navLinks.map((link) => (
                 <li key={link.href}>
@@ -61,7 +61,7 @@ export function Footer() {
 
           {/* Column 3: Socials */}
           <div className="space-y-4">
-            <h4 className="font-semibold tracking-wider uppercase text-foreground/90">Connect</h4>
+            <h3 className="font-semibold tracking-wider uppercase text-foreground/90">Connect</h3>
             <div className="flex justify-center sm:justify-start gap-4">
               {socialLinks.map((link, index) => (
                 <a 

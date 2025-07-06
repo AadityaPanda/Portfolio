@@ -171,7 +171,7 @@ export default function Projects() {
           <div className="mt-20 space-y-24">
             
             <div>
-              <h2 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">Professional Work</h2>
+              <h3 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">Professional Work</h3>
               <div className="space-y-24">
                 {PROFESSIONAL_PROJECTS_DATA.map((project, index) => (
                   <ProjectShowcase key={index} project={project} reverse={index % 2 !== 0} isProfessional={true} />
@@ -182,7 +182,7 @@ export default function Projects() {
             <Separator className="my-24" />
 
             <div>
-              <h2 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">Personal Projects</h2>
+              <h3 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">Personal Projects</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {PERSONAL_PROJECTS_DATA.map((project, index) => (
                   <PersonalProjectCard key={index} project={project} />

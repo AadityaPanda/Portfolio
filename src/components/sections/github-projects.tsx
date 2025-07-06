@@ -82,10 +82,10 @@ export async function GithubProjects() {
 
   return (
     <div className="mt-24">
-      <h3 className="text-2xl sm:text-3xl font-headline font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70 flex items-center justify-center gap-4">
+      <h4 className="text-2xl sm:text-3xl font-headline font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70 flex items-center justify-center gap-4">
         <GithubIcon className="h-8 w-8 text-foreground" />
         More on GitHub
-      </h3>
+      </h4>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {repos.map((repo) => (
           <a 
