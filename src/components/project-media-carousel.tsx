@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { ChevronUp, ChevronDown, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
-import { Dialog, DialogContent, DialogClose } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogClose, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 
 type GalleryItem = {
     type: 'image' | 'video';
@@ -155,6 +155,12 @@ export function ProjectMediaCarousel({ gallery, unstyled = false }: ProjectMedia
       {/* Lightbox Dialog */}
       <Dialog open={lightboxOpen} onOpenChange={setLightboxOpen}>
         <DialogContent className="max-w-screen-xl w-[95%] h-[90vh] bg-black/80 border-none p-0 flex items-center justify-center backdrop-blur-md">
+          <DialogHeader className="sr-only">
+            <DialogTitle>Project Media Gallery</DialogTitle>
+            <DialogDescription>
+              Image and video gallery. Use arrow keys to navigate between items.
+            </DialogDescription>
+          </DialogHeader>
           {/* Close button */}
           <DialogClose asChild>
             <button
