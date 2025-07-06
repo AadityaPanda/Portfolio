@@ -28,7 +28,7 @@ const languageColors: Record<string, string> = {
 async function getGithubRepos(): Promise<GithubRepo[] | null> {
   const username = 'AadityaPanda';
   const url = `https://api.github.com/users/${username}/repos?sort=pushed&direction=desc&per_page=20`;
-  const reposToExclude = new Set(['portfolio', 'aadityapanda', 'motiocut-internships']);
+  const reposToExclude = new Set(['portfolio', 'aadityapanda', 'motioncut-internships']);
 
   try {
     const response = await fetch(url, {
@@ -82,10 +82,10 @@ export async function GithubProjects() {
 
   return (
     <div className="mt-24">
-      <h4 className="text-2xl sm:text-3xl font-headline font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70 flex items-center justify-center gap-4">
+      <h3 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70 flex items-center justify-center gap-4">
         <GithubIcon className="h-8 w-8 text-foreground" />
         More on GitHub
-      </h4>
+      </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {repos.map((repo) => (
           <a 
