@@ -1,6 +1,6 @@
 export const CV_PATH = "/media/AadityaPanda_CV.pdf";
 
-export const ABOUT_ME_TEXT = "A passionate and driven Software Developer with hands-on experience in building robust, full-stack web applications from the ground up. I specialize in Node.js, React, and Express, with a proven ability to architect custom solutions, enhance existing software with innovative features, and manage the full project lifecycle from development to deployment. I am dedicated to writing clean, efficient code and thrive in collaborative environments where I can contribute to cutting-edge projects.";
+export const ABOUT_ME_TEXT = "I'm a full-stack software developer specializing in building robust and elegant web applications. With a passion for clean code and user-centric design, I architect and deliver complete solutions from concept to deployment. I thrive on solving complex problems and contributing to innovative, collaborative projects.";
 
 export const SKILLS_DATA = {
   "Languages": ["JavaScript", "TypeScript", "Python", "HTML5", "CSS3", "SQL"],
@@ -14,11 +14,11 @@ export const EXPERIENCE_DATA = [
     role: "Software Developer",
     period: "Nov 2024 - Present",
     responsibilities: [
-      "Led the ground-up development of a full-stack internal documentation portal, improving information accessibility and license management.",
-      "Engineered a custom Privileged Access Management (PAM) solution, enhancing Apache Guacamole with a branded UI and superior, granular permission controls.",
-      "Innovated a time-based access policy system for the PAM tool, a feature not available in the original software, which was successfully deployed to production.",
-      "Managed the full lifecycle of projects, including deployment and configuration on production and demo environments using Nginx.",
-      "Currently re-architecting the PAM application from scratch to achieve deeper integration and more granular system control.",
+      "Architected a full-stack documentation portal from concept to deployment, centralizing knowledge and streamlining license management.",
+      "Engineered a custom Privileged Access Management (PAM) solution on top of Apache Guacamole, delivering a branded UI and a more granular permission system.",
+      "Pioneered a time-based access policy for the PAM tool, a feature not available in the core software, and successfully deployed it to production.",
+      "Managed the full project lifecycle, including Nginx deployment and configuration for production and demo environments.",
+      "Currently leading the re-architecture of the PAM solution to achieve deeper system integration and more granular control.",
     ],
   },
   {
@@ -26,8 +26,8 @@ export const EXPERIENCE_DATA = [
     role: "Internet of Things Intern",
     period: "Apr 2023 - Jul 2023",
     responsibilities: [
-      "Worked on ESP32 Microcontrollers and firmware.",
-      "Developed and tested IoT solutions for various applications.",
+      "Developed and tested firmware for ESP32 microcontrollers in various IoT solutions.",
+      "Collaborated on testing and deploying end-to-end IoT solutions for client applications.",
       "Gained hands-on experience with embedded systems and real-time data processing."
     ],
   },
@@ -36,9 +36,9 @@ export const EXPERIENCE_DATA = [
     role: "Internet of Things Trainee",
     period: "Apr 2022 - Apr 2023",
     responsibilities: [
-      "Learnt the basics of IoT, including introductions to Arduino and Raspberry Pi.",
-      "Built numerous projects using Arduino, demonstrating practical application of learned concepts.",
-      "Underwent training and demonstrated competency in the internationally recognized Certification Course on \"Internet Of Things (Expert Level)\"."
+      "Acquired foundational knowledge in IoT, including Arduino and Raspberry Pi platforms.",
+      "Demonstrated practical skills by building and programming numerous Arduino-based projects.",
+      "Achieved certification in \"Internet Of Things (Expert Level)\", demonstrating comprehensive competency."
     ],
   },
 ];
@@ -73,13 +73,13 @@ export const EDUCATION_DATA = [
 export const PROFESSIONAL_PROJECTS_DATA = [
   {
     title: "Internal Documentation Portal",
-    description: "A comprehensive internal portal for documentation and license management, built from the ground up.",
+    description: "A full-stack internal portal designed to centralize documentation and streamline license management.",
     techStack: ["React", "Node.js", "Express.js", "MySQL", "Nginx"],
     details: [
-      "Architected and developed a full-stack documentation portal from scratch, serving as a central hub for all IDAM documentation.",
-      "Integrated a license management module to display organization-specific license details for authenticated users.",
-      "Implemented key UI/UX enhancements such as a responsive, auto-resizing sidebar, content-aware scrolling for sub-headings, and a 'scroll to top' feature.",
-      "Managed the complete project lifecycle, from initial development and learning to taking full ownership of deployment and maintenance on production servers."
+      "Built as a central source of truth for all Identity and Access Management (IDAM) documentation.",
+      "Features a secure module for displaying organization-specific license details to authenticated users.",
+      "Enhanced with a responsive, auto-resizing sidebar and content-aware scrolling for improved UX.",
+      "Oversaw the full project lifecycle, from development to production deployment and maintenance."
     ],
     repoLink: null,
     liveLink: null,
@@ -88,14 +88,14 @@ export const PROFESSIONAL_PROJECTS_DATA = [
   },
   {
     title: "Privileged Access Management (PAM)",
-    description: "A custom-built, branded version of Apache Guacamole with a focus on a robust, fine-grained permission system.",
+    description: "A custom-branded Privileged Access Management (PAM) solution built upon Apache Guacamole.",
     techStack: ["React", "Node.js", "Express.js", "MySQL", "Nginx"],
     details: [
-        "Cloned and customized the Apache Guacamole software, developing a new branded UI and front-end from scratch.",
-        "Engineered a highly granular, role-based permission system, significantly improving on the original software's capabilities.",
-        "Developed and implemented a unique Proof of Concept (POC) for time-based connection access policies, a feature not present in the official version.",
-        "Managed deployment on multiple servers for demo, testing, and client presentation purposes.",
-        "Currently leading the re-architecture of the entire application from scratch for more granular control and deeper system integration."
+        "Engineered a custom front-end and branded UI for Apache Guacamole.",
+        "Implemented a highly granular, role-based permission system that surpasses the original software's capabilities.",
+        "Pioneered a time-based access policy, a feature not available in the core software.",
+        "Managed deployments across multiple environments for demos, testing, and client presentations.",
+        "Currently leading a complete re-architecture for deeper system integration and control."
     ],
     repoLink: null,
     liveLink: null,
@@ -107,7 +107,7 @@ export const PROFESSIONAL_PROJECTS_DATA = [
 export const PERSONAL_PROJECTS_DATA = [
   {
     title: "IoT Tollbooth System Supervisor",
-    description: "An IoT and RFID-based system to revolutionize tollbooth operations, optimizing traffic flow and enhancing user experience.",
+    description: "An IoT and RFID-based system that revolutionizes tollbooth operations by optimizing traffic flow and enhancing user experience.",
     techStack: ["ESP32", "Arduino", "RFID", "C++", "Google Sheets API", "AppSheet"],
     repoLink: "https://github.com/AadityaPanda/ITSS",
     liveLink: "https://ieeexplore.ieee.org/document/10993585",
@@ -129,7 +129,7 @@ export const PERSONAL_PROJECTS_DATA = [
   },
   {
     title: "Street Fighter",
-    description: "An engaging two-player fighting game built with Python and Pygame, featuring unique characters and dynamic animations.",
+    description: "A classic two-player fighting game built with Python and Pygame, featuring unique characters and dynamic animations.",
     techStack: ["Python", "Pygame", "OpenCV"],
     repoLink: "https://github.com/AadityaPanda/Street_Fighter",
     liveLink: null,
