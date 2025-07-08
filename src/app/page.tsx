@@ -1,7 +1,6 @@
 import { Header } from '@/components/sections/header';
 import { Footer } from '@/components/footer';
 import { ScrollAnimate } from '@/components/scroll-animate';
-import { ScrollToTop } from '@/components/scroll-to-top';
 import { ScrollDownButton } from '@/components/scroll-down-button';
 import dynamic from 'next/dynamic';
 import { FloatingNav } from '@/components/floating-nav';
@@ -27,7 +26,6 @@ export default function Home() {
         <ScrollAnimate><Contact /></ScrollAnimate>
       </main>
       <Footer />
-      <ScrollToTop />
       <ScrollDownButton />
     </div>
   );

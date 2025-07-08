@@ -3,6 +3,7 @@
 import { Github, Linkedin, Code, Instagram } from 'lucide-react';
 import { useLenis } from '@studio-freight/react-lenis';
 import { cn } from '@/lib/utils';
+import { ScrollToTop } from './scroll-to-top';
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/AadityaPanda", 'aria-label': 'GitHub' },
@@ -79,8 +80,11 @@ export function Footer() {
           </div>
         </div>
         
-        <div className="mt-16 pt-8 border-t border-border/20 text-center text-sm text-muted-foreground">
-          <p>&copy; {year} Aaditya Panda. All rights reserved. Built with Next.js & Tailwind CSS.</p>
+        <div className="mt-16 pt-8 border-t border-border/20 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-center md:text-left text-sm text-muted-foreground">
+            &copy; {year} Aaditya Panda. All rights reserved. Built with Next.js & Tailwind CSS.
+          </p>
+          <ScrollToTop />
         </div>
       </div>
     </footer>
