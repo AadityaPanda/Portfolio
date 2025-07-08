@@ -112,7 +112,7 @@ export function Header() {
             )}
           </h1>
           <p className="text-lg sm:text-xl text-muted-foreground animate-in fade-in from-top-8 slide-in-from-top-8 duration-700 delay-400 max-w-2xl">
-            I transform complex business requirements into elegant, scalable web applications, from system architecture to pixel-perfect UIs.
+            I build elegant and scalable web applications, turning complex problems into seamless digital experiences.
           </p>
           <div className="flex flex-wrap justify-start items-center gap-x-6 gap-y-4 pt-6 animate-in fade-in from-top-10 slide-in-from-top-10 duration-700 delay-500">
             <div className="flex items-center gap-4">
