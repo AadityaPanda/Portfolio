@@ -1,11 +1,10 @@
 import { Header } from '@/components/sections/header';
-import { Navbar } from '@/components/sections/navbar';
 import { Footer } from '@/components/footer';
 import { ScrollAnimate } from '@/components/scroll-animate';
 import { ScrollToTop } from '@/components/scroll-to-top';
 import { ScrollDownButton } from '@/components/scroll-down-button';
 import dynamic from 'next/dynamic';
-import { SideNav } from '@/components/side-nav';
+import { FloatingNav } from '@/components/floating-nav';
 
 const About = dynamic(() => import('@/components/sections/about'));
 const Experience = dynamic(() => import('@/components/sections/experience'));
@@ -17,8 +16,7 @@ const Contact = dynamic(() => import('@/components/sections/contact'));
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <SideNav />
+      <FloatingNav />
       <main className="flex-1">
         <Header />
         <ScrollAnimate><About /></ScrollAnimate>
