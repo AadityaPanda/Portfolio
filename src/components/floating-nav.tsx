@@ -7,7 +7,7 @@ import { useLenis } from '@studio-freight/react-lenis';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from '@/components/theme-toggle';
 import { Button } from '@/components/ui/button';
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle, SheetDescription } from '@/components/ui/sheet';
 import { useIsMobile } from '@/hooks/use-mobile';
 
 const navLinks = [
@@ -66,6 +66,12 @@ export function FloatingNav() {
             </Button>
           </SheetTrigger>
           <SheetContent side="bottom" className="w-full rounded-t-2xl bg-background/95 backdrop-blur-lg p-0 h-auto">
+            <SheetHeader className="sr-only">
+              <SheetTitle>Main Navigation</SheetTitle>
+              <SheetDescription>
+                A list of links to navigate the portfolio sections.
+              </SheetDescription>
+            </SheetHeader>
             <div className="flex flex-col gap-2 p-4">
               <nav className="flex flex-col items-start gap-1">
                 {navLinks.map((link) => (
