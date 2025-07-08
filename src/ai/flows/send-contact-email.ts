@@ -69,7 +69,7 @@ async function sendEmail(input: ContactFormInput): Promise<{ success: boolean, m
     from: fromEmail, // This should be the configured SMTP_USER or CONTACT_FROM_EMAIL
     replyTo: `${input.name} <${input.email}>`, // Set reply-to to the sender's name and email
     to: recipientEmail, // The email address where you receive messages
-    subject: `Portfolio Contact: Message from ${input.name}`, // Clear subject line
+    subject: `[Portfolio Contact] ${input.subject}`, // Clear subject line using user's subject
     html: generateEmailHtml(input), // Use the HTML template from email-template.ts
     text: generateEmailText(input), // Use the plain text template from email-template.ts
   };

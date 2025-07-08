@@ -27,6 +27,7 @@ export function ContactForm() {
     defaultValues: {
       name: '',
       email: '',
+      subject: '',
       message: '',
     },
   });
@@ -79,6 +80,19 @@ export function ContactForm() {
               <FormLabel>Email</FormLabel>
               <FormControl>
                 <Input type="email" placeholder="you@example.com" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="subject"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Subject</FormLabel>
+              <FormControl>
+                <Input placeholder="What is this about?" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

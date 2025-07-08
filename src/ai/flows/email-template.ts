@@ -21,12 +21,13 @@ function escapeHtml(str: string): string {
  * @returns An HTML string representing the email body
  */
 export function generateEmailHtml(input: ContactFormInput): string {
-  const { name, email, message } = input;
+  const { name, email, subject, message } = input;
 
   // Preserve line breaks from the textarea input and escape HTML
   const formattedMessage = escapeHtml(message).replace(/\n/g, '<br />');
   const escapedName = escapeHtml(name);
   const escapedEmail = escapeHtml(email);
+  const escapedSubject = escapeHtml(subject);
   
   // Get current date for timestamp
   const currentDate = new Date().toLocaleDateString('en-US', {
@@ -110,7 +111,7 @@ export function generateEmailHtml(input: ContactFormInput): string {
     
     <!-- Preheader Text (Hidden) -->
     <div style="display: none; font-size: 1px; color: #f8fafc; line-height: 1px; max-height: 0px; max-width: 0px; opacity: 0; overflow: hidden;">
-        New contact form submission from ${escapedName} - ${formattedMessage.substring(0, 50)}...
+        New contact form submission from ${escapedName} - ${escapedSubject}...
     </div>
     
     <!-- Email Container -->
@@ -179,7 +180,7 @@ export function generateEmailHtml(input: ContactFormInput): string {
                                 </div>
                                 
                                 <!-- Email -->
-                                <div>
+                                <div style="margin-bottom: 20px;">
                                     <label style="display: block; font-size: 12px; font-weight: 600; color: #718096; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">
                                         Email Address
                                     </label>
@@ -188,6 +189,16 @@ export function generateEmailHtml(input: ContactFormInput): string {
                                             <span style="margin-right: 8px;">✉</span>
                                             ${escapedEmail}
                                         </a>
+                                    </div>
+                                </div>
+
+                                <!-- Subject -->
+                                <div>
+                                    <label style="display: block; font-size: 12px; font-weight: 600; color: #718096; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px;">
+                                        Subject
+                                    </label>
+                                    <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px; font-size: 16px; color: #2d3748; font-weight: 500;">
+                                        ${escapedSubject}
                                     </div>
                                 </div>
                             </div>
@@ -214,14 +225,14 @@ export function generateEmailHtml(input: ContactFormInput): string {
                                 <table cellpadding="0" cellspacing="0" border="0" style="margin: 0 auto; width: auto;">
                                     <tr>
                                         <td style="padding: 0 6px 12px 0; vertical-align: top;">
-                                            <a href="mailto:${escapedEmail}?subject=Re: Portfolio Contact" style="display: inline-block; background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%); color: #ffffff; padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; box-shadow: 0 2px 4px rgba(49, 130, 206, 0.3); white-space: nowrap;">
+                                            <a href="mailto:${escapedEmail}?subject=Re: ${escapedSubject}" style="display: inline-block; background: linear-gradient(135deg, #3182ce 0%, #2c5282 100%); color: #ffffff; padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; box-shadow: 0 2px 4px rgba(49, 130, 206, 0.3); white-space: nowrap;">
                                                 Reply to ${escapedName.split(' ')[0]}
                                             </a>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td style="padding: 0 6px; vertical-align: top;">
-                                            <a href="mailto:${escapedEmail}?subject=Re: Portfolio Contact&body=Hi ${escapedName.split(' ')[0]},%0D%0A%0D%0AThank you for reaching out through my portfolio. I'll get back to you soon!%0D%0A%0D%0ABest regards" style="display: inline-block; background-color: #ffffff; color: #3182ce; padding: 14px 28px; border: 2px solid #3182ce; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; white-space: nowrap;">
+                                            <a href="mailto:${escapedEmail}?subject=Re: ${escapedSubject}&body=Hi ${escapedName.split(' ')[0]},%0D%0A%0D%0AThank you for reaching out through my portfolio. I'll get back to you soon!%0D%0A%0D%0ABest regards" style="display: inline-block; background-color: #ffffff; color: #3182ce; padding: 14px 28px; border: 2px solid #3182ce; border-radius: 8px; font-weight: 600; font-size: 14px; text-decoration: none; white-space: nowrap;">
                                                 Quick Reply
                                             </a>
                                         </td>
@@ -285,7 +296,7 @@ export function generateEmailHtml(input: ContactFormInput): string {
  * @returns A plain text string representing the email body
  */
 export function generateEmailText(input: ContactFormInput): string {
-  const { name, email, message } = input;
+  const { name, email, subject, message } = input;
   
   const currentDate = new Date().toLocaleDateString('en-US', {
     weekday: 'long',
@@ -305,8 +316,9 @@ export function generateEmailText(input: ContactFormInput): string {
 Received: ${currentDate}
 
 ┌─ CONTACT DETAILS ─────────────────────
-│ Name:  ${name}
-│ Email: ${email}
+│ Name:    ${name}
+│ Email:   ${email}
+│ Subject: ${subject}
 └───────────────────────────────────────
 
 ┌─ MESSAGE CONTENT ─────────────────────
