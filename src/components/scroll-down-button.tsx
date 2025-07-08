@@ -8,7 +8,7 @@ import { useLenis } from '@studio-freight/react-lenis';
 export function ScrollDownButton() {
   const [isVisible, setIsVisible] = useState(false);
   const lenis = useLenis();
-  const SCROLL_OFFSET = -96; // 6rem, matches the navbar offset
+  const SCROLL_OFFSET = -80; // Matches the new navbar offset
 
   // Effect to manage visibility based on scroll position
   useEffect(() => {
