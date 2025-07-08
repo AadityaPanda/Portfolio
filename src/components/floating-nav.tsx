@@ -103,7 +103,7 @@ export function FloatingNav() {
   return (
     <nav
       className={cn(
-        "group fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center gap-4 rounded-full border border-border/20 bg-background/50 p-2 shadow-lg backdrop-blur-lg transition-all duration-300",
+        "fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center gap-4 rounded-xl border border-border/20 bg-background/80 p-2 shadow-lg backdrop-blur-lg transition-all duration-300",
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-16"
       )}
     >
@@ -115,22 +115,20 @@ export function FloatingNav() {
               onClick={(e) => handleNavClick(e, link.href)}
               aria-label={link.name}
               className={cn(
-                "flex items-center gap-x-0 group-hover:gap-x-2 rounded-full px-3 py-1.5 text-sm transition-all duration-300",
+                "flex items-center gap-x-2 rounded-md px-3 py-1.5 text-sm transition-colors duration-300",
                 activeSection === link.href.substring(1)
                   ? 'bg-primary/10 text-primary font-semibold'
                   : 'text-muted-foreground hover:text-foreground'
               )}
             >
-              <link.icon className="h-5 w-5 shrink-0 transition-transform group-hover:scale-110" />
-              <span className="whitespace-nowrap max-w-0 opacity-0 transition-all duration-300 group-hover:max-w-24 group-hover:opacity-100 overflow-hidden">{link.name}</span>
+              <link.icon className="h-5 w-5 shrink-0" />
+              <span className="whitespace-nowrap">{link.name}</span>
             </a>
           </li>
         ))}
       </ul>
-      <div className="h-6 w-px bg-border/50 transition-opacity duration-200 group-hover:opacity-100" />
-      <div className="transition-opacity duration-200 group-hover:opacity-100">
-        <ThemeToggle />
-      </div>
+      <div className="h-6 w-px bg-border/50" />
+      <ThemeToggle />
     </nav>
   );
 }
