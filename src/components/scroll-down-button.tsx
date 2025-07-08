@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -7,6 +8,7 @@ import { useLenis } from '@studio-freight/react-lenis';
 export function ScrollDownButton() {
   const [isVisible, setIsVisible] = useState(false);
   const lenis = useLenis();
+  const SCROLL_OFFSET = -96; // 6rem, matches the navbar offset
 
   // Effect to manage visibility based on scroll position
   useEffect(() => {
@@ -23,7 +25,7 @@ export function ScrollDownButton() {
 
   const handleScrollDown = (e: React.MouseEvent) => {
     e.preventDefault();
-    lenis?.scrollTo('#about', { lerp: 0.1 });
+    lenis?.scrollTo('#about', { lerp: 0.1, offset: SCROLL_OFFSET });
   };
 
   return (

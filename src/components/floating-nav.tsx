@@ -25,10 +25,11 @@ export function FloatingNav() {
   const [activeSection, setActiveSection] = useState('home');
   const lenis = useLenis();
   const isMobile = useIsMobile();
+  const SCROLL_OFFSET = -96; // 6rem to provide padding below the nav
 
   useEffect(() => {
     const handleScroll = () => {
-      // Show nav when scrolled past a certain point (e.g., 100px)
+      // Show nav when scrolled past the hero section (e.g., 100px)
       setIsVisible(window.scrollY > 100);
 
       const sections = navLinks.map(link => document.getElementById(link.href.substring(1))).filter(Boolean) as HTMLElement[];
@@ -44,19 +45,21 @@ export function FloatingNav() {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll();
+    handleScroll(); // Run on mount to set initial state
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
   
   const handleNavClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
-    lenis?.scrollTo(href, { lerp: 0.1 });
+    lenis?.scrollTo(href, { lerp: 0.1, offset: SCROLL_OFFSET });
   };
 
+  // Mobile navigation: a floating button that opens a bottom sheet
   if (isMobile) {
     return (
       <div className={cn(
         "fixed bottom-4 right-4 z-50 transition-transform duration-300",
+        // Only show button once scrolled past hero
         isVisible ? 'translate-y-0' : 'translate-y-24'
       )}>
         <Sheet>
@@ -100,11 +103,12 @@ export function FloatingNav() {
     )
   }
 
+  // Desktop navigation: a floating bar that appears on scroll
   return (
     <nav
       className={cn(
         "fixed top-6 left-1/2 -translate-x-1/2 z-50 flex items-center justify-center gap-4 rounded-xl border border-border/20 bg-background/80 p-2 shadow-lg backdrop-blur-lg transition-all duration-300",
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-16"
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-16 pointer-events-none"
       )}
     >
       <ul className="flex items-center gap-1">
