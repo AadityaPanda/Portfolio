@@ -21,46 +21,40 @@ export default function Education() {
               {EDUCATION_DATA.map((edu, index) => (
                 <div 
                   key={index}
-                  className="relative"
+                  className="relative md:grid md:grid-cols-2 md:gap-x-8"
                 >
+                  {/* Dot on the timeline (desktop only) */}
+                  <div className="hidden md:block absolute left-1/2 top-4 -translate-y-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary ring-4 ring-background" />
+                  
+                  {/* Content Card */}
                   <div className={cn(
-                    "flex items-center",
-                    "md:grid md:grid-cols-2 md:gap-x-8"
+                    "w-full",
+                    index % 2 === 0 ? "md:col-start-1 md:text-right" : "md:col-start-2"
                   )}>
-                    {/* Dot on the timeline (desktop only) */}
-                    <div className="hidden md:block absolute left-1/2 top-4 -translate-y-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary ring-4 ring-background" />
-                    
-                    {/* Content Card */}
                     <div className={cn(
-                      "w-full",
-                      index % 2 === 0 ? "md:col-start-1 md:text-right" : "md:col-start-2"
+                        "w-full",
+                        index % 2 === 0 ? "md:pr-8" : "md:pl-8"
                     )}>
-                      <div className={cn(
-                          "w-full",
-                          index % 2 === 0 ? "md:pr-8" : "md:pl-8"
-                      )}>
-                        <Accordion type="single" collapsible className="w-full">
-                          <AccordionItem value={`edu-${index}`} className="border-none">
-                              <div className="border rounded-lg bg-card/70 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 data-[state=open]:border-primary/50 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 data-[state=open]:shadow-2xl data-[state=open]:shadow-primary/10">
-                                <AccordionTrigger className="p-6 text-left hover:no-underline">
-                                  <div className="flex-1">
-                                    <h4 className="font-headline font-semibold text-lg text-foreground/90">{edu.degree}</h4>
-                                    <p className="text-sm text-muted-foreground mt-1">{edu.school}</p>
-
-                                  </div>
-                                  <div className="text-right text-sm text-muted-foreground ml-4 shrink-0">
-                                    <p>{edu.period}</p>
-                                  </div>
-                                </AccordionTrigger>
-                                <AccordionContent className="px-6 pb-6 text-left">
-                                  <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
-                                    {edu.details.map((detail, i) => <li key={i}>{detail}</li>)}
-                                  </ul>
-                                </AccordionContent>
-                              </div>
-                          </AccordionItem>
-                        </Accordion>
-                      </div>
+                      <Accordion type="single" collapsible className="w-full">
+                        <AccordionItem value={`edu-${index}`} className="border-none">
+                            <div className="border rounded-lg bg-card/70 backdrop-blur-sm transition-all duration-300 hover:-translate-y-1 data-[state=open]:border-primary/50 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 data-[state=open]:shadow-xl data-[state=open]:shadow-primary/10">
+                              <AccordionTrigger className="p-6 text-left hover:no-underline flex-col md:flex-row items-start md:items-center">
+                                <div className="flex-1 text-left w-full">
+                                  <h4 className="font-headline font-semibold text-lg text-foreground/90">{edu.degree}</h4>
+                                  <p className="text-sm text-muted-foreground mt-1">{edu.school}</p>
+                                </div>
+                                <div className="text-left md:text-right text-sm text-muted-foreground mt-2 md:mt-0 md:ml-4 shrink-0">
+                                  <p>{edu.period}</p>
+                                </div>
+                              </AccordionTrigger>
+                              <AccordionContent className="px-6 pb-6 text-left">
+                                <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
+                                  {edu.details.map((detail, i) => <li key={i}>{detail}</li>)}
+                                </ul>
+                              </AccordionContent>
+                            </div>
+                        </AccordionItem>
+                      </Accordion>
                     </div>
                   </div>
                 </div>

@@ -76,7 +76,7 @@ export default function Contact() {
                 </p>
                 <ContactForm />
             </div>
-            <div className="hidden lg:flex flex-col items-center space-y-8 pt-4">
+            <div className="flex flex-col items-center space-y-8 pt-4">
               <h3 className="text-2xl font-headline font-semibold text-center text-foreground/90">
                   Or connect with me directly
               </h3>

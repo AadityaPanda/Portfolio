@@ -52,7 +52,7 @@ const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: {
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
       {/* Image/Carousel Mockup */}
       <div className={cn(
-        "group transition-all duration-300 hover:-translate-y-2",
+        "group transition-all duration-300 hover:-translate-y-1",
         reverse ? "lg:order-last" : ""
       )}>
         {isProfessional ? (

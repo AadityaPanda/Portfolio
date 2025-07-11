@@ -12,7 +12,7 @@ export default function About() {
           <SectionHeader title="About Me">
             <UserCircle className="h-8 w-8" />
           </SectionHeader>
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-16 items-center">
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16 items-center">
             {/* Image Column */}
             <div className="md:col-span-1 flex justify-center items-center">
               <div className="relative w-64 h-64">
