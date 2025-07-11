@@ -112,15 +112,9 @@ export function FloatingNav() {
                 </Button>
                 </SheetTrigger>
                 <SheetContent side="right" className="w-[85vw] max-w-sm bg-card/95 backdrop-blur-lg p-0">
-                <SheetHeader className="p-4 border-b flex flex-row items-center justify-between">
+                <SheetHeader className="p-4 border-b">
                     <SheetTitle>Navigation</SheetTitle>
                     <SheetDescription className="sr-only">Main navigation menu</SheetDescription>
-                    <SheetClose asChild>
-                        <Button variant="ghost" size="icon">
-                        <X className="h-5 w-5" />
-                        <span className="sr-only">Close menu</span>
-                        </Button>
-                    </SheetClose>
                 </SheetHeader>
                 <div className="p-4">
                     <nav className="flex flex-col items-start gap-1">
