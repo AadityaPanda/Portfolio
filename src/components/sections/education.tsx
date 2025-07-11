@@ -14,8 +14,8 @@ export default function Education() {
             <GraduationCap className="h-8 w-8" />
           </SectionHeader>
           <div className="mt-16 relative">
-            {/* Vertical timeline bar (centered on desktop, left on mobile) */}
-            <div className="absolute top-0 left-4 md:left-1/2 w-0.5 h-full bg-border -translate-x-1/2" />
+            {/* Vertical timeline bar (desktop only) */}
+            <div className="absolute top-0 left-1/2 w-0.5 h-full bg-border -translate-x-1/2 hidden md:block" />
             
             <div className="space-y-12">
               {EDUCATION_DATA.map((edu, index) => (
@@ -27,13 +27,12 @@ export default function Education() {
                     "flex items-center",
                     "md:grid md:grid-cols-2 md:gap-x-8"
                   )}>
-                    {/* Dot on the timeline */}
+                    {/* Dot on the timeline (desktop only) */}
                     <div className="hidden md:block absolute left-1/2 top-4 -translate-y-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary ring-4 ring-background" />
-                    <div className="md:hidden absolute left-4 top-5 -translate-x-1/2 w-4 h-4 rounded-full bg-primary ring-4 ring-background" />
                     
                     {/* Content Card */}
                     <div className={cn(
-                      "pl-8 md:pl-0 w-full",
+                      "w-full",
                       index % 2 === 0 ? "md:col-start-1 md:text-right" : "md:col-start-2"
                     )}>
                       <div className={cn(
