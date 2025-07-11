@@ -1,10 +1,17 @@
+
+'use client';
+
 import { UserCircle } from "lucide-react";
 import Image from "next/image";
 import { ABOUT_ME_TEXT } from "@/lib/data";
 import { SectionHeader } from "../section-header";
 import { SectionCard } from "../section-card";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { ReadMore } from "../read-more";
 
 export default function About() {
+  const isMobile = useIsMobile();
+
   return (
     <section id="about" className="py-12">
       <div className="container mx-auto px-4 md:px-8">
@@ -27,9 +34,13 @@ export default function About() {
             </div>
             {/* Text Column */}
             <div className="md:col-span-2">
-              <p className="text-lg md:text-xl text-muted-foreground leading-relaxed text-center md:text-left">
-                  {ABOUT_ME_TEXT}
-              </p>
+              <div className="text-lg md:text-xl text-muted-foreground leading-relaxed text-center md:text-left">
+                {isMobile ? (
+                  <ReadMore text={ABOUT_ME_TEXT} maxLength={150} />
+                ) : (
+                  <p>{ABOUT_ME_TEXT}</p>
+                )}
+              </div>
             </div>
           </div>
         </SectionCard>

@@ -1,8 +1,10 @@
 
+'use client';
+
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { PROFESSIONAL_PROJECTS_DATA, PERSONAL_PROJECTS_DATA } from "@/lib/data";
-import { Github, ExternalLink, Rocket, FileText } from "lucide-react";
+import { Github, ExternalLink, Rocket, FileText, ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
@@ -11,6 +13,28 @@ import { ProjectMediaCarousel } from "../project-media-carousel";
 import { SectionCard } from "../section-card";
 import { GithubProjects } from "./github-projects";
 import { Card } from "@/components/ui/card";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { useState } from "react";
+
+const ProjectFeatures = ({ details }: { details: string[] }) => {
+    const isMobile = useIsMobile();
+    const [isExpanded, setIsExpanded] = useState(false);
+    const detailsToShow = isMobile && !isExpanded ? details.slice(0, 2) : details;
+
+    return (
+        <div className="space-y-4">
+            <h4 className="text-xl font-headline font-semibold">Features & Details</h4>
+            <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
+                {detailsToShow.map((detail, i) => <li key={i}>{detail}</li>)}
+            </ul>
+            {isMobile && details.length > 2 && (
+                <Button variant="link" onClick={() => setIsExpanded(!isExpanded)} className="p-0 h-auto text-sm">
+                    {isExpanded ? 'Show less' : `Show ${details.length - 2} more...`}
+                </Button>
+            )}
+        </div>
+    );
+};
 
 const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: { project: (typeof PROFESSIONAL_PROJECTS_DATA)[0], reverse?: boolean, isProfessional?: boolean }) => {
   const hasGallery = project.gallery && project.gallery.length > 0;
@@ -80,12 +104,7 @@ const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: {
         </div>
         <p className="text-muted-foreground text-lg">{project.description}</p>
         
-        <div className="space-y-4">
-          <h4 className="text-xl font-headline font-semibold">Features & Details</h4>
-          <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
-            {project.details.map((detail, i) => <li key={i}>{detail}</li>)}
-          </ul>
-        </div>
+        <ProjectFeatures details={project.details} />
 
         <div className="flex flex-wrap gap-2 pt-2">
           {project.repoLink && (
