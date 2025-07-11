@@ -11,7 +11,6 @@ import { cn } from "@/lib/utils";
 import { SectionHeader } from "../section-header";
 import { ProjectMediaCarousel } from "../project-media-carousel";
 import { SectionCard } from "../section-card";
-import { GithubProjects } from "./github-projects";
 import { Card } from "@/components/ui/card";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
@@ -178,7 +177,7 @@ const PersonalProjectCard = ({ project }: { project: (typeof PERSONAL_PROJECTS_D
 };
 
 
-export default function Projects() {
+export default function Projects({ children }: { children?: React.ReactNode }) {
   return (
     <section id="projects" className="py-12">
       <div className="container mx-auto px-4 md:px-8">
@@ -207,7 +206,7 @@ export default function Projects() {
                   <PersonalProjectCard key={index} project={project} />
                 ))}
               </div>
-              <GithubProjects />
+              {children}
             </div>
 
           </div>

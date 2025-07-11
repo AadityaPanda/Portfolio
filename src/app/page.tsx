@@ -1,9 +1,11 @@
+
 import { Header } from '@/components/sections/header';
 import { Footer } from '@/components/footer';
 import { ScrollAnimate } from '@/components/scroll-animate';
 import { ScrollDownButton } from '@/components/scroll-down-button';
 import dynamic from 'next/dynamic';
 import { FloatingNav } from '@/components/floating-nav';
+import { GithubProjects } from '@/components/sections/github-projects';
 
 const About = dynamic(() => import('@/components/sections/about'));
 const Experience = dynamic(() => import('@/components/sections/experience'));
@@ -20,7 +22,11 @@ export default function Home() {
         <Header />
         <ScrollAnimate><About /></ScrollAnimate>
         <ScrollAnimate><Experience /></ScrollAnimate>
-        <ScrollAnimate><Projects /></ScrollAnimate>
+        <ScrollAnimate>
+          <Projects>
+            <GithubProjects />
+          </Projects>
+        </ScrollAnimate>
         <ScrollAnimate><Skills /></ScrollAnimate>
         <ScrollAnimate><Education /></ScrollAnimate>
         <ScrollAnimate><Contact /></ScrollAnimate>
