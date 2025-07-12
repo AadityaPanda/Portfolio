@@ -13,6 +13,7 @@ export const EXPERIENCE_DATA = [
     company: "Bitchief Technology Services Pvt Ltd",
     role: "Software Developer",
     period: "Nov 2024 - Present",
+    logo: "https://placehold.co/100x100.png",
     responsibilities: [
       "Architected a full-stack documentation portal from concept to deployment, centralizing knowledge and streamlining license management.",
       "Engineered a custom Privileged Access Management (PAM) solution on top of Apache Guacamole, delivering a branded UI and a more granular permission system.",
@@ -25,6 +26,7 @@ export const EXPERIENCE_DATA = [
     company: "Qmansys Infosolutions",
     role: "Internet of Things Intern",
     period: "Apr 2023 - Jul 2023",
+    logo: "https://placehold.co/100x100.png",
     responsibilities: [
       "Developed and tested firmware for ESP32 microcontrollers in various IoT solutions.",
       "Collaborated on testing and deploying end-to-end IoT solutions for client applications.",
@@ -35,6 +37,7 @@ export const EXPERIENCE_DATA = [
     company: "Qmansys Infosolutions",
     role: "Internet of Things Trainee",
     period: "Apr 2022 - Apr 2023",
+    logo: "https://placehold.co/100x100.png",
     responsibilities: [
       "Acquired foundational knowledge in IoT, including Arduino and Raspberry Pi platforms.",
       "Demonstrated practical skills by building and programming numerous Arduino-based projects.",

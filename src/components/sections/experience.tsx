@@ -4,6 +4,7 @@
 import { EXPERIENCE_DATA } from "@/lib/data";
 import { Briefcase } from "lucide-react";
 import { SectionHeader } from "../section-header";
+import Image from "next/image";
 
 const ExperienceItem = ({ exp }: { exp: typeof EXPERIENCE_DATA[0] }) => {
     return (
@@ -17,13 +18,26 @@ const ExperienceItem = ({ exp }: { exp: typeof EXPERIENCE_DATA[0] }) => {
 
             <div className="transform transition-all duration-300 group-hover:-translate-y-1">
                 <div className="border rounded-lg bg-card/50 backdrop-blur-xl p-6 transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10">
-                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4">
-                        <div className="flex-1 text-left w-full">
-                            <h4 className="font-headline font-semibold text-lg text-foreground/90">{exp.role}</h4>
-                            <p className="text-sm text-muted-foreground mt-1">{exp.company}</p>
+                    <div className="flex flex-col sm:flex-row items-start gap-6 mb-4">
+                        <div className="relative h-16 w-16 rounded-md overflow-hidden border border-border/20 shrink-0">
+                            <Image 
+                                src={exp.logo}
+                                alt={`${exp.company} logo`}
+                                fill
+                                className="object-contain p-2"
+                                data-ai-hint="company logo"
+                            />
                         </div>
-                        <div className="text-left md:text-right text-sm text-muted-foreground mt-2 sm:mt-0 sm:ml-4 shrink-0">
-                            <p>{exp.period}</p>
+                        <div className="flex-1 text-left w-full">
+                            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between">
+                                <div className="flex-1">
+                                    <h4 className="font-headline font-semibold text-lg text-foreground/90">{exp.role}</h4>
+                                    <p className="text-sm text-muted-foreground mt-1">{exp.company}</p>
+                                </div>
+                                <div className="text-left md:text-right text-sm text-muted-foreground mt-2 sm:mt-0 sm:ml-4 shrink-0">
+                                    <p>{exp.period}</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div className="pt-4 border-t border-border/50">
