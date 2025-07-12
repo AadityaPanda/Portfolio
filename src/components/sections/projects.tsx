@@ -4,13 +4,12 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { PROFESSIONAL_PROJECTS_DATA, PERSONAL_PROJECTS_DATA } from "@/lib/data";
-import { Github, ExternalLink, Rocket, FileText, ChevronDown } from "lucide-react";
+import { Github, ExternalLink, Rocket, FileText } from "lucide-react";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import { SectionHeader } from "../section-header";
 import { ProjectMediaCarousel } from "../project-media-carousel";
-import { SectionCard } from "../section-card";
 import { Card } from "@/components/ui/card";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
@@ -179,14 +178,13 @@ const PersonalProjectCard = ({ project }: { project: (typeof PERSONAL_PROJECTS_D
 
 export default function Projects({ children }: { children?: React.ReactNode }) {
   return (
-    <section id="projects" className="py-12">
+    <section id="projects" className="w-full min-h-screen py-24 flex flex-col items-center justify-center">
       <div className="container mx-auto px-4 md:px-8">
-        <SectionCard>
-          <SectionHeader title="My Work">
+        <SectionHeader title="My Work">
             <Rocket className="h-8 w-8" />
-          </SectionHeader>
-          
-          <div className="mt-20 space-y-24">
+        </SectionHeader>
+        
+        <div className="mt-16 space-y-24">
             
             <div>
               <h3 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">Professional Work</h3>
@@ -209,8 +207,7 @@ export default function Projects({ children }: { children?: React.ReactNode }) {
               {children}
             </div>
 
-          </div>
-        </SectionCard>
+        </div>
       </div>
     </section>
   );

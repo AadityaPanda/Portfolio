@@ -3,21 +3,21 @@ import { Wrench } from "lucide-react";
 import { SkillIcon } from "@/components/skill-icon";
 import { SectionHeader } from "../section-header";
 import { Card, CardContent } from "@/components/ui/card";
-import { SectionCard } from "../section-card";
+import { ScrollAnimate } from "../scroll-animate";
 
 export default function Skills() {
   const categories = Object.keys(SKILLS_DATA);
 
   return (
-    <section id="skills" className="py-12">
-      <div className="container mx-auto px-4 md:px-8">
-        <SectionCard>
-          <SectionHeader title="Technical Skills">
-            <Wrench className="h-8 w-8" />
-          </SectionHeader>
-          <div className="mt-12 space-y-12">
-            {categories.map((category) => (
-              <div key={category}>
+    <section id="skills" className="min-h-screen w-full py-24 flex flex-col items-center justify-center">
+        <ScrollAnimate>
+            <SectionHeader title="Technical Skills">
+                <Wrench className="h-8 w-8" />
+            </SectionHeader>
+        </ScrollAnimate>
+        <div className="w-full max-w-5xl mx-auto px-4 md:px-8 mt-12 space-y-12">
+            {categories.map((category, index) => (
+            <ScrollAnimate key={category} delay={index * 150}>
                 <h3 className="text-2xl font-headline font-semibold mb-6 text-center md:text-left">{category}</h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
                   {(SKILLS_DATA as any)[category].map((skill: string) => (
@@ -29,11 +29,9 @@ export default function Skills() {
                     </Card>
                   ))}
                 </div>
-              </div>
+            </ScrollAnimate>
             ))}
-          </div>
-        </SectionCard>
-      </div>
+        </div>
     </section>
   );
 }
