@@ -1,3 +1,4 @@
+
 export const CV_PATH = "/media/AadityaPanda_CV.pdf";
 
 export const ABOUT_ME_TEXT = "As a dedicated and passionate full-stack software developer, I specialize in architecting and building robust, elegant web applications from the ground up. My expertise lies in transforming complex problems into seamless and intuitive digital experiences. With a strong foundation in both front-end and back-end technologies, I am adept at managing the entire project lifecycle, from conceptualization and design to deployment and maintenance. I thrive in collaborative environments, continuously seeking to innovate and contribute to projects that push the boundaries of technology.";
@@ -5,7 +6,7 @@ export const ABOUT_ME_TEXT = "As a dedicated and passionate full-stack software 
 export const SKILLS_DATA = {
   "Languages": ["JavaScript", "TypeScript", "Python", "HTML5", "CSS3", "SQL"],
   "Frameworks & Libraries": ["React", "Next.js", "Express.js", "Tailwind CSS"],
-  "Platforms & Tools": ["Node.js", "Git", "Firebase", "Nginx"],
+  "Platforms & Tools": ["Node.js", "Git", "Firebase", "Nginx", "C++"],
 };
 
 export const EXPERIENCE_DATA = [
@@ -13,7 +14,7 @@ export const EXPERIENCE_DATA = [
     company: "Bitchief Technology Services Pvt Ltd",
     role: "Software Developer",
     period: "Nov 2024 - Present",
-    logo: "https://placehold.co/100x100.png",
+    logo: "/media/bitchief-logo.png",
     responsibilities: [
       "Architected a full-stack documentation portal from concept to deployment, centralizing knowledge and streamlining license management.",
       "Engineered a custom Privileged Access Management (PAM) solution on top of Apache Guacamole, delivering a branded UI and a more granular permission system.",
@@ -26,7 +27,7 @@ export const EXPERIENCE_DATA = [
     company: "Qmansys Infosolutions",
     role: "Internet of Things Intern",
     period: "Apr 2023 - Jul 2023",
-    logo: "https://placehold.co/100x100.png",
+    logo: "/media/qmansys-logo.png",
     responsibilities: [
       "Developed and tested firmware for ESP32 microcontrollers in various IoT solutions.",
       "Collaborated on testing and deploying end-to-end IoT solutions for client applications.",
@@ -37,7 +38,7 @@ export const EXPERIENCE_DATA = [
     company: "Qmansys Infosolutions",
     role: "Internet of Things Trainee",
     period: "Apr 2022 - Apr 2023",
-    logo: "https://placehold.co/100x100.png",
+    logo: "/media/qmansys-logo.png",
     responsibilities: [
       "Acquired foundational knowledge in IoT, including Arduino and Raspberry Pi platforms.",
       "Demonstrated practical skills by building and programming numerous Arduino-based projects.",
