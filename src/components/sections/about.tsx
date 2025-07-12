@@ -12,12 +12,12 @@ export default function About() {
   const isMobile = useIsMobile();
 
   return (
-    <section id="about" className="min-h-screen w-full py-24 flex flex-col items-center justify-center">
+    <section id="about" className="w-full py-24">
       <div className="container mx-auto px-4 md:px-8">
         <SectionHeader title="About Me">
           <UserCircle className="h-8 w-8" />
         </SectionHeader>
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
+        <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Image Column */}
           <div className="flex justify-center items-center">
             <div className="relative w-64 h-64 md:w-80 md:h-80">
