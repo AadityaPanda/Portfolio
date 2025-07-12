@@ -20,13 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn(
-        "font-body antialiased scrollbar-none bg-background bg-aurora",
+        "font-body antialiased scrollbar-none bg-background",
         inter.variable,
         spaceGrotesk.variable
       )}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
+          defaultTheme="dark"
           enableSystem
         >
           <SmoothScroll>

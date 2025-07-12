@@ -34,7 +34,7 @@ const SocialLink = ({ link }: { link: typeof socialLinks[0] }) => (
       target="_blank"
       rel="noopener noreferrer"
       aria-label={link.ariaLabel}
-      className="group flex items-center p-4 rounded-lg border bg-card/70 backdrop-blur-sm border-border/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary/50 hover:shadow-primary/10"
+      className="group flex items-center p-4 rounded-lg border bg-card/50 backdrop-blur-xl border-border/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary/50 hover:shadow-primary/10"
     >
       <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-muted transition-colors group-hover:bg-primary/10">
         <link.icon className="h-6 w-6 text-primary" />

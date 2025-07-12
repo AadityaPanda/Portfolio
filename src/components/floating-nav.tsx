@@ -70,7 +70,7 @@ export function FloatingNav() {
         "fixed bottom-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-300",
         hasScrolled ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       )}>
-        <div className="flex items-center gap-1 h-12 px-3 bg-background/80 backdrop-blur-lg border border-border/30 shadow-lg rounded-full">
+        <div className="flex items-center gap-1 h-12 px-3 bg-background/50 backdrop-blur-lg border border-border/30 shadow-lg rounded-full">
           {navLinks.map((link) => (
             <a
               key={link.href}
@@ -99,7 +99,7 @@ export function FloatingNav() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out",
-        hasScrolled ? "bg-background/80 backdrop-blur-lg border-b border-border/20 shadow-sm" : "bg-transparent"
+        hasScrolled ? "bg-background/50 backdrop-blur-xl border-b border-border/20 shadow-sm" : "bg-transparent"
       )}
     >
       <nav className="container mx-auto px-4 md:px-8 flex items-center justify-between h-20 relative">
@@ -146,7 +146,7 @@ export function FloatingNav() {
                 <span className="sr-only">Open menu</span>
             </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[85vw] max-w-sm bg-card/95 backdrop-blur-lg p-0">
+            <SheetContent side="right" className="w-[85vw] max-w-sm bg-card/80 backdrop-blur-xl p-0">
             <SheetHeader className="p-4 border-b">
                 <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                 <SheetDescription className="sr-only">Main navigation menu</SheetDescription>

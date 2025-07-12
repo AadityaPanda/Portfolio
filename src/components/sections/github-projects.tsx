@@ -82,7 +82,7 @@ export async function GithubProjects() {
 
   return (
     <div className="mt-24">
-      <h3 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12 animate-gradient-shimmer bg-clip-text text-transparent bg-[length:200%_auto] bg-gradient-to-r from-primary via-accent to-primary flex items-center justify-center gap-4">
+      <h3 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12 text-gradient-primary flex items-center justify-center gap-4">
         <GithubIcon className="h-8 w-8 text-primary" />
         More on GitHub
       </h3>
@@ -95,7 +95,7 @@ export async function GithubProjects() {
             rel="noopener noreferrer" 
             className="block group"
           >
-            <Card className="h-full flex flex-col bg-card/70 backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10">
+            <Card className="h-full flex flex-col bg-card/50 backdrop-blur-xl transition-all duration-300 hover:border-primary/50 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10">
               <CardHeader>
                 <CardTitle className="text-xl font-semibold group-hover:text-primary transition-colors capitalize">{repo.name}</CardTitle>
               </CardHeader>

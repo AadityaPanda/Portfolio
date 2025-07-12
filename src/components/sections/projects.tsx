@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Badge } from "@/components/ui/badge";
@@ -77,7 +78,7 @@ const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: {
         reverse ? "lg:order-last" : ""
       )}>
         {isProfessional ? (
-           <div className="rounded-lg border border-border bg-card/70 backdrop-blur-sm shadow-lg overflow-hidden group-hover:shadow-2xl group-hover:shadow-primary/10 group-hover:border-primary/50 transition-all duration-300">
+           <div className="rounded-lg border border-border bg-card/50 backdrop-blur-xl shadow-lg overflow-hidden group-hover:shadow-2xl group-hover:shadow-primary/10 group-hover:border-primary/50 transition-all duration-300">
              <div className="h-8 bg-muted/50 flex items-center px-3 border-b border-border">
                <div className="flex items-center gap-1.5">
                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
@@ -144,7 +145,7 @@ const PersonalProjectCard = ({ project }: { project: (typeof PERSONAL_PROJECTS_D
   );
 
   return (
-    <Card className="group flex flex-col h-full bg-card/70 backdrop-blur-sm transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/50 overflow-hidden">
+    <Card className="group flex flex-col h-full bg-card/50 backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/50 overflow-hidden">
       {mediaElement}
       <div className="flex flex-col flex-grow p-6">
         <h3 className="text-2xl font-headline font-bold">{project.title}</h3>
@@ -186,7 +187,7 @@ export default function Projects({ children }: { children?: React.ReactNode }) {
         <div className="mt-16 space-y-24">
             
             <div>
-              <h3 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12 animate-gradient-shimmer bg-clip-text text-transparent bg-[length:200%_auto] bg-gradient-to-r from-primary via-accent to-primary">Professional Work</h3>
+              <h3 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12 text-gradient-primary">Professional Work</h3>
               <div className="space-y-24">
                 {PROFESSIONAL_PROJECTS_DATA.map((project, index) => (
                   <ProjectShowcase key={index} project={project} reverse={index % 2 !== 0} isProfessional={true} />
@@ -197,7 +198,7 @@ export default function Projects({ children }: { children?: React.ReactNode }) {
             <Separator className="my-24" />
 
             <div>
-              <h3 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12 animate-gradient-shimmer bg-clip-text text-transparent bg-[length:200%_auto] bg-gradient-to-r from-primary via-accent to-primary">Personal Projects</h3>
+              <h3 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12 text-gradient-primary">Personal Projects</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {PERSONAL_PROJECTS_DATA.map((project, index) => (
                   <PersonalProjectCard key={index} project={project} />

@@ -16,7 +16,7 @@ const ExperienceItem = ({ exp }: { exp: typeof EXPERIENCE_DATA[0] }) => {
             </div>
 
             <div className="transform transition-all duration-300 group-hover:-translate-y-1">
-                <div className="border rounded-lg bg-card/70 backdrop-blur-sm p-6 transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10">
+                <div className="border rounded-lg bg-card/50 backdrop-blur-xl p-6 transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10">
                     <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4">
                         <div className="flex-1 text-left w-full">
                             <h4 className="font-headline font-semibold text-lg text-foreground/90">{exp.role}</h4>

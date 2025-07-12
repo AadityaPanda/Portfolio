@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Github, Linkedin, FileText, Instagram, Send } from "lucide-react";
@@ -28,10 +29,13 @@ export function Header() {
 
   useEffect(() => {
     const styles = [
-      'color: #3b82f6',
+      'color: #00E6E6',
       'font-size: 16px',
       'font-weight: bold',
       'font-family: "Space Grotesk", sans-serif',
+      'background: #000',
+      'padding: 4px 8px',
+      'border-radius: 4px'
     ].join(';');
 
     console.log("%cPsst... Hey there, fellow developer! 👋", styles);
@@ -94,7 +98,7 @@ export function Header() {
           </p>
           <h1 className="flex items-center justify-start text-5xl font-headline font-bold tracking-tighter text-foreground sm:text-6xl lg:text-7xl xl:text-8xl h-32 animate-in fade-in slide-in-from-top-6 duration-700 delay-300">
             <span className="inline-flex items-center">
-              <span className="animate-gradient-shimmer bg-clip-text text-transparent bg-[length:200%_auto] bg-gradient-to-r from-primary via-accent to-primary">
+              <span className="text-gradient-primary">
                 {isMobile ? "Software Developer" : typedText}
               </span>
               {!isMobile && (
@@ -115,7 +119,7 @@ export function Header() {
               {socialLinks.map((link, index) => {
                 const gradientClasses = {
                   linkedin: 'bg-gradient-to-br from-sky-500 to-blue-600 hover:shadow-blue-500/30',
-                  github: 'bg-gradient-to-br from-gray-700 to-gray-900 hover:shadow-gray-600/30',
+                  github: 'bg-gradient-to-br from-gray-700 to-gray-900 hover:shadow-gray-600/30 dark:from-gray-300 dark:to-gray-500',
                   instagram: 'bg-gradient-to-br from-yellow-400 via-pink-500 to-purple-600 hover:shadow-pink-500/30',
                 }[link.name] || '';
 
@@ -144,7 +148,7 @@ export function Header() {
                 <DialogTrigger asChild>
                   <Button
                     size="lg"
-                    variant="secondary-gradient"
+                    variant="outline"
                     className="h-12 text-base"
                   >
                     <FileText className="mr-2 h-4 w-4" /> View CV

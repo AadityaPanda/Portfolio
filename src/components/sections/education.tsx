@@ -19,7 +19,7 @@ const EducationItem = ({ edu, index }: { edu: typeof EDUCATION_DATA[0], index: n
             <div className="transform transition-all duration-300 group-hover:-translate-y-1">
                 <Accordion type="single" collapsible className="w-full">
                     <AccordionItem value={`edu-${index}`} className="border-none">
-                        <div className="border rounded-lg bg-card/70 backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 data-[state=open]:shadow-xl data-[state=open]:shadow-primary/10 data-[state=open]:border-primary/50">
+                        <div className="border rounded-lg bg-card/50 backdrop-blur-xl transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 data-[state=open]:shadow-xl data-[state=open]:shadow-primary/10 data-[state=open]:border-primary/50">
                             <AccordionTrigger className="p-6 text-left hover:no-underline flex-col sm:flex-row items-start sm:items-center">
                                 <div className="flex-1 text-left w-full">
                                 <h4 className="font-headline font-semibold text-lg text-foreground/90">{edu.degree}</h4>

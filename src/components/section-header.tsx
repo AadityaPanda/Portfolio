@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useInView } from 'react-intersection-observer';
@@ -33,7 +34,7 @@ export function SectionHeader({ children, title }: SectionHeaderProps) {
       <div className="overflow-hidden py-1">
         <h2
           className={cn(
-            'text-3xl sm:text-4xl md:text-5xl font-headline font-bold tracking-tight transition-transform duration-700 delay-150 ease-out animate-gradient-shimmer bg-clip-text text-transparent bg-[length:200%_auto] bg-gradient-to-r from-primary via-accent to-primary',
+            'text-3xl sm:text-4xl md:text-5xl font-headline font-bold tracking-tight transition-transform duration-700 delay-150 ease-out text-gradient-primary',
             inView ? 'translate-y-0' : 'translate-y-full'
           )}
         >
@@ -44,7 +45,7 @@ export function SectionHeader({ children, title }: SectionHeaderProps) {
       {/* Underline Animation: Grow from center */}
       <div
         className={cn(
-          'h-1 w-24 rounded-full bg-gradient-to-r from-accent via-primary to-accent origin-center transition-transform duration-700 delay-300 ease-out',
+          'h-1 w-24 rounded-full bg-gradient-to-r from-secondary via-primary to-secondary origin-center transition-transform duration-700 delay-300 ease-out',
           inView ? 'scale-x-100' : 'scale-x-0'
         )}
       />
