@@ -24,7 +24,7 @@ const ExperienceItem = ({ exp }: { exp: typeof EXPERIENCE_DATA[0] }) => {
                                 src={exp.logo}
                                 alt={`${exp.company} logo`}
                                 fill
-                                className="object-contain p-2"
+                                className="object-contain"
                                 data-ai-hint="company logo"
                             />
                         </div>
