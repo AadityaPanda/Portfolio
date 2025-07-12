@@ -1,40 +1,44 @@
 
 'use client';
 
-import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { EXPERIENCE_DATA } from "@/lib/data";
 import { Briefcase } from "lucide-react";
 import { SectionHeader } from "../section-header";
-import { cn } from "@/lib/utils";
-import { useIsMobile } from "@/hooks/use-mobile";
-import { useState } from "react";
-import { Button } from "../ui/button";
 
-const ExperienceItem = ({ exp }: { exp: typeof EXPERIENCE_DATA[0] }) => {
-    const isMobile = useIsMobile();
-    const [isExpanded, setIsExpanded] = useState(false);
-    const responsibilitiesToShow = isMobile && !isExpanded ? exp.responsibilities.slice(0, 2) : exp.responsibilities;
-
+const ExperienceItem = ({ exp, index }: { exp: typeof EXPERIENCE_DATA[0], index: number }) => {
     return (
-        <Card className="bg-card/70 backdrop-blur-sm transform transition-all duration-300 hover:border-primary/50 hover:shadow-2xl hover:shadow-primary/10 hover:-translate-y-2">
-            <CardHeader>
-                <CardTitle>{exp.role}</CardTitle>
-                <CardDescription className="flex justify-between flex-col sm:flex-row gap-2 pt-1">
-                    <span className="font-semibold text-foreground/80">{exp.company}</span>
-                    <span className="font-medium text-muted-foreground">{exp.period}</span>
-                </CardDescription>
-            </CardHeader>
-            <CardContent>
-                <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
-                    {responsibilitiesToShow.map((resp, i) => <li key={i}>{resp}</li>)}
-                </ul>
-                {isMobile && exp.responsibilities.length > 2 && (
-                    <Button variant="link" onClick={() => setIsExpanded(!isExpanded)} className="p-0 h-auto mt-2">
-                        {isExpanded ? 'Show less' : `Show ${exp.responsibilities.length - 2} more...`}
-                    </Button>
-                )}
-            </CardContent>
-        </Card>
+        <div className="relative pl-8 sm:pl-32 py-6 group">
+            {/* Dot on the timeline */}
+            <div className="flex items-center absolute -left-4 top-1/2 -translate-y-1/2 transform">
+                <div className="h-8 w-8 rounded-full bg-background border-2 border-border flex items-center justify-center">
+                    <div className="h-3 w-3 rounded-full bg-primary transition-all duration-300 group-hover:scale-125" />
+                </div>
+            </div>
+
+            <div className="transform transition-all duration-300 group-hover:-translate-y-1">
+                <Accordion type="single" collapsible className="w-full">
+                    <AccordionItem value={`exp-${index}`} className="border-none">
+                        <div className="border rounded-lg bg-card/70 backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:shadow-xl hover:shadow-primary/10 data-[state=open]:shadow-xl data-[state=open]:shadow-primary/10 data-[state=open]:border-primary/50">
+                            <AccordionTrigger className="p-6 text-left hover:no-underline flex-col sm:flex-row items-start sm:items-center">
+                                <div className="flex-1 text-left w-full">
+                                    <h4 className="font-headline font-semibold text-lg text-foreground/90">{exp.role}</h4>
+                                    <p className="text-sm text-muted-foreground mt-1">{exp.company}</p>
+                                </div>
+                                <div className="text-left md:text-right text-sm text-muted-foreground mt-2 sm:mt-0 sm:ml-4 shrink-0">
+                                    <p>{exp.period}</p>
+                                </div>
+                            </AccordionTrigger>
+                            <AccordionContent className="px-6 pb-6 text-left">
+                                <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
+                                    {exp.responsibilities.map((detail, i) => <li key={i}>{detail}</li>)}
+                                </ul>
+                            </AccordionContent>
+                        </div>
+                    </AccordionItem>
+                </Accordion>
+            </div>
+        </div>
     );
 };
 
@@ -46,18 +50,12 @@ export default function Experience() {
             <SectionHeader title="Work Experience">
                 <Briefcase className="h-8 w-8" />
             </SectionHeader>
-            <div className="mt-16 space-y-8 relative pl-6 md:pl-10 border-l-2 border-border max-w-3xl mx-auto">
-                <div className="absolute left-[-2px] top-0 h-full w-[2px] bg-gradient-to-b from-primary/50 via-primary/20 to-transparent" />
+            <div className="relative mt-12">
+                {/* Vertical timeline bar */}
+                <div className="absolute left-0 w-1 h-full bg-border -translate-x-1/2" />
+                
                 {EXPERIENCE_DATA.map((exp, index) => (
-                <div key={index} className="relative">
-                    <div className={cn(
-                    "absolute top-1 h-6 w-6 rounded-full bg-background flex items-center justify-center",
-                    "-left-[29.5px] md:-left-[45.5px]"
-                    )}>
-                    <div className="h-3 w-3 rounded-full bg-primary animate-pulse" />
-                    </div>
-                    <ExperienceItem exp={exp} />
-                </div>
+                    <ExperienceItem key={index} exp={exp} index={index} />
                 ))}
             </div>
         </div>
