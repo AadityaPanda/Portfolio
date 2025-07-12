@@ -26,20 +26,12 @@ export const EXPERIENCE_DATA = [
   {
     company: "Qmansys Infosolutions",
     role: "Internet of Things Intern",
-    period: "Apr 2023 - Jul 2023",
+    period: "Apr 2022 - Jul 2023",
     logo: "/media/qmansys-logo.png",
     responsibilities: [
       "Developed and tested firmware for ESP32 microcontrollers in various IoT solutions.",
       "Collaborated on testing and deploying end-to-end IoT solutions for client applications.",
-      "Gained hands-on experience with embedded systems and real-time data processing."
-    ],
-  },
-  {
-    company: "Qmansys Infosolutions",
-    role: "Internet of Things Trainee",
-    period: "Apr 2022 - Apr 2023",
-    logo: "/media/qmansys-logo.png",
-    responsibilities: [
+      "Gained hands-on experience with embedded systems and real-time data processing.",
       "Acquired foundational knowledge in IoT, including Arduino and Raspberry Pi platforms.",
       "Demonstrated practical skills by building and programming numerous Arduino-based projects.",
       "Achieved certification in \"Internet Of Things (Expert Level)\", demonstrating comprehensive competency."
