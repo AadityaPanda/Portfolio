@@ -33,7 +33,7 @@ export function SectionHeader({ children, title }: SectionHeaderProps) {
       <div className="overflow-hidden py-1">
         <h2
           className={cn(
-            'text-3xl sm:text-4xl md:text-5xl font-headline font-bold tracking-tight transition-transform duration-700 delay-150 ease-out',
+            'text-3xl sm:text-4xl md:text-5xl font-headline font-bold tracking-tight transition-transform duration-700 delay-150 ease-out animate-gradient-shimmer bg-clip-text text-transparent bg-[length:200%_auto] bg-gradient-to-r from-primary via-accent to-primary',
             inView ? 'translate-y-0' : 'translate-y-full'
           )}
         >

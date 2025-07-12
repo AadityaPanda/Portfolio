@@ -93,23 +93,19 @@ export function Header() {
             Hi, I'm Aaditya Panda
           </p>
           <h1 className="flex items-center justify-start text-5xl font-headline font-bold tracking-tighter text-foreground sm:text-6xl lg:text-7xl xl:text-8xl h-32 animate-in fade-in slide-in-from-top-6 duration-700 delay-300">
-            {isMobile ? (
+            <span className="inline-flex items-center">
               <span className="animate-gradient-shimmer bg-clip-text text-transparent bg-[length:200%_auto] bg-gradient-to-r from-primary via-accent to-primary">
-                Software Developer
+                {isMobile ? "Software Developer" : typedText}
               </span>
-            ) : (
-              <span className="inline-flex items-center">
-                <span className="animate-gradient-shimmer bg-clip-text text-transparent bg-[length:200%_auto] bg-gradient-to-r from-primary via-accent to-primary">
-                  {typedText}
-                </span>
+              {!isMobile && (
                 <span
                   className={cn(
                     "inline-block w-px h-[0.9em] bg-primary ml-2 align-bottom",
                     isPaused && "animate-cursor-blink"
                   )}
                 />
-              </span>
-            )}
+              )}
+            </span>
           </h1>
           <p className="text-lg sm:text-xl text-muted-foreground animate-in fade-in from-top-8 slide-in-from-top-8 duration-700 delay-400 max-w-2xl">
             I build elegant and scalable web applications, turning complex problems into seamless digital experiences.

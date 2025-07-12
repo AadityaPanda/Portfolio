@@ -1,10 +1,9 @@
-
 'use client';
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { PROFESSIONAL_PROJECTS_DATA, PERSONAL_PROJECTS_DATA } from "@/lib/data";
-import { Github, ExternalLink, Rocket, FileText } from "lucide-react";
+import { Github, ExternalLink, Rocket, FileText, GithubIcon as GithubIconLucide } from "lucide-react";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
@@ -178,7 +177,7 @@ const PersonalProjectCard = ({ project }: { project: (typeof PERSONAL_PROJECTS_D
 
 export default function Projects({ children }: { children?: React.ReactNode }) {
   return (
-    <section id="projects" className="w-full min-h-screen py-24 flex flex-col items-center justify-center">
+    <section id="projects" className="w-full py-24">
       <div className="container mx-auto px-4 md:px-8">
         <SectionHeader title="My Work">
             <Rocket className="h-8 w-8" />
@@ -187,7 +186,7 @@ export default function Projects({ children }: { children?: React.ReactNode }) {
         <div className="mt-16 space-y-24">
             
             <div>
-              <h3 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">Professional Work</h3>
+              <h3 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12 animate-gradient-shimmer bg-clip-text text-transparent bg-[length:200%_auto] bg-gradient-to-r from-primary via-accent to-primary">Professional Work</h3>
               <div className="space-y-24">
                 {PROFESSIONAL_PROJECTS_DATA.map((project, index) => (
                   <ProjectShowcase key={index} project={project} reverse={index % 2 !== 0} isProfessional={true} />
@@ -198,7 +197,7 @@ export default function Projects({ children }: { children?: React.ReactNode }) {
             <Separator className="my-24" />
 
             <div>
-              <h3 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">Personal Projects</h3>
+              <h3 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12 animate-gradient-shimmer bg-clip-text text-transparent bg-[length:200%_auto] bg-gradient-to-r from-primary via-accent to-primary">Personal Projects</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {PERSONAL_PROJECTS_DATA.map((project, index) => (
                   <PersonalProjectCard key={index} project={project} />

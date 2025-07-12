@@ -4,48 +4,48 @@
 
 @layer base {
   :root {
-    --background: 240 25% 98%;
-    --foreground: 224 71.4% 10.1%;
-    --card: 240 25% 100%;
-    --card-foreground: 224 71.4% 10.1%;
-    --popover: 240 25% 100%;
-    --popover-foreground: 224 71.4% 4.1%;
-    --primary: 220 90% 60%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 216 28% 98%;
-    --secondary-foreground: 220.9 39.3% 11%;
-    --muted: 220 14.3% 95.9%;
-    --muted-foreground: 220 8.9% 45%;
-    --accent: 34 100% 65%;
-    --accent-foreground: 24 9.8% 10%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 262.1 83.3% 57.8%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 30 96% 52%;
+    --accent-foreground: 0 0% 9%;
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 220 13% 88%;
-    --input: 220 13% 91%;
-    --ring: 220 90% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 262.1 83.3% 57.8%;
     --radius: 0.8rem;
   }
 
   .dark {
-    --background: 220 25% 10%;
-    --foreground: 210 40% 98%;
-    --card: 220 25% 15%;
-    --card-foreground: 210 40% 98%;
-    --popover: 220 25% 11%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 220 90% 60%;
-    --primary-foreground: 224 71.4% 10.1%;
-    --secondary: 220 20% 15%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 220 20% 12%;
-    --muted-foreground: 220 15% 65%;
-    --accent: 34 100% 65%;
-    --accent-foreground: 24 9.8% 10%;
-    --destructive: 0 70% 55%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 220 20% 25%;
-    --input: 220 20% 20%;
-    --ring: 220 90% 60%;
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 262.1 83.3% 57.8%;
+    --primary-foreground: 210 20% 98%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 30 96% 52%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 262.1 83.3% 57.8%;
   }
 }
 
@@ -65,9 +65,9 @@
 
 @layer utilities {
   .bg-aurora {
-    --aurora-color-1: hsl(var(--primary) / 0.3);
-    --aurora-color-2: hsl(var(--accent) / 0.3);
-    --aurora-color-3: hsl(200 90% 60% / 0.2);
+    --aurora-color-1: hsl(var(--primary) / 0.2);
+    --aurora-color-2: hsl(var(--accent) / 0.2);
+    --aurora-color-3: hsl(200 90% 60% / 0.15);
     background-image: radial-gradient(at 20% 25%, var(--aurora-color-1) 0px, transparent 50%),
                       radial-gradient(at 75% 30%, var(--aurora-color-2) 0px, transparent 50%),
                       radial-gradient(at 50% 80%, var(--aurora-color-3) 0px, transparent 50%);

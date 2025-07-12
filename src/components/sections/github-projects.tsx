@@ -82,8 +82,8 @@ export async function GithubProjects() {
 
   return (
     <div className="mt-24">
-      <h3 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70 flex items-center justify-center gap-4">
-        <GithubIcon className="h-8 w-8 text-foreground" />
+      <h3 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12 animate-gradient-shimmer bg-clip-text text-transparent bg-[length:200%_auto] bg-gradient-to-r from-primary via-accent to-primary flex items-center justify-center gap-4">
+        <GithubIcon className="h-8 w-8 text-primary" />
         More on GitHub
       </h3>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
