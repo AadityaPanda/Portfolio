@@ -74,7 +74,7 @@ export const PROFESSIONAL_PROJECTS_DATA = [
   {
     title: "Internal Documentation Portal",
     description: "A full-stack internal portal designed to centralize documentation and streamline license management.",
-    techStack: ["React", "Node.js", "Express.js", "MySQL", "Nginx"],
+    techStack: ["React", "Node.js", "Express.js", "SQL", "Nginx"],
     details: [
       "Built as a central source of truth for all Identity and Access Management (IDAM) documentation.",
       "Features a secure module for displaying organization-specific license details to authenticated users.",
@@ -89,7 +89,7 @@ export const PROFESSIONAL_PROJECTS_DATA = [
   {
     title: "Privileged Access Management (PAM)",
     description: "A custom-branded Privileged Access Management (PAM) solution built upon Apache Guacamole.",
-    techStack: ["React", "Node.js", "Express.js", "MySQL", "Nginx"],
+    techStack: ["React", "Node.js", "Express.js", "SQL", "Nginx"],
     details: [
         "Engineered a custom front-end and branded UI for Apache Guacamole.",
         "Implemented a highly granular, role-based permission system that surpasses the original software's capabilities.",
@@ -108,7 +108,7 @@ export const PERSONAL_PROJECTS_DATA = [
   {
     title: "IoT Tollbooth System Supervisor",
     description: "An IoT and RFID-based system that revolutionizes tollbooth operations by optimizing traffic flow and enhancing user experience.",
-    techStack: ["ESP32", "Arduino", "RFID", "C++", "Google Sheets API", "AppSheet"],
+    techStack: ["C++"],
     repoLink: "https://github.com/AadityaPanda/ITSS",
     liveLink: "https://ieeexplore.ieee.org/document/10993585",
     thumbnail: "/media/project-iot-tollbooth.png",
@@ -130,7 +130,7 @@ export const PERSONAL_PROJECTS_DATA = [
   {
     title: "Street Fighter",
     description: "A classic two-player fighting game built with Python and Pygame, featuring unique characters and dynamic animations.",
-    techStack: ["Python", "Pygame", "OpenCV"],
+    techStack: ["Python"],
     repoLink: "https://github.com/AadityaPanda/Street_Fighter",
     liveLink: null,
     thumbnail: "/media/project-street-fighter.png",

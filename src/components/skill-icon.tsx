@@ -17,6 +17,7 @@ import {
   SiTypescript as SiTs,
   SiNginx,
   SiMysql,
+  SiCplusplus,
 } from 'react-icons/si';
 
 const ICONS: Record<string, React.ElementType<any>> = {
@@ -34,6 +35,7 @@ const ICONS: Record<string, React.ElementType<any>> = {
   'Firebase': SiFirebase,
   'SQL': SiMysql,
   'Nginx': SiNginx,
+  'C++': SiCplusplus,
 };
 
 const ICON_COLORS: Record<string, string> = {
@@ -51,6 +53,7 @@ const ICON_COLORS: Record<string, string> = {
   'Firebase': 'text-amber-500',
   'Nginx': 'text-green-500',
   'Node.js': 'text-green-600',
+  'C++': 'text-blue-600',
 };
 
 export type SkillName = keyof typeof ICONS;
