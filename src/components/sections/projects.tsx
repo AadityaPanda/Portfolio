@@ -1,10 +1,9 @@
 
 'use client';
 
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { PROFESSIONAL_PROJECTS_DATA, PERSONAL_PROJECTS_DATA } from "@/lib/data";
-import { Github, ExternalLink, Rocket, FileText, GithubIcon as GithubIconLucide } from "lucide-react";
+import { Github, ExternalLink, Rocket, FileText } from "lucide-react";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
@@ -13,6 +12,8 @@ import { ProjectMediaCarousel } from "../project-media-carousel";
 import { Card } from "@/components/ui/card";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
+import { SkillIcon } from "../skill-icon";
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 
 const ProjectFeatures = ({ details }: { details: string[] }) => {
     const isMobile = useIsMobile();
@@ -97,8 +98,17 @@ const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: {
         reverse ? "lg:order-first" : ""
       )}>
         <h3 className="text-3xl font-headline font-bold">{project.title}</h3>
-        <div className="flex flex-wrap gap-2">
-          {project.techStack.map((tech) => <Badge key={tech} variant="secondary">{tech}</Badge>)}
+        <div className="flex flex-wrap items-center gap-4">
+          {project.techStack.map((tech) => (
+            <Tooltip key={tech}>
+              <TooltipTrigger>
+                <SkillIcon name={tech} className="h-8 w-8" />
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>{tech}</p>
+              </TooltipContent>
+            </Tooltip>
+          ))}
         </div>
         <p className="text-muted-foreground text-lg">{project.description}</p>
         
@@ -149,8 +159,17 @@ const PersonalProjectCard = ({ project }: { project: (typeof PERSONAL_PROJECTS_D
       {mediaElement}
       <div className="flex flex-col flex-grow p-6">
         <h3 className="text-2xl font-headline font-bold">{project.title}</h3>
-        <div className="flex flex-wrap gap-2 my-4">
-          {project.techStack.map((tech) => <Badge key={tech} variant="secondary">{tech}</Badge>)}
+        <div className="flex flex-wrap items-center gap-4 my-4">
+          {project.techStack.map((tech) => (
+             <Tooltip key={tech}>
+                <TooltipTrigger>
+                  <SkillIcon name={tech} className="h-8 w-8" />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>{tech}</p>
+                </TooltipContent>
+              </Tooltip>
+          ))}
         </div>
         <p className="text-muted-foreground flex-grow">{project.description}</p>
       </div>
@@ -178,37 +197,39 @@ const PersonalProjectCard = ({ project }: { project: (typeof PERSONAL_PROJECTS_D
 
 export default function Projects({ children }: { children?: React.ReactNode }) {
   return (
-    <section id="projects" className="w-full py-24">
-      <div className="container mx-auto px-4 md:px-8">
-        <SectionHeader title="My Work">
-            <Rocket className="h-8 w-8" />
-        </SectionHeader>
-        
-        <div className="mt-16 space-y-24">
-            
-            <div>
-              <h3 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12 text-gradient-primary">Professional Work</h3>
-              <div className="space-y-24">
-                {PROFESSIONAL_PROJECTS_DATA.map((project, index) => (
-                  <ProjectShowcase key={index} project={project} reverse={index % 2 !== 0} isProfessional={true} />
-                ))}
+    <TooltipProvider>
+      <section id="projects" className="w-full py-24">
+        <div className="container mx-auto px-4 md:px-8">
+          <SectionHeader title="My Work">
+              <Rocket className="h-8 w-8" />
+          </SectionHeader>
+          
+          <div className="mt-16 space-y-24">
+              
+              <div>
+                <h3 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12 text-gradient-primary">Professional Work</h3>
+                <div className="space-y-24">
+                  {PROFESSIONAL_PROJECTS_DATA.map((project, index) => (
+                    <ProjectShowcase key={index} project={project} reverse={index % 2 !== 0} isProfessional={true} />
+                  ))}
+                </div>
               </div>
-            </div>
-            
-            <Separator className="my-24" />
+              
+              <Separator className="my-24" />
 
-            <div>
-              <h3 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12 text-gradient-primary">Personal Projects</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {PERSONAL_PROJECTS_DATA.map((project, index) => (
-                  <PersonalProjectCard key={index} project={project} />
-                ))}
+              <div>
+                <h3 className="text-3xl sm:text-4xl font-headline font-bold text-center mb-12 text-gradient-primary">Personal Projects</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  {PERSONAL_PROJECTS_DATA.map((project, index) => (
+                    <PersonalProjectCard key={index} project={project} />
+                  ))}
+                </div>
+                {children}
               </div>
-              {children}
-            </div>
 
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </TooltipProvider>
   );
 }

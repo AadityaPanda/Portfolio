@@ -20,11 +20,10 @@ export default function About() {
         </SectionHeader>
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Image Column */}
-          <div className="flex justify-center items-center group">
+          <div className="flex justify-center items-center">
             <div className={cn(
                 "relative w-full max-w-sm aspect-square transition-all duration-300 ease-in-out",
-                "rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 p-2",
-                "group-hover:scale-105 group-hover:-rotate-2"
+                "rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 p-2"
             )}>
               <Image
                 src="/media/aaditya-panda-portrait.jpg"
