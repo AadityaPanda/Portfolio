@@ -49,25 +49,25 @@ const SocialLink = ({ link }: { link: typeof socialLinks[0] }) => (
 
 export default function Contact() {
   return (
-    <section id="contact" className="min-h-screen w-full py-12 flex items-center">
-      <div className="w-full px-4 md:px-8 grid lg:grid-cols-2 gap-16 items-center">
-        
-        <ScrollAnimate className="flex flex-col items-center lg:items-start text-center lg:text-left">
-            <SectionHeader title="Get in Touch">
-              <Mail className="h-8 w-8" />
-            </SectionHeader>
-            <p className="mt-8 text-lg text-muted-foreground max-w-md">
-              I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out to me using the form.
-            </p>
-            <div className="mt-8 space-y-4 w-full max-w-md">
-              {socialLinks.map((link) => <SocialLink key={link.name} link={link} />)}
-            </div>
-        </ScrollAnimate>
+    <section id="contact" className="min-h-screen w-full py-24 flex items-center">
+      <div className="container mx-auto px-4 md:px-8">
+        <SectionHeader title="Get in Touch">
+            <Mail className="h-8 w-8" />
+        </SectionHeader>
+        <div className="mt-16 grid lg:grid-cols-2 gap-16 items-start">
+            <ScrollAnimate className="flex flex-col items-center lg:items-start text-center lg:text-left">
+                <p className="text-lg text-muted-foreground max-w-md">
+                I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out to me using the form.
+                </p>
+                <div className="mt-8 space-y-4 w-full max-w-md">
+                {socialLinks.map((link) => <SocialLink key={link.name} link={link} />)}
+                </div>
+            </ScrollAnimate>
 
-        <ScrollAnimate delay={200} className="w-full max-w-lg mx-auto">
-            <ContactForm />
-        </ScrollAnimate>
-
+            <ScrollAnimate delay={200} className="w-full max-w-lg mx-auto">
+                <ContactForm />
+            </ScrollAnimate>
+        </div>
       </div>
     </section>
   );

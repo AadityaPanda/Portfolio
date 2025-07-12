@@ -10,15 +10,16 @@ export default function Skills() {
 
   return (
     <section id="skills" className="min-h-screen w-full py-24 flex flex-col items-center justify-center">
+      <div className="container mx-auto px-4 md:px-8">
         <ScrollAnimate>
             <SectionHeader title="Technical Skills">
                 <Wrench className="h-8 w-8" />
             </SectionHeader>
         </ScrollAnimate>
-        <div className="w-full max-w-5xl mx-auto px-4 md:px-8 mt-12 space-y-12">
+        <div className="mt-12 space-y-12">
             {categories.map((category, index) => (
             <ScrollAnimate key={category} delay={index * 150}>
-                <h3 className="text-2xl font-headline font-semibold mb-6 text-center md:text-left">{category}</h3>
+                <h3 className="text-2xl font-headline font-semibold mb-6 text-center">{category}</h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
                   {(SKILLS_DATA as any)[category].map((skill: string) => (
                     <Card key={skill} className="bg-card/70 backdrop-blur-sm p-4 transition-all duration-300 hover:border-primary/50 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10">
@@ -32,6 +33,7 @@ export default function Skills() {
             </ScrollAnimate>
             ))}
         </div>
+      </div>
     </section>
   );
 }
