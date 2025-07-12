@@ -1,6 +1,6 @@
 export const CV_PATH = "/media/AadityaPanda_CV.pdf";
 
-export const ABOUT_ME_TEXT = "I'm a full-stack software developer specializing in building robust and elegant web applications. With a passion for clean code and user-centric design, I architect and deliver complete solutions from concept to deployment. I thrive on solving complex problems and contributing to innovative, collaborative projects.";
+export const ABOUT_ME_TEXT = "As a dedicated and passionate full-stack software developer, I specialize in architecting and building robust, elegant web applications from the ground up. My expertise lies in transforming complex problems into seamless and intuitive digital experiences. With a strong foundation in both front-end and back-end technologies, I am adept at managing the entire project lifecycle, from conceptualization and design to deployment and maintenance. I thrive in collaborative environments, continuously seeking to innovate and contribute to projects that push the boundaries of technology.";
 
 export const SKILLS_DATA = {
   "Languages": ["JavaScript", "TypeScript", "Python", "HTML5", "CSS3", "SQL"],

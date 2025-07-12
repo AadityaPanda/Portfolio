@@ -7,6 +7,7 @@ import { ABOUT_ME_TEXT } from "@/lib/data";
 import { SectionHeader } from "../section-header";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { ReadMore } from "../read-more";
+import { cn } from "@/lib/utils";
 
 export default function About() {
   const isMobile = useIsMobile();
@@ -19,13 +20,17 @@ export default function About() {
         </SectionHeader>
         <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Image Column */}
-          <div className="flex justify-center items-center">
-            <div className="relative w-64 h-64 md:w-80 md:h-80">
+          <div className="flex justify-center items-center group">
+            <div className={cn(
+                "relative w-full max-w-sm aspect-square transition-all duration-300 ease-in-out",
+                "rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 p-2",
+                "group-hover:scale-105 group-hover:-rotate-2"
+            )}>
               <Image
                 src="/media/aaditya-panda-portrait.jpg"
                 alt="Aaditya Panda portrait"
                 fill
-                className="rounded-full object-cover border-4 border-card shadow-lg"
+                className="rounded-md object-cover"
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
             </div>
