@@ -1,3 +1,4 @@
+
 'use client';
 
 import React, { useRef, useEffect } from 'react';
@@ -81,8 +82,8 @@ export function AnimatedBackground() {
         const animate = () => {
             time += 0.0005;
             
-            const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary');
-            const secondaryColor = getComputedStyle(document.documentElement).getPropertyValue('--secondary');
+            const primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
+            const secondaryColor = getComputedStyle(document.documentElement).getPropertyValue('--secondary').trim();
 
             const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
             if (resolvedTheme === 'dark') {
