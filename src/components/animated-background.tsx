@@ -42,10 +42,11 @@ class Particle {
         this.x += Math.cos(angle) * this.density * 0.1;
         this.y += Math.sin(angle) * this.density * 0.1;
 
-        if (this.x > this.canvasWidth + this.size || this.x < -this.size || this.y > this.canvasHeight + this.size || this.y < -this.size) {
-            this.x = Math.random() * this.canvasWidth;
-            this.y = 0;
-        }
+        // Reset particle to the opposite side when it goes off-screen
+        if (this.x > this.canvasWidth + this.size) this.x = -this.size;
+        if (this.x < -this.size) this.x = this.canvasWidth + this.size;
+        if (this.y > this.canvasHeight + this.size) this.y = -this.size;
+        if (this.y < -this.size) this.y = this.canvasHeight + this.size;
     }
 }
 
