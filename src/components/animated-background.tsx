@@ -82,24 +82,19 @@ export function AnimatedBackground() {
         const animate = () => {
             time += 0.0005;
             
+            // Clear the canvas completely on each frame to prevent trails
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
             const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
             if (resolvedTheme === 'dark') {
-                // HSL values from globals.css for dark theme
-                // --primary: 180 100% 50%; /* #00E6E6 */
-                // --secondary: 334 100% 65%; /* #FF4B91 */
-                gradient.addColorStop(0, 'hsla(180, 100%, 50%, 0.2)');
-                gradient.addColorStop(1, 'hsla(334, 100%, 65%, 0.2)');
-                ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+                // Increased alpha from 0.2 to 0.4 for more prominent colors
+                gradient.addColorStop(0, 'hsla(180, 100%, 50%, 0.4)');
+                gradient.addColorStop(1, 'hsla(334, 100%, 65%, 0.4)');
             } else {
-                // HSL values from globals.css for light theme
-                // --primary: 210 100% 50%; /* #0077FF */
-                // --secondary: 0 100% 71%; /* #FF6B6B */
-                gradient.addColorStop(0, 'hsla(210, 100%, 50%, 0.1)');
-                gradient.addColorStop(1, 'hsla(0, 100%, 71%, 0.1)');
-                ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+                // Increased alpha from 0.1 to 0.3 for more prominent colors
+                gradient.addColorStop(0, 'hsla(210, 100%, 50%, 0.3)');
+                gradient.addColorStop(1, 'hsla(0, 100%, 71%, 0.3)');
             }
-            
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             for (let i = 0; i < particles.length; i++) {
                 particles[i].update(noise2D, time);
@@ -111,7 +106,7 @@ export function AnimatedBackground() {
                     if (distance < 100) {
                         ctx.beginPath();
                         ctx.strokeStyle = gradient;
-                        ctx.lineWidth = 0.2;
+                        ctx.lineWidth = 0.3; // Slightly thicker lines for more visibility
                         ctx.moveTo(p1.x, p1.y);
                         ctx.lineTo(p2.x, p2.y);
                         ctx.stroke();
