@@ -26,7 +26,6 @@ export function FloatingNav() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isMobile = useIsMobile();
   const lenis = useLenis();
-  const SCROLL_OFFSET = -80;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -51,7 +50,8 @@ export function FloatingNav() {
   
   const handleNavClick = (e: React.MouseEvent, href: string) => {
     e.preventDefault();
-    lenis?.scrollTo(href, { lerp: 0.1, offset: SCROLL_OFFSET });
+    const offset = isMobile ? 0 : -80;
+    lenis?.scrollTo(href, { lerp: 0.1, offset: offset });
     if (isMobile) {
       setIsMobileMenuOpen(false);
     }
