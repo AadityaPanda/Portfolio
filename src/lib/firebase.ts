@@ -1,21 +1,25 @@
 
 import * as admin from 'firebase-admin';
 
-const serviceAccount = process.env.FIREBASE_SERVICE_ACCOUNT_JSON
-  ? JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON)
-  : null;
+let app: admin.app | null = null;
 
-if (!admin.apps.length) {
-  if (serviceAccount) {
-    admin.initializeApp({
+try {
+  const serviceAccount = process.env.FIREBASE_SERVICE_ACCOUNT_JSON
+    ? JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_JSON)
+    : null;
+
+  if (admin.apps.length) {
+    app = admin.app();
+  } else if (serviceAccount) {
+    app = admin.initializeApp({
       credential: admin.credential.cert(serviceAccount),
     });
   } else {
-    // Initialize for local development or environments without service account JSON
-    // Assumes GOOGLE_APPLICATION_CREDENTIALS is set or ADC is configured.
-    console.warn("Firebase Service Account JSON not found, initializing with default credentials. This is expected for local development.");
-    admin.initializeApp();
+    console.warn("Firebase Service Account JSON not found. Firebase Admin SDK will not be initialized. This is expected for local development if not configured.");
   }
+} catch (error) {
+  console.error("Error initializing Firebase Admin SDK:", error);
+  app = null;
 }
 
-export const firestore = admin.firestore();
+export const firestore = app ? admin.firestore() : null;

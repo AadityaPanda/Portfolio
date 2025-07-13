@@ -4,8 +4,6 @@ import { firestore } from '@/lib/firebase';
 import { FieldValue } from 'firebase-admin/firestore';
 import { unstable_cache as cache } from 'next/cache';
 
-const visitorDocRef = firestore.collection('site-stats').doc('visitors');
-
 /**
  * Increments the visitor count in Firestore and returns the new total.
  * Caches the count to prevent re-fetching on every request during a short window.
@@ -13,6 +11,14 @@ const visitorDocRef = firestore.collection('site-stats').doc('visitors');
  */
 export const incrementVisitorCount = cache(
   async () => {
+    // Gracefully handle the case where Firestore is not initialized
+    if (!firestore) {
+      console.warn("Firestore is not available. Visitor count will not be incremented or fetched.");
+      return 0;
+    }
+    
+    const visitorDocRef = firestore.collection('site-stats').doc('visitors');
+
     try {
       // Use FieldValue.increment to atomically update the counter
       await visitorDocRef.set({ count: FieldValue.increment(1) }, { merge: true });
@@ -23,7 +29,7 @@ export const incrementVisitorCount = cache(
       if (!doc.exists) {
         // This case should ideally not happen after the set operation above
         // but is a good fallback.
-        await visitorDocRef.set({ count: 1 });
+        await visitorDocorDocRef.set({ count: 1 });
         return 1;
       }
 
