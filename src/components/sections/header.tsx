@@ -1,8 +1,8 @@
+
 'use client';
 
 import { Github, Linkedin, FileText, Instagram, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { CV_PATH } from "@/lib/data";
 import { useState, useEffect } from "react";
 import { useLenis } from "@studio-freight/react-lenis";
@@ -145,28 +145,15 @@ export function Header() {
             <div className="h-8 w-px bg-border" />
 
             <div className="flex items-center flex-wrap justify-center gap-4">
-              <Dialog>
-                <DialogTrigger asChild>
-                <Button
-                  size="lg"
-                  className="h-12 text-base transition-all duration-300 bg-background/80 text-foreground backdrop-blur-sm border border-border hover:bg-background/90 hover:-translate-y-px shadow-md hover:shadow-primary/20 hover:shadow-lg"
-                >
+              <Button
+                size="lg"
+                className="h-12 text-base transition-all duration-300 bg-background/80 text-foreground backdrop-blur-sm border border-border hover:bg-background/90 hover:-translate-y-px shadow-md hover:shadow-primary/20 hover:shadow-lg"
+                asChild
+              >
+                <a href={CV_PATH} target="_blank" rel="noopener noreferrer">
                   <FileText className="mr-2 h-4 w-4" /> View CV
-                </Button>
-                </DialogTrigger>
-                <DialogContent className="max-w-4xl h-[90vh] flex flex-col p-0">
-                  <DialogHeader className="p-4 border-b">
-                    <DialogTitle>Curriculum Vitae</DialogTitle>
-                  </DialogHeader>
-                  <div className="flex-1 overflow-auto">
-                    <iframe
-                      src={CV_PATH}
-                      className="w-full h-full"
-                      title="CV Preview"
-                    />
-                  </div>
-                </DialogContent>
-              </Dialog>
+                </a>
+              </Button>
               <Button size="lg" asChild>
                 <a href="#contact" onClick={(e) => handleNavClick(e, '#contact')}>
                   <Send className="mr-2 h-4 w-4" />
