@@ -6,6 +6,7 @@ import { ScrollDownButton } from '@/components/scroll-down-button';
 import dynamic from 'next/dynamic';
 import { FloatingNav } from '@/components/floating-nav';
 import { GithubProjects } from '@/components/sections/github-projects';
+import { incrementVisitorCount } from '@/services/visitor-service';
 
 const About = dynamic(() => import('@/components/sections/about'));
 const Experience = dynamic(() => import('@/components/sections/experience'));
@@ -14,7 +15,8 @@ const Skills = dynamic(() => import('@/components/sections/skills'));
 const Education = dynamic(() => import('@/components/sections/education'));
 const Contact = dynamic(() => import('@/components/sections/contact'));
 
-export default function Home() {
+export default async function Home() {
+  const count = await incrementVisitorCount();
   return (
     <div className="flex flex-col min-h-screen">
       <FloatingNav />
@@ -31,7 +33,7 @@ export default function Home() {
         <ScrollAnimate><Education /></ScrollAnimate>
         <ScrollAnimate><Contact /></ScrollAnimate>
       </main>
-      <Footer />
+      <Footer visitorCount={count} />
       <ScrollDownButton />
     </div>
   );

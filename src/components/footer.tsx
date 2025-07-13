@@ -4,6 +4,7 @@ import { Github, Linkedin, Code, Instagram } from 'lucide-react';
 import { useLenis } from '@studio-freight/react-lenis';
 import { cn } from '@/lib/utils';
 import { ScrollToTop } from './scroll-to-top';
+import { VisitorCounter } from './visitor-counter';
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/AadityaPanda", 'aria-label': 'GitHub' },
@@ -19,7 +20,7 @@ const navLinks = [
     { name: 'Contact', href: '#contact' },
 ];
 
-export function Footer() {
+export function Footer({ visitorCount }: { visitorCount: number }) {
   const year = new Date().getFullYear();
   const lenis = useLenis();
 
@@ -81,9 +82,12 @@ export function Footer() {
         </div>
         
         <div className="mt-16 pt-8 border-t border-border/20 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-center md:text-left text-sm text-muted-foreground">
-            &copy; {year} Aaditya Panda. All rights reserved. Built with Next.js & Tailwind CSS.
-          </p>
+            <div className="flex items-center gap-4">
+                <p className="text-center md:text-left text-sm text-muted-foreground">
+                    &copy; {year} Aaditya Panda. All rights reserved. Built with Next.js & Tailwind CSS.
+                </p>
+                <VisitorCounter count={visitorCount} />
+            </div>
           <ScrollToTop />
         </div>
       </div>
