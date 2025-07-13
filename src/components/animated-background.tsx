@@ -68,7 +68,8 @@ export function AnimatedBackground() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             particles = [];
-            const numberOfParticles = (canvas.width * canvas.height) / 9000;
+            // Increased particle density by reducing the divisor
+            const numberOfParticles = (canvas.width * canvas.height) / 5000;
             for (let i = 0; i < numberOfParticles; i++) {
                 particles.push(new Particle(ctx, canvas.width, canvas.height));
             }
@@ -82,18 +83,17 @@ export function AnimatedBackground() {
         const animate = () => {
             time += 0.0005;
             
-            // Clear the canvas completely on each frame to prevent trails
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
             const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
             if (resolvedTheme === 'dark') {
-                // Increased alpha from 0.2 to 0.4 for more prominent colors
-                gradient.addColorStop(0, 'hsla(180, 100%, 50%, 0.4)');
-                gradient.addColorStop(1, 'hsla(334, 100%, 65%, 0.4)');
+                // Increased alpha from 0.4 to 0.7 for more prominent colors
+                gradient.addColorStop(0, 'hsla(180, 100%, 50%, 0.7)');
+                gradient.addColorStop(1, 'hsla(334, 100%, 65%, 0.7)');
             } else {
-                // Increased alpha from 0.1 to 0.3 for more prominent colors
-                gradient.addColorStop(0, 'hsla(210, 100%, 50%, 0.3)');
-                gradient.addColorStop(1, 'hsla(0, 100%, 71%, 0.3)');
+                // Increased alpha from 0.3 to 0.6 for more prominent colors
+                gradient.addColorStop(0, 'hsla(210, 100%, 50%, 0.6)');
+                gradient.addColorStop(1, 'hsla(0, 100%, 71%, 0.6)');
             }
 
             for (let i = 0; i < particles.length; i++) {
@@ -106,7 +106,8 @@ export function AnimatedBackground() {
                     if (distance < 100) {
                         ctx.beginPath();
                         ctx.strokeStyle = gradient;
-                        ctx.lineWidth = 0.3; // Slightly thicker lines for more visibility
+                        // Increased line width for more visibility
+                        ctx.lineWidth = 0.5;
                         ctx.moveTo(p1.x, p1.y);
                         ctx.lineTo(p2.x, p2.y);
                         ctx.stroke();
