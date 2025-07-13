@@ -148,7 +148,7 @@ export function Header() {
                 <DialogTrigger asChild>
                   <Button
                     size="lg"
-                    className="h-12 text-base bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary hover:-translate-y-px shadow-sm hover:shadow-primary/10 hover:shadow-lg border border-border"
+                    className="h-12 text-base text-foreground bg-gradient-to-r from-background to-muted hover:bg-right hover:-translate-y-px shadow-sm hover:shadow-primary/20 hover:shadow-lg border border-border transition-all duration-300"
                   >
                     <FileText className="mr-2 h-4 w-4" /> View CV
                   </Button>
