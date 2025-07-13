@@ -2,7 +2,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Home, UserCircle, Briefcase, Rocket, Wrench, GraduationCap, Mail, Menu, Code } from 'lucide-react';
+import { Home, UserCircle, Briefcase, Rocket, Wrench, GraduationCap, Mail, Menu, Code, ArrowUp } from 'lucide-react';
 import { useLenis } from '@studio-freight/react-lenis';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from '@/components/theme-toggle';

@@ -1,3 +1,4 @@
+
 'use client';
 
 import { Github, Linkedin, Code, Instagram } from 'lucide-react';
@@ -5,6 +6,7 @@ import { useLenis } from '@studio-freight/react-lenis';
 import { cn } from '@/lib/utils';
 import { ScrollToTop } from './scroll-to-top';
 import { VisitorCounter } from './visitor-counter';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const socialLinks = [
   { icon: Github, href: "https://github.com/AadityaPanda", 'aria-label': 'GitHub' },
@@ -23,6 +25,7 @@ const navLinks = [
 export function Footer({ visitorCount }: { visitorCount: number }) {
   const year = new Date().getFullYear();
   const lenis = useLenis();
+  const isMobile = useIsMobile();
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -88,7 +91,7 @@ export function Footer({ visitorCount }: { visitorCount: number }) {
                 </p>
                 <VisitorCounter count={visitorCount} />
             </div>
-          <ScrollToTop />
+            {!isMobile && <ScrollToTop />}
         </div>
       </div>
     </footer>
