@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Github, Linkedin, FileText, Instagram, Send } from "lucide-react";
@@ -9,6 +8,7 @@ import { useState, useEffect } from "react";
 import { useLenis } from "@studio-freight/react-lenis";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { AnimatedBackground } from "../animated-background";
 
 
 const socialLinks = [
@@ -90,7 +90,8 @@ export function Header() {
 
   return (
     <header id="home" className="relative flex h-screen items-center overflow-hidden">
-      <div className="container mx-auto px-4">
+      <AnimatedBackground />
+      <div className="container mx-auto px-4 relative z-10">
         <div className="flex flex-col items-start space-y-6 text-left">
           
           <p className="text-xl font-headline text-primary animate-in fade-in slide-in-from-top-4 duration-700 delay-200">
@@ -146,12 +147,12 @@ export function Header() {
             <div className="flex items-center flex-wrap justify-center gap-4">
               <Dialog>
                 <DialogTrigger asChild>
-                  <Button
-                    size="lg"
-                    className="h-12 text-base text-foreground bg-gradient-to-r from-background to-muted hover:bg-right hover:-translate-y-px shadow-sm hover:shadow-primary/20 hover:shadow-lg border border-border transition-all duration-300"
-                  >
-                    <FileText className="mr-2 h-4 w-4" /> View CV
-                  </Button>
+                <Button
+                  size="lg"
+                  className="h-12 text-base transition-all duration-300 bg-background/80 text-foreground backdrop-blur-sm border border-border hover:bg-background/90 hover:-translate-y-px shadow-md hover:shadow-primary/20 hover:shadow-lg"
+                >
+                  <FileText className="mr-2 h-4 w-4" /> View CV
+                </Button>
                 </DialogTrigger>
                 <DialogContent className="max-w-4xl h-[90vh] flex flex-col p-0">
                   <DialogHeader className="p-4 border-b">
