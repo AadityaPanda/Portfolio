@@ -82,17 +82,14 @@ export function AnimatedBackground() {
         const animate = () => {
             time += 0.0005;
             
-            const primaryHsl = getComputedStyle(document.documentElement).getPropertyValue('--primary').trim();
-            const secondaryHsl = getComputedStyle(document.documentElement).getPropertyValue('--secondary').trim();
-
             const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
             if (resolvedTheme === 'dark') {
-                gradient.addColorStop(0, `hsla(${primaryHsl}, 0.2)`);
-                gradient.addColorStop(1, `hsla(${secondaryHsl}, 0.2)`);
+                gradient.addColorStop(0, `hsla(var(--primary), 0.2)`);
+                gradient.addColorStop(1, `hsla(var(--secondary), 0.2)`);
                 ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
             } else {
-                gradient.addColorStop(0, `hsla(${primaryHsl}, 0.1)`);
-                gradient.addColorStop(1, `hsla(${secondaryHsl}, 0.1)`);
+                gradient.addColorStop(0, `hsla(var(--primary), 0.1)`);
+                gradient.addColorStop(1, `hsla(var(--secondary), 0.1)`);
                 ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
             }
             
