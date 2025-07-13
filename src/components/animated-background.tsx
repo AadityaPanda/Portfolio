@@ -42,11 +42,15 @@ class Particle {
         this.x += Math.cos(angle) * this.density * 0.1;
         this.y += Math.sin(angle) * this.density * 0.1;
 
-        // Reset particle to the opposite side when it goes off-screen
         if (this.x > this.canvasWidth + this.size) this.x = -this.size;
         if (this.x < -this.size) this.x = this.canvasWidth + this.size;
         if (this.y > this.canvasHeight + this.size) this.y = -this.size;
         if (this.y < -this.size) this.y = this.canvasHeight + this.size;
+    }
+
+    reset() {
+        this.x = Math.random() * this.canvasWidth;
+        this.y = Math.random() * this.canvasHeight;
     }
 }
 
@@ -69,7 +73,6 @@ export function AnimatedBackground() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
             particles = [];
-            // Increased particle density by reducing the divisor
             const numberOfParticles = (canvas.width * canvas.height) / 5000;
             for (let i = 0; i < numberOfParticles; i++) {
                 particles.push(new Particle(ctx, canvas.width, canvas.height));
@@ -88,14 +91,14 @@ export function AnimatedBackground() {
             
             const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
             if (resolvedTheme === 'dark') {
-                // Increased alpha from 0.4 to 0.7 for more prominent colors
                 gradient.addColorStop(0, 'hsla(180, 100%, 50%, 0.7)');
                 gradient.addColorStop(1, 'hsla(334, 100%, 65%, 0.7)');
             } else {
-                // Increased alpha from 0.3 to 0.6 for more prominent colors
                 gradient.addColorStop(0, 'hsla(210, 100%, 50%, 0.6)');
                 gradient.addColorStop(1, 'hsla(0, 100%, 71%, 0.6)');
             }
+
+            const activeParticles = new Set<number>();
 
             for (let i = 0; i < particles.length; i++) {
                 particles[i].update(noise2D, time);
@@ -107,14 +110,23 @@ export function AnimatedBackground() {
                     if (distance < 100) {
                         ctx.beginPath();
                         ctx.strokeStyle = gradient;
-                        // Increased line width for more visibility
                         ctx.lineWidth = 0.5;
                         ctx.moveTo(p1.x, p1.y);
                         ctx.lineTo(p2.x, p2.y);
                         ctx.stroke();
+                        activeParticles.add(i);
+                        activeParticles.add(j);
                     }
                 }
             }
+
+            // Reset inactive particles to keep the animation lively
+            for(let i = 0; i < particles.length; i++) {
+                if (!activeParticles.has(i)) {
+                    particles[i].reset();
+                }
+            }
+
 
             animationFrameId = requestAnimationFrame(animate);
         };
