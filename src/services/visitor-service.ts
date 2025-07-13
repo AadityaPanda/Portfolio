@@ -29,7 +29,7 @@ export const incrementVisitorCount = cache(
       if (!doc.exists) {
         // This case should ideally not happen after the set operation above
         // but is a good fallback.
-        await visitorDocorDocRef.set({ count: 1 });
+        await visitorDocRef.set({ count: 1 });
         return 1;
       }
 
