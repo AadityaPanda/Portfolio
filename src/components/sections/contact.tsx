@@ -11,6 +11,8 @@ const socialLinks = [
       handle: 'in/aadityapanda',
       href: 'https://www.linkedin.com/in/aadityapanda/',
       ariaLabel: 'Connect on LinkedIn',
+      color: 'text-blue-500',
+      hoverColor: 'group-hover:bg-blue-500/10'
     },
     {
       icon: Github,
@@ -18,6 +20,8 @@ const socialLinks = [
       handle: '@AadityaPanda',
       href: 'https://github.com/AadityaPanda',
       ariaLabel: 'View GitHub Profile',
+      color: 'text-foreground',
+      hoverColor: 'group-hover:bg-gray-500/10'
     },
     {
       icon: Instagram,
@@ -25,6 +29,8 @@ const socialLinks = [
       handle: '_aaditya_panda_',
       href: 'https://www.instagram.com/_aaditya_panda_/',
       ariaLabel: 'Follow on Instagram',
+      color: 'text-pink-500',
+      hoverColor: 'group-hover:bg-pink-500/10'
     },
 ];
 
@@ -36,8 +42,8 @@ const SocialLink = ({ link }: { link: typeof socialLinks[0] }) => (
       aria-label={link.ariaLabel}
       className="group flex items-center p-4 rounded-lg border bg-card/50 backdrop-blur-xl border-border/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary/50 hover:shadow-primary/10"
     >
-      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-muted transition-colors group-hover:bg-primary/10">
-        <link.icon className="h-6 w-6 text-primary" />
+      <div className={cn("flex h-12 w-12 items-center justify-center rounded-lg bg-muted transition-colors", link.hoverColor)}>
+        <link.icon className={cn("h-6 w-6", link.color)} />
       </div>
       <div className="flex-grow ml-4">
         <p className="font-semibold text-foreground">{link.name}</p>
@@ -55,6 +61,10 @@ export default function Contact() {
             <Mail className="h-8 w-8" />
         </SectionHeader>
         <div className="mt-16 grid lg:grid-cols-2 gap-16 items-start">
+            <ScrollAnimate delay={200} className="w-full max-w-lg mx-auto">
+                <ContactForm />
+            </ScrollAnimate>
+
             <ScrollAnimate className="flex flex-col items-center lg:items-start text-center lg:text-left">
                 <p className="text-lg text-muted-foreground max-w-md">
                 I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out to me using the form.
@@ -62,10 +72,6 @@ export default function Contact() {
                 <div className="mt-8 space-y-4 w-full max-w-md">
                 {socialLinks.map((link) => <SocialLink key={link.name} link={link} />)}
                 </div>
-            </ScrollAnimate>
-
-            <ScrollAnimate delay={200} className="w-full max-w-lg mx-auto">
-                <ContactForm />
             </ScrollAnimate>
         </div>
       </div>
