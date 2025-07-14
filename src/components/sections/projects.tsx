@@ -1,4 +1,3 @@
-
 'use client';
 
 import { Button } from "@/components/ui/button";
@@ -14,7 +13,6 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
 import { SkillIcon } from "../skill-icon";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { LaptopMockup } from "@/components/laptop-mockup";
 
 const ProjectFeatures = ({ details }: { details: string[] }) => {
     const isMobile = useIsMobile();
@@ -36,12 +34,23 @@ const ProjectFeatures = ({ details }: { details: string[] }) => {
     );
 };
 
+const WindowMockup = ({ children }: { children: React.ReactNode }) => (
+    <div className="rounded-lg border border-border/50 shadow-lg overflow-hidden bg-muted/20">
+        <div className="h-9 flex items-center gap-2 px-4 bg-muted/50 border-b border-border/50">
+            <div className="w-3 h-3 rounded-full bg-red-500"></div>
+            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+        </div>
+        <div className="aspect-video relative">{children}</div>
+    </div>
+);
+
 const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: { project: (typeof PROFESSIONAL_PROJECTS_DATA)[0], reverse?: boolean, isProfessional?: boolean }) => {
   const hasGallery = project.gallery && project.gallery.length > 0;
   const hasLink = project.liveLink || project.repoLink;
 
   const mediaElement = hasGallery ? (
-    <ProjectMediaCarousel gallery={project.gallery} unstyled={isProfessional} />
+    <ProjectMediaCarousel gallery={project.gallery} unstyled={true} />
   ) : hasLink ? (
     <a href={project.liveLink || project.repoLink || '#'} target="_blank" rel="noopener noreferrer" className="block aspect-video relative">
       <Image
@@ -80,10 +89,10 @@ const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: {
         reverse ? "lg:order-last" : ""
       )}>
         {isProfessional ? (
-           <LaptopMockup>
+           <WindowMockup>
              {mediaElement}
-           </LaptopMockup>
-        ) : <div className="transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-primary/10">{mediaElement}</div>}
+           </WindowMockup>
+        ) : <div className="transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-primary/10 rounded-lg overflow-hidden border border-border/50 shadow-lg">{mediaElement}</div>}
       </div>
 
       {/* Project Details */}
