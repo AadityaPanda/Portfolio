@@ -179,11 +179,8 @@ export function AnimatedBackground() {
       time += 0.005;
       frameCount++;
       
-      // Clear canvas with subtle fade effect
-      ctx.fillStyle = resolvedTheme === 'dark' 
-        ? 'rgba(0, 0, 0, 0.05)' 
-        : 'rgba(255, 255, 255, 0.05)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      // Clear canvas completely to prevent trails
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       // Create dynamic gradients using portfolio color palette
       const gradient1 = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);

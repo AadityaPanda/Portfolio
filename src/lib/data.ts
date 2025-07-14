@@ -4,9 +4,10 @@ export const CV_PATH = "/media/AadityaPanda_CV.pdf";
 export const ABOUT_ME_TEXT = "As a dedicated and passionate full-stack software developer, I specialize in architecting and building robust, elegant web applications from the ground up. My expertise lies in transforming complex problems into seamless and intuitive digital experiences. With a strong foundation in both front-end and back-end technologies, I am adept at managing the entire project lifecycle, from conceptualization and design to deployment and maintenance. I thrive in collaborative environments, continuously seeking to innovate and contribute to projects that push the boundaries of technology.";
 
 export const SKILLS_DATA = {
-  "Languages": ["JavaScript", "TypeScript", "Python", "HTML5", "CSS3", "SQL"],
+  "Languages": ["JavaScript", "TypeScript", "Python", "HTML5", "CSS3", "SQL", "C++"],
   "Frameworks & Libraries": ["React", "Next.js", "Express.js", "Tailwind CSS"],
-  "Platforms & Tools": ["Node.js", "Git", "Firebase", "Nginx", "C++"],
+  "Platforms & Tools": ["Node.js", "Git", "Firebase", "Nginx"],
+  "Hardware & IoT": ["Arduino IDE", "Arduino Uno", "ESP32"],
 };
 
 export const EXPERIENCE_DATA = [
@@ -104,7 +105,7 @@ export const PERSONAL_PROJECTS_DATA = [
   {
     title: "IoT Tollbooth System Supervisor",
     description: "An IoT and RFID-based system that revolutionizes tollbooth operations by optimizing traffic flow and enhancing user experience.",
-    techStack: ["C++"],
+    techStack: ["C++", "Arduino IDE", "Arduino Uno", "ESP32"],
     repoLink: "https://github.com/AadityaPanda/ITSS",
     liveLink: "https://ieeexplore.ieee.org/document/10993585",
     thumbnail: "/media/project-iot-tollbooth.png",

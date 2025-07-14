@@ -18,6 +18,8 @@ import {
   SiNginx,
   SiMysql,
   SiCplusplus,
+  SiArduino,
+  SiEspressif,
 } from 'react-icons/si';
 
 const ICONS: Record<string, React.ElementType<any>> = {
@@ -36,6 +38,9 @@ const ICONS: Record<string, React.ElementType<any>> = {
   'SQL': SiMysql,
   'Nginx': SiNginx,
   'C++': SiCplusplus,
+  'Arduino IDE': SiArduino,
+  'Arduino Uno': SiArduino,
+  'ESP32': SiEspressif,
 };
 
 const ICON_COLORS: Record<string, string> = {
@@ -54,6 +59,9 @@ const ICON_COLORS: Record<string, string> = {
   'Nginx': 'text-green-500',
   'Node.js': 'text-green-600',
   'C++': 'text-blue-600',
+  'Arduino IDE': 'text-teal-500',
+  'Arduino Uno': 'text-teal-500',
+  'ESP32': 'text-red-600',
 };
 
 export type SkillName = keyof typeof ICONS;

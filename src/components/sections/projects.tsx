@@ -14,6 +14,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
 import { SkillIcon } from "../skill-icon";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { LaptopMockup } from "@/components/laptop-mockup";
 
 const ProjectFeatures = ({ details }: { details: string[] }) => {
     const isMobile = useIsMobile();
@@ -79,16 +80,9 @@ const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: {
         reverse ? "lg:order-last" : ""
       )}>
         {isProfessional ? (
-           <div className="rounded-lg border border-border bg-card/50 backdrop-blur-xl shadow-lg overflow-hidden group-hover:shadow-2xl group-hover:shadow-primary/10 group-hover:border-primary/50 transition-all duration-300">
-             <div className="h-8 bg-muted/50 flex items-center px-3 border-b border-border">
-               <div className="flex items-center gap-1.5">
-                 <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                 <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                 <div className="w-3 h-3 rounded-full bg-green-500"></div>
-               </div>
-             </div>
+           <LaptopMockup>
              {mediaElement}
-           </div>
+           </LaptopMockup>
         ) : <div className="transition-all duration-300 group-hover:shadow-2xl group-hover:shadow-primary/10">{mediaElement}</div>}
       </div>
 
