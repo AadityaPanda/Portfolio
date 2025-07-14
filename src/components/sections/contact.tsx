@@ -12,7 +12,8 @@ const socialLinks = [
       href: 'https://www.linkedin.com/in/aadityapanda/',
       ariaLabel: 'Connect on LinkedIn',
       color: 'text-blue-500',
-      hoverColor: 'group-hover:bg-blue-500/10'
+      hoverColor: 'group-hover:bg-blue-500/10',
+      hoverBorderColor: 'hover:border-blue-500/50'
     },
     {
       icon: Github,
@@ -21,7 +22,8 @@ const socialLinks = [
       href: 'https://github.com/AadityaPanda',
       ariaLabel: 'View GitHub Profile',
       color: 'text-foreground',
-      hoverColor: 'group-hover:bg-gray-500/10'
+      hoverColor: 'group-hover:bg-gray-500/10',
+      hoverBorderColor: 'hover:border-foreground/50'
     },
     {
       icon: Instagram,
@@ -30,7 +32,8 @@ const socialLinks = [
       href: 'https://www.instagram.com/_aaditya_panda_/',
       ariaLabel: 'Follow on Instagram',
       color: 'text-pink-500',
-      hoverColor: 'group-hover:bg-pink-500/10'
+      hoverColor: 'group-hover:bg-pink-500/10',
+      hoverBorderColor: 'hover:border-pink-500/50'
     },
 ];
 
@@ -40,7 +43,10 @@ const SocialLink = ({ link }: { link: typeof socialLinks[0] }) => (
       target="_blank"
       rel="noopener noreferrer"
       aria-label={link.ariaLabel}
-      className="group flex items-center p-4 rounded-lg border bg-card/50 backdrop-blur-xl border-border/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary/50 hover:shadow-primary/10"
+      className={cn(
+          "group flex items-center p-4 rounded-lg border bg-card/50 backdrop-blur-xl border-border/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:shadow-primary/10",
+          link.hoverBorderColor
+      )}
     >
       <div className={cn("flex h-12 w-12 items-center justify-center rounded-lg bg-muted transition-colors", link.hoverColor)}>
         <link.icon className={cn("h-6 w-6", link.color)} />
