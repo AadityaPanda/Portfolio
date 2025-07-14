@@ -13,6 +13,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { useState } from "react";
 import { SkillIcon } from "../skill-icon";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { ScrollAnimate } from "../scroll-animate";
 
 const ProjectFeatures = ({ details }: { details: string[] }) => {
     const isMobile = useIsMobile();
@@ -82,7 +83,7 @@ const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: {
   );
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+    <ScrollAnimate className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
       {/* Image/Carousel Mockup */}
       <div className={cn(
         "group transition-all duration-300 hover:-translate-y-1",
@@ -135,7 +136,7 @@ const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: {
           )}
         </div>
       </div>
-    </div>
+    </ScrollAnimate>
   );
 };
 
@@ -158,42 +159,44 @@ const PersonalProjectCard = ({ project }: { project: (typeof PERSONAL_PROJECTS_D
   );
 
   return (
-    <Card className="group flex flex-col h-full bg-card/50 backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/50 overflow-hidden">
-      {mediaElement}
-      <div className="flex flex-col flex-grow p-6">
-        <h3 className="text-2xl font-headline font-bold">{project.title}</h3>
-        <div className="flex flex-wrap items-center gap-4 my-4">
-          {project.techStack.map((tech) => (
-             <Tooltip key={tech}>
-                <TooltipTrigger>
-                  <SkillIcon name={tech} className="h-8 w-8" />
-                </TooltipTrigger>
-                <TooltipContent>
-                  <p>{tech}</p>
-                </TooltipContent>
-              </Tooltip>
-          ))}
+    <ScrollAnimate>
+      <Card className="group flex flex-col h-full bg-card/50 backdrop-blur-xl transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/10 hover:border-primary/50 overflow-hidden">
+        {mediaElement}
+        <div className="flex flex-col flex-grow p-6">
+          <h3 className="text-2xl font-headline font-bold">{project.title}</h3>
+          <div className="flex flex-wrap items-center gap-4 my-4">
+            {project.techStack.map((tech) => (
+               <Tooltip key={tech}>
+                  <TooltipTrigger>
+                    <SkillIcon name={tech} className="h-8 w-8" />
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>{tech}</p>
+                  </TooltipContent>
+                </Tooltip>
+            ))}
+          </div>
+          <p className="text-muted-foreground flex-grow">{project.description}</p>
         </div>
-        <p className="text-muted-foreground flex-grow">{project.description}</p>
-      </div>
-      <div className="p-6 pt-0 flex flex-wrap gap-2">
-        {project.repoLink && (
-            <Button asChild variant="github">
-                <a href={project.repoLink} target="_blank" rel="noopener noreferrer">
-                    <Github className="mr-2 h-4 w-4"/> View on GitHub
-                </a>
-            </Button>
-        )}
-        {project.liveLink && (
-            <Button variant="outline" asChild>
-                <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
-                    {project.liveLink.includes('ieee') ? <FileText className="mr-2 h-4 w-4"/> : <ExternalLink className="mr-2 h-4 w-4"/>}
-                    {project.liveLink.includes('ieee') ? 'Read Paper' : 'View Live'}
-                </a>
-            </Button>
-        )}
-      </div>
-    </Card>
+        <div className="p-6 pt-0 flex flex-wrap gap-2">
+          {project.repoLink && (
+              <Button asChild variant="github">
+                  <a href={project.repoLink} target="_blank" rel="noopener noreferrer">
+                      <Github className="mr-2 h-4 w-4"/> View on GitHub
+                  </a>
+              </Button>
+          )}
+          {project.liveLink && (
+              <Button variant="outline" asChild>
+                  <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
+                      {project.liveLink.includes('ieee') ? <FileText className="mr-2 h-4 w-4"/> : <ExternalLink className="mr-2 h-4 w-4"/>}
+                      {project.liveLink.includes('ieee') ? 'Read Paper' : 'View Live'}
+                  </a>
+              </Button>
+          )}
+        </div>
+      </Card>
+    </ScrollAnimate>
   );
 };
 

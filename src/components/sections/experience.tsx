@@ -5,10 +5,11 @@ import { EXPERIENCE_DATA } from "@/lib/data";
 import { Briefcase } from "lucide-react";
 import { SectionHeader } from "../section-header";
 import Image from "next/image";
+import { ScrollAnimate } from "../scroll-animate";
 
 const ExperienceItem = ({ exp }: { exp: typeof EXPERIENCE_DATA[0] }) => {
     return (
-        <div className="relative pl-8 sm:pl-12 py-6 group">
+        <ScrollAnimate className="relative pl-8 sm:pl-12 py-6 group">
             {/* Dot on the timeline */}
             <div className="flex items-center absolute left-0 top-8 transform -translate-y-1/2">
                 <div className="h-8 w-8 rounded-full bg-background border-2 border-border flex items-center justify-center">
@@ -48,7 +49,7 @@ const ExperienceItem = ({ exp }: { exp: typeof EXPERIENCE_DATA[0] }) => {
                     </div>
                 </div>
             </div>
-        </div>
+        </ScrollAnimate>
     );
 };
 
