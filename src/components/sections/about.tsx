@@ -9,6 +9,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { ReadMore } from "../read-more";
 import { cn } from "@/lib/utils";
 import { ScrollAnimate } from "../scroll-animate";
+import { StatsSection } from "../stats-section";
 
 export default function About() {
   const isMobile = useIsMobile();
@@ -44,6 +45,9 @@ export default function About() {
             )}
           </ScrollAnimate>
         </div>
+        <ScrollAnimate className="mt-20">
+            <StatsSection />
+        </ScrollAnimate>
       </div>
     </section>
   );
