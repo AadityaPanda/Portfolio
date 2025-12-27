@@ -70,10 +70,10 @@ export const EDUCATION_DATA = [
 export const PROFESSIONAL_PROJECTS_DATA = [
   {
     title: "Internal Documentation Portal",
-    description: "A full-stack internal portal designed to centralize documentation for both IDAM and Privileged Access Management (PAM) solutions, while also streamlining license management.",
+    description: "A full-stack internal portal designed to centralize documentation for both Identity and Access Management (IDAM) and Privileged Access Management (PAM) solutions, while also streamlining license management.",
     techStack: ["React", "Node.js", "Express.js", "SQL", "Nginx"],
     details: [
-      "Built as a central source of truth for all Identity and Access Management (IDAM) and PAM documentation.",
+      "Built as a central source of truth for all IDAM and PAM documentation.",
       "Features a secure module for displaying organization-specific license details to authenticated users.",
       "Enhanced with a responsive, auto-resizing sidebar and content-aware scrolling for improved UX.",
       "Oversaw the full project lifecycle, from development to production deployment and maintenance."
@@ -147,3 +147,22 @@ export const PERSONAL_PROJECTS_DATA = [
   }
 ];
 
+
+export const TESTIMONIALS_DATA = [
+    {
+      name: "John Doe",
+      title: "Project Manager, Tech Solutions",
+      quote: "Aaditya is a rare talent. His ability to dissect complex problems and architect elegant, scalable solutions is second to none. He was instrumental in the success of our flagship product.",
+      avatar: "https://placehold.co/100x100/E2E8F0/4A5568?text=JD",
+      hint: "male professional"
+    },
+    {
+      name: "Jane Smith",
+      title: "Lead Designer, Creative Minds",
+      quote: "Working with Aaditya was a breath of fresh air. He has a keen eye for design and a deep understanding of user experience, which made our collaboration seamless and highly productive.",
+      avatar: "https://placehold.co/100x100/E2E8F0/4A5568?text=JS",
+      hint: "female professional"
+    }
+];
+
+    
