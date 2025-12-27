@@ -70,10 +70,10 @@ export const EDUCATION_DATA = [
 export const PROFESSIONAL_PROJECTS_DATA = [
   {
     title: "Internal Documentation Portal",
-    description: "A full-stack internal portal designed to centralize documentation and streamline license management.",
+    description: "A full-stack internal portal designed to centralize documentation for both IDAM and Privileged Access Management (PAM) solutions, while also streamlining license management.",
     techStack: ["React", "Node.js", "Express.js", "SQL", "Nginx"],
     details: [
-      "Built as a central source of truth for all Identity and Access Management (IDAM) documentation.",
+      "Built as a central source of truth for all Identity and Access Management (IDAM) and PAM documentation.",
       "Features a secure module for displaying organization-specific license details to authenticated users.",
       "Enhanced with a responsive, auto-resizing sidebar and content-aware scrolling for improved UX.",
       "Oversaw the full project lifecycle, from development to production deployment and maintenance."
