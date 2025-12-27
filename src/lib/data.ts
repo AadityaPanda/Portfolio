@@ -85,14 +85,15 @@ export const PROFESSIONAL_PROJECTS_DATA = [
   },
   {
     title: "Privileged Access Management (PAM)",
-    description: "A custom-branded Privileged Access Management (PAM) solution built upon Apache Guacamole.",
+    description: "An enterprise-grade security platform designed to safeguard privileged accounts, manage credentials, and enforce strong access governance across critical IT assets.",
     techStack: ["React", "Node.js", "Express.js", "SQL", "Nginx"],
     details: [
-        "Engineered a custom front-end and branded UI for Apache Guacamole.",
-        "Implemented a highly granular, role-based permission system that surpasses the original software's capabilities.",
-        "Pioneered a time-based access policy, a feature not available in the core software.",
-        "Managed deployments across multiple environments for demos, testing, and client presentations.",
-        "Currently leading a complete re-architecture for deeper system integration and control."
+        "Ensures privileged access is secured with credential vaulting and MFA.",
+        "Controlled via granular role-based workflows and custom time-based access policies.",
+        "Achieves zero direct credential exposure for heightened security.",
+        "Monitored using session recording and real-time supervision.",
+        "Audited with complete, comprehensive logs and reporting.",
+        "Optimized for deployments ranging from 200 to 1000+ devices across cloud and on-premise environments."
     ],
     repoLink: null,
     liveLink: null,
@@ -145,3 +146,4 @@ export const PERSONAL_PROJECTS_DATA = [
     ]
   }
 ];
+
