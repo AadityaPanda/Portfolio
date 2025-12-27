@@ -89,7 +89,7 @@ export function Footer({ visitorCount }: { visitorCount: number }) {
                 <p className="text-center md:text-left text-sm text-muted-foreground">
                     &copy; {year} Aaditya Panda. All rights reserved. Built with Next.js & Tailwind CSS.
                 </p>
-                <VisitorCounter count={visitorCount} />
+                {visitorCount > 0 && <VisitorCounter count={visitorCount} />}
             </div>
             {!isMobile && <ScrollToTop />}
         </div>
