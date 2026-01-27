@@ -18,7 +18,7 @@ export const EXPERIENCE_DATA = [
     logo: "/media/bitchief-logo.png",
     responsibilities: [
       "Architected a full-stack documentation portal from concept to deployment, centralizing knowledge and streamlining license management.",
-      "Engineered a custom Privileged Access Management (PAM) solution on top of Apache Guacamole, delivering a branded UI and a more granular permission system.",
+      "Engineered a custom Privileged Access Management (PAM) solution, delivering a branded UI and a more granular permission system to enhance security and user control.",
       "Pioneered a time-based access policy for the PAM tool, a feature not available in the core software, and successfully deployed it to production.",
       "Managed the full project lifecycle, including Nginx deployment and configuration for production and demo environments.",
       "Currently leading the re-architecture of the PAM solution to achieve deeper system integration and more granular control.",
