@@ -6,8 +6,7 @@ export const ABOUT_ME_TEXT = "As a dedicated and passionate full-stack software 
 export const SKILLS_DATA = {
   "Languages": ["JavaScript", "TypeScript", "Python", "HTML5", "CSS3", "SQL", "C++"],
   "Frameworks & Libraries": ["React", "Next.js", "Express.js", "Tailwind CSS"],
-  "Platforms & Tools": ["Node.js", "Git", "Firebase", "Nginx", "REST APIs"],
-  "Hardware & IoT": ["Arduino IDE", "Arduino Uno", "ESP32"],
+  "Platforms & Tools": ["Node.js", "Git", "Firebase", "Nginx", "REST APIs", "Authentication & Authorization Systems", "Shared Database"],
 };
 
 export const EXPERIENCE_DATA = [
@@ -71,13 +70,13 @@ export const PROFESSIONAL_PROJECTS_DATA = [
   {
     title: "PAM (Privileged Access Management)",
     overview: "An enterprise-grade Privileged Access Management (PAM) application designed to securely manage and monitor privileged access to critical systems and servers.",
-    role: "Primary developer with ownership of the majority of the application, including frontend architecture, core features, and long-term maintenance. The server connection layer and connection group functionality were implemented separately; all other modules were designed, developed, and maintained independently.",
+    role: "Primary developer with ownership of the majority of the application, including frontend architecture, core features, and long-term maintenance. The Guacamole (guacd)-based server connection layer and connection group functionality were implemented separately; all other modules were designed, developed, and maintained independently.",
     techStack: ["React", "Next.js", "Tailwind CSS", "REST APIs", "Authentication & Authorization Systems"],
     contributions: [
         "Built and maintained core PAM features excluding the remote connection layer.",
         "Designed scalable frontend architecture for security-sensitive workflows.",
         "Implemented role-based access control and secure UI flows.",
-        "Collaborated with existing integration to ensure seamless user experience.",
+        "Collaborated with existing guacd integration to ensure seamless user experience.",
         "Actively handled production bug fixes and feature enhancements."
     ],
     architectureNote: null,
@@ -130,10 +129,10 @@ export const PROFESSIONAL_PROJECTS_DATA = [
     role: "Sole developer responsible for building and maintaining the application from initial development to production usage.",
     techStack: ["React", "Next.js", "Tailwind CSS", "REST APIs"],
     contributions: [
-        "Built the complete support request workflow for client interactions.",
-        "Designed responsive UI components for request creation and tracking.",
-        "Implemented integration with backend services for support request handling.",
-        "Maintained the application in production, addressing bugs and feature updates."
+        "Built the complete support request workflow for client interactions",
+        "Designed responsive UI components for request creation and tracking",
+        "Implemented integration with backend services for support request handling",
+        "Maintained the application in production, addressing bugs and feature updates"
     ],
     architectureNote: null,
     maintenance: "Fully responsible for ongoing maintenance and stability of the application.",

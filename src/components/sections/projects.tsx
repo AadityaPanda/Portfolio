@@ -3,7 +3,7 @@
 
 import { Button } from "@/components/ui/button";
 import { PROFESSIONAL_PROJECTS_DATA, PERSONAL_PROJECTS_DATA } from "@/lib/data";
-import { Github, ExternalLink, Rocket, FileText, Briefcase, User, Layers, Code } from "lucide-react";
+import { Github, ExternalLink, Rocket, FileText, Briefcase, User, Layers, Code, Building } from "lucide-react";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
@@ -11,7 +11,7 @@ import { SectionHeader } from "../section-header";
 import { ProjectMediaCarousel } from "../project-media-carousel";
 import { Card } from "@/components/ui/card";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { SkillIcon } from "../skill-icon";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { ScrollAnimate } from "../scroll-animate";
@@ -22,11 +22,41 @@ const ProjectDetailSection = ({ title, children, icon: Icon }: { title: string, 
             <Icon className="h-5 w-5 text-primary" />
             {title}
         </h4>
-        <div className="pl-8 text-muted-foreground prose prose-sm max-w-none">
+        <div className="pl-8 text-muted-foreground prose prose-sm max-w-none dark:prose-invert prose-p:text-muted-foreground prose-li:text-muted-foreground">
             {children}
         </div>
     </div>
 );
+
+const ProjectContributions = ({ contributions }: { contributions: string[] }) => {
+  if (!contributions || contributions.length === 0) {
+    return null;
+  }
+  
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  const [isExpanded, setIsExpanded] = useState(false);
+  const isMobile = useIsMobile();
+
+  const canShowMore = isMobile && contributions.length > 3;
+  const displayedContributions = isMounted && isMobile && !isExpanded ? contributions.slice(0, 3) : contributions;
+
+  return (
+    <ul className="list-disc space-y-2">
+      {displayedContributions.map((detail, i) => <li key={i}>{detail}</li>)}
+      {isMounted && canShowMore && !isExpanded && (
+        <li>
+          <Button variant="link" className="p-0 h-auto" onClick={() => setIsExpanded(true)}>
+            Show more...
+          </Button>
+        </li>
+      )}
+    </ul>
+  );
+};
 
 const WindowMockup = ({ children }: { children: React.ReactNode }) => (
     <div className="rounded-lg border border-border/50 shadow-lg overflow-hidden bg-muted/20">
@@ -39,35 +69,21 @@ const WindowMockup = ({ children }: { children: React.ReactNode }) => (
     </div>
 );
 
-const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: { project: (typeof PROFESSIONAL_PROJECTS_DATA)[0], reverse?: boolean, isProfessional?: boolean }) => {
+const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: { project: (typeof PROFESSIONAL_PROJECTS_DATA)[0] | (typeof PERSONAL_PROJECTS_DATA)[0], reverse?: boolean, isProfessional?: boolean }) => {
   const hasGallery = project.gallery && project.gallery.length > 0;
-  const hasLink = project.liveLink || project.repoLink;
+  
+  const p = project as any; // To handle both professional and personal project types
 
   const mediaElement = hasGallery ? (
-    <ProjectMediaCarousel gallery={project.gallery} unstyled={true} />
-  ) : hasLink ? (
-    <a href={project.liveLink || project.repoLink || '#'} target="_blank" rel="noopener noreferrer" className="block aspect-video relative">
-      <Image
-        src={project.thumbnail}
-        alt={`Thumbnail for ${project.title}`}
-        fill
-        className={cn(
-          "object-cover object-center transition-transform duration-300 group-hover:scale-105",
-          !isProfessional && "rounded-lg border border-border/50 shadow-lg"
-        )}
-        sizes="(max-width: 1023px) 100vw, 50vw"
-        data-ai-hint="software project"
-      />
-    </a>
+    <ProjectMediaCarousel gallery={p.gallery} unstyled={!isProfessional} />
   ) : (
     <div className="block aspect-video relative">
       <Image
-        src={project.thumbnail}
-        alt={`Thumbnail for ${project.title}`}
+        src={p.thumbnail}
+        alt={`Thumbnail for ${p.title}`}
         fill
         className={cn(
           "object-cover object-center",
-          !isProfessional && "rounded-lg border border-border/50 shadow-lg"
         )}
         sizes="(max-width: 1023px) 100vw, 50vw"
         data-ai-hint="software project"
@@ -95,10 +111,9 @@ const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: {
         reverse ? "lg:order-first" : ""
       )}>
         <div className="space-y-4">
-            <h3 className="text-3xl font-headline font-bold">{project.title}</h3>
-            <p className="text-muted-foreground text-lg">{project.overview}</p>
+            <h3 className="text-3xl font-headline font-bold">{p.title}</h3>
             <div className="flex flex-wrap items-center gap-4">
-            {project.techStack.map((tech) => (
+            {p.techStack.map((tech: any) => (
                 <Tooltip key={tech}>
                 <TooltipTrigger>
                     <SkillIcon name={tech} className="h-8 w-8" />
@@ -111,40 +126,47 @@ const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: {
             </div>
         </div>
         
-        <ProjectDetailSection title="Role & Ownership" icon={User}>
-            <p>{project.role}</p>
-        </ProjectDetailSection>
-        
-        <ProjectDetailSection title="Key Contributions" icon={Code}>
-            <ul className="list-disc space-y-2">
-                {project.contributions.map((detail, i) => <li key={i}>{detail}</li>)}
-            </ul>
+        <ProjectDetailSection title="Overview" icon={FileText}>
+            <p>{p.overview}</p>
         </ProjectDetailSection>
 
-        {project.architectureNote && (
+        {p.role &&
+            <ProjectDetailSection title="Role & Ownership" icon={User}>
+                <p>{p.role}</p>
+            </ProjectDetailSection>
+        }
+        
+        {p.contributions &&
+            <ProjectDetailSection title="Key Contributions" icon={Code}>
+                <ProjectContributions contributions={p.contributions} />
+            </ProjectDetailSection>
+        }
+
+        {p.architectureNote && (
             <ProjectDetailSection title="Architecture Note" icon={Layers}>
-                <p>{project.architectureNote}</p>
+                <p>{p.architectureNote}</p>
             </ProjectDetailSection>
         )}
-
-        <ProjectDetailSection title="Maintenance" icon={Briefcase}>
-            <p>{project.maintenance}</p>
-        </ProjectDetailSection>
-
+        
+        {p.maintenance &&
+            <ProjectDetailSection title="Maintenance" icon={Building}>
+                <p>{p.maintenance}</p>
+            </ProjectDetailSection>
+        }
 
         <div className="flex flex-wrap gap-2 pt-2">
-          {project.repoLink && (
+          {p.repoLink && (
               <Button asChild variant="github">
-                  <a href={project.repoLink} target="_blank" rel="noopener noreferrer">
+                  <a href={p.repoLink} target="_blank" rel="noopener noreferrer">
                       <Github className="mr-2 h-4 w-4"/> View on GitHub
                   </a>
               </Button>
           )}
-          {project.liveLink && (
+          {p.liveLink && (
               <Button variant="outline" asChild>
-                  <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
-                      {project.liveLink.includes('ieee') ? <FileText className="mr-2 h-4 w-4"/> : <ExternalLink className="mr-2 h-4 w-4"/>}
-                      {project.liveLink.includes('ieee') ? 'Read Paper' : 'View Live'}
+                  <a href={p.liveLink} target="_blank" rel="noopener noreferrer">
+                      {p.liveLink.includes('ieee') ? <FileText className="mr-2 h-4 w-4"/> : <ExternalLink className="mr-2 h-4 w-4"/>}
+                      {p.liveLink.includes('ieee') ? 'Read Paper' : 'View Live'}
                   </a>
               </Button>
           )}
