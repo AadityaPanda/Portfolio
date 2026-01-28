@@ -4,7 +4,7 @@ export const CV_PATH = "/media/AadityaPanda_CV.pdf";
 export const ABOUT_ME_TEXT = "As a dedicated and passionate full-stack software developer, I specialize in architecting and building robust, elegant web applications from the ground up. My expertise lies in transforming complex problems into seamless and intuitive digital experiences. With a strong foundation in both front-end and back-end technologies, I am adept at managing the entire project lifecycle, from conceptualization and design to deployment and maintenance. I thrive in collaborative environments, continuously seeking to innovate and contribute to projects that push the boundaries of technology.";
 
 export const SKILLS_DATA = {
-  "Languages": ["JavaScript", "Python", "HTML5", "CSS3", "SQL", "C++"],
+  "Languages": ["JavaScript", "Python", "HTML5", "CSS3", "C++"],
   "Frontend": ["React"],
   "Backend": ["Node.js", "Express.js", "REST APIs", "WebSockets"],
   "Databases": ["MySQL", "PostgreSQL"],
@@ -73,7 +73,7 @@ export const PROFESSIONAL_PROJECTS_DATA = [
     title: "PAM (Privileged Access Management)",
     overview: "An enterprise-grade Privileged Access Management (PAM) application designed to securely manage and monitor privileged access to critical systems and servers.",
     role: "Primary developer with ownership of the majority of the application, including frontend architecture, core features, and long-term maintenance. The Guacamole (guacd)-based server connection layer and connection group functionality were implemented separately; all other modules were designed, developed, and maintained independently.",
-    techStack: ["React", "Node.js", "Express.js", "MySQL", "WebSockets"],
+    techStack: ["React", "Node.js", "Express.js", "MySQL", "WebSockets", "SAML SSO"],
     contributions: [
         "Built and maintained core PAM features excluding the remote connection layer.",
         "Engineered WebSocket layer for real-time server communication with the Guacamole (guacd) backend.",
@@ -92,7 +92,7 @@ export const PROFESSIONAL_PROJECTS_DATA = [
     title: "Docs Portal (Client-Facing Documentation Platform)",
     overview: "A centralized documentation portal used by all clients to access official documentation for Tanflow’s IDAM and PAM products across multiple versions.",
     role: "Sole developer with end-to-end ownership, responsible for designing, developing, deploying, and maintaining the platform.",
-    techStack: ["React", "Node.js", "Express.js", "PostgreSQL"],
+    techStack: ["React", "Node.js", "Express.js", "PostgreSQL", "SAML SSO"],
     contributions: [
       "Designed a scalable documentation structure supporting multiple products and versions.",
       "Implemented dynamic content rendering driven entirely by database-managed content.",
@@ -111,7 +111,7 @@ export const PROFESSIONAL_PROJECTS_DATA = [
     title: "Tanflow Admin Docs Portal (Internal Documentation CMS)",
     overview: "An internal documentation management system built to create, edit, and manage content published on the client-facing Docs Portal.",
     role: "Sole developer responsible for the complete design, development, and maintenance of the internal CMS.",
-    techStack: ["React", "Node.js", "Express.js", "PostgreSQL"],
+    techStack: ["React", "Node.js", "Express.js", "PostgreSQL", "SAML SSO"],
     contributions: [
         "Designed and implemented an internal editor for managing documentation content.",
         "Built workflows for creating, updating, and organizing documentation across products and versions.",
@@ -124,14 +124,14 @@ export const PROFESSIONAL_PROJECTS_DATA = [
     maintenance: "Actively maintained and enhanced based on internal team requirements.",
     repoLink: null,
     liveLink: null,
-    thumbnail: "https://picsum.photos/seed/admindocs/800/450",
+    thumbnail: "/media/project-admin-docs-portal.png",
     gallery: [],
   },
   {
     title: "Tanflow Support Portal (Client-Facing)",
     overview: "A client-facing support portal that allows customers to raise, track, and manage support requests.",
     role: "Sole developer responsible for building and maintaining the application from initial development to production usage.",
-    techStack: ["React", "Node.js", "Express.js", "PostgreSQL"],
+    techStack: ["React", "Node.js", "Express.js", "PostgreSQL", "SAML SSO"],
     contributions: [
         "Built the complete support request workflow for client interactions.",
         "Enabled SAML SSO for unified client login.",
@@ -142,7 +142,7 @@ export const PROFESSIONAL_PROJECTS_DATA = [
     maintenance: "Fully responsible for ongoing maintenance and stability of the application.",
     repoLink: null,
     liveLink: null,
-    thumbnail: "https://picsum.photos/seed/supportportal/800/450",
+    thumbnail: "/media/project-support-portal.png",
     gallery: [],
   }
 ];
@@ -209,5 +209,3 @@ export const TESTIMONIALS_DATA = [
       hint: "female professional"
     }
 ];
-
-    
