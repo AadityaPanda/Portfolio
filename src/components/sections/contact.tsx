@@ -28,8 +28,8 @@ const socialLinks = [
     {
       icon: Instagram,
       name: 'Instagram',
-      handle: '_aaditya_panda_',
-      href: 'https://www.instagram.com/_aaditya_panda_/',
+      handle: '_aadityapanda_',
+      href: 'https://www.instagram.com/_aadityapanda_/',
       ariaLabel: 'Follow on Instagram',
       color: 'text-pink-500',
       hoverColor: 'group-hover:bg-pink-500/10',

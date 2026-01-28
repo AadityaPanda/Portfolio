@@ -11,7 +11,7 @@ import { useIsMobile } from '@/hooks/use-mobile';
 const socialLinks = [
   { icon: Github, href: "https://github.com/AadityaPanda", 'aria-label': 'GitHub' },
   { icon: Linkedin, href: "https://www.linkedin.com/in/aadityapanda/", 'aria-label': 'LinkedIn' },
-  { icon: Instagram, href: "https://www.instagram.com/_aaditya_panda_/", 'aria-label': 'Instagram' },
+  { icon: Instagram, href: "https://www.instagram.com/_aadityapanda_/", 'aria-label': 'Instagram' },
 ];
 
 const navLinks = [

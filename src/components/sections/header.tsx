@@ -14,7 +14,7 @@ import { AnimatedBackground } from "../animated-background";
 const socialLinks = [
   { name: 'linkedin', icon: Linkedin, href: "https://www.linkedin.com/in/aadityapanda/", 'aria-label': 'Aaditya Panda on LinkedIn' },
   { name: 'github', icon: Github, href: "https://github.com/AadityaPanda", 'aria-label': 'Aaditya Panda on GitHub' },
-  { name: 'instagram', icon: Instagram, href: "https://www.instagram.com/_aaditya_panda_/", 'aria-label': 'Aaditya Panda on Instagram' },
+  { name: 'instagram', icon: Instagram, href: "https://www.instagram.com/_aadityapanda_/", 'aria-label': 'Aaditya Panda on Instagram' },
 ];
 
 const phrases = ["Software Developer", "Full-Stack Architect", "Creative Problem-Solver"];
