@@ -4,9 +4,11 @@ export const CV_PATH = "/media/AadityaPanda_CV.pdf";
 export const ABOUT_ME_TEXT = "As a dedicated and passionate full-stack software developer, I specialize in architecting and building robust, elegant web applications from the ground up. My expertise lies in transforming complex problems into seamless and intuitive digital experiences. With a strong foundation in both front-end and back-end technologies, I am adept at managing the entire project lifecycle, from conceptualization and design to deployment and maintenance. I thrive in collaborative environments, continuously seeking to innovate and contribute to projects that push the boundaries of technology.";
 
 export const SKILLS_DATA = {
-  "Languages": ["JavaScript", "TypeScript", "Python", "HTML5", "CSS3", "SQL", "C++"],
-  "Frameworks & Libraries": ["React", "Next.js", "Express.js", "Tailwind CSS"],
-  "Platforms & Tools": ["Node.js", "Git", "Firebase", "Nginx", "REST APIs", "Authentication & Authorization Systems", "Shared Database"],
+  "Languages": ["JavaScript", "Python", "HTML5", "CSS3", "SQL", "C++"],
+  "Frontend": ["React"],
+  "Backend": ["Node.js", "Express.js", "REST APIs", "WebSockets"],
+  "Databases": ["MySQL", "PostgreSQL"],
+  "Tools & Platforms": ["Git", "Firebase", "Nginx", "SAML SSO"],
 };
 
 export const EXPERIENCE_DATA = [
@@ -71,15 +73,15 @@ export const PROFESSIONAL_PROJECTS_DATA = [
     title: "PAM (Privileged Access Management)",
     overview: "An enterprise-grade Privileged Access Management (PAM) application designed to securely manage and monitor privileged access to critical systems and servers.",
     role: "Primary developer with ownership of the majority of the application, including frontend architecture, core features, and long-term maintenance. The Guacamole (guacd)-based server connection layer and connection group functionality were implemented separately; all other modules were designed, developed, and maintained independently.",
-    techStack: ["React", "Next.js", "Tailwind CSS", "REST APIs", "Authentication & Authorization Systems"],
+    techStack: ["React", "Node.js", "Express.js", "MySQL", "WebSockets"],
     contributions: [
         "Built and maintained core PAM features excluding the remote connection layer.",
+        "Engineered WebSocket layer for real-time server communication with the Guacamole (guacd) backend.",
+        "Implemented SAML SSO for secure enterprise authentication.",
         "Designed scalable frontend architecture for security-sensitive workflows.",
         "Implemented role-based access control and secure UI flows.",
-        "Collaborated with existing guacd integration to ensure seamless user experience.",
         "Actively handled production bug fixes and feature enhancements."
     ],
-    architectureNote: null,
     maintenance: "Currently responsible for ongoing maintenance, enhancements, and production stability of the application.",
     repoLink: null,
     liveLink: null,
@@ -90,14 +92,15 @@ export const PROFESSIONAL_PROJECTS_DATA = [
     title: "Docs Portal (Client-Facing Documentation Platform)",
     overview: "A centralized documentation portal used by all clients to access official documentation for Tanflow’s IDAM and PAM products across multiple versions.",
     role: "Sole developer with end-to-end ownership, responsible for designing, developing, deploying, and maintaining the platform.",
-    techStack: ["React", "Next.js", "Tailwind CSS", "REST APIs", "Shared Database"],
+    techStack: ["React", "Node.js", "Express.js", "PostgreSQL"],
     contributions: [
       "Designed a scalable documentation structure supporting multiple products and versions.",
       "Implemented dynamic content rendering driven entirely by database-managed content.",
+      "Integrated SAML SSO for secure client access.",
       "Built responsive and accessible layouts for consistent client experience.",
-      "Integrated the portal with a centralized database shared with the internal Admin Docs Portal."
+      "Integrated the portal with a centralized PostgreSQL database shared with the internal Admin Docs Portal."
     ],
-    architectureNote: "The Docs Portal functions as a read-only, client-facing application. Documentation content is authored and managed internally through a separate Admin Docs Portal, with updates reflected in real time via a shared database.",
+    architectureNote: "The Docs Portal functions as a read-only, client-facing application. Documentation content is authored and managed internally through a separate Admin Docs Portal, with updates reflected in real time via a shared PostgreSQL database.",
     maintenance: "Actively maintained in production, including content updates, bug fixes, and performance improvements.",
     repoLink: null,
     liveLink: null,
@@ -108,15 +111,16 @@ export const PROFESSIONAL_PROJECTS_DATA = [
     title: "Tanflow Admin Docs Portal (Internal Documentation CMS)",
     overview: "An internal documentation management system built to create, edit, and manage content published on the client-facing Docs Portal.",
     role: "Sole developer responsible for the complete design, development, and maintenance of the internal CMS.",
-    techStack: ["React", "Next.js", "Tailwind CSS", "REST APIs", "Shared Database"],
+    techStack: ["React", "Node.js", "Express.js", "PostgreSQL"],
     contributions: [
-      "Designed and implemented an internal editor for managing documentation content.",
-      "Built workflows for creating, updating, and organizing documentation across products and versions.",
-      "Implemented access control to restrict usage to authorized team members.",
-      "Designed the system to reflect content updates instantly on the client-facing Docs Portal.",
-      "Owned the full documentation lifecycle from internal authoring to client publication."
+        "Designed and implemented an internal editor for managing documentation content.",
+        "Built workflows for creating, updating, and organizing documentation across products and versions.",
+        "Implemented access control to restrict usage to authorized team members.",
+        "Implemented SAML SSO for secure internal access.",
+        "Designed the system to reflect content updates instantly on the client-facing Docs Portal.",
+        "Owned the full documentation lifecycle from internal authoring to client publication."
     ],
-    architectureNote: "This application shares a centralized database with the Docs Portal, enabling a clean separation between internal content management and external content consumption.",
+    architectureNote: "This application shares a centralized PostgreSQL database with the Docs Portal, enabling a clean separation between internal content management and external content consumption.",
     maintenance: "Actively maintained and enhanced based on internal team requirements.",
     repoLink: null,
     liveLink: null,
@@ -127,14 +131,14 @@ export const PROFESSIONAL_PROJECTS_DATA = [
     title: "Tanflow Support Portal (Client-Facing)",
     overview: "A client-facing support portal that allows customers to raise, track, and manage support requests.",
     role: "Sole developer responsible for building and maintaining the application from initial development to production usage.",
-    techStack: ["React", "Next.js", "Tailwind CSS", "REST APIs"],
+    techStack: ["React", "Node.js", "Express.js", "PostgreSQL"],
     contributions: [
-        "Built the complete support request workflow for client interactions",
-        "Designed responsive UI components for request creation and tracking",
-        "Implemented integration with backend services for support request handling",
-        "Maintained the application in production, addressing bugs and feature updates"
+        "Built the complete support request workflow for client interactions.",
+        "Enabled SAML SSO for unified client login.",
+        "Designed responsive UI components for request creation and tracking.",
+        "Implemented integration with backend services for support request handling.",
+        "Maintained the application in production, addressing bugs and feature updates."
     ],
-    architectureNote: null,
     maintenance: "Fully responsible for ongoing maintenance and stability of the application.",
     repoLink: null,
     liveLink: null,
@@ -146,12 +150,12 @@ export const PROFESSIONAL_PROJECTS_DATA = [
 export const PERSONAL_PROJECTS_DATA = [
   {
     title: "IoT Tollbooth System Supervisor",
-    description: "An IoT and RFID-based system that revolutionizes tollbooth operations by optimizing traffic flow and enhancing user experience.",
+    overview: "An IoT and RFID-based system that revolutionizes tollbooth operations by optimizing traffic flow and enhancing user experience.",
     techStack: ["C++", "Arduino IDE", "Arduino Uno", "ESP32"],
     repoLink: "https://github.com/AadityaPanda/ITSS",
     liveLink: "https://ieeexplore.ieee.org/document/10993585",
     thumbnail: "/media/project-iot-tollbooth.png",
-    details: [
+    contributions: [
       "Automated Vehicle Detection: Authenticates vehicle RFID tags for seamless entry.",
       "Automated Gate Control: Utilizes a servo motor to control gate opening and closing.",
       "Real-time Data Logging: Logs all transaction data directly to Google Sheets via an ESP32.",
@@ -168,12 +172,12 @@ export const PERSONAL_PROJECTS_DATA = [
   },
   {
     title: "Street Fighter",
-    description: "A classic two-player fighting game built with Python and Pygame, featuring unique characters and dynamic animations.",
+    overview: "A classic two-player fighting game built with Python and Pygame, featuring unique characters and dynamic animations.",
     techStack: ["Python"],
     repoLink: "https://github.com/AadityaPanda/Street_Fighter",
     liveLink: null,
     thumbnail: "/media/project-street-fighter.png",
-    details: [
+    contributions: [
         "Features two distinct fighters, Warrior and Wizard, each with unique attacks and abilities.",
         "Includes classic gameplay mechanics like health bars, a scoring system, and smooth character animations.",
         "Implements dynamic background effects and immersive sound design for an engaging experience.",

@@ -36,10 +36,9 @@ I am a **Software Developer** with a relentless passion for crafting robust, ful
 
 | Category | Technologies |
 |----------|-------------|
-| 🎨 **Frontend** | ![Next.js](https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=next.js&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white) ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB) |
-| 🎭 **Styling** | ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white) ![ShadCN](https://img.shields.io/badge/ShadCN-000000?style=flat-square&logo=shadcnui&logoColor=white) |
-| ⚡ **Performance** | ![Lenis](https://img.shields.io/badge/Lenis-FF6B6B?style=flat-square&logo=lenis&logoColor=white) CSS Animations |
-| 🔧 **Backend** | ![Genkit](https://img.shields.io/badge/Genkit-FFA500?style=flat-square&logo=firebase&logoColor=white) ![Nodemailer](https://img.shields.io/badge/Nodemailer-0F9D58?style=flat-square&logo=gmail&logoColor=white) |
+| 🎨 **Frontend** | ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black) |
+| 🔧 **Backend** | ![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white) ![Express.js](https://img.shields.io/badge/Express.js-000000?style=flat-square&logo=express&logoColor=white) ![MySQL](https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=mysql&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-336791?style=flat-square&logo=postgresql&logoColor=white) |
+| ⚡ **Performance** | CSS Animations |
 
 ### ✨ **Standout Features**
 
@@ -96,7 +95,7 @@ I am a **Software Developer** with a relentless passion for crafting robust, ful
 
 </div>
 
-```typescript
+```javascript
 const portfolioFeatures = {
   design: "Modern & Professional 🎨",
   performance: "Optimized for Speed ⚡",
@@ -164,22 +163,20 @@ I'm always excited to discuss **new projects**, **creative ideas**, or **collabo
 
 ```mermaid
 graph TD
-    A[Next.js App Router] --> B[TypeScript Layer]
-    B --> C[Tailwind CSS Styling]
-    C --> D[ShadCN Components]
-    D --> E[Smooth Animations]
-    E --> F[Responsive Design]
-    F --> G[Contact Form Backend]
-    G --> H[Email Integration]
+    A[React Frontend] --> B[Client-Side Routing]
+    B --> C[REST API Communication]
+    C --> D[Node.js & Express.js Backend]
+    D --> E[SQL Database Layer]
+    E --> F[Authentication Services]
+    F --> G[Responsive Design]
 ```
 
 ### Key Technical Decisions
 
-- **Next.js App Router**: For optimal routing and performance
-- **TypeScript**: Type safety and better developer experience  
-- **Tailwind CSS**: Utility-first approach for rapid styling
-- **ShadCN UI**: Consistent, accessible component library
-- **Lenis**: Smooth scrolling implementation
-- **Genkit + Nodemailer**: Reliable contact form backend
+- **React**: For building a dynamic and component-based user interface.
+- **JavaScript (ES6+)**: For modern, clean, and maintainable application logic.
+- **Node.js & Express.js**: For a robust and scalable backend foundation for RESTful APIs.
+- **SQL Databases**: Utilizing MySQL and PostgreSQL for reliable and structured data persistence.
+- **Contact Form Backend**: Reliable contact form backend powered by Nodemailer.
 
 </details>

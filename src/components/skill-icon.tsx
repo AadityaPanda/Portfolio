@@ -1,6 +1,7 @@
+
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { Code, Server, Database, Shield } from 'lucide-react';
+import { Code, Server, Database, KeyRound, Cable } from 'lucide-react';
 
 import {
   SiJavascript,
@@ -9,54 +10,48 @@ import {
   SiHtml5,
   SiCss3,
   SiReact,
-  SiNextdotjs,
   SiExpress,
-  SiTailwindcss,
   SiGit,
   SiFirebase,
-  SiTypescript as SiTs,
-  SiNginx,
   SiMysql,
+  SiPostgresql,
   SiCplusplus,
   SiArduino,
   SiEspressif,
+  SiNginx,
 } from 'react-icons/si';
 
 const ICONS: Record<string, React.ElementType<any>> = {
   'JavaScript': SiJavascript,
-  'TypeScript': SiTs,
   'Python': SiPython,
   'Node.js': SiNodedotjs,
   'HTML5': SiHtml5,
   'CSS3': SiCss3,
   'React': SiReact,
-  'Next.js': SiNextdotjs,
   'Express.js': SiExpress,
-  'Tailwind CSS': SiTailwindcss,
   'Git': SiGit,
   'Firebase': SiFirebase,
-  'SQL': SiMysql,
+  'MySQL': SiMysql,
+  'PostgreSQL': SiPostgresql,
   'Nginx': SiNginx,
   'C++': SiCplusplus,
   'Arduino IDE': SiArduino,
   'Arduino Uno': SiArduino,
   'ESP32': SiEspressif,
   'REST APIs': Server,
-  'Authentication & Authorization Systems': Shield,
-  'Shared Database': Database,
+  'SAML SSO': KeyRound,
+  'WebSockets': Cable,
 };
 
 const ICON_COLORS: Record<string, string> = {
   'JavaScript': 'text-yellow-400',
-  'TypeScript': 'text-blue-500',
   'Python': 'text-yellow-400',
   'HTML5': 'text-orange-500',
   'CSS3': 'text-blue-500',
-  'SQL': 'text-blue-600',
+  'MySQL': 'text-blue-600',
+  'PostgreSQL': 'text-sky-600',
   'React': 'text-sky-400',
-  'Next.js': 'text-foreground',
   'Express.js': 'text-foreground',
-  'Tailwind CSS': 'text-sky-500',
   'Git': 'text-orange-600',
   'Firebase': 'text-amber-500',
   'Nginx': 'text-green-500',
@@ -66,8 +61,8 @@ const ICON_COLORS: Record<string, string> = {
   'Arduino Uno': 'text-teal-500',
   'ESP32': 'text-red-600',
   'REST APIs': 'text-orange-500',
-  'Authentication & Authorization Systems': 'text-blue-400',
-  'Shared Database': 'text-purple-500',
+  'SAML SSO': 'text-purple-500',
+  'WebSockets': 'text-yellow-500',
 };
 
 export type SkillName = keyof typeof ICONS;
