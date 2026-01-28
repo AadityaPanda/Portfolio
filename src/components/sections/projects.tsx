@@ -1,8 +1,9 @@
+
 'use client';
 
 import { Button } from "@/components/ui/button";
 import { PROFESSIONAL_PROJECTS_DATA, PERSONAL_PROJECTS_DATA } from "@/lib/data";
-import { Github, ExternalLink, Rocket, FileText } from "lucide-react";
+import { Github, ExternalLink, Rocket, FileText, Briefcase, User, Layers, Code } from "lucide-react";
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
@@ -15,25 +16,17 @@ import { SkillIcon } from "../skill-icon";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { ScrollAnimate } from "../scroll-animate";
 
-const ProjectFeatures = ({ details }: { details: string[] }) => {
-    const isMobile = useIsMobile();
-    const [isExpanded, setIsExpanded] = useState(false);
-    const detailsToShow = isMobile && !isExpanded ? details.slice(0, 2) : details;
-
-    return (
-        <div className="space-y-4">
-            <h4 className="text-xl font-headline font-semibold">Features & Details</h4>
-            <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
-                {detailsToShow.map((detail, i) => <li key={i}>{detail}</li>)}
-            </ul>
-            {isMobile && details.length > 2 && (
-                <Button variant="link" onClick={() => setIsExpanded(!isExpanded)} className="p-0 h-auto text-sm">
-                    {isExpanded ? 'Show less' : `Show ${details.length - 2} more...`}
-                </Button>
-            )}
+const ProjectDetailSection = ({ title, children, icon: Icon }: { title: string, children: React.ReactNode, icon: React.ElementType }) => (
+    <div className="space-y-3">
+        <h4 className="text-xl font-headline font-semibold flex items-center gap-3">
+            <Icon className="h-5 w-5 text-primary" />
+            {title}
+        </h4>
+        <div className="pl-8 text-muted-foreground prose prose-sm max-w-none">
+            {children}
         </div>
-    );
-};
+    </div>
+);
 
 const WindowMockup = ({ children }: { children: React.ReactNode }) => (
     <div className="rounded-lg border border-border/50 shadow-lg overflow-hidden bg-muted/20">
@@ -83,7 +76,7 @@ const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: {
   );
 
   return (
-    <ScrollAnimate className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+    <ScrollAnimate className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
       {/* Image/Carousel Mockup */}
       <div className={cn(
         "group transition-all duration-300 hover:-translate-y-1",
@@ -98,25 +91,46 @@ const ProjectShowcase = ({ project, reverse = false, isProfessional = false }: {
 
       {/* Project Details */}
       <div className={cn(
-        "space-y-6",
+        "space-y-8",
         reverse ? "lg:order-first" : ""
       )}>
-        <h3 className="text-3xl font-headline font-bold">{project.title}</h3>
-        <div className="flex flex-wrap items-center gap-4">
-          {project.techStack.map((tech) => (
-            <Tooltip key={tech}>
-              <TooltipTrigger>
-                <SkillIcon name={tech} className="h-8 w-8" />
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>{tech}</p>
-              </TooltipContent>
-            </Tooltip>
-          ))}
+        <div className="space-y-4">
+            <h3 className="text-3xl font-headline font-bold">{project.title}</h3>
+            <p className="text-muted-foreground text-lg">{project.overview}</p>
+            <div className="flex flex-wrap items-center gap-4">
+            {project.techStack.map((tech) => (
+                <Tooltip key={tech}>
+                <TooltipTrigger>
+                    <SkillIcon name={tech} className="h-8 w-8" />
+                </TooltipTrigger>
+                <TooltipContent>
+                    <p>{tech}</p>
+                </TooltipContent>
+                </Tooltip>
+            ))}
+            </div>
         </div>
-        <p className="text-muted-foreground text-lg">{project.description}</p>
         
-        <ProjectFeatures details={project.details} />
+        <ProjectDetailSection title="Role & Ownership" icon={User}>
+            <p>{project.role}</p>
+        </ProjectDetailSection>
+        
+        <ProjectDetailSection title="Key Contributions" icon={Code}>
+            <ul className="list-disc space-y-2">
+                {project.contributions.map((detail, i) => <li key={i}>{detail}</li>)}
+            </ul>
+        </ProjectDetailSection>
+
+        {project.architectureNote && (
+            <ProjectDetailSection title="Architecture Note" icon={Layers}>
+                <p>{project.architectureNote}</p>
+            </ProjectDetailSection>
+        )}
+
+        <ProjectDetailSection title="Maintenance" icon={Briefcase}>
+            <p>{project.maintenance}</p>
+        </ProjectDetailSection>
+
 
         <div className="flex flex-wrap gap-2 pt-2">
           {project.repoLink && (

@@ -17,11 +17,11 @@ export const EXPERIENCE_DATA = [
     period: "Nov 2024 - Present",
     logo: "/media/bitchief-logo.png",
     responsibilities: [
-      "Architected a full-stack documentation portal from concept to deployment, centralizing knowledge and streamlining license management.",
-      "Engineered a custom Privileged Access Management (PAM) solution, delivering a branded UI and a more granular permission system to enhance security and user control.",
-      "Pioneered a time-based access policy for the PAM tool, a feature not available in the core software, and successfully deployed it to production.",
-      "Managed the full project lifecycle, including Nginx deployment and configuration for production and demo environments.",
-      "Currently leading the re-architecture of the PAM solution to achieve deeper system integration and more granular control.",
+      "Owned the end-to-end development of multiple production applications, including a client-facing documentation portal, an internal CMS, and a customer support platform.",
+      "Served as the primary developer for a new enterprise-grade Privileged Access Management (PAM) product, architecting the frontend and building core features.",
+      "Designed and implemented scalable UI architecture for security-sensitive workflows, including role-based access control and secure UI flows.",
+      "Managed the full project lifecycle for internal tools, including deployment and Nginx configuration.",
+      "Currently responsible for ongoing maintenance, feature enhancements, and production stability across multiple applications."
     ],
   },
   {
@@ -69,37 +69,79 @@ export const EDUCATION_DATA = [
 
 export const PROFESSIONAL_PROJECTS_DATA = [
   {
-    title: "Internal Documentation Portal",
-    description: "A full-stack internal portal designed to centralize documentation for both Identity and Access Management (IDAM) and Privileged Access Management (PAM) solutions, while also streamlining license management.",
-    techStack: ["React", "Node.js", "Express.js", "SQL", "Nginx"],
-    details: [
-      "Built as a central source of truth for all IDAM and PAM documentation.",
-      "Features a secure module for displaying organization-specific license details to authenticated users.",
-      "Enhanced with a responsive, auto-resizing sidebar and content-aware scrolling for improved UX.",
-      "Oversaw the full project lifecycle, from development to production deployment and maintenance."
+    title: "PAM (Privileged Access Management)",
+    overview: "An enterprise-grade Privileged Access Management (PAM) application designed to securely manage and monitor privileged access to critical systems and servers.",
+    role: "Primary developer with ownership of the majority of the application, including frontend architecture, core features, and long-term maintenance. The Guacamole (guacd)-based server connection layer and connection group functionality were implemented separately; all other modules were designed, developed, and maintained independently.",
+    techStack: ["React", "Next.js", "Tailwind CSS", "REST APIs"],
+    contributions: [
+        "Built and maintained core PAM features excluding the remote connection layer.",
+        "Designed scalable frontend architecture for security-sensitive workflows.",
+        "Implemented role-based access control and secure UI flows.",
+        "Collaborated with existing guacd integration to ensure seamless user experience.",
+        "Actively handled production bug fixes and feature enhancements."
     ],
+    architectureNote: null,
+    maintenance: "Currently responsible for ongoing maintenance, enhancements, and production stability of the application.",
+    repoLink: null,
+    liveLink: null,
+    thumbnail: "/media/project-pam.png",
+    gallery: [],
+  },
+  {
+    title: "Docs Portal (Client-Facing Documentation Platform)",
+    overview: "A centralized documentation portal used by all clients to access official documentation for Tanflow’s IDAM and PAM products across multiple versions.",
+    role: "Sole developer with end-to-end ownership, responsible for designing, developing, deploying, and maintaining the platform.",
+    techStack: ["React", "Next.js", "Tailwind CSS", "REST APIs", "SQL"],
+    contributions: [
+      "Designed a scalable documentation structure supporting multiple products and versions.",
+      "Implemented dynamic content rendering driven entirely by database-managed content.",
+      "Built responsive and accessible layouts for consistent client experience.",
+      "Integrated the portal with a centralized database shared with the internal Admin Docs Portal."
+    ],
+    architectureNote: "The Docs Portal functions as a read-only, client-facing application. Documentation content is authored and managed internally through a separate Admin Docs Portal, with updates reflected in real time via a shared database.",
+    maintenance: "Actively maintained in production, including content updates, bug fixes, and performance improvements.",
     repoLink: null,
     liveLink: null,
     thumbnail: "/media/project-docs-portal.png",
     gallery: [],
   },
   {
-    title: "Privileged Access Management (PAM)",
-    description: "An enterprise-grade security platform designed to safeguard privileged accounts, manage credentials, and enforce strong access governance across critical IT assets.",
-    techStack: ["React", "Node.js", "Express.js", "SQL", "Nginx"],
-    details: [
-        "Ensures privileged access is secured with credential vaulting and MFA.",
-        "Controlled via granular role-based workflows and custom time-based access policies.",
-        "Achieves zero direct credential exposure for heightened security.",
-        "Monitored using session recording and real-time supervision.",
-        "Audited with complete, comprehensive logs and reporting.",
-        "Optimized for deployments ranging from 200 to 1000+ devices across cloud and on-premise environments."
+    title: "Tanflow Admin Docs Portal (Internal Documentation CMS)",
+    overview: "An internal documentation management system built to create, edit, and manage content published on the client-facing Docs Portal.",
+    role: "Sole developer responsible for the complete design, development, and maintenance of the internal CMS.",
+    techStack: ["React", "Next.js", "Tailwind CSS", "REST APIs", "SQL"],
+    contributions: [
+      "Designed and implemented an internal editor for managing documentation content.",
+      "Built workflows for creating, updating, and organizing documentation across products and versions.",
+      "Implemented access control to restrict usage to authorized team members.",
+      "Designed the system to reflect content updates instantly on the client-facing Docs Portal.",
+      "Owned the full documentation lifecycle from internal authoring to client publication."
     ],
+    architectureNote: "This application shares a centralized database with the Docs Portal, enabling a clean separation between internal content management and external content consumption.",
+    maintenance: "Actively maintained and enhanced based on internal team requirements.",
     repoLink: null,
     liveLink: null,
-    thumbnail: "/media/project-pam.png",
+    thumbnail: "/media/project-admin-docs.png",
     gallery: [],
   },
+    {
+    title: "Tanflow Support Portal (Client-Facing)",
+    overview: "A client-facing support portal that allows customers to raise, track, and manage support requests.",
+    role: "Sole developer responsible for building and maintaining the application from initial development to production usage.",
+    techStack: ["React", "Next.js", "Tailwind CSS", "REST APIs"],
+    contributions: [
+        "Built the complete support request workflow for client interactions.",
+        "Designed responsive UI components for request creation and tracking.",
+        "Implemented integration with backend services for support request handling.",
+        "Maintained the application in production, addressing bugs and feature updates."
+    ],
+    architectureNote: null,
+    maintenance: "Fully responsible for ongoing maintenance and stability of the application.",
+    repoLink: null,
+    liveLink: null,
+    thumbnail: "/media/project-support-portal.png",
+    gallery: [],
+  }
 ];
 
 export const PERSONAL_PROJECTS_DATA = [
