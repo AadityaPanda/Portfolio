@@ -6,7 +6,7 @@ export const ABOUT_ME_TEXT = "As a dedicated and passionate full-stack software 
 export const SKILLS_DATA = {
   "Languages": ["JavaScript", "TypeScript", "Python", "HTML5", "CSS3", "SQL", "C++"],
   "Frameworks & Libraries": ["React", "Next.js", "Express.js", "Tailwind CSS"],
-  "Platforms & Tools": ["Node.js", "Git", "Firebase", "Nginx"],
+  "Platforms & Tools": ["Node.js", "Git", "Firebase", "Nginx", "REST APIs"],
   "Hardware & IoT": ["Arduino IDE", "Arduino Uno", "ESP32"],
 };
 
@@ -71,13 +71,13 @@ export const PROFESSIONAL_PROJECTS_DATA = [
   {
     title: "PAM (Privileged Access Management)",
     overview: "An enterprise-grade Privileged Access Management (PAM) application designed to securely manage and monitor privileged access to critical systems and servers.",
-    role: "Primary developer with ownership of the majority of the application, including frontend architecture, core features, and long-term maintenance. The Guacamole (guacd)-based server connection layer and connection group functionality were implemented separately; all other modules were designed, developed, and maintained independently.",
-    techStack: ["React", "Next.js", "Tailwind CSS", "REST APIs"],
+    role: "Primary developer with ownership of the majority of the application, including frontend architecture, core features, and long-term maintenance. The server connection layer and connection group functionality were implemented separately; all other modules were designed, developed, and maintained independently.",
+    techStack: ["React", "Next.js", "Tailwind CSS", "REST APIs", "Authentication & Authorization Systems"],
     contributions: [
         "Built and maintained core PAM features excluding the remote connection layer.",
         "Designed scalable frontend architecture for security-sensitive workflows.",
         "Implemented role-based access control and secure UI flows.",
-        "Collaborated with existing guacd integration to ensure seamless user experience.",
+        "Collaborated with existing integration to ensure seamless user experience.",
         "Actively handled production bug fixes and feature enhancements."
     ],
     architectureNote: null,
@@ -91,7 +91,7 @@ export const PROFESSIONAL_PROJECTS_DATA = [
     title: "Docs Portal (Client-Facing Documentation Platform)",
     overview: "A centralized documentation portal used by all clients to access official documentation for Tanflow’s IDAM and PAM products across multiple versions.",
     role: "Sole developer with end-to-end ownership, responsible for designing, developing, deploying, and maintaining the platform.",
-    techStack: ["React", "Next.js", "Tailwind CSS", "REST APIs", "SQL"],
+    techStack: ["React", "Next.js", "Tailwind CSS", "REST APIs", "Shared Database"],
     contributions: [
       "Designed a scalable documentation structure supporting multiple products and versions.",
       "Implemented dynamic content rendering driven entirely by database-managed content.",
@@ -109,7 +109,7 @@ export const PROFESSIONAL_PROJECTS_DATA = [
     title: "Tanflow Admin Docs Portal (Internal Documentation CMS)",
     overview: "An internal documentation management system built to create, edit, and manage content published on the client-facing Docs Portal.",
     role: "Sole developer responsible for the complete design, development, and maintenance of the internal CMS.",
-    techStack: ["React", "Next.js", "Tailwind CSS", "REST APIs", "SQL"],
+    techStack: ["React", "Next.js", "Tailwind CSS", "REST APIs", "Shared Database"],
     contributions: [
       "Designed and implemented an internal editor for managing documentation content.",
       "Built workflows for creating, updating, and organizing documentation across products and versions.",
@@ -121,10 +121,10 @@ export const PROFESSIONAL_PROJECTS_DATA = [
     maintenance: "Actively maintained and enhanced based on internal team requirements.",
     repoLink: null,
     liveLink: null,
-    thumbnail: "/media/project-admin-docs.png",
+    thumbnail: "https://picsum.photos/seed/admindocs/800/450",
     gallery: [],
   },
-    {
+  {
     title: "Tanflow Support Portal (Client-Facing)",
     overview: "A client-facing support portal that allows customers to raise, track, and manage support requests.",
     role: "Sole developer responsible for building and maintaining the application from initial development to production usage.",
@@ -139,7 +139,7 @@ export const PROFESSIONAL_PROJECTS_DATA = [
     maintenance: "Fully responsible for ongoing maintenance and stability of the application.",
     repoLink: null,
     liveLink: null,
-    thumbnail: "/media/project-support-portal.png",
+    thumbnail: "https://picsum.photos/seed/supportportal/800/450",
     gallery: [],
   }
 ];

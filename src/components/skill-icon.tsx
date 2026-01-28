@@ -1,6 +1,6 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
-import { Code } from 'lucide-react';
+import { Code, Server, Database, Shield } from 'lucide-react';
 
 import {
   SiJavascript,
@@ -41,6 +41,9 @@ const ICONS: Record<string, React.ElementType<any>> = {
   'Arduino IDE': SiArduino,
   'Arduino Uno': SiArduino,
   'ESP32': SiEspressif,
+  'REST APIs': Server,
+  'Authentication & Authorization Systems': Shield,
+  'Shared Database': Database,
 };
 
 const ICON_COLORS: Record<string, string> = {
@@ -62,6 +65,9 @@ const ICON_COLORS: Record<string, string> = {
   'Arduino IDE': 'text-teal-500',
   'Arduino Uno': 'text-teal-500',
   'ESP32': 'text-red-600',
+  'REST APIs': 'text-orange-500',
+  'Authentication & Authorization Systems': 'text-blue-400',
+  'Shared Database': 'text-purple-500',
 };
 
 export type SkillName = keyof typeof ICONS;
